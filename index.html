@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chijun Sima</title>
-    <meta name="description" content="Chijun Sima - Senior system software developer/researcher at Tencent">
+    <title>Chijun Sima | Efficient ML Systems</title>
+    <meta name="description" content="Chijun Sima — Senior Software Development Engineer at Tencent (WeChat). Efficient ML Systems, large-scale recommender systems, and compiler/LLVM work.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- Cloudflare Web Analytics -->
@@ -31,215 +31,374 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Chijun Sima</a>
+            <a class="navbar-brand fw-semibold" href="#top">Chijun Sima</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link" aria-current="page" href="#_about">About</a>
-                    <a class="nav-link" href="#_pub">Publications</a>
-                    <a class="nav-link" href="#_exp">Experience</a>
+                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link" href="#research">Research</a>
+                    <a class="nav-link" href="#education">Education</a>
+                    <a class="nav-link" href="#publications">Publications</a>
+                    <a class="nav-link" href="#experience">Experience</a>
+                    <a class="nav-link" href="#opensource">Open Source</a>
+                    <a class="nav-link" href="#service">Service</a>
+                    <a class="nav-link" href="#talks">Talks</a>
+                    <a class="nav-link" href="#awards">Awards</a>
+                    <a class="nav-link" href="#writeups">Write-ups</a>
                 </div>
             </div>
         </div>
     </nav>
-    <p></p>
-    <main>
-        <div class="container-lg">
-            <section>
-                <div class="card">
-                    <div class="card-header" id="_about">
-                        About
+    <style>
+        :root {
+            --accent: #1f4e79;
+            --soft: #f5f9ff;
+            --ink: #1d1f23;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--ink);
+        }
+
+        .hero {
+            background: radial-gradient(1200px 400px at 10% 0%, #eaf3ff 0%, #f8fbff 45%, #ffffff 100%);
+            border-bottom: 1px solid rgba(31, 78, 121, 0.08);
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.3px;
+        }
+
+        .badge-soft {
+            background: rgba(31, 78, 121, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(31, 78, 121, 0.15);
+        }
+
+        .stat-card {
+            background: #fff;
+            border: 1px solid rgba(31, 78, 121, 0.1);
+            border-radius: 14px;
+            padding: 16px 18px;
+        }
+
+        .timeline {
+            border-left: 2px solid rgba(31, 78, 121, 0.2);
+            padding-left: 18px;
+        }
+
+        .timeline-item {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -27px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .pill-link {
+            text-decoration: none;
+        }
+
+        .pill-link:hover {
+            text-decoration: underline;
+        }
+
+        .section-card {
+            border: none;
+            box-shadow: 0 10px 30px rgba(31, 78, 121, 0.08);
+            border-radius: 16px;
+        }
+    </style>
+    <main id="top">
+        <section class="hero py-5" id="about">
+            <div class="container-lg">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-7">
+                        <span class="badge rounded-pill badge-soft mb-3">Efficient ML Systems</span>
+                        <h1 class="display-5 fw-bold mb-3">Chijun Sima</h1>
+                        <p class="lead mb-4">
+                            Senior Software Development Engineer at Tencent (WeChat). I build large-scale recommender and
+                            ML systems, focusing on system–algorithm co-design, cost-effective serving, and compiler
+                            performance.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <a class="btn btn-primary" href="mailto:simachijun@gmail.com">Email</a>
+                            <a class="btn btn-outline-primary" href="https://www.linkedin.com/in/chijun-sima/">LinkedIn</a>
+                            <a class="btn btn-outline-primary" href="/cv.pdf">Download CV</a>
+                        </div>
+                        <div class="text-muted small">
+                            Location: Guangzhou, China · Open Source: LLVM (commit access)
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="d-grid gap-3">
-                                    <div class="row justify-content-center">
-                                        <div class="col-5">
-                                            <figure>
-                                                <img src="avatar.jpg" class="img-fluid" style="border-radius:5%;"
-                                                    alt="Chijun Sima avatar">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <div class="text-center">
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-outline-primary"
-                                                    onclick="location.href='mailto:simachijun@gmail.com'"
-                                                    aria-label="Chijun Sima's e-mail address">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z">
-                                                        </path>
-                                                    </svg>
-                                                </button>
-
-
-                                                <button type="button" class="btn btn-outline-primary"
-                                                    onclick="location.href='https://www.linkedin.com/in/chijun-sima/'"
-                                                    aria-label="Chijun Sima's linkedin">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z">
-                                                        </path>
-                                                    </svg>
-                                                </button>
-<button type="button" class="btn btn-outline-primary" onclick="location.href='/cv.pdf'" aria-label="Chijun Sima's CV">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-person"
-        viewBox="0 0 16 16">
-        <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-        <path
-            d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z" />
-    </svg>
-</button>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="col-lg-5">
+                        <div class="text-center">
+                            <img src="avatar.jpg" class="img-fluid rounded-4 shadow-sm" alt="Chijun Sima portrait">
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-6">
+                                <div class="stat-card">
+                                    <div class="fw-semibold">OSDI 2022</div>
+                                    <div class="text-muted small">Co-first author, Ekko</div>
                                 </div>
                             </div>
-                            <div class="col-sm-8">
-                                <p>
-                                    Hi, I am Chijun.
-                                </p>
-                                <p>
-                                    I am a senior system software developer/researcher in the infrastructure team at <a
-                                        href="https://www.tencent.com/en-us/">Tencent</a>. I was fortunate enough to
-                                    work
-                                    with
-                                    Prof.
-                                    <a href="https://luomai.github.io/">Luo Mai</a>
-                                    on <a href="https://www.usenix.org/conference/osdi22/presentation/sima">Project
-                                        Ekko</a>. I
-                                    obtained my bachelor's degree at the <a href="https://www.scut.edu.cn/en/">South
-                                        China
-                                        University of
-                                        Technology</a>, advised by Prof. <a
-                                        href="https://scholar.google.com/citations?user=3_QaMtUAAAAJ&hl=en">Qianli
-                                        Ma</a>. I am also an open-source contributor to the <a
-                                        href="https://llvm.org/">LLVM
-                                        compiler</a> backend.
-                                <p> My research interests lie in Computer
-                                    Systems focusing on Cloud Systems, Machine Learning Systems, Serverless and
-                                    Compilers.
-                                </p>
+                            <div class="col-sm-6">
+                                <div class="stat-card">
+                                    <div class="fw-semibold">LLVM 7.0 / 9.0</div>
+                                    <div class="text-muted small">Core optimizations shipped</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="stat-card">
+                                    <div class="fw-semibold">1B+ users</div>
+                                    <div class="text-muted small">WeChat production systems</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="stat-card">
+                                    <div class="fw-semibold">Gold Prize</div>
+                                    <div class="text-muted small">Tencent Tech Breakthrough</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
-        <p></p>
-        <div class="container-lg">
-            <section>
-                <div class="card">
-                    <div class="card-header" id="_pub">
-                        Publications
+            </div>
+        </section>
+
+        <section class="py-5" id="research">
+            <div class="container-lg">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="section-title h4 mb-3">Research Interests</div>
+                        <p class="mb-0">
+                            Efficient AI (MLSys): scalable and cost-effective training/serving; system–algorithm
+                            co-design.
+                        </p>
                     </div>
+                    <div class="col-lg-8">
+                        <div class="section-card card p-4">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="fw-semibold">System design</div>
+                                    <div class="text-muted">Model-update freshness, SLO-aware placement, and safe rollouts.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="fw-semibold">Serving efficiency</div>
+                                    <div class="text-muted">Remote KV-cache storage, compression, and cost optimization.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="fw-semibold">Compiler systems</div>
+                                    <div class="text-muted">Optimization pipelines and dominator updates in LLVM.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="fw-semibold">Safety & isolation</div>
+                                    <div class="text-muted">WebAssembly runtime for in-process isolation.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5" id="education">
+            <div class="container-lg">
+                <div class="section-title h4 mb-4">Education</div>
+                <div class="card section-card">
                     <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <div><a href="https://www.usenix.org/conference/osdi22/presentation/sima">Ekko: A
-                                        Large-Scale
-                                        Deep Learning Recommender System with Low-Latency Model Update</a></div>
-                                <div><b>Chijun Sima*</b>, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu,
-                                    Yongsheng
-                                    Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai</div>
-                                <div>OSDI 2022</div>
-                            </li>
+                        <div class="d-flex justify-content-between flex-wrap">
+                            <div class="fw-semibold">South China University of Technology</div>
+                            <div class="text-muted">Sep 2016 – Jun 2020</div>
+                        </div>
+                        <div class="text-muted">B.Eng. in Computer Science and Technology (Innovation Class)</div>
+                        <div class="mt-1">GPA: <strong>3.85/4.00</strong> (Rank <strong>1/28</strong>)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-light" id="publications">
+            <div class="container-lg">
+                <div class="section-title h4 mb-4">Selected Publications</div>
+                <div class="card section-card">
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <div class="h5 mb-1">
+                                <a class="pill-link" href="https://www.usenix.org/conference/osdi22/presentation/sima">Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update</a>
+                            </div>
+                            <div class="text-muted">Chijun Sima*, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai (co-first)</div>
+                            <div class="text-muted">OSDI 2022 · Supervised by <a href="https://luomai.github.io/">Luo Mai</a></div>
+                        </div>
+                        <div>
+                            <div class="h5 mb-1">Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification</div>
+                            <div class="text-muted">Kejian Shi, Hongyang Qin, Chijun Sima, Sen Li, Lifeng Shen, Qianli Ma</div>
+                            <div class="text-muted">IEEE Access, 2019</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5" id="experience">
+            <div class="container-lg">
+                <div class="section-title h4 mb-4">Research & Industry Experience</div>
+                <div class="card section-card">
+                    <div class="card-body">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <div class="fw-semibold">Tencent (WeChat) — Senior Software Development Engineer</div>
+                                    <div class="text-muted">Jul 2020 – Present · Guangzhou, China</div>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="fw-semibold">Ekko: low-latency model update for multi-terabyte DLRMs (OSDI'22)</div>
+                                    <ul class="mb-2">
+                                        <li>Co-designed model-aware deployment to maintain second-level freshness at extreme scale.</li>
+                                        <li>Compressed update dissemination and accuracy-aware scheduling reduced WAN bandwidth by <strong>92%</strong>.</li>
+                                        <li>SLO-aware placement cut machine cost by <strong>49%</strong>; implemented seconds-level rollback.</li>
+                                        <li>Production system serves <strong>over one billion users daily</strong>; enabled <strong>10,000×</strong> model-size scaling with <strong>2.4s</strong> update latency.</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="fw-semibold">Data engineering / feature platform</div>
+                                    <ul class="mb-2">
+                                        <li>Designed a WebAssembly runtime for in-process isolation and locality-aware operator placement.</li>
+                                        <li>Reduced data movement by up to <strong>1,200×</strong> on representative workloads.</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="fw-semibold">LLM serving systems</div>
+                                    <ul class="mb-0">
+                                        <li>Building cost-effective serving mechanisms around remote KV-cache storage and compression.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <div class="fw-semibold">LLVM — Developer (commit access)</div>
+                                    <div class="text-muted">2018 – Present</div>
+                                </div>
+                                <ul class="mb-0 mt-2">
+                                    <li>Improved Semi-NCA performance and optimization pipeline; shipped in LLVM 9.0 with reported speedups up to <strong>1980×</strong>.</li>
+                                    <li>Unified dominator tree update APIs; shipped in LLVM 7.0.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-light" id="opensource">
+            <div class="container-lg">
+                <div class="section-title h4 mb-4">Open Source</div>
+                <div class="card section-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between flex-wrap">
+                            <div class="fw-semibold">LLVM</div>
+                            <div class="text-muted">2018 – Present</div>
+                        </div>
+                        <div class="text-muted">Developer (commit access); Google Summer of Code 2018 participant.</div>
+                        <ul class="mt-2 mb-0">
+                            <li>Improved Semi-NCA and optimization pipeline; LLVM 9.0 (speedups up to <strong>1980×</strong>).</li>
+                            <li>Unified APIs on dominator trees; LLVM 7.0.</li>
                         </ul>
                     </div>
                 </div>
-            </section>
-        </div>
-        <p></p>
-        <div class="container-lg">
-            <section>
-                <div class="card">
-                    <div class="card-header" id="_exp">
-                        Experience
-                    </div>
+            </div>
+        </section>
+
+        <section class="py-5" id="service">
+            <div class="container-lg">
+                <div class="section-title h4 mb-4">Academic Service</div>
+                <div class="card section-card">
                     <div class="card-body">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Tencent</h5>
-                                <p class="card-subtitle mb-2 text-muted">Jul 2020 - Present</p>
-                                <p class="card-text">• Designed and implemented Ekko (OSDI '22), a novel DLRS that
-                                    enables
-                                    low-latency model
-                                    updates, in collaboration with other developers/researchers from Tencent and the
-                                    University
-                                    of Edinburgh. It
-                                    serves over a billion users daily and significantly reduces the model update latency
-                                    compared to
-                                    state-of-the-art systems. It is widely used inside Tencent and improves the
-                                    profitability of
-                                    several
-                                    recommenders.</p>
-                                <p class="card-text">• Designed and implemented Lightning, an SFI runtime powered by
-                                    WebAssembly. It is later
-                                    used for implementing storage functions inside Tencent's multi-tenant storage
-                                    services
-                                    (e.g., Ekko/OSDI '22, PaxosStore/VLDB 2017). It is also in wide use as a serverless
-                                    runtime inside Tencent. Compared with previous solutions, it has tighter
-                                    resource control on tenants and is more scalable by leveraging tiered compilation and compilation cache techniques.</p>
-                                    <p class="card-text">• Designed Ekko Elastic by incorporating a model shard placement scheduler inside Ekko. It
-                                        provisions
-                                        machines by using operation research techniques on resource requirements of different ML models. It helps cut the
-                                        cluster cost by up to 30% compared to static provisioning.</p>
-                                <p class="card-text">• Implemented a consensus algorithm library with WAN optimizations
-                                    (e.g.,
-                                    parallel phase
-                                    2). Notably, it uses an adaptive batching algorithm, improving latency and
-                                    throughput.
-                                    It was later used for
-                                    geo-replication at Tencent, powering the message queue system
-                                    inside Wechat and
-                                    serving over a billion users.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">LLVM</h5>
-                                <p class="card-subtitle mb-2 text-muted">May 2018 - Present</p>
-                                <p class="card-text">• Improved the performance of the Semi-NCA algorithm implementation
-                                    and
-                                    worked to
-                                    preserve
-                                    the
-                                    dominator tree along the optimization pipeline. (Speed up real-world samples up to
-                                    1980x.) Relevant changes were committed to LLVM 9.0.
-                                </p>
-                                <p class="card-text">• Unified API for updating Dominators in LLVM.
-                                    The new API
-                                    was committed to LLVM 7.0 and is in wide use. Mentored by Jakub Kuderski.
-                                </p>
-                            </div>
-                        </div>
+                        <ul class="mb-0">
+                            <li><strong>Reviewer:</strong> CVPR 2025; ICLR 2025 Workshop on FM-Wild; NeurIPS 2025 Workshop on Efficient Reasoning.</li>
+                        </ul>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-light" id="talks">
+            <div class="container-lg">
+                <div class="section-title h4 mb-4">Talks</div>
+                <div class="card section-card">
+                    <div class="card-body">
+                        <div class="fw-semibold">Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update</div>
+                        <div class="text-muted">Tencent WeChat AI Department (Shenzhen, Jun 2022); DataFun (Virtual, Aug 2022); TechBeat (Virtual, Sep 2022)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5" id="awards">
+            <div class="container-lg">
+                <div class="section-title h4 mb-4">Selected Awards</div>
+                <div class="card section-card">
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li><strong>Tencent Technology Breakthrough Award (Gold Prize)</strong>, 2022H2 — Project Lead, Ekko.</li>
+                            <li><strong>ACM-ICPC Asia Xi'an Regional Contest</strong> — Bronze Medal (2017).</li>
+                            <li><strong>15th China Collegiate Programming Contest (Guangdong Division)</strong> — Second Prize (out of 177 teams).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 bg-light" id="writeups">
+            <div class="container-lg">
+                <div class="section-title h4 mb-4">Selected Company / Press Write-ups</div>
+                <div class="card section-card">
+                    <div class="card-body">
+                        <div class="text-muted mb-2">External write-ups about Ekko (OSDI '22).</div>
+                        <ul class="mb-0">
+                            <li><a href="https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA">WeChat official blog: WeChat &lt; 2.4s</a></li>
+                            <li><a href="https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg">Tencent official blog: “2.4 Seconds: Fast Enough!”</a></li>
+                            <li><a href="https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA">Synced Review / JIQIZHIXIN coverage</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <p></p>
-    <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-            <span class="text-muted">© 2022 Chijun Sima.</span>
+
+    <footer class="footer mt-auto py-4 bg-light">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <span class="text-muted">© <span id="year"></span> Chijun Sima.</span>
+            <div class="d-flex gap-3">
+                <a href="#top" class="text-decoration-none">Back to top</a>
+                <a href="/cv.pdf" class="text-decoration-none">CV (PDF)</a>
+            </div>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
