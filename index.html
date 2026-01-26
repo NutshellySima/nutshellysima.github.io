@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chijun Sima | Efficient ML Systems</title>
     <meta name="description" content="Chijun Sima — Senior Software Development Engineer at Tencent (WeChat). Efficient ML Systems, large-scale recommender systems, and compiler/LLVM work.">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!-- Cloudflare Web Analytics -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
         data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script><!-- End Cloudflare Web Analytics -->
@@ -127,6 +126,17 @@
             box-shadow: 0 10px 30px rgba(31, 78, 121, 0.08);
             border-radius: 16px;
         }
+
+        .avatar-img {
+            max-width: 200px;
+            width: 100%;
+        }
+
+        @media (max-width: 576px) {
+            .avatar-img {
+                max-width: 160px;
+            }
+        }
     </style>
     <main id="top">
         <section class="hero py-5" id="about">
@@ -151,7 +161,7 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="text-center">
-                            <img src="avatar.jpg" class="img-fluid rounded-4" alt="Chijun Sima portrait">
+                            <img src="avatar.jpg" class="img-fluid rounded-4 avatar-img" alt="Chijun Sima portrait">
                         </div>
                         <div class="row g-3 mt-3">
                             <div class="col-sm-6">
@@ -393,9 +403,7 @@
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
     </script>
