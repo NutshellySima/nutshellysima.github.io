@@ -4,9 +4,70 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chijun Sima | Efficient ML Systems</title>
-    <meta name="description" content="Chijun Sima — Senior Software Development Engineer at Tencent (WeChat). Efficient ML Systems, large-scale recommender systems, and compiler/LLVM work.">
+    <title>Chijun Sima | Efficient ML Systems & LLVM Developer</title>
+    <meta name="description" content="Chijun Sima — Senior Software Development Engineer at Tencent (WeChat). Expert in Efficient ML Systems, large-scale recommender systems, LLM serving, and LLVM compiler optimization. OSDI'22 co-first author.">
+    <meta name="keywords" content="Chijun Sima, Machine Learning Systems, MLSys, LLVM, Recommender Systems, Deep Learning, Tencent, WeChat, OSDI, Ekko, LLM Serving">
+    <meta name="author" content="Chijun Sima">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.chijunsima.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chijunsima.com/">
+    <meta property="og:title" content="Chijun Sima | Efficient ML Systems & LLVM Developer">
+    <meta property="og:description" content="Senior Software Development Engineer at Tencent (WeChat). Expert in Efficient ML Systems, large-scale recommender systems, and LLVM compiler optimization.">
+    <meta property="og:image" content="https://www.chijunsima.com/avatar.jpg">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.chijunsima.com/">
+    <meta name="twitter:title" content="Chijun Sima | Efficient ML Systems & LLVM Developer">
+    <meta name="twitter:description" content="Senior Software Development Engineer at Tencent (WeChat). Expert in Efficient ML Systems, large-scale recommender systems, and LLVM compiler optimization.">
+    <meta name="twitter:image" content="https://www.chijunsima.com/avatar.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts - Inter for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Chijun Sima",
+        "url": "https://www.chijunsima.com",
+        "image": "https://www.chijunsima.com/avatar.jpg",
+        "jobTitle": "Senior Software Development Engineer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Tencent (WeChat)"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "South China University of Technology"
+        },
+        "knowsAbout": ["Machine Learning Systems", "LLVM", "Recommender Systems", "Deep Learning", "LLM Serving"],
+        "sameAs": [
+            "https://www.linkedin.com/in/chijun-sima/"
+        ]
+    }
+    </script>
+    
     <!-- Cloudflare Web Analytics -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
         data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script><!-- End Cloudflare Web Analytics -->
@@ -30,25 +91,47 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background-color: #e3f2fd;">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link visually-hidden-focusable">Skip to main content</a>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background-color: #e3f2fd;" role="navigation" aria-label="Main navigation">
         <div class="container-fluid">
-            <a class="navbar-brand fw-semibold" href="#top">Chijun Sima</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="#top">
+                <span class="brand-icon">CS</span>
+                Chijun Sima
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <!-- Dark Mode Toggle -->
+                <button class="btn btn-sm btn-outline-secondary dark-mode-toggle d-none d-lg-flex" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="bi bi-moon-fill" id="darkIcon"></i>
+                    <i class="bi bi-sun-fill d-none" id="lightIcon"></i>
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="#about">About</a>
-                    <a class="nav-link" href="#research">Research</a>
-                    <a class="nav-link" href="#education">Education</a>
-                    <a class="nav-link" href="#publications">Publications</a>
-                    <a class="nav-link" href="#experience">Experience</a>
-                    <a class="nav-link" href="#opensource">Open Source</a>
-                    <a class="nav-link" href="#service">Service</a>
-                    <a class="nav-link" href="#talks">Talks</a>
-                    <a class="nav-link" href="#awards">Awards</a>
-                    <a class="nav-link" href="#writeups">Write-ups</a>
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="#about"><i class="bi bi-person me-1"></i>About</a>
+                    <a class="nav-link" href="#research"><i class="bi bi-lightbulb me-1"></i>Research</a>
+                    <a class="nav-link" href="#education"><i class="bi bi-mortarboard me-1"></i>Education</a>
+                    <a class="nav-link" href="#publications"><i class="bi bi-journal-text me-1"></i>Publications</a>
+                    <a class="nav-link" href="#experience"><i class="bi bi-briefcase me-1"></i>Experience</a>
+                    <a class="nav-link" href="#opensource"><i class="bi bi-github me-1"></i>Open Source</a>
+                    <a class="nav-link" href="#service"><i class="bi bi-people me-1"></i>Service</a>
+                    <a class="nav-link" href="#talks"><i class="bi bi-mic me-1"></i>Talks</a>
+                    <a class="nav-link" href="#awards"><i class="bi bi-trophy me-1"></i>Awards</a>
+                    <a class="nav-link" href="#writeups"><i class="bi bi-newspaper me-1"></i>Write-ups</a>
+                </div>
+                <!-- Dark Mode Toggle for Mobile -->
+                <div class="d-lg-none mt-2 pt-2 border-top">
+                    <button class="btn btn-sm btn-outline-secondary dark-mode-toggle w-100" id="darkModeToggleMobile" aria-label="Toggle dark mode">
+                        <i class="bi bi-moon-fill me-2"></i>Toggle Dark Mode
+                    </button>
                 </div>
             </div>
         </div>
@@ -56,8 +139,66 @@
     <style>
         :root {
             --accent: #1f4e79;
+            --accent-light: #3a7bc8;
+            --accent-dark: #153a5a;
             --soft: #f5f9ff;
             --ink: #1d1f23;
+            --ink-light: #4a4d52;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-hero: radial-gradient(1200px 400px at 10% 0%, #eaf3ff 0%, #f8fbff 45%, #ffffff 100%);
+            --card-shadow: 0 10px 30px rgba(31, 78, 121, 0.08);
+            --card-shadow-hover: 0 15px 40px rgba(31, 78, 121, 0.15);
+            --border-color: rgba(31, 78, 121, 0.1);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --accent: #5a9fd4;
+            --accent-light: #7ab8e8;
+            --accent-dark: #3d7fb8;
+            --soft: #1a2332;
+            --ink: #e8eaed;
+            --ink-light: #b0b3b8;
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-hero: radial-gradient(1200px 400px at 10% 0%, #1a2332 0%, #131920 45%, #0d1117 100%);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --card-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.4);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .navbar {
+            background-color: #161b22 !important;
+        }
+
+        [data-theme="dark"] .bg-light {
+            background-color: var(--bg-secondary) !important;
+        }
+
+        [data-theme="dark"] .card {
+            background-color: var(--bg-secondary);
+            border-color: var(--border-color);
+        }
+
+        [data-theme="dark"] .text-muted {
+            color: var(--ink-light) !important;
+        }
+
+        [data-theme="dark"] .btn-outline-primary {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        [data-theme="dark"] .btn-outline-primary:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        [data-theme="dark"] .footer {
+            background-color: var(--bg-secondary) !important;
         }
 
         html {
@@ -65,31 +206,167 @@
         }
 
         body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--ink);
+            background-color: var(--bg-primary);
+            transition: background-color var(--transition-normal), color var(--transition-normal);
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent);
+            color: white;
+            padding: 8px 16px;
+            z-index: 9999;
+            transition: top var(--transition-fast);
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            z-index: 9999;
+            transition: width 0.1s linear;
+        }
+
+        /* Brand Icon */
+        .brand-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: rotate(15deg);
+        }
+
+        /* Navigation Enhancements */
+        .navbar {
+            backdrop-filter: blur(10px);
+            transition: all var(--transition-normal);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0.75rem !important;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: all var(--transition-fast);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-link i {
+            opacity: 0.7;
+            transition: opacity var(--transition-fast);
+        }
+
+        .nav-link:hover i {
+            opacity: 1;
         }
 
         .hero {
-            background: radial-gradient(1200px 400px at 10% 0%, #eaf3ff 0%, #f8fbff 45%, #ffffff 100%);
-            border-bottom: 1px solid rgba(31, 78, 121, 0.08);
+            background: var(--bg-hero);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background pattern */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(31, 78, 121, 0.03) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 20%, rgba(31, 78, 121, 0.03) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .section-title {
             font-weight: 700;
             color: var(--accent);
             letter-spacing: 0.3px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 2px;
         }
 
         .badge-soft {
             background: rgba(31, 78, 121, 0.08);
             color: var(--accent);
             border: 1px solid rgba(31, 78, 121, 0.15);
+            animation: fadeInUp 0.5s ease;
         }
 
         .stat-card {
-            background: #fff;
-            border: 1px solid rgba(31, 78, 121, 0.1);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
             border-radius: 14px;
             padding: 16px 18px;
+            transition: all var(--transition-normal);
+            cursor: default;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--accent);
         }
 
         .timeline {
@@ -100,6 +377,7 @@
         .timeline-item {
             margin-bottom: 18px;
             position: relative;
+            animation: fadeInLeft 0.5s ease;
         }
 
         .timeline-item::before {
@@ -111,75 +389,276 @@
             height: 10px;
             border-radius: 50%;
             background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(31, 78, 121, 0.1);
+            transition: all var(--transition-fast);
+        }
+
+        .timeline-item:hover::before {
+            transform: scale(1.3);
+            box-shadow: 0 0 0 6px rgba(31, 78, 121, 0.15);
         }
 
         .pill-link {
             text-decoration: none;
+            color: var(--accent);
+            transition: all var(--transition-fast);
         }
 
         .pill-link:hover {
             text-decoration: underline;
+            color: var(--accent-dark);
         }
 
         .section-card {
             border: none;
-            box-shadow: 0 10px 30px rgba(31, 78, 121, 0.08);
+            box-shadow: var(--card-shadow);
             border-radius: 16px;
+            transition: all var(--transition-normal);
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-2px);
         }
 
         .avatar-img {
             max-width: 200px;
             width: 100%;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            transition: all var(--transition-normal);
+        }
+
+        .avatar-img:hover {
+            transform: scale(1.02);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        /* Button Enhancements */
+        .btn {
+            border-radius: 10px;
+            padding: 0.6rem 1.25rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border: none;
+            box-shadow: 0 4px 15px rgba(31, 78, 121, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31, 78, 121, 0.4);
+            background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+        }
+
+        .btn-outline-primary {
+            border-width: 2px;
+        }
+
+        .btn-outline-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Highlight numbers */
+        strong {
+            color: var(--accent);
+        }
+
+        /* Section animations */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* List styling */
+        ul {
+            padding-left: 1.25rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        ul li::marker {
+            color: var(--accent);
+        }
+
+        /* Footer enhancements */
+        .footer {
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer a {
+            color: var(--accent);
+            transition: color var(--transition-fast);
+        }
+
+        .footer a:hover {
+            color: var(--accent-dark);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 991px) {
+            .nav-link i {
+                display: none;
+            }
         }
 
         @media (max-width: 576px) {
             .avatar-img {
                 max-width: 160px;
             }
+
+            .display-5 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .stat-card {
+                padding: 12px 14px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .navbar, .scroll-progress, .dark-mode-toggle, .skip-link {
+                display: none !important;
+            }
+
+            section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .section-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
-    <main id="top">
-        <section class="hero py-5" id="about">
+    <main id="main-content">
+        <section class="hero py-5 visible" id="about">
             <div class="container-lg">
                 <div class="row align-items-center g-4">
                     <div class="col-lg-7">
-                        <span class="badge rounded-pill badge-soft mb-3">Efficient ML Systems</span>
+                        <span class="badge rounded-pill badge-soft mb-3">
+                            <i class="bi bi-cpu me-1"></i>Efficient ML Systems
+                        </span>
                         <h1 class="display-5 fw-bold mb-3">Chijun Sima</h1>
                         <p class="lead mb-4">
-                            Senior Software Development Engineer at Tencent (WeChat). I build large-scale recommender and
+                            Senior Software Development Engineer at <strong>Tencent (WeChat)</strong>. I build large-scale recommender and
                             ML systems, focusing on system–algorithm co-design, cost-effective serving, and compiler
                             performance.
                         </p>
                         <div class="d-flex flex-wrap gap-2 mb-3">
-                            <a class="btn btn-primary" href="mailto:simachijun@gmail.com">Email</a>
-                            <a class="btn btn-outline-primary" href="https://www.linkedin.com/in/chijun-sima/">LinkedIn</a>
-                            <a class="btn btn-outline-primary" href="/cv.pdf">Download CV</a>
+                            <a class="btn btn-primary" href="mailto:simachijun@gmail.com" aria-label="Send email to Chijun Sima">
+                                <i class="bi bi-envelope me-2"></i>Email
+                            </a>
+                            <a class="btn btn-outline-primary" href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
+                                <i class="bi bi-linkedin me-2"></i>LinkedIn
+                            </a>
+                            <a class="btn btn-outline-primary" href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener noreferrer" aria-label="Visit Google Scholar profile">
+                                <i class="bi bi-mortarboard me-2"></i>Scholar
+                            </a>
+                            <a class="btn btn-outline-primary" href="/cv.pdf" aria-label="Download CV as PDF">
+                                <i class="bi bi-file-earmark-pdf me-2"></i>CV
+                            </a>
                         </div>
-                        <div class="text-muted small">
-                            Location: Guangzhou, China · Open Source: LLVM (commit access)
+                        <div class="text-muted small d-flex flex-wrap gap-3">
+                            <span><i class="bi bi-geo-alt me-1"></i>Guangzhou, China</span>
+                            <span><i class="bi bi-github me-1"></i>LLVM (commit access)</span>
                         </div>
                     </div>
                     <div class="col-lg-5">
                         <div class="text-center">
-                            <img src="avatar.jpg" class="img-fluid rounded-4 avatar-img" alt="Chijun Sima portrait">
+                            <img src="avatar.jpg" class="img-fluid rounded-4 avatar-img" alt="Chijun Sima - Senior Software Development Engineer at Tencent WeChat" loading="lazy">
                         </div>
                         <div class="row g-3 mt-3">
                             <div class="col-sm-6">
-                                <div class="stat-card">
+                                <div class="stat-card text-center">
+                                    <div class="h4 mb-1 text-primary"><i class="bi bi-journal-richtext"></i></div>
                                     <div class="fw-semibold">OSDI 2022</div>
                                     <div class="text-muted small">Co-first author, Ekko</div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="stat-card">
-                                    <div class="fw-semibold">LLVM contributor</div>
-                                    <div class="text-muted small">Performance + optimizer improvements</div>
+                                <div class="stat-card text-center">
+                                    <div class="h4 mb-1 text-primary"><i class="bi bi-code-slash"></i></div>
+                                    <div class="fw-semibold">LLVM Developer</div>
+                                    <div class="text-muted small">Commit access since 2018</div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="stat-card">
-                                    <div class="fw-semibold">Efficient MLSys</div>
-                                    <div class="text-muted small">System–algorithm co-design</div>
+                                <div class="stat-card text-center">
+                                    <div class="h4 mb-1 text-primary"><i class="bi bi-people-fill"></i></div>
+                                    <div class="fw-semibold">1B+ Users</div>
+                                    <div class="text-muted small">Daily production impact</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="stat-card text-center">
+                                    <div class="h4 mb-1 text-primary"><i class="bi bi-lightning-charge"></i></div>
+                                    <div class="fw-semibold">1980× Speedup</div>
+                                    <div class="text-muted small">LLVM optimization</div>
                                 </div>
                             </div>
                         </div>
@@ -192,30 +671,50 @@
             <div class="container-lg">
                 <div class="row g-4">
                     <div class="col-lg-4">
-                        <div class="section-title h4 mb-3">Research Interests</div>
+                        <h2 class="section-title h4 mb-3">Research Interests</h2>
                         <p class="mb-0">
                             Efficient AI (MLSys): scalable and cost-effective training/serving; system–algorithm
-                            co-design.
+                            co-design for production ML systems.
                         </p>
                     </div>
                     <div class="col-lg-8">
                         <div class="section-card card p-4">
-                            <div class="row g-3">
+                            <div class="row g-4">
                                 <div class="col-md-6">
-                                    <div class="fw-semibold">System design</div>
-                                    <div class="text-muted">Model-update freshness, SLO-aware placement, and safe rollouts.</div>
+                                    <div class="d-flex align-items-start gap-3">
+                                        <div class="text-primary fs-4"><i class="bi bi-diagram-3"></i></div>
+                                        <div>
+                                            <div class="fw-semibold">System Design</div>
+                                            <div class="text-muted">Model-update freshness, SLO-aware placement, and safe rollouts.</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="fw-semibold">Serving efficiency</div>
-                                    <div class="text-muted">Remote KV-cache storage, compression, and cost optimization.</div>
+                                    <div class="d-flex align-items-start gap-3">
+                                        <div class="text-primary fs-4"><i class="bi bi-speedometer2"></i></div>
+                                        <div>
+                                            <div class="fw-semibold">Serving Efficiency</div>
+                                            <div class="text-muted">Remote KV-cache storage, compression, and cost optimization.</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="fw-semibold">Compiler systems</div>
-                                    <div class="text-muted">Optimization pipelines and dominator updates in LLVM.</div>
+                                    <div class="d-flex align-items-start gap-3">
+                                        <div class="text-primary fs-4"><i class="bi bi-gear-wide-connected"></i></div>
+                                        <div>
+                                            <div class="fw-semibold">Compiler Systems</div>
+                                            <div class="text-muted">Optimization pipelines and dominator updates in LLVM.</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="fw-semibold">Safety & isolation</div>
-                                    <div class="text-muted">WebAssembly runtime for in-process isolation.</div>
+                                    <div class="d-flex align-items-start gap-3">
+                                        <div class="text-primary fs-4"><i class="bi bi-shield-check"></i></div>
+                                        <div>
+                                            <div class="fw-semibold">Safety & Isolation</div>
+                                            <div class="text-muted">WebAssembly runtime for in-process isolation.</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -226,15 +725,27 @@
 
         <section class="py-5" id="education">
             <div class="container-lg">
-                <div class="section-title h4 mb-4">Education</div>
+                <h2 class="section-title h4 mb-4">Education</h2>
                 <div class="card section-card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between flex-wrap">
-                            <div class="fw-semibold">South China University of Technology</div>
-                            <div class="text-muted">Sep 2016 – Jun 2020</div>
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="text-primary fs-3 d-none d-sm-block"><i class="bi bi-building"></i></div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between flex-wrap gap-2">
+                                    <div class="fw-semibold fs-5">South China University of Technology</div>
+                                    <div class="text-muted"><i class="bi bi-calendar3 me-1"></i>Sep 2016 – Jun 2020</div>
+                                </div>
+                                <div class="text-muted mb-2">B.Eng. in Computer Science and Technology (Innovation Class)</div>
+                                <div class="d-flex flex-wrap gap-3">
+                                    <span class="badge bg-success bg-opacity-10 text-success px-3 py-2">
+                                        <i class="bi bi-star-fill me-1"></i>GPA: 3.85/4.00
+                                    </span>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                                        <i class="bi bi-trophy me-1"></i>Rank: 1/28
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-muted">B.Eng. in Computer Science and Technology (Innovation Class)</div>
-                        <div class="mt-1">GPA: <strong>3.85/4.00</strong> (Rank <strong>1/28</strong>)</div>
                     </div>
                 </div>
             </div>
@@ -242,20 +753,38 @@
 
         <section class="py-5 bg-light" id="publications">
             <div class="container-lg">
-                <div class="section-title h4 mb-4">Selected Publications</div>
+                <h2 class="section-title h4 mb-4">Selected Publications</h2>
                 <div class="card section-card">
                     <div class="card-body">
-                        <div class="mb-4">
-                            <div class="h5 mb-1">
-                                <a class="pill-link" href="https://www.usenix.org/conference/osdi22/presentation/sima">Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update</a>
+                        <div class="mb-4 pb-4 border-bottom">
+                            <div class="d-flex align-items-start gap-3">
+                                <span class="badge bg-danger text-white px-2 py-1 mt-1">OSDI '22</span>
+                                <div>
+                                    <div class="h5 mb-2">
+                                        <a class="pill-link" href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer">
+                                            Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update
+                                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                                        </a>
+                                    </div>
+                                    <div class="text-muted mb-2">
+                                        <strong>Chijun Sima*</strong>, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai
+                                        <span class="badge bg-warning bg-opacity-25 text-warning-emphasis ms-2">Co-first author</span>
+                                    </div>
+                                    <div class="text-muted small">
+                                        <i class="bi bi-person-badge me-1"></i>Supervised by <a href="https://luomai.github.io/" target="_blank" rel="noopener noreferrer">Luo Mai</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="text-muted">Chijun Sima*, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai (co-first)</div>
-                            <div class="text-muted">OSDI 2022 · Supervised by <a href="https://luomai.github.io/">Luo Mai</a></div>
                         </div>
                         <div>
-                            <div class="h5 mb-1">Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification</div>
-                            <div class="text-muted">Kejian Shi, Hongyang Qin, Chijun Sima, Sen Li, Lifeng Shen, Qianli Ma</div>
-                            <div class="text-muted">IEEE Access, 2019</div>
+                            <div class="d-flex align-items-start gap-3">
+                                <span class="badge bg-info text-white px-2 py-1 mt-1">IEEE</span>
+                                <div>
+                                    <div class="h5 mb-2">Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification</div>
+                                    <div class="text-muted mb-2">Kejian Shi, Hongyang Qin, <strong>Chijun Sima</strong>, Sen Li, Lifeng Shen, Qianli Ma</div>
+                                    <div class="text-muted small"><i class="bi bi-journal me-1"></i>IEEE Access, 2019</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -264,46 +793,69 @@
 
         <section class="py-5" id="experience">
             <div class="container-lg">
-                <div class="section-title h4 mb-4">Research & Industry Experience</div>
+                <h2 class="section-title h4 mb-4">Research & Industry Experience</h2>
                 <div class="card section-card">
                     <div class="card-body">
                         <div class="timeline">
                             <div class="timeline-item">
-                                <div class="d-flex justify-content-between flex-wrap">
-                                    <div class="fw-semibold">Tencent (WeChat) — Senior Software Development Engineer</div>
-                                    <div class="text-muted">Jul 2020 – Present · Guangzhou, China</div>
+                                <div class="d-flex justify-content-between flex-wrap align-items-center mb-2">
+                                    <div class="fw-semibold fs-5">
+                                        <i class="bi bi-building text-primary me-2"></i>Tencent (WeChat)
+                                        <span class="badge bg-primary bg-opacity-10 text-primary ms-2">Senior SDE</span>
+                                    </div>
+                                    <div class="text-muted small">
+                                        <i class="bi bi-calendar3 me-1"></i>Jul 2020 – Present
+                                        <span class="mx-2">·</span>
+                                        <i class="bi bi-geo-alt me-1"></i>Guangzhou, China
+                                    </div>
                                 </div>
-                                <div class="mt-2">
-                                    <div class="fw-semibold">Ekko: low-latency model update for multi-terabyte DLRMs (OSDI'22)</div>
-                                    <ul class="mb-2">
-                                        <li>Co-designed model-aware deployment to maintain second-level freshness at extreme scale.</li>
-                                        <li>Compressed update dissemination and accuracy-aware scheduling reduced WAN bandwidth by <strong>92%</strong>.</li>
-                                        <li>SLO-aware placement cut machine cost by <strong>49%</strong>; implemented seconds-level rollback.</li>
-                                        <li>Production system serves <strong>over one billion users daily</strong>; enabled <strong>10,000×</strong> model-size scaling with <strong>2.4s</strong> update latency.</li>
-                                    </ul>
-                                </div>
-                                <div class="mt-2">
-                                    <div class="fw-semibold">Data engineering / feature platform</div>
-                                    <ul class="mb-2">
-                                        <li>Designed a WebAssembly runtime for in-process isolation and locality-aware operator placement.</li>
-                                        <li>Reduced data movement by up to <strong>1,200×</strong> on representative workloads.</li>
-                                    </ul>
-                                </div>
-                                <div class="mt-2">
-                                    <div class="fw-semibold">LLM serving systems</div>
-                                    <ul class="mb-0">
-                                        <li>Building cost-effective serving mechanisms around remote KV-cache storage and compression.</li>
-                                    </ul>
+                                <div class="mt-3 ps-3 border-start border-2 border-primary border-opacity-25">
+                                    <div class="mb-3">
+                                        <div class="fw-semibold text-primary">
+                                            <i class="bi bi-rocket-takeoff me-1"></i>Ekko: Low-latency Model Update for Multi-terabyte DLRMs
+                                            <span class="badge bg-danger bg-opacity-10 text-danger ms-2">OSDI'22</span>
+                                        </div>
+                                        <ul class="mb-0 mt-2">
+                                            <li>Co-designed model-aware deployment to maintain second-level freshness at extreme scale.</li>
+                                            <li>Compressed update dissemination and accuracy-aware scheduling reduced WAN bandwidth by <strong>92%</strong>.</li>
+                                            <li>SLO-aware placement cut machine cost by <strong>49%</strong>; implemented seconds-level rollback.</li>
+                                            <li>Production system serves <strong>over one billion users daily</strong>; enabled <strong>10,000×</strong> model-size scaling with <strong>2.4s</strong> update latency.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="fw-semibold text-primary">
+                                            <i class="bi bi-database me-1"></i>Data Engineering / Feature Platform
+                                        </div>
+                                        <ul class="mb-0 mt-2">
+                                            <li>Designed a WebAssembly runtime for in-process isolation and locality-aware operator placement.</li>
+                                            <li>Reduced data movement by up to <strong>1,200×</strong> on representative workloads.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <div class="fw-semibold text-primary">
+                                            <i class="bi bi-chat-dots me-1"></i>LLM Serving Systems
+                                            <span class="badge bg-success bg-opacity-10 text-success ms-2">Current</span>
+                                        </div>
+                                        <ul class="mb-0 mt-2">
+                                            <li>Building cost-effective serving mechanisms around remote KV-cache storage and compression.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="timeline-item">
-                                <div class="d-flex justify-content-between flex-wrap">
-                                    <div class="fw-semibold">LLVM — Developer (commit access)</div>
-                                    <div class="text-muted">2018 – Present</div>
+                                <div class="d-flex justify-content-between flex-wrap align-items-center mb-2">
+                                    <div class="fw-semibold fs-5">
+                                        <i class="bi bi-github text-primary me-2"></i>LLVM Project
+                                        <span class="badge bg-success bg-opacity-10 text-success ms-2">Commit Access</span>
+                                    </div>
+                                    <div class="text-muted small">
+                                        <i class="bi bi-calendar3 me-1"></i>2018 – Present
+                                    </div>
                                 </div>
                                 <ul class="mb-0 mt-2">
-                                    <li>Improved Semi-NCA performance and optimization pipeline; shipped in LLVM 9.0 with reported speedups up to <strong>1980×</strong>.</li>
-                                    <li>Unified dominator tree update APIs; shipped in LLVM 7.0.</li>
+                                    <li>Improved Semi-NCA performance and optimization pipeline; shipped in <strong>LLVM 9.0</strong> with reported speedups up to <strong>1980×</strong>.</li>
+                                    <li>Unified dominator tree update APIs; shipped in <strong>LLVM 7.0</strong>.</li>
+                                    <li><strong>Google Summer of Code 2018</strong> participant.</li>
                                 </ul>
                             </div>
                         </div>
@@ -314,18 +866,52 @@
 
         <section class="py-5 bg-light" id="opensource">
             <div class="container-lg">
-                <div class="section-title h4 mb-4">Open Source</div>
-                <div class="card section-card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between flex-wrap">
-                            <div class="fw-semibold">LLVM</div>
-                            <div class="text-muted">2018 – Present</div>
+                <h2 class="section-title h4 mb-4">Open Source Contributions</h2>
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="card section-card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="bg-dark text-white rounded-3 p-3">
+                                        <i class="bi bi-braces-asterisk fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <div class="fw-semibold fs-5">LLVM Compiler Infrastructure</div>
+                                        <div class="text-muted">Developer with commit access · 2018 – Present</div>
+                                    </div>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-sm-6">
+                                        <div class="bg-light rounded-3 p-3 text-center">
+                                            <div class="h4 text-primary mb-0">1980×</div>
+                                            <div class="text-muted small">Max speedup achieved</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="bg-light rounded-3 p-3 text-center">
+                                            <div class="h4 text-primary mb-0">2</div>
+                                            <div class="text-muted small">Major LLVM releases</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="mb-0">
+                                    <li>Improved Semi-NCA and optimization pipeline; shipped in <strong>LLVM 9.0</strong>.</li>
+                                    <li>Unified APIs on dominator trees; shipped in <strong>LLVM 7.0</strong>.</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="text-muted">Developer (commit access); Google Summer of Code 2018 participant.</div>
-                        <ul class="mt-2 mb-0">
-                            <li>Improved Semi-NCA and optimization pipeline; LLVM 9.0 (speedups up to <strong>1980×</strong>).</li>
-                            <li>Unified APIs on dominator trees; LLVM 7.0.</li>
-                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card section-card h-100 bg-gradient" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <div class="card-body text-white d-flex flex-column justify-content-center text-center">
+                                <div class="mb-3">
+                                    <i class="bi bi-google fs-1"></i>
+                                </div>
+                                <div class="fw-semibold fs-5 mb-2">Google Summer of Code</div>
+                                <div class="opacity-75">2018 Participant</div>
+                                <div class="opacity-75 small mt-2">LLVM Project</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -333,12 +919,26 @@
 
         <section class="py-5" id="service">
             <div class="container-lg">
-                <div class="section-title h4 mb-4">Academic Service</div>
+                <h2 class="section-title h4 mb-4">Academic Service</h2>
                 <div class="card section-card">
                     <div class="card-body">
-                        <ul class="mb-0">
-                            <li><strong>Reviewer:</strong> CVPR 2025; ICLR 2025 Workshop on FM-Wild; NeurIPS 2025 Workshop on Efficient Reasoning.</li>
-                        </ul>
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="text-primary fs-4"><i class="bi bi-clipboard-check"></i></div>
+                            <div>
+                                <div class="fw-semibold mb-2">Conference & Workshop Reviewer</div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                                        <i class="bi bi-eye me-1"></i>CVPR 2025
+                                    </span>
+                                    <span class="badge bg-success bg-opacity-10 text-success px-3 py-2">
+                                        <i class="bi bi-eye me-1"></i>ICLR 2025 Workshop (FM-Wild)
+                                    </span>
+                                    <span class="badge bg-warning bg-opacity-10 text-warning-emphasis px-3 py-2">
+                                        <i class="bi bi-eye me-1"></i>NeurIPS 2025 Workshop (Efficient Reasoning)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -346,11 +946,54 @@
 
         <section class="py-5 bg-light" id="talks">
             <div class="container-lg">
-                <div class="section-title h4 mb-4">Talks</div>
+                <h2 class="section-title h4 mb-4">Invited Talks</h2>
                 <div class="card section-card">
                     <div class="card-body">
-                        <div class="fw-semibold">Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update</div>
-                        <div class="text-muted">Tencent WeChat AI Department (Shenzhen, Jun 2022); DataFun (Virtual, Aug 2022); TechBeat (Virtual, Sep 2022)</div>
+                        <div class="fw-semibold fs-5 mb-3">
+                            <i class="bi bi-mic-fill text-primary me-2"></i>
+                            Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="bg-light rounded-3 p-3">
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <i class="bi bi-building text-primary"></i>
+                                        <span class="fw-semibold">Tencent WeChat AI</span>
+                                    </div>
+                                    <div class="text-muted small">
+                                        <i class="bi bi-geo-alt me-1"></i>Shenzhen
+                                        <span class="mx-1">·</span>
+                                        <i class="bi bi-calendar3 me-1"></i>Jun 2022
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="bg-light rounded-3 p-3">
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <i class="bi bi-camera-video text-success"></i>
+                                        <span class="fw-semibold">DataFun</span>
+                                    </div>
+                                    <div class="text-muted small">
+                                        <i class="bi bi-globe me-1"></i>Virtual
+                                        <span class="mx-1">·</span>
+                                        <i class="bi bi-calendar3 me-1"></i>Aug 2022
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="bg-light rounded-3 p-3">
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <i class="bi bi-camera-video text-info"></i>
+                                        <span class="fw-semibold">TechBeat</span>
+                                    </div>
+                                    <div class="text-muted small">
+                                        <i class="bi bi-globe me-1"></i>Virtual
+                                        <span class="mx-1">·</span>
+                                        <i class="bi bi-calendar3 me-1"></i>Sep 2022
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -358,14 +1001,49 @@
 
         <section class="py-5" id="awards">
             <div class="container-lg">
-                <div class="section-title h4 mb-4">Selected Awards</div>
-                <div class="card section-card">
-                    <div class="card-body">
-                        <ul class="mb-0">
-                            <li><strong>Tencent Technology Breakthrough Award (Gold Prize)</strong>, 2022H2 — Project Lead, Ekko.</li>
-                            <li><strong>ACM-ICPC Asia Xi'an Regional Contest</strong> — Bronze Medal (2017).</li>
-                            <li><strong>15th China Collegiate Programming Contest (Guangdong Division)</strong> — Second Prize (out of 177 teams).</li>
-                        </ul>
+                <h2 class="section-title h4 mb-4">Selected Awards</h2>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card section-card h-100 border-warning border-2">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="text-warning fs-2"><i class="bi bi-trophy-fill"></i></div>
+                                    <div>
+                                        <div class="fw-semibold fs-5">Tencent Technology Breakthrough Award</div>
+                                        <span class="badge bg-warning text-dark mb-2">Gold Prize</span>
+                                        <div class="text-muted">2022H2 — Project Lead, Ekko</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card section-card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="text-primary fs-2"><i class="bi bi-award-fill"></i></div>
+                                    <div>
+                                        <div class="fw-semibold">ACM-ICPC Asia Xi'an Regional</div>
+                                        <span class="badge bg-secondary mb-2">Bronze Medal</span>
+                                        <div class="text-muted">2017</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card section-card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="text-success fs-2"><i class="bi bi-patch-check-fill"></i></div>
+                                    <div>
+                                        <div class="fw-semibold">15th CCPC (Guangdong Division)</div>
+                                        <span class="badge bg-success bg-opacity-75 mb-2">Second Prize</span>
+                                        <div class="text-muted">Out of 177 teams</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -373,33 +1051,210 @@
 
         <section class="py-5 bg-light" id="writeups">
             <div class="container-lg">
-                <div class="section-title h4 mb-4">Selected Company / Press Write-ups</div>
-                <div class="card section-card">
-                    <div class="card-body">
-                        <div class="text-muted mb-2">External write-ups about Ekko (OSDI '22).</div>
-                        <ul class="mb-0">
-                            <li><a href="https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA">WeChat official blog: WeChat &lt; 2.4s</a></li>
-                            <li><a href="https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg">Tencent official blog: “2.4 Seconds: Fast Enough!”</a></li>
-                            <li><a href="https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA">Synced Review / JIQIZHIXIN coverage</a></li>
-                        </ul>
+                <h2 class="section-title h4 mb-4">Press & Media Coverage</h2>
+                <p class="text-muted mb-4">External write-ups about Ekko (OSDI '22)</p>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <a href="https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="card section-card h-100 border-0">
+                                <div class="card-body text-center">
+                                    <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                        <i class="bi bi-chat-dots-fill text-success fs-4"></i>
+                                    </div>
+                                    <div class="fw-semibold mb-2">WeChat Official Blog</div>
+                                    <div class="text-muted small">"WeChat &lt; 2.4s"</div>
+                                    <div class="mt-2 text-primary small">Read article <i class="bi bi-arrow-right"></i></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="card section-card h-100 border-0">
+                                <div class="card-body text-center">
+                                    <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                        <i class="bi bi-building-fill text-primary fs-4"></i>
+                                    </div>
+                                    <div class="fw-semibold mb-2">Tencent Official Blog</div>
+                                    <div class="text-muted small">"2.4 Seconds: Fast Enough!"</div>
+                                    <div class="mt-2 text-primary small">Read article <i class="bi bi-arrow-right"></i></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="card section-card h-100 border-0">
+                                <div class="card-body text-center">
+                                    <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                        <i class="bi bi-newspaper text-info fs-4"></i>
+                                    </div>
+                                    <div class="fw-semibold mb-2">Synced Review / JIQIZHIXIN</div>
+                                    <div class="text-muted small">Industry coverage</div>
+                                    <div class="mt-2 text-primary small">Read article <i class="bi bi-arrow-right"></i></div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer mt-auto py-4 bg-light">
-        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
-            <span class="text-muted">© <span id="year"></span> Chijun Sima.</span>
-            <div class="d-flex gap-3">
-                <a href="#top" class="text-decoration-none">Back to top</a>
-                <a href="/cv.pdf" class="text-decoration-none">CV (PDF)</a>
+    <!-- Enhanced Footer -->
+    <footer class="footer mt-auto py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="brand-icon">CS</span>
+                        <span class="fw-semibold fs-5">Chijun Sima</span>
+                    </div>
+                    <p class="text-white-50 small mb-0">
+                        Senior Software Development Engineer at Tencent (WeChat). Building efficient ML systems at scale.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="fw-semibold mb-3">Quick Links</div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="#about" class="btn btn-sm btn-outline-light">About</a>
+                        <a href="#publications" class="btn btn-sm btn-outline-light">Publications</a>
+                        <a href="#experience" class="btn btn-sm btn-outline-light">Experience</a>
+                        <a href="/cv.pdf" class="btn btn-sm btn-outline-light">CV</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="fw-semibold mb-3">Connect</div>
+                    <div class="d-flex gap-3">
+                        <a href="mailto:simachijun@gmail.com" class="text-white-50 fs-4" aria-label="Email">
+                            <i class="bi bi-envelope-fill"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="text-white-50 fs-4" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="text-white-50 fs-4" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <span class="text-white-50 small">© <span id="year"></span> Chijun Sima. All rights reserved.</span>
+                <a href="#main-content" class="btn btn-sm btn-outline-light">
+                    <i class="bi bi-arrow-up me-1"></i>Back to top
+                </a>
             </div>
         </div>
     </footer>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <!-- Enhanced JavaScript -->
     <script>
+        // Set current year
         document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Scroll Progress Indicator
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+        });
+
+        // Section visibility animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeToggleMobile = document.getElementById('darkModeToggleMobile');
+        const darkIcon = document.getElementById('darkIcon');
+        const lightIcon = document.getElementById('lightIcon');
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            
+            if (isDark) {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                darkIcon.classList.remove('d-none');
+                lightIcon.classList.add('d-none');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                darkIcon.classList.add('d-none');
+                lightIcon.classList.remove('d-none');
+            }
+        }
+
+        // Check for saved theme preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            darkIcon.classList.add('d-none');
+            lightIcon.classList.remove('d-none');
+        }
+
+        darkModeToggle?.addEventListener('click', toggleDarkMode);
+        darkModeToggleMobile?.addEventListener('click', toggleDarkMode);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 
