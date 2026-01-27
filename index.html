@@ -497,7 +497,7 @@
     </style>
 </head>
 
-<body class="font-sans antialiased text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
+<body id="top" class="font-sans antialiased text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
     <!-- Skip Link -->
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg">
         Skip to main content
@@ -1410,7 +1410,7 @@
                     <div class="bg-white/10 border border-white/10 rounded-3xl p-8 shadow-2xl">
                         <div class="flex flex-col gap-4 text-sm">
                             <button id="copy-email" class="flex items-center justify-between gap-4 px-5 py-4 rounded-2xl bg-white/10 hover:bg-white/20 transition-all">
-                                <span class="font-medium">chijun.sima@gmail.com</span>
+                                <span class="font-medium">simachijun@gmail.com</span>
                                 <span class="text-xs uppercase tracking-widest text-emerald-200">Copy</span>
                             </button>
                             <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between gap-4 px-5 py-4 rounded-2xl bg-white/10 hover:bg-white/20 transition-all">
@@ -1468,7 +1468,7 @@
                 <div>
                     <h4 class="font-display font-semibold mb-5">Connect</h4>
                     <div class="flex gap-3">
-                        <a href="mailto:chijun.sima@gmail.com" class="group p-3 rounded-xl bg-slate-800 hover:bg-gradient-to-br hover:from-primary-600 hover:to-purple-600 transition-all hover:scale-110" aria-label="Email">
+                        <a href="mailto:simachijun@gmail.com" class="group p-3 rounded-xl bg-slate-800 hover:bg-gradient-to-br hover:from-primary-600 hover:to-purple-600 transition-all hover:scale-110" aria-label="Email">
                             <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                         </a>
                         <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-slate-800 hover:bg-[#0077b5] transition-all hover:scale-110" aria-label="LinkedIn">
@@ -1489,7 +1489,7 @@
                 <p class="text-slate-400 text-sm">
                     © <span id="year"></span> Chijun Sima. Built with ❤️ and lots of ☕
                 </p>
-                <a href="#" class="group inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-gradient-to-r hover:from-primary-600 hover:to-purple-600 text-sm transition-all hover:scale-105">
+                <a href="#top" class="group inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-gradient-to-r hover:from-primary-600 hover:to-purple-600 text-sm transition-all hover:scale-105">
                     <i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-1 transition-transform"></i>
                     Back to top
                 </a>
@@ -1511,7 +1511,7 @@
         if (copyEmailBtn) {
             copyEmailBtn.addEventListener('click', async () => {
                 try {
-                    await navigator.clipboard.writeText('chijun.sima@gmail.com');
+                    await navigator.clipboard.writeText('simachijun@gmail.com');
                     copyFeedback.textContent = 'Email copied to clipboard.';
                 } catch (err) {
                     copyFeedback.textContent = 'Copy failed. Please select and copy manually.';
@@ -1620,8 +1620,12 @@
         // ===== Smooth Scroll =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') {
+                    return;
+                }
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     const offset = 100;
                     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
