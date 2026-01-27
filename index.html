@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="utf-8">
@@ -35,14 +35,100 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Google Fonts - Inter for modern typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Inter + JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eef5ff',
+                            100: '#d9e8ff',
+                            200: '#bcd7ff',
+                            300: '#8ebeff',
+                            400: '#599aff',
+                            500: '#3375ff',
+                            600: '#1a54f5',
+                            700: '#1440e1',
+                            800: '#1735b6',
+                            900: '#19328f',
+                            950: '#141f57',
+                        },
+                        accent: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 2s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-in-left': 'slideInLeft 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.3s ease-out',
+                        'bounce-subtle': 'bounceSubtle 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        },
+                    },
+                    backgroundSize: {
+                        '300%': '300%',
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Structured Data / JSON-LD -->
     <script type="application/ld+json">
@@ -68,10 +154,8 @@
     }
     </script>
     
-    <!-- Cloudflare Web Analytics -->
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-        data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script><!-- End Cloudflare Web Analytics -->
-    <!-- Clarity tracking code for https://chijunsima.com/ -->
+    <!-- Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script>
     <script type="text/javascript">
         (function (c, l, a, r, i, t, y) {
             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -79,770 +163,435 @@
             y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "cr8ptqxm1m");
     </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDCCF82CG7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-RDCCF82CG7');
     </script>
-</head>
-
-<body>
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-link visually-hidden-focusable">Skip to main content</a>
     
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-    
-    <nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background-color: #e3f2fd;" role="navigation" aria-label="Main navigation">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="#top">
-                <span class="brand-icon">CS</span>
-                Chijun Sima
-            </a>
-            <div class="d-flex align-items-center gap-2">
-                <!-- Dark Mode Toggle -->
-                <button class="btn btn-sm btn-outline-secondary dark-mode-toggle d-none d-lg-flex" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-                    <i class="bi bi-moon-fill" id="darkIcon"></i>
-                    <i class="bi bi-sun-fill d-none" id="lightIcon"></i>
-                </button>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="#about"><i class="bi bi-person me-1"></i>About</a>
-                    <a class="nav-link" href="#research"><i class="bi bi-lightbulb me-1"></i>Research</a>
-                    <a class="nav-link" href="#education"><i class="bi bi-mortarboard me-1"></i>Education</a>
-                    <a class="nav-link" href="#publications"><i class="bi bi-journal-text me-1"></i>Publications</a>
-                    <a class="nav-link" href="#experience"><i class="bi bi-briefcase me-1"></i>Experience</a>
-                    <a class="nav-link" href="#opensource"><i class="bi bi-github me-1"></i>Open Source</a>
-                    <a class="nav-link" href="#service"><i class="bi bi-people me-1"></i>Service</a>
-                    <a class="nav-link" href="#talks"><i class="bi bi-mic me-1"></i>Talks</a>
-                    <a class="nav-link" href="#awards"><i class="bi bi-trophy me-1"></i>Awards</a>
-                    <a class="nav-link" href="#writeups"><i class="bi bi-newspaper me-1"></i>Write-ups</a>
-                </div>
-                <!-- Dark Mode Toggle for Mobile -->
-                <div class="d-lg-none mt-2 pt-2 border-top">
-                    <button class="btn btn-sm btn-outline-secondary dark-mode-toggle w-100" id="darkModeToggleMobile" aria-label="Toggle dark mode">
-                        <i class="bi bi-moon-fill me-2"></i>Toggle Dark Mode
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
     <style>
-        :root {
-            --accent: #1f4e79;
-            --accent-light: #3a7bc8;
-            --accent-dark: #153a5a;
-            --soft: #f5f9ff;
-            --ink: #1d1f23;
-            --ink-light: #4a4d52;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-hero: radial-gradient(1200px 400px at 10% 0%, #eaf3ff 0%, #f8fbff 45%, #ffffff 100%);
-            --card-shadow: 0 10px 30px rgba(31, 78, 121, 0.08);
-            --card-shadow-hover: 0 15px 40px rgba(31, 78, 121, 0.15);
-            --border-color: rgba(31, 78, 121, 0.1);
-            --transition-fast: 0.2s ease;
-            --transition-normal: 0.3s ease;
-        }
-
-        /* Dark Mode Variables */
-        [data-theme="dark"] {
-            --accent: #5a9fd4;
-            --accent-light: #7ab8e8;
-            --accent-dark: #3d7fb8;
-            --soft: #1a2332;
-            --ink: #e8eaed;
-            --ink-light: #b0b3b8;
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --bg-hero: radial-gradient(1200px 400px at 10% 0%, #1a2332 0%, #131920 45%, #0d1117 100%);
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --card-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.4);
-            --border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        [data-theme="dark"] .navbar {
-            background-color: #161b22 !important;
-        }
-
-        [data-theme="dark"] .bg-light {
-            background-color: var(--bg-secondary) !important;
-        }
-
-        [data-theme="dark"] .card {
-            background-color: var(--bg-secondary);
-            border-color: var(--border-color);
-        }
-
-        [data-theme="dark"] .text-muted {
-            color: var(--ink-light) !important;
-        }
-
-        [data-theme="dark"] .btn-outline-primary {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        [data-theme="dark"] .btn-outline-primary:hover {
-            background-color: var(--accent);
-            color: var(--bg-primary);
-        }
-
-        [data-theme="dark"] .footer {
-            background-color: #0d1117 !important;
-        }
-
-        [data-theme="dark"] .footer .fw-semibold {
-            color: #e8eaed !important;
-        }
-
-        [data-theme="dark"] .footer .text-white-50 {
-            color: rgba(255, 255, 255, 0.6) !important;
-        }
-
-        [data-theme="dark"] .footer .text-white-50:hover {
-            color: rgba(255, 255, 255, 0.9) !important;
-        }
-
-        [data-theme="dark"] .footer .btn-outline-light {
-            color: rgba(255, 255, 255, 0.8) !important;
-            border-color: rgba(255, 255, 255, 0.3) !important;
-        }
-
-        [data-theme="dark"] .footer .btn-outline-light:hover {
-            background-color: rgba(255, 255, 255, 0.1) !important;
-            color: #fff !important;
-        }
-
-        [data-theme="dark"] .card-body,
-        [data-theme="dark"] .section-card {
-            color: var(--ink);
-        }
-
-        [data-theme="dark"] .fw-semibold,
-        [data-theme="dark"] .h4,
-        [data-theme="dark"] .h5,
-        [data-theme="dark"] .fs-5 {
-            color: var(--ink) !important;
-        }
-
-        [data-theme="dark"] .bg-light {
-            background-color: var(--bg-secondary) !important;
-            color: var(--ink);
-        }
-
-        [data-theme="dark"] .rounded-3.bg-light {
-            background-color: rgba(255, 255, 255, 0.05) !important;
-        }
-
-        [data-theme="dark"] .gsoc-card {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-            border: 1px solid rgba(102, 126, 234, 0.4);
-        }
-
-        /* GSoC card styling for light mode */
-        .gsoc-card {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-        }
-
-        /* Additional dark mode text fixes */
-        [data-theme="dark"] li,
-        [data-theme="dark"] p,
-        [data-theme="dark"] span,
-        [data-theme="dark"] div {
-            color: inherit;
-        }
-
-        [data-theme="dark"] .stat-card .fw-semibold,
-        [data-theme="dark"] .timeline-item .fw-semibold,
-        [data-theme="dark"] .card .fw-semibold {
-            color: var(--ink) !important;
-        }
-
-        [data-theme="dark"] .text-primary {
-            color: var(--accent) !important;
-        }
-
-        [data-theme="dark"] .lead {
-            color: var(--ink);
-        }
-
-        [data-theme="dark"] .display-5 {
-            color: var(--ink) !important;
-        }
-
-        [data-theme="dark"] h1, 
-        [data-theme="dark"] h2, 
-        [data-theme="dark"] h3, 
-        [data-theme="dark"] h4, 
-        [data-theme="dark"] h5, 
-        [data-theme="dark"] h6 {
-            color: var(--ink) !important;
-        }
-
-        [data-theme="dark"] ul li {
-            color: var(--ink);
-        }
-
-        [data-theme="dark"] .badge {
-            color: inherit;
-        }
-
-        [data-theme="dark"] .navbar-brand {
-            color: var(--ink) !important;
-        }
-
-        [data-theme="dark"] .nav-link {
-            color: var(--ink-light) !important;
-        }
-
-        [data-theme="dark"] .nav-link:hover,
-        [data-theme="dark"] .nav-link.active {
-            color: var(--accent) !important;
-        }
-
-        /* Fix section title in dark mode */
-        [data-theme="dark"] .section-title {
-            color: var(--accent) !important;
-        }
-
-        /* Fix strong/bold text in dark mode */
-        [data-theme="dark"] strong {
-            color: var(--accent) !important;
-        }
-
-        /* Fix pill-link in dark mode */
-        [data-theme="dark"] .pill-link {
-            color: var(--accent) !important;
-        }
-
-        [data-theme="dark"] .pill-link:hover {
-            color: var(--accent-light) !important;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--ink);
-            background-color: var(--bg-primary);
-            transition: background-color var(--transition-normal), color var(--transition-normal);
-        }
-
-        /* Skip Link for Accessibility */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--accent);
-            color: white;
-            padding: 8px 16px;
-            z-index: 9999;
-            transition: top var(--transition-fast);
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* Scroll Progress Indicator */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            z-index: 9999;
-            transition: width 0.1s linear;
-        }
-
-        /* Brand Icon */
-        .brand-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: white;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.75rem;
-        }
-
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all var(--transition-fast);
-        }
-
-        .dark-mode-toggle:hover {
-            transform: rotate(15deg);
-        }
-
-        /* Navigation Enhancements */
-        .navbar {
-            backdrop-filter: blur(10px);
-            transition: all var(--transition-normal);
-        }
-
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 0.75rem !important;
-            transition: color var(--transition-fast);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: all var(--transition-fast);
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 80%;
-        }
-
-        .nav-link i {
-            opacity: 0.7;
-            transition: opacity var(--transition-fast);
-        }
-
-        .nav-link:hover i {
-            opacity: 1;
-        }
-
-        .hero {
-            background: var(--bg-hero);
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Animated background pattern */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: radial-gradient(circle at 20% 50%, rgba(31, 78, 121, 0.03) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 20%, rgba(31, 78, 121, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .section-title {
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 0.3px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            border-radius: 2px;
-        }
-
-        .badge-soft {
-            background: rgba(31, 78, 121, 0.08);
-            color: var(--accent);
-            border: 1px solid rgba(31, 78, 121, 0.15);
-            animation: fadeInUp 0.5s ease;
-        }
-
-        .stat-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 16px 18px;
-            transition: all var(--transition-normal);
-            cursor: default;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--card-shadow-hover);
-            border-color: var(--accent);
-        }
-
-        .timeline {
-            border-left: 2px solid rgba(31, 78, 121, 0.2);
-            padding-left: 18px;
-        }
-
-        .timeline-item {
-            margin-bottom: 18px;
-            position: relative;
-            animation: fadeInLeft 0.5s ease;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -27px;
-            top: 4px;
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
             width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 0 4px rgba(31, 78, 121, 0.1);
-            transition: all var(--transition-fast);
         }
-
-        .timeline-item:hover::before {
-            transform: scale(1.3);
-            box-shadow: 0 0 0 6px rgba(31, 78, 121, 0.15);
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
         }
-
-        .pill-link {
-            text-decoration: none;
-            color: var(--accent);
-            transition: all var(--transition-fast);
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3375ff, #1a54f5);
+            border-radius: 5px;
         }
-
-        .pill-link:hover {
-            text-decoration: underline;
-            color: var(--accent-dark);
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #1a54f5, #1440e1);
         }
-
-        .section-card {
-            border: none;
-            box-shadow: var(--card-shadow);
-            border-radius: 16px;
-            transition: all var(--transition-normal);
-            overflow: hidden;
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
         }
-
-        .section-card:hover {
-            box-shadow: var(--card-shadow-hover);
-            transform: translateY(-2px);
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #3375ff 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        .avatar-img {
-            max-width: 200px;
-            width: 100%;
-            border-radius: 16px;
-            box-shadow: var(--card-shadow);
-            transition: all var(--transition-normal);
+        
+        /* Animated gradient background */
+        .gradient-bg {
+            background: linear-gradient(-45deg, #eef5ff, #f0fdf4, #fef3c7, #fce7f3, #eef5ff);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
         }
-
-        .avatar-img:hover {
-            transform: scale(1.02);
-            box-shadow: var(--card-shadow-hover);
+        .dark .gradient-bg {
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #1e3a5f, #1e293b, #0f172a);
+            background-size: 400% 400%;
         }
-
-        /* Button Enhancements */
-        .btn {
-            border-radius: 10px;
-            padding: 0.6rem 1.25rem;
-            font-weight: 500;
-            transition: all var(--transition-fast);
+        
+        /* Glass morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            border: none;
-            box-shadow: 0 4px 15px rgba(31, 78, 121, 0.3);
+        .dark .glass {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(31, 78, 121, 0.4);
-            background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+        
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .btn-outline-primary {
-            border-width: 2px;
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
-
-        .btn-outline-primary:hover {
-            transform: translateY(-2px);
+        .dark .card-hover:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-
-        /* Highlight numbers */
-        strong {
-            color: var(--accent);
+        
+        /* Glow effects */
+        .glow {
+            box-shadow: 0 0 40px rgba(51, 117, 255, 0.3);
         }
-
-        /* Section animations */
-        section {
+        .glow-accent {
+            box-shadow: 0 0 40px rgba(34, 197, 94, 0.3);
+        }
+        
+        /* Blob shapes */
+        .blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        
+        /* Timeline connector */
+        .timeline-line {
+            position: absolute;
+            left: 23px;
+            top: 48px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #3375ff, #8b5cf6);
+        }
+        
+        /* Scroll progress */
+        #scroll-progress {
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+        
+        /* Section reveal animation */
+        .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        section.visible {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* List styling */
-        ul {
-            padding-left: 1.25rem;
+        
+        /* Stagger children animation */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(20px);
         }
-
-        ul li {
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
+        .stagger-children.active > *:nth-child(1) { animation: slideUp 0.5s ease-out 0.1s forwards; }
+        .stagger-children.active > *:nth-child(2) { animation: slideUp 0.5s ease-out 0.2s forwards; }
+        .stagger-children.active > *:nth-child(3) { animation: slideUp 0.5s ease-out 0.3s forwards; }
+        .stagger-children.active > *:nth-child(4) { animation: slideUp 0.5s ease-out 0.4s forwards; }
+        .stagger-children.active > *:nth-child(5) { animation: slideUp 0.5s ease-out 0.5s forwards; }
+        .stagger-children.active > *:nth-child(6) { animation: slideUp 0.5s ease-out 0.6s forwards; }
+        
+        /* Magnetic button effect */
+        .magnetic-btn {
+            transition: transform 0.3s ease;
         }
-
-        ul li::marker {
-            color: var(--accent);
+        
+        /* Noise texture overlay */
+        .noise::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
         }
-
-        /* Footer enhancements */
-        .footer {
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer a {
-            color: var(--accent);
-            transition: color var(--transition-fast);
-        }
-
-        .footer a:hover {
-            color: var(--accent-dark);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Responsive improvements */
-        @media (max-width: 991px) {
-            .nav-link i {
-                display: none;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .avatar-img {
-                max-width: 160px;
-            }
-
-            .display-5 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 1.25rem;
-            }
-
-            .stat-card {
-                padding: 12px 14px;
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            .navbar, .scroll-progress, .dark-mode-toggle, .skip-link {
-                display: none !important;
-            }
-
-            section {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-
-            .section-card {
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-        }
-
-        /* Focus styles for accessibility */
-        a:focus-visible,
-        button:focus-visible {
-            outline: 2px solid var(--accent);
+        
+        /* Focus styles */
+        .focus-ring:focus-visible {
+            outline: 2px solid #3375ff;
             outline-offset: 2px;
         }
-
-        /* Reduced motion preference */
+        
+        /* Print styles */
+        @media print {
+            .no-print { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+        
+        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
+            *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
         }
     </style>
-    <main id="main-content">
-        <section class="hero py-5 visible" id="about">
-            <div class="container-lg">
-                <div class="row align-items-center g-4">
-                    <div class="col-lg-7">
-                        <span class="badge rounded-pill badge-soft mb-3">
-                            <i class="bi bi-cpu me-1"></i>Efficient ML Systems
+</head>
+
+<body class="font-sans antialiased text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <!-- Skip Link -->
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg">
+        Skip to main content
+    </a>
+    
+    <!-- Scroll Progress -->
+    <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500 z-50 no-print"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-40 no-print">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="glass rounded-2xl mt-4 px-4 py-3 shadow-lg">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg group-hover:scale-110 transition-transform">
+                            CS
+                        </div>
+                        <span class="font-semibold text-lg hidden sm:block">Chijun Sima</span>
+                    </a>
+                    
+                    <!-- Desktop Nav -->
+                    <div class="hidden lg:flex items-center gap-1">
+                        <a href="#about" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">About</a>
+                        <a href="#research" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Research</a>
+                        <a href="#publications" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Publications</a>
+                        <a href="#experience" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Experience</a>
+                        <a href="#opensource" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Open Source</a>
+                        <a href="#awards" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Awards</a>
+                    </div>
+                    
+                    <!-- Actions -->
+                    <div class="flex items-center gap-2">
+                        <button id="theme-toggle" class="p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-ring" aria-label="Toggle theme">
+                            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                            <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                        </button>
+                        <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-ring" aria-label="Toggle menu">
+                            <i data-lucide="menu" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Nav -->
+                <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                    <div class="grid grid-cols-2 gap-2">
+                        <a href="#about" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="user" class="w-4 h-4"></i> About
+                        </a>
+                        <a href="#research" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="lightbulb" class="w-4 h-4"></i> Research
+                        </a>
+                        <a href="#publications" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="book-open" class="w-4 h-4"></i> Publications
+                        </a>
+                        <a href="#experience" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="briefcase" class="w-4 h-4"></i> Experience
+                        </a>
+                        <a href="#opensource" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="github" class="w-4 h-4"></i> Open Source
+                        </a>
+                        <a href="#awards" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="trophy" class="w-4 h-4"></i> Awards
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="about" class="relative min-h-screen flex items-center gradient-bg noise overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary-400/20 dark:bg-primary-600/10 rounded-full blur-3xl animate-float"></div>
+                <div class="absolute top-1/2 -left-40 w-80 h-80 bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-float-delayed"></div>
+                <div class="absolute bottom-20 right-1/4 w-64 h-64 bg-pink-400/20 dark:bg-pink-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
+            </div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <!-- Content -->
+                    <div class="order-2 lg:order-1 animate-slide-up">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-6">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            Efficient ML Systems Researcher
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                            Hi, I'm <span class="gradient-text">Chijun Sima</span>
+                        </h1>
+                        
+                        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-xl">
+                            Senior Software Development Engineer at <span class="font-semibold text-slate-800 dark:text-slate-200">Tencent (WeChat)</span>. 
+                            I build large-scale recommender and ML systems, focusing on system–algorithm co-design, cost-effective serving, and compiler performance.
+                        </p>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap gap-4 mb-10">
+                            <a href="mailto:simachijun@gmail.com" class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all focus-ring">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                                Get in Touch
+                            </a>
+                            <a href="/cv.pdf" class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all border border-slate-200 dark:border-slate-700 focus-ring">
+                                <i data-lucide="file-text" class="w-5 h-5"></i>
+                                Download CV
+                            </a>
+                        </div>
+                        
+                        <!-- Social Links -->
+                        <div class="flex items-center gap-4">
+                            <span class="text-sm text-slate-500 dark:text-slate-400">Connect:</span>
+                            <div class="flex gap-3">
+                                <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 shadow-md hover:shadow-lg hover:scale-110 transition-all focus-ring" aria-label="LinkedIn">
+                                    <i data-lucide="linkedin" class="w-5 h-5 text-[#0077b5]"></i>
+                                </a>
+                                <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 shadow-md hover:shadow-lg hover:scale-110 transition-all focus-ring" aria-label="GitHub">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 shadow-md hover:shadow-lg hover:scale-110 transition-all focus-ring" aria-label="Google Scholar">
+                                    <i data-lucide="graduation-cap" class="w-5 h-5 text-[#4285f4]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Avatar & Stats -->
+                    <div class="order-1 lg:order-2 flex flex-col items-center lg:items-end">
+                        <div class="relative mb-8">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-600 rounded-3xl blur-2xl opacity-30 scale-110"></div>
+                            <img src="avatar.jpg" alt="Chijun Sima" class="relative w-64 h-64 sm:w-72 sm:h-72 object-cover rounded-3xl shadow-2xl ring-4 ring-white dark:ring-slate-800" loading="eager">
+                            <div class="absolute -bottom-4 -right-4 px-4 py-2 bg-white dark:bg-slate-800 rounded-xl shadow-lg flex items-center gap-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-primary-500"></i>
+                                <span class="text-sm font-medium">Guangzhou, China</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-2 gap-4 w-full max-w-sm">
+                            <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-lg text-center">
+                                <div class="text-3xl font-bold gradient-text mb-1">OSDI</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">2022 Co-first Author</div>
+                            </div>
+                            <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-lg text-center">
+                                <div class="text-3xl font-bold gradient-text mb-1">1B+</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Daily Users Served</div>
+                            </div>
+                            <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-lg text-center">
+                                <div class="text-3xl font-bold gradient-text mb-1">1980×</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">LLVM Speedup</div>
+                            </div>
+                            <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-lg text-center">
+                                <div class="text-3xl font-bold gradient-text mb-1">LLVM</div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400">Commit Access</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle">
+                    <a href="#research" class="flex flex-col items-center gap-2 text-slate-400 hover:text-primary-500 transition-colors">
+                        <span class="text-xs font-medium uppercase tracking-wider">Scroll</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Research Interests -->
+        <section id="research" class="py-24 lg:py-32 bg-white dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
+                            Research Focus
                         </span>
-                        <h1 class="display-5 fw-bold mb-3">Chijun Sima</h1>
-                        <p class="lead mb-4">
-                            Senior Software Development Engineer at <strong>Tencent (WeChat)</strong>. I build large-scale recommender and
-                            ML systems, focusing on system–algorithm co-design, cost-effective serving, and compiler
-                            performance.
-                        </p>
-                        <div class="d-flex flex-wrap gap-2 mb-3">
-                            <a class="btn btn-primary" href="mailto:simachijun@gmail.com" aria-label="Send email to Chijun Sima">
-                                <i class="bi bi-envelope me-2"></i>Email
-                            </a>
-                            <a class="btn btn-outline-primary" href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
-                                <i class="bi bi-linkedin me-2"></i>LinkedIn
-                            </a>
-                            <a class="btn btn-outline-primary" href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Visit Google Scholar profile">
-                                <i class="bi bi-mortarboard me-2"></i>Scholar
-                            </a>
-                            <a class="btn btn-outline-primary" href="/cv.pdf" aria-label="Download CV as PDF">
-                                <i class="bi bi-file-earmark-pdf me-2"></i>CV
-                            </a>
-                        </div>
-                        <div class="text-muted small d-flex flex-wrap gap-3">
-                            <span><i class="bi bi-geo-alt me-1"></i>Guangzhou, China</span>
-                            <span><i class="bi bi-github me-1"></i>LLVM (commit access)</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="text-center">
-                            <img src="avatar.jpg" class="img-fluid rounded-4 avatar-img" alt="Chijun Sima - Senior Software Development Engineer at Tencent WeChat" loading="lazy">
-                        </div>
-                        <div class="row g-3 mt-3">
-                            <div class="col-sm-6">
-                                <div class="stat-card text-center">
-                                    <div class="h4 mb-1 text-primary"><i class="bi bi-journal-richtext"></i></div>
-                                    <div class="fw-semibold">OSDI 2022</div>
-                                    <div class="text-muted small">Co-first author, Ekko</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="stat-card text-center">
-                                    <div class="h4 mb-1 text-primary"><i class="bi bi-code-slash"></i></div>
-                                    <div class="fw-semibold">LLVM Developer</div>
-                                    <div class="text-muted small">Commit access since 2018</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="stat-card text-center">
-                                    <div class="h4 mb-1 text-primary"><i class="bi bi-people-fill"></i></div>
-                                    <div class="fw-semibold">1B+ Users</div>
-                                    <div class="text-muted small">Daily production impact</div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="stat-card text-center">
-                                    <div class="h4 mb-1 text-primary"><i class="bi bi-lightning-charge"></i></div>
-                                    <div class="fw-semibold">1980× Speedup</div>
-                                    <div class="text-muted small">LLVM optimization</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-5" id="research">
-            <div class="container-lg">
-                <div class="row g-4">
-                    <div class="col-lg-4">
-                        <h2 class="section-title h4 mb-3">Research Interests</h2>
-                        <p class="mb-0">
-                            Efficient AI (MLSys): scalable and cost-effective training/serving; system–algorithm
-                            co-design for production ML systems.
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Research Interests</h2>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                            Efficient AI (MLSys): scalable and cost-effective training/serving; system–algorithm co-design for production ML systems.
                         </p>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="section-card card p-4">
-                            <div class="row g-4">
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <div class="text-primary fs-4"><i class="bi bi-diagram-3"></i></div>
-                                        <div>
-                                            <div class="fw-semibold">System Design</div>
-                                            <div class="text-muted">Model-update freshness, SLO-aware placement, and safe rollouts.</div>
-                                        </div>
+                    
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+                        <div class="card-hover group bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-100 dark:border-blue-800/30">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="network" class="w-7 h-7 text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">System Design</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                Model-update freshness, SLO-aware placement, and safe rollouts for production systems.
+                            </p>
+                        </div>
+                        
+                        <div class="card-hover group bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-100 dark:border-green-800/30">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="zap" class="w-7 h-7 text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Serving Efficiency</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                Remote KV-cache storage, compression, and cost optimization for LLM serving.
+                            </p>
+                        </div>
+                        
+                        <div class="card-hover group bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 rounded-2xl p-6 border border-purple-100 dark:border-purple-800/30">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="cpu" class="w-7 h-7 text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Compiler Systems</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                Optimization pipelines and dominator updates in LLVM infrastructure.
+                            </p>
+                        </div>
+                        
+                        <div class="card-hover group bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-2xl p-6 border border-orange-100 dark:border-orange-800/30">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="shield" class="w-7 h-7 text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Safety & Isolation</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                WebAssembly runtime for in-process isolation and secure execution.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education -->
+        <section id="education" class="py-24 lg:py-32 bg-slate-50 dark:bg-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-sm font-medium mb-4">
+                            Academic Background
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold">Education</h2>
+                    </div>
+                    
+                    <div class="max-w-3xl mx-auto">
+                        <div class="card-hover bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
+                            <div class="flex flex-col sm:flex-row gap-6">
+                                <div class="flex-shrink-0">
+                                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-lg">
+                                        <i data-lucide="building-2" class="w-10 h-10 text-white"></i>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <div class="text-primary fs-4"><i class="bi bi-speedometer2"></i></div>
-                                        <div>
-                                            <div class="fw-semibold">Serving Efficiency</div>
-                                            <div class="text-muted">Remote KV-cache storage, compression, and cost optimization.</div>
-                                        </div>
+                                <div class="flex-grow">
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                                        <h3 class="text-xl font-bold">South China University of Technology</h3>
+                                        <span class="inline-flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400">
+                                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                                            Sep 2016 – Jun 2020
+                                        </span>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <div class="text-primary fs-4"><i class="bi bi-gear-wide-connected"></i></div>
-                                        <div>
-                                            <div class="fw-semibold">Compiler Systems</div>
-                                            <div class="text-muted">Optimization pipelines and dominator updates in LLVM.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <div class="text-primary fs-4"><i class="bi bi-shield-check"></i></div>
-                                        <div>
-                                            <div class="fw-semibold">Safety & Isolation</div>
-                                            <div class="text-muted">WebAssembly runtime for in-process isolation.</div>
-                                        </div>
+                                    <p class="text-slate-600 dark:text-slate-400 mb-4">
+                                        B.Eng. in Computer Science and Technology (Innovation Class)
+                                    </p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium">
+                                            <i data-lucide="star" class="w-4 h-4"></i>
+                                            GPA: 3.85/4.00
+                                        </span>
+                                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium">
+                                            <i data-lucide="trophy" class="w-4 h-4"></i>
+                                            Rank: 1/28
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -851,27 +600,205 @@
                 </div>
             </div>
         </section>
-
-        <section class="py-5" id="education">
-            <div class="container-lg">
-                <h2 class="section-title h4 mb-4">Education</h2>
-                <div class="card section-card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="text-primary fs-3 d-none d-sm-block"><i class="bi bi-building"></i></div>
-                            <div class="flex-grow-1">
-                                <div class="d-flex justify-content-between flex-wrap gap-2">
-                                    <div class="fw-semibold fs-5">South China University of Technology</div>
-                                    <div class="text-muted"><i class="bi bi-calendar3 me-1"></i>Sep 2016 – Jun 2020</div>
+        
+        <!-- Publications -->
+        <section id="publications" class="py-24 lg:py-32 bg-white dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-medium mb-4">
+                            Academic Work
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Selected Publications</h2>
+                    </div>
+                    
+                    <div class="space-y-6 max-w-4xl mx-auto stagger-children">
+                        <!-- OSDI Paper -->
+                        <div class="card-hover bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/10 dark:to-orange-900/10 rounded-2xl p-6 lg:p-8 border border-red-100 dark:border-red-800/30">
+                            <div class="flex flex-wrap items-start gap-4 mb-4">
+                                <span class="px-3 py-1.5 rounded-lg bg-red-500 text-white text-sm font-bold shadow-lg">
+                                    OSDI '22
+                                </span>
+                                <span class="px-3 py-1.5 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-sm font-medium">
+                                    Co-first Author
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">
+                                <a href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors inline-flex items-center gap-2 group">
+                                    Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update
+                                    <i data-lucide="external-link" class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                </a>
+                            </h3>
+                            <p class="text-slate-600 dark:text-slate-400 mb-3">
+                                <strong class="text-slate-800 dark:text-slate-200">Chijun Sima*</strong>, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai
+                            </p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                <i data-lucide="user" class="w-4 h-4"></i>
+                                Supervised by <a href="https://luomai.github.io/" target="_blank" rel="noopener noreferrer" class="text-primary-600 dark:text-primary-400 hover:underline">Luo Mai</a>
+                            </p>
+                        </div>
+                        
+                        <!-- IEEE Paper -->
+                        <div class="card-hover bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10 rounded-2xl p-6 lg:p-8 border border-blue-100 dark:border-blue-800/30">
+                            <div class="flex flex-wrap items-start gap-4 mb-4">
+                                <span class="px-3 py-1.5 rounded-lg bg-blue-500 text-white text-sm font-bold shadow-lg">
+                                    IEEE Access
+                                </span>
+                                <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium">
+                                    2019
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">
+                                Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification
+                            </h3>
+                            <p class="text-slate-600 dark:text-slate-400">
+                                Kejian Shi, Hongyang Qin, <strong class="text-slate-800 dark:text-slate-200">Chijun Sima</strong>, Sen Li, Lifeng Shen, Qianli Ma
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience -->
+        <section id="experience" class="py-24 lg:py-32 bg-slate-50 dark:bg-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium mb-4">
+                            Career Journey
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Research & Industry Experience</h2>
+                    </div>
+                    
+                    <div class="max-w-4xl mx-auto space-y-8">
+                        <!-- Tencent -->
+                        <div class="relative">
+                            <div class="card-hover bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
+                                <div class="flex flex-col lg:flex-row gap-6">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                                            <i data-lucide="building" class="w-8 h-8 text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-4">
+                                            <div>
+                                                <h3 class="text-xl font-bold flex items-center gap-3">
+                                                    Tencent (WeChat)
+                                                    <span class="px-3 py-1 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium">
+                                                        Senior SDE
+                                                    </span>
+                                                </h3>
+                                            </div>
+                                            <span class="inline-flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400">
+                                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                                Jul 2020 – Present
+                                                <span class="mx-1">·</span>
+                                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                                Guangzhou
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="space-y-6">
+                                            <!-- Ekko Project -->
+                                            <div class="pl-4 border-l-2 border-primary-500">
+                                                <div class="flex items-center gap-3 mb-2">
+                                                    <h4 class="font-semibold text-primary-600 dark:text-primary-400">Ekko: Low-latency Model Update</h4>
+                                                    <span class="px-2 py-0.5 rounded bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-medium">OSDI'22</span>
+                                                </div>
+                                                <ul class="space-y-2 text-slate-600 dark:text-slate-400 text-sm">
+                                                    <li class="flex items-start gap-2">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                                        Co-designed model-aware deployment for second-level freshness at extreme scale
+                                                    </li>
+                                                    <li class="flex items-start gap-2">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                                        Reduced WAN bandwidth by <strong class="text-slate-800 dark:text-slate-200">92%</strong> through compressed update dissemination
+                                                    </li>
+                                                    <li class="flex items-start gap-2">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                                        SLO-aware placement cut machine cost by <strong class="text-slate-800 dark:text-slate-200">49%</strong>
+                                                    </li>
+                                                    <li class="flex items-start gap-2">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                                        Serves <strong class="text-slate-800 dark:text-slate-200">1B+ users daily</strong> with <strong class="text-slate-800 dark:text-slate-200">2.4s</strong> update latency
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <!-- Data Engineering -->
+                                            <div class="pl-4 border-l-2 border-purple-500">
+                                                <h4 class="font-semibold text-purple-600 dark:text-purple-400 mb-2">Data Engineering / Feature Platform</h4>
+                                                <ul class="space-y-2 text-slate-600 dark:text-slate-400 text-sm">
+                                                    <li class="flex items-start gap-2">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                                        Designed WebAssembly runtime for in-process isolation
+                                                    </li>
+                                                    <li class="flex items-start gap-2">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                                        Reduced data movement by up to <strong class="text-slate-800 dark:text-slate-200">1,200×</strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <!-- LLM Serving -->
+                                            <div class="pl-4 border-l-2 border-green-500">
+                                                <div class="flex items-center gap-3 mb-2">
+                                                    <h4 class="font-semibold text-green-600 dark:text-green-400">LLM Serving Systems</h4>
+                                                    <span class="px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-medium">Current</span>
+                                                </div>
+                                                <ul class="space-y-2 text-slate-600 dark:text-slate-400 text-sm">
+                                                    <li class="flex items-start gap-2">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                                        Building cost-effective serving with remote KV-cache storage and compression
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-muted mb-2">B.Eng. in Computer Science and Technology (Innovation Class)</div>
-                                <div class="d-flex flex-wrap gap-3">
-                                    <span class="badge bg-success bg-opacity-10 text-success px-3 py-2">
-                                        <i class="bi bi-star-fill me-1"></i>GPA: 3.85/4.00
-                                    </span>
-                                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                                        <i class="bi bi-trophy me-1"></i>Rank: 1/28
-                                    </span>
+                            </div>
+                        </div>
+                        
+                        <!-- LLVM -->
+                        <div class="card-hover bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
+                            <div class="flex flex-col lg:flex-row gap-6">
+                                <div class="flex-shrink-0">
+                                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center shadow-lg">
+                                        <i data-lucide="code-2" class="w-8 h-8 text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-4">
+                                        <div>
+                                            <h3 class="text-xl font-bold flex items-center gap-3">
+                                                LLVM Project
+                                                <span class="px-3 py-1 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium">
+                                                    Commit Access
+                                                </span>
+                                            </h3>
+                                        </div>
+                                        <span class="inline-flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400">
+                                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                                            2018 – Present
+                                        </span>
+                                    </div>
+                                    
+                                    <ul class="space-y-2 text-slate-600 dark:text-slate-400 text-sm">
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                            Improved Semi-NCA performance; shipped in <strong class="text-slate-800 dark:text-slate-200">LLVM 9.0</strong> with speedups up to <strong class="text-slate-800 dark:text-slate-200">1980×</strong>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                            Unified dominator tree update APIs; shipped in <strong class="text-slate-800 dark:text-slate-200">LLVM 7.0</strong>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                            <strong class="text-slate-800 dark:text-slate-200">Google Summer of Code 2018</strong> participant
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -879,246 +806,170 @@
                 </div>
             </div>
         </section>
-
-        <section class="py-5 bg-light" id="publications">
-            <div class="container-lg">
-                <h2 class="section-title h4 mb-4">Selected Publications</h2>
-                <div class="card section-card">
-                    <div class="card-body">
-                        <div class="mb-4 pb-4 border-bottom">
-                            <div class="d-flex align-items-start gap-3">
-                                <span class="badge bg-danger text-white px-2 py-1 mt-1">OSDI '22</span>
+        
+        <!-- Open Source -->
+        <section id="opensource" class="py-24 lg:py-32 bg-white dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium mb-4">
+                            Community Contributions
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Open Source</h2>
+                    </div>
+                    
+                    <div class="grid lg:grid-cols-3 gap-6 stagger-children">
+                        <!-- LLVM Card -->
+                        <div class="lg:col-span-2 card-hover bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 text-white shadow-2xl">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
+                                    <i data-lucide="code-2" class="w-7 h-7"></i>
+                                </div>
                                 <div>
-                                    <div class="h5 mb-2">
-                                        <a class="pill-link" href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer">
-                                            Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update
-                                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-                                        </a>
-                                    </div>
-                                    <div class="text-muted mb-2">
-                                        <strong>Chijun Sima*</strong>, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai
-                                        <span class="badge bg-warning bg-opacity-25 text-warning-emphasis ms-2">Co-first author</span>
-                                    </div>
-                                    <div class="text-muted small">
-                                        <i class="bi bi-person-badge me-1"></i>Supervised by <a href="https://luomai.github.io/" target="_blank" rel="noopener noreferrer">Luo Mai</a>
-                                    </div>
+                                    <h3 class="text-xl font-bold">LLVM Compiler Infrastructure</h3>
+                                    <p class="text-slate-400 text-sm">Developer with commit access · 2018 – Present</p>
                                 </div>
                             </div>
+                            
+                            <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                                <div class="bg-white/5 rounded-2xl p-5 text-center">
+                                    <div class="text-4xl font-bold gradient-text mb-1">1980×</div>
+                                    <div class="text-slate-400 text-sm">Max speedup achieved</div>
+                                </div>
+                                <div class="bg-white/5 rounded-2xl p-5 text-center">
+                                    <div class="text-4xl font-bold gradient-text mb-1">2</div>
+                                    <div class="text-slate-400 text-sm">Major LLVM releases</div>
+                                </div>
+                            </div>
+                            
+                            <ul class="space-y-2 text-slate-300 text-sm">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="git-commit" class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0"></i>
+                                    Improved Semi-NCA and optimization pipeline; shipped in LLVM 9.0
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="git-commit" class="w-4 h-4 text-primary-400 mt-0.5 flex-shrink-0"></i>
+                                    Unified APIs on dominator trees; shipped in LLVM 7.0
+                                </li>
+                            </ul>
                         </div>
-                        <div>
-                            <div class="d-flex align-items-start gap-3">
-                                <span class="badge bg-info text-white px-2 py-1 mt-1">IEEE</span>
+                        
+                        <!-- GSoC Card -->
+                        <div class="card-hover bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-600 rounded-3xl p-8 text-white shadow-2xl flex flex-col items-center justify-center text-center">
+                            <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mb-6">
+                                <svg class="w-10 h-10" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.82 16.32c-.24.48-.72.72-1.2.72-.24 0-.48-.06-.72-.18l-4.08-2.4c-.36-.24-.6-.66-.6-1.08V6.6c0-.72.6-1.32 1.32-1.32s1.32.6 1.32 1.32v5.94l3.42 2.04c.66.36.84 1.14.54 1.74z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Google Summer of Code</h3>
+                            <p class="text-white/80 mb-1">2018 Participant</p>
+                            <p class="text-white/60 text-sm">LLVM Project</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Academic Service -->
+        <section id="service" class="py-24 lg:py-32 bg-slate-50 dark:bg-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-sm font-medium mb-4">
+                            Academic Community
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Academic Service</h2>
+                    </div>
+                    
+                    <div class="max-w-3xl mx-auto">
+                        <div class="card-hover bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
+                            <div class="flex items-start gap-4 mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="clipboard-check" class="w-6 h-6 text-white"></i>
+                                </div>
                                 <div>
-                                    <div class="h5 mb-2">Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification</div>
-                                    <div class="text-muted mb-2">Kejian Shi, Hongyang Qin, <strong>Chijun Sima</strong>, Sen Li, Lifeng Shen, Qianli Ma</div>
-                                    <div class="text-muted small"><i class="bi bi-journal me-1"></i>IEEE Access, 2019</div>
+                                    <h3 class="text-lg font-bold mb-1">Conference & Workshop Reviewer</h3>
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm">Contributing to the academic community through peer review</p>
                                 </div>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-3">
+                                <span class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                    CVPR 2025
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                    ICLR 2025 Workshop (FM-Wild)
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-sm font-medium">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                    NeurIPS 2025 Workshop (Efficient Reasoning)
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="py-5" id="experience">
-            <div class="container-lg">
-                <h2 class="section-title h4 mb-4">Research & Industry Experience</h2>
-                <div class="card section-card">
-                    <div class="card-body">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="d-flex justify-content-between flex-wrap align-items-center mb-2">
-                                    <div class="fw-semibold fs-5">
-                                        <i class="bi bi-building text-primary me-2"></i>Tencent (WeChat)
-                                        <span class="badge bg-primary bg-opacity-10 text-primary ms-2">Senior SDE</span>
-                                    </div>
-                                    <div class="text-muted small">
-                                        <i class="bi bi-calendar3 me-1"></i>Jul 2020 – Present
-                                        <span class="mx-2">·</span>
-                                        <i class="bi bi-geo-alt me-1"></i>Guangzhou, China
-                                    </div>
-                                </div>
-                                <div class="mt-3 ps-3 border-start border-2 border-primary border-opacity-25">
-                                    <div class="mb-3">
-                                        <div class="fw-semibold text-primary">
-                                            <i class="bi bi-rocket-takeoff me-1"></i>Ekko: Low-latency Model Update for Multi-terabyte DLRMs
-                                            <span class="badge bg-danger bg-opacity-10 text-danger ms-2">OSDI'22</span>
-                                        </div>
-                                        <ul class="mb-0 mt-2">
-                                            <li>Co-designed model-aware deployment to maintain second-level freshness at extreme scale.</li>
-                                            <li>Compressed update dissemination and accuracy-aware scheduling reduced WAN bandwidth by <strong>92%</strong>.</li>
-                                            <li>SLO-aware placement cut machine cost by <strong>49%</strong>; implemented seconds-level rollback.</li>
-                                            <li>Production system serves <strong>over one billion users daily</strong>; enabled <strong>10,000×</strong> model-size scaling with <strong>2.4s</strong> update latency.</li>
-                                        </ul>
-                                    </div>
-                                    <div class="mb-3">
-                                        <div class="fw-semibold text-primary">
-                                            <i class="bi bi-database me-1"></i>Data Engineering / Feature Platform
-                                        </div>
-                                        <ul class="mb-0 mt-2">
-                                            <li>Designed a WebAssembly runtime for in-process isolation and locality-aware operator placement.</li>
-                                            <li>Reduced data movement by up to <strong>1,200×</strong> on representative workloads.</li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <div class="fw-semibold text-primary">
-                                            <i class="bi bi-chat-dots me-1"></i>LLM Serving Systems
-                                            <span class="badge bg-success bg-opacity-10 text-success ms-2">Current</span>
-                                        </div>
-                                        <ul class="mb-0 mt-2">
-                                            <li>Building cost-effective serving mechanisms around remote KV-cache storage and compression.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="d-flex justify-content-between flex-wrap align-items-center mb-2">
-                                    <div class="fw-semibold fs-5">
-                                        <i class="bi bi-github text-primary me-2"></i>LLVM Project
-                                        <span class="badge bg-success bg-opacity-10 text-success ms-2">Commit Access</span>
-                                    </div>
-                                    <div class="text-muted small">
-                                        <i class="bi bi-calendar3 me-1"></i>2018 – Present
-                                    </div>
-                                </div>
-                                <ul class="mb-0 mt-2">
-                                    <li>Improved Semi-NCA performance and optimization pipeline; shipped in <strong>LLVM 9.0</strong> with reported speedups up to <strong>1980×</strong>.</li>
-                                    <li>Unified dominator tree update APIs; shipped in <strong>LLVM 7.0</strong>.</li>
-                                    <li><strong>Google Summer of Code 2018</strong> participant.</li>
-                                </ul>
-                            </div>
-                        </div>
+        
+        <!-- Talks -->
+        <section id="talks" class="py-24 lg:py-32 bg-white dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-sm font-medium mb-4">
+                            Speaking Engagements
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Invited Talks</h2>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-5 bg-light" id="opensource">
-            <div class="container-lg">
-                <h2 class="section-title h4 mb-4">Open Source Contributions</h2>
-                <div class="row g-4">
-                    <div class="col-lg-8">
-                        <div class="card section-card h-100">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center gap-3 mb-3">
-                                    <div class="bg-dark text-white rounded-3 p-3">
-                                        <i class="bi bi-braces-asterisk fs-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="fw-semibold fs-5">LLVM Compiler Infrastructure</div>
-                                        <div class="text-muted">Developer with commit access · 2018 – Present</div>
-                                    </div>
+                    
+                    <div class="max-w-4xl mx-auto">
+                        <div class="card-hover bg-gradient-to-r from-pink-50 to-rose-50 dark:from-pink-900/10 dark:to-rose-900/10 rounded-3xl p-8 border border-pink-100 dark:border-pink-800/30">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="mic" class="w-6 h-6 text-white"></i>
                                 </div>
-                                <div class="row g-3 mb-3">
-                                    <div class="col-sm-6">
-                                        <div class="bg-light rounded-3 p-3 text-center">
-                                            <div class="h4 text-primary mb-0">1980×</div>
-                                            <div class="text-muted small">Max speedup achieved</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="bg-light rounded-3 p-3 text-center">
-                                            <div class="h4 text-primary mb-0">2</div>
-                                            <div class="text-muted small">Major LLVM releases</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="mb-0">
-                                    <li>Improved Semi-NCA and optimization pipeline; shipped in <strong>LLVM 9.0</strong>.</li>
-                                    <li>Unified APIs on dominator trees; shipped in <strong>LLVM 7.0</strong>.</li>
-                                </ul>
+                                <h3 class="text-xl font-bold">Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update</h3>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card section-card h-100 gsoc-card">
-                            <div class="card-body d-flex flex-column justify-content-center text-center">
-                                <div class="mb-3">
-                                    <i class="bi bi-google fs-1 text-primary"></i>
-                                </div>
-                                <div class="fw-semibold fs-5 mb-2">Google Summer of Code</div>
-                                <div class="text-muted">2018 Participant</div>
-                                <div class="text-muted small mt-2">LLVM Project</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-5" id="service">
-            <div class="container-lg">
-                <h2 class="section-title h4 mb-4">Academic Service</h2>
-                <div class="card section-card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="text-primary fs-4"><i class="bi bi-clipboard-check"></i></div>
-                            <div>
-                                <div class="fw-semibold mb-2">Conference & Workshop Reviewer</div>
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
-                                        <i class="bi bi-eye me-1"></i>CVPR 2025
-                                    </span>
-                                    <span class="badge bg-success bg-opacity-10 text-success px-3 py-2">
-                                        <i class="bi bi-eye me-1"></i>ICLR 2025 Workshop (FM-Wild)
-                                    </span>
-                                    <span class="badge bg-warning bg-opacity-10 text-warning-emphasis px-3 py-2">
-                                        <i class="bi bi-eye me-1"></i>NeurIPS 2025 Workshop (Efficient Reasoning)
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-5 bg-light" id="talks">
-            <div class="container-lg">
-                <h2 class="section-title h4 mb-4">Invited Talks</h2>
-                <div class="card section-card">
-                    <div class="card-body">
-                        <div class="fw-semibold fs-5 mb-3">
-                            <i class="bi bi-mic-fill text-primary me-2"></i>
-                            Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <div class="bg-light rounded-3 p-3">
-                                    <div class="d-flex align-items-center gap-2 mb-1">
-                                        <i class="bi bi-building text-primary"></i>
-                                        <span class="fw-semibold">Tencent WeChat AI</span>
+                            
+                            <div class="grid sm:grid-cols-3 gap-4 stagger-children">
+                                <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-md">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i data-lucide="building" class="w-5 h-5 text-primary-500"></i>
+                                        <span class="font-semibold">Tencent WeChat AI</span>
                                     </div>
-                                    <div class="text-muted small">
-                                        <i class="bi bi-geo-alt me-1"></i>Shenzhen
-                                        <span class="mx-1">·</span>
-                                        <i class="bi bi-calendar3 me-1"></i>Jun 2022
+                                    <div class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                        Shenzhen
+                                        <span>·</span>
+                                        Jun 2022
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="bg-light rounded-3 p-3">
-                                    <div class="d-flex align-items-center gap-2 mb-1">
-                                        <i class="bi bi-camera-video text-success"></i>
-                                        <span class="fw-semibold">DataFun</span>
+                                
+                                <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-md">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i data-lucide="video" class="w-5 h-5 text-green-500"></i>
+                                        <span class="font-semibold">DataFun</span>
                                     </div>
-                                    <div class="text-muted small">
-                                        <i class="bi bi-globe me-1"></i>Virtual
-                                        <span class="mx-1">·</span>
-                                        <i class="bi bi-calendar3 me-1"></i>Aug 2022
+                                    <div class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                        <i data-lucide="globe" class="w-4 h-4"></i>
+                                        Virtual
+                                        <span>·</span>
+                                        Aug 2022
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="bg-light rounded-3 p-3">
-                                    <div class="d-flex align-items-center gap-2 mb-1">
-                                        <i class="bi bi-camera-video text-info"></i>
-                                        <span class="fw-semibold">TechBeat</span>
+                                
+                                <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-md">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i data-lucide="video" class="w-5 h-5 text-cyan-500"></i>
+                                        <span class="font-semibold">TechBeat</span>
                                     </div>
-                                    <div class="text-muted small">
-                                        <i class="bi bi-globe me-1"></i>Virtual
-                                        <span class="mx-1">·</span>
-                                        <i class="bi bi-calendar3 me-1"></i>Sep 2022
+                                    <div class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                        <i data-lucide="globe" class="w-4 h-4"></i>
+                                        Virtual
+                                        <span>·</span>
+                                        Sep 2022
                                     </div>
                                 </div>
                             </div>
@@ -1127,49 +978,57 @@
                 </div>
             </div>
         </section>
-
-        <section class="py-5" id="awards">
-            <div class="container-lg">
-                <h2 class="section-title h4 mb-4">Selected Awards</h2>
-                <div class="row g-4">
-                    <div class="col-lg-6">
-                        <div class="card section-card h-100 border-warning border-2">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start gap-3">
-                                    <div class="text-warning fs-2"><i class="bi bi-trophy-fill"></i></div>
-                                    <div>
-                                        <div class="fw-semibold fs-5">Tencent Technology Breakthrough Award</div>
-                                        <span class="badge bg-warning text-dark mb-2">Gold Prize</span>
-                                        <div class="text-muted">2022H2 — Project Lead, Ekko</div>
-                                    </div>
+        
+        <!-- Awards -->
+        <section id="awards" class="py-24 lg:py-32 bg-slate-50 dark:bg-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-sm font-medium mb-4">
+                            Recognition
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Selected Awards</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+                        <!-- Gold Prize -->
+                        <div class="card-hover bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-3xl p-6 border-2 border-amber-200 dark:border-amber-700/50 shadow-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="trophy" class="w-7 h-7 text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="inline-block px-2 py-0.5 rounded bg-amber-500 text-white text-xs font-bold mb-2">GOLD</span>
+                                    <h3 class="font-bold mb-1">Tencent Technology Breakthrough Award</h3>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">2022H2 — Project Lead, Ekko</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card section-card h-100">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start gap-3">
-                                    <div class="text-primary fs-2"><i class="bi bi-award-fill"></i></div>
-                                    <div>
-                                        <div class="fw-semibold">ACM-ICPC Asia Xi'an Regional</div>
-                                        <span class="badge bg-secondary mb-2">Bronze Medal</span>
-                                        <div class="text-muted">2017</div>
-                                    </div>
+                        
+                        <!-- ICPC -->
+                        <div class="card-hover bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700 shadow-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="award" class="w-7 h-7 text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="inline-block px-2 py-0.5 rounded bg-orange-600 text-white text-xs font-bold mb-2">BRONZE</span>
+                                    <h3 class="font-bold mb-1">ACM-ICPC Asia Xi'an Regional</h3>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">2017</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card section-card h-100">
-                            <div class="card-body">
-                                <div class="d-flex align-items-start gap-3">
-                                    <div class="text-success fs-2"><i class="bi bi-patch-check-fill"></i></div>
-                                    <div>
-                                        <div class="fw-semibold">15th CCPC (Guangdong Division)</div>
-                                        <span class="badge bg-success bg-opacity-75 mb-2">Second Prize</span>
-                                        <div class="text-muted">Out of 177 teams</div>
-                                    </div>
+                        
+                        <!-- CCPC -->
+                        <div class="card-hover bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700 shadow-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-400 to-slate-500 flex items-center justify-center shadow-lg">
+                                    <i data-lucide="medal" class="w-7 h-7 text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="inline-block px-2 py-0.5 rounded bg-slate-500 text-white text-xs font-bold mb-2">2ND PRIZE</span>
+                                    <h3 class="font-bold mb-1">15th CCPC (Guangdong Division)</h3>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400">Out of 177 teams</p>
                                 </div>
                             </div>
                         </div>
@@ -1177,211 +1036,225 @@
                 </div>
             </div>
         </section>
-
-        <section class="py-5 bg-light" id="writeups">
-            <div class="container-lg">
-                <h2 class="section-title h4 mb-4">Press & Media Coverage</h2>
-                <p class="text-muted mb-4">External write-ups about Ekko (OSDI '22)</p>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <a href="https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
-                            <div class="card section-card h-100 border-0">
-                                <div class="card-body text-center">
-                                    <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                                        <i class="bi bi-chat-dots-fill text-success fs-4"></i>
-                                    </div>
-                                    <div class="fw-semibold mb-2">WeChat Official Blog</div>
-                                    <div class="text-muted small">"WeChat &lt; 2.4s"</div>
-                                    <div class="mt-2 text-primary small">Read article <i class="bi bi-arrow-right"></i></div>
-                                </div>
+        
+        <!-- Press & Media -->
+        <section id="press" class="py-24 lg:py-32 bg-white dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal">
+                    <div class="text-center mb-16">
+                        <span class="inline-block px-4 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium mb-4">
+                            In the News
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Press & Media Coverage</h2>
+                        <p class="text-slate-600 dark:text-slate-400">External write-ups about Ekko (OSDI '22)</p>
+                    </div>
+                    
+                    <div class="grid sm:grid-cols-3 gap-6 stagger-children">
+                        <a href="https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA" target="_blank" rel="noopener noreferrer" class="card-hover group bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="message-circle" class="w-8 h-8 text-white"></i>
                             </div>
+                            <h3 class="font-bold mb-2">WeChat Official Blog</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">"WeChat &lt; 2.4s"</p>
+                            <span class="inline-flex items-center gap-1 text-primary-600 dark:text-primary-400 text-sm font-medium group-hover:gap-2 transition-all">
+                                Read article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </span>
                         </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
-                            <div class="card section-card h-100 border-0">
-                                <div class="card-body text-center">
-                                    <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                                        <i class="bi bi-building-fill text-primary fs-4"></i>
-                                    </div>
-                                    <div class="fw-semibold mb-2">Tencent Official Blog</div>
-                                    <div class="text-muted small">"2.4 Seconds: Fast Enough!"</div>
-                                    <div class="mt-2 text-primary small">Read article <i class="bi bi-arrow-right"></i></div>
-                                </div>
+                        
+                        <a href="https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg" target="_blank" rel="noopener noreferrer" class="card-hover group bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="building-2" class="w-8 h-8 text-white"></i>
                             </div>
+                            <h3 class="font-bold mb-2">Tencent Official Blog</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">"2.4 Seconds: Fast Enough!"</p>
+                            <span class="inline-flex items-center gap-1 text-primary-600 dark:text-primary-400 text-sm font-medium group-hover:gap-2 transition-all">
+                                Read article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </span>
                         </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
-                            <div class="card section-card h-100 border-0">
-                                <div class="card-body text-center">
-                                    <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                                        <i class="bi bi-newspaper text-info fs-4"></i>
-                                    </div>
-                                    <div class="fw-semibold mb-2">Synced Review / JIQIZHIXIN</div>
-                                    <div class="text-muted small">Industry coverage</div>
-                                    <div class="mt-2 text-primary small">Read article <i class="bi bi-arrow-right"></i></div>
-                                </div>
+                        
+                        <a href="https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA" target="_blank" rel="noopener noreferrer" class="card-hover group bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 text-center">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform shadow-lg">
+                                <i data-lucide="newspaper" class="w-8 h-8 text-white"></i>
                             </div>
+                            <h3 class="font-bold mb-2">Synced Review / JIQIZHIXIN</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Industry coverage</p>
+                            <span class="inline-flex items-center gap-1 text-primary-600 dark:text-primary-400 text-sm font-medium group-hover:gap-2 transition-all">
+                                Read article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </span>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- Enhanced Footer -->
-    <footer class="footer mt-auto py-5 bg-dark text-white">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center gap-2 mb-3">
-                        <span class="brand-icon">CS</span>
-                        <span class="fw-semibold fs-5">Chijun Sima</span>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-16 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                            CS
+                        </div>
+                        <span class="font-semibold text-lg">Chijun Sima</span>
                     </div>
-                    <p class="text-white-50 small mb-0">
+                    <p class="text-slate-400 text-sm leading-relaxed">
                         Senior Software Development Engineer at Tencent (WeChat). Building efficient ML systems at scale.
                     </p>
                 </div>
-                <div class="col-lg-4">
-                    <div class="fw-semibold mb-3">Quick Links</div>
-                    <div class="d-flex flex-wrap gap-2">
-                        <a href="#about" class="btn btn-sm btn-outline-light">About</a>
-                        <a href="#publications" class="btn btn-sm btn-outline-light">Publications</a>
-                        <a href="#experience" class="btn btn-sm btn-outline-light">Experience</a>
-                        <a href="/cv.pdf" class="btn btn-sm btn-outline-light">CV</a>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="#about" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm transition-colors">About</a>
+                        <a href="#publications" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm transition-colors">Publications</a>
+                        <a href="#experience" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm transition-colors">Experience</a>
+                        <a href="/cv.pdf" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm transition-colors">CV</a>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="fw-semibold mb-3">Connect</div>
-                    <div class="d-flex gap-3">
-                        <a href="mailto:simachijun@gmail.com" class="text-white-50 fs-4" aria-label="Email">
-                            <i class="bi bi-envelope-fill"></i>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex gap-3">
+                        <a href="mailto:simachijun@gmail.com" class="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors" aria-label="Email">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="text-white-50 fs-4" aria-label="LinkedIn">
-                            <i class="bi bi-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors" aria-label="LinkedIn">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
                         </a>
-                        <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="text-white-50 fs-4" aria-label="GitHub">
-                            <i class="bi bi-github"></i>
+                        <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors" aria-label="GitHub">
+                            <i data-lucide="github" class="w-5 h-5"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            <hr class="my-4 border-secondary">
-            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-                <span class="text-white-50 small">© <span id="year"></span> Chijun Sima. All rights reserved.</span>
-                <a href="#main-content" class="btn btn-sm btn-outline-light">
-                    <i class="bi bi-arrow-up me-1"></i>Back to top
+            
+            <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-slate-400 text-sm">
+                    © <span id="year"></span> Chijun Sima. All rights reserved.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-colors">
+                    <i data-lucide="arrow-up" class="w-4 h-4"></i>
+                    Back to top
                 </a>
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     
-    <!-- Enhanced JavaScript -->
     <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
         // Set current year
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        // Scroll Progress Indicator
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            html.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            lucide.createIcons();
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Scroll progress indicator
         window.addEventListener('scroll', () => {
-            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollProgress = document.getElementById('scroll-progress');
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = progress + '%';
+            const progress = scrollTop / scrollHeight;
+            scrollProgress.style.transform = `scaleX(${progress})`;
         });
-
-        // Section visibility animation on scroll
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        
+        // Section reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal, .stagger-children');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         });
-
-        // Active navigation link highlighting
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+        
+        // Active nav link highlighting
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
-
+        
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 100) {
+                if (scrollY >= sectionTop - 200) {
                     current = section.getAttribute('id');
                 }
             });
-
+            
             navLinks.forEach(link => {
-                link.classList.remove('active');
+                link.classList.remove('text-primary-600', 'dark:text-primary-400', 'bg-primary-50', 'dark:bg-primary-900/20');
                 if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
+                    link.classList.add('text-primary-600', 'dark:text-primary-400', 'bg-primary-50', 'dark:bg-primary-900/20');
                 }
             });
         });
-
-        // Dark Mode Toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const darkModeToggleMobile = document.getElementById('darkModeToggleMobile');
-        const darkIcon = document.getElementById('darkIcon');
-        const lightIcon = document.getElementById('lightIcon');
-
-        function toggleDarkMode() {
-            const html = document.documentElement;
-            const isDark = html.getAttribute('data-theme') === 'dark';
-            
-            if (isDark) {
-                html.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-                darkIcon.classList.remove('d-none');
-                lightIcon.classList.add('d-none');
-            } else {
-                html.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                darkIcon.classList.add('d-none');
-                lightIcon.classList.remove('d-none');
-            }
-        }
-
-        // Check for saved theme preference or system preference
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            darkIcon.classList.add('d-none');
-            lightIcon.classList.remove('d-none');
-        }
-
-        darkModeToggle?.addEventListener('click', toggleDarkMode);
-        darkModeToggleMobile?.addEventListener('click', toggleDarkMode);
-
+        
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const offset = 100;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
+            });
+        });
+        
+        // Magnetic button effect
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0) scale(1)';
             });
         });
     </script>
