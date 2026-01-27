@@ -198,7 +198,29 @@
         }
 
         [data-theme="dark"] .footer {
-            background-color: var(--bg-secondary) !important;
+            background-color: #0d1117 !important;
+        }
+
+        [data-theme="dark"] .footer .fw-semibold {
+            color: #e8eaed !important;
+        }
+
+        [data-theme="dark"] .footer .text-white-50 {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        [data-theme="dark"] .footer .text-white-50:hover {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        [data-theme="dark"] .footer .btn-outline-light {
+            color: rgba(255, 255, 255, 0.8) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        [data-theme="dark"] .footer .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
         }
 
         [data-theme="dark"] .card-body,
@@ -210,7 +232,7 @@
         [data-theme="dark"] .h4,
         [data-theme="dark"] .h5,
         [data-theme="dark"] .fs-5 {
-            color: var(--ink);
+            color: var(--ink) !important;
         }
 
         [data-theme="dark"] .bg-light {
@@ -256,7 +278,16 @@
         }
 
         [data-theme="dark"] .display-5 {
-            color: var(--ink);
+            color: var(--ink) !important;
+        }
+
+        [data-theme="dark"] h1, 
+        [data-theme="dark"] h2, 
+        [data-theme="dark"] h3, 
+        [data-theme="dark"] h4, 
+        [data-theme="dark"] h5, 
+        [data-theme="dark"] h6 {
+            color: var(--ink) !important;
         }
 
         [data-theme="dark"] ul li {
@@ -278,6 +309,25 @@
         [data-theme="dark"] .nav-link:hover,
         [data-theme="dark"] .nav-link.active {
             color: var(--accent) !important;
+        }
+
+        /* Fix section title in dark mode */
+        [data-theme="dark"] .section-title {
+            color: var(--accent) !important;
+        }
+
+        /* Fix strong/bold text in dark mode */
+        [data-theme="dark"] strong {
+            color: var(--accent) !important;
+        }
+
+        /* Fix pill-link in dark mode */
+        [data-theme="dark"] .pill-link {
+            color: var(--accent) !important;
+        }
+
+        [data-theme="dark"] .pill-link:hover {
+            color: var(--accent-light) !important;
         }
 
         html {
@@ -1211,7 +1261,7 @@
                         <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="text-white-50 fs-4" aria-label="LinkedIn">
                             <i class="bi bi-linkedin"></i>
                         </a>
-                        <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="text-white-50 small" aria-label="GitHub">
+                        <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="text-white-50 fs-4" aria-label="GitHub">
                             <i class="bi bi-github"></i>
                         </a>
                     </div>
