@@ -40,6 +40,8 @@ const buildAssets = async () => {
         path.join(rootDir, 'assets/css/site.css'),
         '-o',
         path.join(distDir, 'assets/css/site.css'),
+        '--config',
+        path.join(rootDir, 'tailwind.config.js'),
         '--minify',
       ],
       (error) => {
