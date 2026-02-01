@@ -10,7 +10,8 @@ const baseAvatar = '/avatar.jpg';
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="view-transition" content="same-origin" />
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -35,6 +36,7 @@ const baseAvatar = '/avatar.jpg';
     />
     <link rel="preload" href={baseAvatar} data-asset-href={baseAvatar} as="image" type="image/jpeg" fetchpriority="high" data-vite-ignore />
     <link rel="preload" href={siteStyles} data-asset-href={baseStyleHref} as="style" data-vite-ignore />
+    <link rel="modulepreload" href={baseScriptSrc} data-asset-href={baseScriptSrc} data-vite-ignore />
 
     <title>Chijun Sima | Efficient ML Systems</title>
     <meta
@@ -101,6 +103,19 @@ const baseAvatar = '/avatar.jpg';
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Speculation Rules (hover prefetch) -->
+    <script type="speculationrules">
+      {
+        "prefetch": [
+          {
+            "source": "document",
+            "where": { "selector_matches": "a[data-prefetch]" },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
 
     <!-- Prevent theme flash (sets .dark before first paint) -->
     <script is:inline>
@@ -236,6 +251,11 @@ const baseAvatar = '/avatar.jpg';
     class="font-sans antialiased text-neutral-800 dark:text-neutral-200 bg-neutral-50 dark:bg-neutral-950 transition-colors duration-500"
   >
     <slot />
+
+    <!-- Lightweight toast -->
+    <div id="site-toast" class="site-toast" role="status" aria-live="polite" hidden>
+      <span id="site-toast-message">Copied</span>
+    </div>
 
     <!-- Icons + custom JS -->
     <script src="https://unpkg.com/lucide@0.563.0" defer></script>

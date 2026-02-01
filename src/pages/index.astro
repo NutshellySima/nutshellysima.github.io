@@ -60,6 +60,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <span class="w-5 h-5 block opacity-0" aria-hidden="true">.</span>
             </button>
 
+            <!-- Share -->
+            <button
+              id="share-button"
+              class="relative p-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus-ring"
+              aria-label="Share this page"
+              type="button"
+            >
+              <i data-lucide="share-2" class="w-5 h-5 text-neutral-600 dark:text-neutral-300"></i>
+            </button>
+
             <!-- Mobile Menu Button -->
             <button
               id="mobile-menu-btn"
@@ -146,7 +156,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <i data-lucide="activity" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                   Ekko explained
                 </a>
-                <a href="/cv.pdf" class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-neutral-900/70 text-neutral-800 dark:text-neutral-200 font-medium shadow-lg hover:shadow-xl transition-all border border-neutral-200/70 dark:border-neutral-700/60 focus-ring group">
+                <a href="/cv.pdf" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-neutral-900/70 text-neutral-800 dark:text-neutral-200 font-medium shadow-lg hover:shadow-xl transition-all border border-neutral-200/70 dark:border-neutral-700/60 focus-ring group">
                   <i data-lucide="file-text" class="w-5 h-5 group-hover:translate-y-0.5 transition-transform"></i>
                   CV (PDF)
                 </a>
@@ -691,7 +701,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <a href="#work" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">Work</a>
             <a href="#publications" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">Publications</a>
             <a href="#service" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">Service</a>
-            <a href="/cv.pdf" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">CV</a>
+            <a href="/cv.pdf" data-prefetch class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">CV</a>
           </div>
         </nav>
 
