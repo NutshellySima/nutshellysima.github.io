@@ -105,17 +105,19 @@ const baseAvatar = '/avatar.jpg';
     />
 
     <!-- Speculation Rules (hover prefetch) -->
-    <script type="speculationrules">
-      {
-        "prefetch": [
+    <script
+      type="speculationrules"
+      is:inline
+      set:html={JSON.stringify({
+        prefetch: [
           {
-            "source": "document",
-            "where": { "selector_matches": "a[data-prefetch]" },
-            "eagerness": "moderate"
-          }
-        ]
-      }
-    </script>
+            source: 'document',
+            where: { selector_matches: 'a[data-prefetch]' },
+            eagerness: 'moderate',
+          },
+        ],
+      })}
+    />
 
     <!-- Prevent theme flash (sets .dark before first paint) -->
     <script is:inline>
