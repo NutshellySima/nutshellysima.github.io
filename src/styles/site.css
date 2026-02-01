@@ -133,6 +133,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scrollbar-gutter: stable;
+  color-scheme: light dark;
+  scrollbar-color: var(--amber-500) transparent;
 }
 
 body {
@@ -140,6 +142,46 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.5s var(--ease-smooth), color 0.5s var(--ease-smooth);
+}
+
+/* ===== View Transitions (Theme + Anchors) ===== */
+:root {
+  --vt-x: 50%;
+  --vt-y: 50%;
+}
+
+@supports (view-transition-name: root) {
+  html {
+    view-transition-name: root;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  .theme-transition::view-transition-new(root) {
+    animation: theme-reveal 520ms var(--ease-out-expo);
+  }
+
+  .theme-transition::view-transition-old(root) {
+    animation: theme-fade 520ms var(--ease-out-expo);
+  }
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--vt-x) var(--vt-y));
+  }
+  to {
+    clip-path: circle(150% at var(--vt-x) var(--vt-y));
+  }
+}
+
+@keyframes theme-fade {
+  from { opacity: 1; }
+  to { opacity: 0.6; }
 }
 
 /* Section anchors with navbar offset */
@@ -490,6 +532,22 @@ section[id] {
   box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
 }
 
+@supports (animation-timeline: scroll()) {
+  #scroll-progress {
+    animation: scroll-progress linear both;
+    animation-timeline: scroll();
+  }
+
+  @keyframes scroll-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
 @keyframes progress-glow {
   0% { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
@@ -685,11 +743,11 @@ details > summary::-webkit-details-marker {
 }
 
 details[open] {
-  background: rgba(245, 158, 11, 0.03);
+  background: transparent;
 }
 
 .dark details[open] {
-  background: rgba(251, 191, 36, 0.05);
+  background: transparent;
 }
 
 /* ===== Focus Styles ===== */
@@ -807,6 +865,31 @@ details[open] {
   }
 }
 
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  body {
+    color: var(--text-primary);
+  }
+
+  .glass,
+  .glass-card,
+  .card-glow,
+  .pwa-toast {
+    border-color: rgba(148, 163, 184, 0.6);
+  }
+
+  .focus-ring:focus-visible {
+    outline-width: 3px;
+  }
+}
+
 @media (prefers-reduced-data: reduce) {
   .gradient-bg,
   .mesh-gradient::before {
@@ -921,6 +1004,30 @@ details[open] {
   contain-intrinsic-size: 1px 900px;
 }
 
+/* ===== Lightweight Toast ===== */
+.site-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translate(-50%, 16px);
+  z-index: 90;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.35);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(12px);
+}
+
+.site-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 /* ===== PWA Toast ===== */
 .pwa-toast {
   position: fixed;
@@ -988,6 +1095,10 @@ details[open] {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .site-toast {
+    transition: none;
+  }
+
   .pwa-toast {
     transition: none;
   }
