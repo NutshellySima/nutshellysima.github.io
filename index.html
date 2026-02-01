@@ -4,25 +4,50 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+    <!-- DNS prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="avatar.jpg" as="image" type="image/jpeg" fetchpriority="high">
+    <link rel="preload" href="assets/css/site.css" as="style">
+
     <title>Chijun Sima | Efficient ML Systems</title>
     <meta name="description" content="Chijun Sima — ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko).">
     <meta name="keywords" content="Chijun Sima, MLSys, Machine Learning Systems, Model Freshness, Recommender Systems, Deep Learning, Systems for ML, Efficient AI, Tencent, WeChat, OSDI, Ekko, LLM Serving, LLVM">
     <meta name="author" content="Chijun Sima">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="format-detection" content="telephone=no">
     <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#f59e0b" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://www.chijunsima.com/">
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="profile">
     <meta property="og:url" content="https://www.chijunsima.com/">
     <meta property="og:title" content="Chijun Sima | Efficient ML Systems">
     <meta property="og:description" content="ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko).">
     <meta property="og:image" content="https://www.chijunsima.com/avatar.jpg">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
     <meta property="og:image:alt" content="Portrait of Chijun Sima">
     <meta property="og:site_name" content="Chijun Sima">
     <meta property="og:locale" content="en_US">
+    <meta property="profile:first_name" content="Chijun">
+    <meta property="profile:last_name" content="Sima">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -34,20 +59,14 @@
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="mask-icon" href="/favicon.svg" color="#f59e0b">
+    <link rel="apple-touch-icon" href="/favicon.svg">
 
     <!-- Google Fonts - Inter + JetBrains Mono + Space Grotesk -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <meta name="theme-color" content="#6366f1" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
 
     <!-- Prevent theme flash (sets .dark before first paint) -->
     <script>
@@ -64,54 +83,74 @@
         })();
     </script>
 
-    <!-- Tailwind Config -->
+    <!-- Tailwind Config - Warm Amber + Deep Teal Theme -->
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
                         display: ['Space Grotesk', 'system-ui', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
                         primary: {
-                            50: '#f0f4ff',
-                            100: '#e0e9ff',
-                            200: '#c7d6fe',
-                            300: '#a4b8fc',
-                            400: '#8093f8',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            800: '#3730a3',
-                            900: '#312e81',
-                            950: '#1e1b4b',
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                            950: '#451a03',
+                        },
+                        secondary: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                            950: '#042f2e',
                         },
                         accent: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            200: '#a7f3d0',
-                            300: '#6ee7b7',
-                            400: '#34d399',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                            800: '#065f46',
-                            900: '#064e3b',
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
                         },
-                        cyber: {
-                            blue: '#00d4ff',
-                            purple: '#a855f7',
-                            pink: '#ec4899',
-                            green: '#22c55e',
-                        }
+                        neutral: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                            950: '#0c0a09',
+                        },
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'glow': 'glow 2s ease-in-out infinite alternate',
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
                     },
                     keyframes: {
                         float: {
@@ -119,10 +158,18 @@
                             '50%': { transform: 'translateY(-20px)' },
                         },
                         glow: {
-                            '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
-                            '100%': { boxShadow: '0 0 40px rgba(168, 85, 247, 0.5)' },
-                        }
-                    }
+                            '0%': { boxShadow: '0 0 20px rgba(245, 158, 11, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(20, 184, 166, 0.4)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
                 },
             },
         }
@@ -133,24 +180,60 @@
     {
         "@context": "https://schema.org",
         "@type": "Person",
+        "@id": "https://www.chijunsima.com/#person",
         "name": "Chijun Sima",
         "url": "https://www.chijunsima.com",
-        "image": "https://www.chijunsima.com/avatar.jpg",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.chijunsima.com/avatar.jpg",
+            "width": 400,
+            "height": 400
+        },
         "jobTitle": "Senior Software Development Engineer",
         "worksFor": {
             "@type": "Organization",
-            "name": "Tencent (WeChat)"
+            "name": "Tencent (WeChat)",
+            "url": "https://www.tencent.com"
         },
         "alumniOf": {
             "@type": "CollegeOrUniversity",
             "name": "South China University of Technology"
         },
-        "knowsAbout": ["Machine Learning Systems", "MLSys", "Efficient AI", "Model Freshness", "Recommender Systems", "Deep Learning", "LLM Serving", "LLVM", "Compilers"],
+        "knowsAbout": [
+            "Machine Learning Systems",
+            "MLSys",
+            "Efficient AI",
+            "Model Freshness",
+            "Recommender Systems",
+            "Deep Learning",
+            "LLM Serving",
+            "LLVM",
+            "Compilers"
+        ],
         "sameAs": [
             "https://www.linkedin.com/in/chijun-sima/",
             "https://github.com/NutshellySima",
             "https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en"
-        ]
+        ],
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.chijunsima.com/"
+        }
+    }
+    </script>
+
+    <!-- Website structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://www.chijunsima.com/",
+        "name": "Chijun Sima - Efficient ML Systems",
+        "description": "Personal website of Chijun Sima, ML systems engineer at Tencent WeChat",
+        "author": {
+            "@type": "Person",
+            "@id": "https://www.chijunsima.com/#person"
+        }
     }
     </script>
 
@@ -175,54 +258,54 @@
     <link rel="stylesheet" href="assets/css/site.css">
 </head>
 
-<body id="top" class="font-sans antialiased text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
-    <!-- Skip Link -->
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg">
+<body id="top" class="font-sans antialiased text-neutral-800 dark:text-neutral-200 bg-neutral-50 dark:bg-neutral-950 transition-colors duration-500">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main" class="skip-link">
         Skip to main content
     </a>
 
     <!-- Scroll Progress -->
-    <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-1 z-[60] no-print"></div>
+    <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-1 z-[60] no-print" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 no-print transition-transform duration-300" aria-label="Primary">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 no-print transition-transform duration-300" aria-label="Primary navigation">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div id="nav-container" class="glass rounded-2xl mt-4 px-4 sm:px-6 py-3 transition-all duration-300 relative">
                 <div class="flex items-center justify-between">
                     <!-- Logo -->
-                    <a href="#top" class="flex items-center gap-3 group">
-                        <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden shimmer">
+                    <a href="#top" class="flex items-center gap-3 group" aria-label="Chijun Sima - Home">
+                        <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500 via-secondary-500 to-accent-500 flex items-center justify-center text-white font-bold text-sm shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden shimmer">
                             <span class="relative z-10">CS</span>
-                            <div class="absolute inset-0 bg-gradient-to-br from-primary-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary-600 via-secondary-600 to-accent-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                         <div class="hidden sm:block">
                             <span class="font-display font-semibold text-lg block leading-tight">Chijun Sima</span>
-                            <span class="text-xs text-slate-500 dark:text-slate-400">Efficient ML Systems</span>
+                            <span class="text-xs text-neutral-500 dark:text-neutral-400">Efficient ML Systems</span>
                         </div>
                     </a>
 
                     <!-- Desktop Nav -->
                     <div class="hidden lg:flex items-center gap-1">
-                        <a href="#about" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Overview</a>
-                        <a href="#research" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Research</a>
-                        <a href="#ekko" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Ekko</a>
-                        <a href="#work" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Work</a>
-                        <a href="#publications" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Publications</a>
-                        <a href="#service" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Service</a>
+                        <a href="#about" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Overview</a>
+                        <a href="#research" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Research</a>
+                        <a href="#ekko" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Ekko</a>
+                        <a href="#work" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Work</a>
+                        <a href="#publications" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Publications</a>
+                        <a href="#service" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200">Service</a>
                     </div>
 
                     <!-- Actions -->
                     <div class="flex items-center gap-2">
                         <!-- Theme Toggle -->
-                        <button id="theme-toggle" class="relative p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 focus-ring overflow-hidden group" aria-label="Toggle theme">
-                            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/0 to-purple-500/0 group-hover:from-primary-500/10 group-hover:to-purple-500/10 transition-all duration-300 rounded-xl"></div>
-                            <i data-lucide="sun" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 text-amber-500"></i>
-                            <i data-lucide="moon" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-indigo-400"></i>
-                            <span class="w-5 h-5 block opacity-0">.</span>
+                        <button id="theme-toggle" class="relative p-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus-ring overflow-hidden group" aria-label="Toggle dark mode" aria-pressed="false">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/0 to-secondary-500/0 group-hover:from-primary-500/10 group-hover:to-secondary-500/10 transition-all duration-300 rounded-xl"></div>
+                            <i data-lucide="sun" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 text-primary-500"></i>
+                            <i data-lucide="moon" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-secondary-400"></i>
+                            <span class="w-5 h-5 block opacity-0" aria-hidden="true">.</span>
                         </button>
 
                         <!-- Mobile Menu Button -->
-                        <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-ring" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
+                        <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus-ring" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
                             <i data-lucide="menu" class="w-5 h-5 menu-icon"></i>
                             <i data-lucide="x" class="w-5 h-5 close-icon hidden"></i>
                         </button>
@@ -232,23 +315,23 @@
                 <!-- Mobile Nav -->
                 <div id="mobile-menu" class="hidden lg:hidden absolute left-0 right-0 top-full mt-3 rounded-2xl glass shadow-2xl p-4" hidden>
                     <div class="grid grid-cols-2 gap-2">
-                        <a href="#about" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                        <a href="#about" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
                             <i data-lucide="user" class="w-4 h-4 text-primary-500"></i> Overview
                         </a>
-                        <a href="#research" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="flask-conical" class="w-4 h-4 text-purple-500"></i> Research
+                        <a href="#research" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="flask-conical" class="w-4 h-4 text-secondary-500"></i> Research
                         </a>
-                        <a href="#ekko" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="activity" class="w-4 h-4 text-rose-500"></i> Ekko
+                        <a href="#ekko" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="activity" class="w-4 h-4 text-accent-500"></i> Ekko
                         </a>
-                        <a href="#work" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="briefcase" class="w-4 h-4 text-amber-500"></i> Work
+                        <a href="#work" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="briefcase" class="w-4 h-4 text-primary-500"></i> Work
                         </a>
-                        <a href="#publications" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="book-open" class="w-4 h-4 text-red-500"></i> Publications
+                        <a href="#publications" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="book-open" class="w-4 h-4 text-secondary-500"></i> Publications
                         </a>
-                        <a href="#service" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="users" class="w-4 h-4 text-green-500"></i> Service
+                        <a href="#service" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
+                            <i data-lucide="users" class="w-4 h-4 text-accent-500"></i> Service
                         </a>
                     </div>
                 </div>
@@ -258,69 +341,69 @@
 
     <main id="main" tabindex="-1">
         <!-- ===== Hero / About ===== -->
-        <section id="about" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 gradient-bg mesh-gradient noise overflow-hidden">
+        <section id="about" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 gradient-bg mesh-gradient noise overflow-hidden" aria-labelledby="hero-heading">
             <!-- Floating Orbs -->
-            <div class="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-float" aria-hidden="true"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-secondary-500/15 rounded-full blur-3xl animate-float" style="animation-delay: -3s;" aria-hidden="true"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-500/10 rounded-full blur-3xl animate-pulse-slow" aria-hidden="true"></div>
 
             <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
                 <div class="reveal">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8 sm:gap-12">
                         <div class="order-2 sm:order-1">
-                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-sm text-slate-600 dark:text-slate-400 mb-4">
-                                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+                                <span class="w-2 h-2 rounded-full bg-secondary-500 animate-pulse" aria-hidden="true"></span>
                                 Available for collaboration
                             </div>
 
-                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.05] mb-2">
+                            <h1 id="hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.05] mb-2 text-balance">
                                 Chijun Sima
                             </h1>
 
-                            <p class="text-xl sm:text-2xl text-slate-600 dark:text-slate-400 font-light mb-6">
-                                I build <span class="font-semibold text-slate-800 dark:text-slate-200 gradient-text">efficient ML systems</span> for large-scale production
+                            <p class="text-xl sm:text-2xl text-neutral-600 dark:text-neutral-400 font-light mb-6 text-balance">
+                                I build <span class="font-semibold text-neutral-800 dark:text-neutral-200 gradient-text">efficient ML systems</span> for large-scale production
                             </p>
 
-                            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mb-6">
+                            <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl mb-6">
                                 Keeping models fresh under tight latency/cost constraints, and turning research ideas into deployable systems.
                             </p>
 
                             <div class="flex flex-wrap gap-2 text-sm mb-8">
-                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-300 hover:border-primary-400 dark:hover:border-primary-500 transition-colors cursor-default">Senior SDE · Tencent (WeChat)</span>
-                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-300 hover:border-primary-400 dark:hover:border-primary-500 transition-colors cursor-default">OSDI '22 (co-first author)</span>
-                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-300 hover:border-primary-400 dark:hover:border-primary-500 transition-colors cursor-default">LLVM developer (commit access)</span>
-                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-300 hover:border-primary-400 dark:hover:border-primary-500 transition-colors cursor-default">B.Eng. CS · SCUT (Rank 1/28)</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 text-neutral-700 dark:text-neutral-300 hover:border-primary-400 dark:hover:border-primary-500 transition-colors cursor-default">Senior SDE · Tencent (WeChat)</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 text-neutral-700 dark:text-neutral-300 hover:border-primary-400 dark:hover:border-primary-500 transition-colors cursor-default">OSDI '22 (co-first author)</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 text-neutral-700 dark:text-neutral-300 hover:border-primary-400 dark:hover:border-primary-500 transition-colors cursor-default">LLVM developer (commit access)</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 text-neutral-700 dark:text-neutral-300 hover:border-primary-400 dark:hover:border-primary-500 transition-colors cursor-default">B.Eng. CS · SCUT (Rank 1/28)</span>
                             </div>
 
                             <div class="flex flex-wrap gap-3 mb-6">
-                                <a href="#research" class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 via-purple-600 to-pink-600 text-white font-medium shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/40 transition-all focus-ring group">
+                                <a href="#research" class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 via-secondary-600 to-accent-600 text-white font-medium shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/40 transition-all focus-ring group">
                                     <i data-lucide="flask-conical" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
                                     Research focus
                                 </a>
-                                <a href="#ekko" class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-slate-900/70 text-slate-800 dark:text-slate-200 font-medium shadow-lg hover:shadow-xl transition-all border border-slate-200/70 dark:border-slate-700/60 focus-ring group">
+                                <a href="#ekko" class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-neutral-900/70 text-neutral-800 dark:text-neutral-200 font-medium shadow-lg hover:shadow-xl transition-all border border-neutral-200/70 dark:border-neutral-700/60 focus-ring group">
                                     <i data-lucide="activity" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                                     Ekko explained
                                 </a>
-                                <a href="/cv.pdf" class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-slate-900/70 text-slate-800 dark:text-slate-200 font-medium shadow-lg hover:shadow-xl transition-all border border-slate-200/70 dark:border-slate-700/60 focus-ring group">
+                                <a href="/cv.pdf" class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-neutral-900/70 text-neutral-800 dark:text-neutral-200 font-medium shadow-lg hover:shadow-xl transition-all border border-neutral-200/70 dark:border-neutral-700/60 focus-ring group">
                                     <i data-lucide="file-text" class="w-5 h-5 group-hover:translate-y-0.5 transition-transform"></i>
                                     CV (PDF)
                                 </a>
                             </div>
 
                             <div class="flex flex-wrap items-center gap-3 text-sm">
-                                <a href="mailto:simachijun@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 hover:bg-white dark:hover:bg-slate-900 hover:border-primary-300 dark:hover:border-primary-700 transition-all focus-ring group">
+                                <a href="mailto:simachijun@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 hover:bg-white dark:hover:bg-neutral-900 hover:border-primary-300 dark:hover:border-primary-700 transition-all focus-ring group">
                                     <i data-lucide="mail" class="w-4 h-4 text-primary-600 group-hover:scale-110 transition-transform"></i>
                                     Email
                                 </a>
-                                <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 hover:bg-white dark:hover:bg-slate-900 hover:border-slate-400 dark:hover:border-slate-600 transition-all focus-ring group">
+                                <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 hover:bg-white dark:hover:bg-neutral-900 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all focus-ring group">
                                     <i data-lucide="github" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
                                     GitHub
                                 </a>
-                                <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 hover:bg-white dark:hover:bg-slate-900 hover:border-[#0077b5]/50 transition-all focus-ring group">
+                                <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 hover:bg-white dark:hover:bg-neutral-900 hover:border-[#0077b5]/50 transition-all focus-ring group">
                                     <i data-lucide="linkedin" class="w-4 h-4 text-[#0077b5] group-hover:scale-110 transition-transform"></i>
                                     LinkedIn
                                 </a>
-                                <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 hover:bg-white dark:hover:bg-slate-900 hover:border-[#4285f4]/50 transition-all focus-ring group">
+                                <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 hover:bg-white dark:hover:bg-neutral-900 hover:border-[#4285f4]/50 transition-all focus-ring group">
                                     <i data-lucide="graduation-cap" class="w-4 h-4 text-[#4285f4] group-hover:scale-110 transition-transform"></i>
                                     Scholar
                                 </a>
@@ -330,10 +413,10 @@
                         <div class="order-1 sm:order-2 flex-shrink-0">
                             <div class="relative">
                                 <div class="avatar-glow">
-                                    <img src="avatar.jpg" alt="Chijun Sima" width="208" height="208" decoding="async" fetchpriority="high" class="w-44 h-44 sm:w-56 sm:h-56 object-cover rounded-3xl shadow-2xl ring-4 ring-white dark:ring-slate-800 mx-auto sm:mx-0" loading="eager">
+                                    <img src="avatar.jpg" alt="Chijun Sima" width="208" height="208" decoding="async" fetchpriority="high" class="w-44 h-44 sm:w-56 sm:h-56 object-cover rounded-3xl shadow-2xl ring-4 ring-white dark:ring-neutral-800 mx-auto sm:mx-0" loading="eager">
                                 </div>
                                 <div class="mt-4 flex justify-center sm:justify-start">
-                                    <div class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-sm glass">
+                                    <div class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 text-sm glass">
                                         <i data-lucide="map-pin" class="w-4 h-4 text-primary-600"></i>
                                         Guangzhou, China
                                     </div>
@@ -345,66 +428,66 @@
             </div>
 
             <!-- Scroll Indicator -->
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-slate-400 dark:text-slate-500 animate-bounce">
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-neutral-400 dark:text-neutral-500 animate-bounce" aria-hidden="true">
                 <span class="text-xs">Scroll</span>
                 <i data-lucide="chevron-down" class="w-5 h-5"></i>
             </div>
         </section>
 
         <!-- ===== Research Focus ===== -->
-        <section id="research" class="py-20 lg:py-28 bg-white dark:bg-slate-900 relative overflow-hidden">
-            <div class="absolute inset-0 grid-pattern"></div>
+        <section id="research" class="py-20 lg:py-28 bg-white dark:bg-neutral-900 relative overflow-hidden" aria-labelledby="research-heading">
+            <div class="absolute inset-0 grid-pattern" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
                     <div class="text-center mb-16">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium mb-4 badge-pulse">
+                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-100 dark:bg-secondary-900/30 text-secondary-700 dark:text-secondary-300 text-sm font-medium mb-4 badge-pulse">
                             <i data-lucide="flask-conical" class="w-4 h-4"></i>
                             Research
                         </span>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">Research focus</h2>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-                            I'm interested in system–algorithm co-design that makes large-scale learning <span class="font-semibold text-slate-800 dark:text-slate-200">technically and economically feasible</span> in production.
+                        <h2 id="research-heading" class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-balance">Research focus</h2>
+                        <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+                            I'm interested in system–algorithm co-design that makes large-scale learning <span class="font-semibold text-neutral-800 dark:text-neutral-200">technically and economically feasible</span> in production.
                         </p>
                     </div>
 
                     <div class="grid lg:grid-cols-3 gap-6 stagger">
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 group">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-primary-500/20 group-hover:scale-110 transition-transform duration-300">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 group">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center mb-6 shadow-lg shadow-primary-500/20 group-hover:scale-110 transition-transform duration-300">
                                 <i data-lucide="zap" class="w-7 h-7 text-white"></i>
                             </div>
                             <h3 class="text-xl font-display font-bold mb-3">Model freshness at scale</h3>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
                                 When scaling improves offline accuracy but harms online metrics, I look for "systems bottlenecks that become ML failure modes" (e.g., stale models from slow update pipelines).
                             </p>
-                        </div>
+                        </article>
 
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 group">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform duration-300">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 group">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary-500 to-primary-500 flex items-center justify-center mb-6 shadow-lg shadow-secondary-500/20 group-hover:scale-110 transition-transform duration-300">
                                 <i data-lucide="database" class="w-7 h-7 text-white"></i>
                             </div>
                             <h3 class="text-xl font-display font-bold mb-3">Low-cost data / feature pipelines</h3>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Safe and scalable data engineering for training: isolation without heavyweight process boundaries, and locality-aware execution near data to reduce data movement. Modern feature pipelines are long and increasingly multimodal. The shift toward <span class="font-semibold text-slate-800 dark:text-slate-200">multimodal</span> inputs pushes pipeline design toward safe, expressive composition.
+                            <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                Safe and scalable data engineering for training: isolation without heavyweight process boundaries, and locality-aware execution near data to reduce data movement. Modern feature pipelines are long and increasingly multimodal. The shift toward <span class="font-semibold text-neutral-800 dark:text-neutral-200">multimodal</span> inputs pushes pipeline design toward safe, expressive composition.
                             </p>
-                        </div>
+                        </article>
 
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 group">
-                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center mb-6 shadow-lg shadow-amber-500/20 group-hover:scale-110 transition-transform duration-300">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 group">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent-500 to-primary-500 flex items-center justify-center mb-6 shadow-lg shadow-accent-500/20 group-hover:scale-110 transition-transform duration-300">
                                 <i data-lucide="server" class="w-7 h-7 text-white"></i>
                             </div>
                             <h3 class="text-xl font-display font-bold mb-3">Efficient serving</h3>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                            <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
                                 Cost-effective serving mechanisms (including LLM serving), where latency SLOs, memory bandwidth, and infrastructure costs interact with model behavior.
                             </p>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ===== Selected Work ===== -->
-        <section id="work" class="py-20 lg:py-28 bg-slate-50 dark:bg-slate-800/30 relative overflow-hidden">
-            <div class="absolute inset-0 dot-pattern"></div>
+        <section id="work" class="py-20 lg:py-28 bg-neutral-50 dark:bg-neutral-800/30 relative overflow-hidden" aria-labelledby="work-heading">
+            <div class="absolute inset-0 dot-pattern" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
                     <div class="text-center mb-16">
@@ -412,40 +495,40 @@
                             <i data-lucide="briefcase" class="w-4 h-4"></i>
                             Selected work
                         </span>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">Selected work</h2>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+                        <h2 id="work-heading" class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-balance">Selected work</h2>
+                        <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
                             Systems I've built to make large models practical in production: freshness, cost, reliability, and performance.
                         </p>
                     </div>
 
                     <div class="grid lg:grid-cols-3 gap-6 stagger" id="work-cards">
                         <!-- Ekko Card -->
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 group">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 group">
                             <div class="flex items-start gap-4 mb-6">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center shadow-lg shadow-primary-500/25 group-hover:scale-110 transition-transform duration-300">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-lg shadow-primary-500/25 group-hover:scale-110 transition-transform duration-300">
                                     <i data-lucide="activity" class="w-7 h-7 text-white"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-display font-bold">Ekko (WeChat recsys)</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Low-latency model updates at extreme scale</p>
+                                    <p class="text-sm text-neutral-500 dark:text-neutral-400">Low-latency model updates at extreme scale</p>
                                 </div>
                             </div>
-                            <ul class="space-y-3 text-slate-600 dark:text-slate-400 mb-6">
+                            <ul class="space-y-3 text-neutral-600 dark:text-neutral-400 mb-6">
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
                                     <span>Compressed dissemination + model-aware scheduling (WAN -92%)</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
                                     <span>SLO-aware placement (machine cost -49%) + safe rollback</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
                                     <span>Second-level freshness (2.4s) for multi-terabyte models</span>
                                 </li>
                             </ul>
-                            <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-700">
-                                <span class="px-3 py-1.5 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 font-medium text-sm">OSDI '22</span>
+                            <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-neutral-100 dark:border-neutral-700">
+                                <span class="px-3 py-1.5 rounded-lg bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 font-medium text-sm">OSDI '22</span>
                                 <a href="#ekko" class="inline-flex items-center gap-1.5 text-primary-600 dark:text-primary-400 hover:underline font-medium text-sm group/link">
                                     Explainer <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
                                 </a>
@@ -453,51 +536,51 @@
                                     Paper <i data-lucide="external-link" class="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
                                 </a>
                             </div>
-                        </div>
+                        </article>
 
                         <!-- Data Platform Card -->
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 group">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 group">
                             <div class="flex items-start gap-4 mb-6">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition-transform duration-300">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary-500 to-primary-500 flex items-center justify-center shadow-lg shadow-secondary-500/25 group-hover:scale-110 transition-transform duration-300">
                                     <i data-lucide="shield" class="w-7 h-7 text-white"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-display font-bold">Data / feature platform</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Safe, scalable pipelines for training data</p>
+                                    <p class="text-sm text-neutral-500 dark:text-neutral-400">Safe, scalable pipelines for training data</p>
                                 </div>
                             </div>
-                            <ul class="space-y-3 text-slate-600 dark:text-slate-400 mb-6">
+                            <ul class="space-y-3 text-neutral-600 dark:text-neutral-400 mb-6">
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
                                     <span>WebAssembly runtime for in-process isolation</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
                                     <span>Locality-aware operator placement near data sources</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"></i>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
                                     <span>Reduced data movement up to 1,200x on representative workloads</span>
                                 </li>
                             </ul>
-                            <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-700">
-                                <span class="px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-medium text-xs">WASM</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium text-xs">Data systems</span>
+                            <div class="flex flex-wrap gap-2 pt-4 border-t border-neutral-100 dark:border-neutral-700">
+                                <span class="px-2.5 py-1 rounded-lg bg-secondary-100 dark:bg-secondary-900/30 text-secondary-700 dark:text-secondary-300 font-medium text-xs">WASM</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium text-xs">Data systems</span>
                             </div>
-                        </div>
+                        </article>
 
                         <!-- LLVM Card -->
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 group">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 group">
                             <div class="flex items-start gap-4 mb-6">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-neutral-700 to-neutral-900 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                                     <i data-lucide="code-2" class="w-7 h-7 text-white"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-display font-bold">LLVM</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Compiler infrastructure contributions</p>
+                                    <p class="text-sm text-neutral-500 dark:text-neutral-400">Compiler infrastructure contributions</p>
                                 </div>
                             </div>
-                            <ul class="space-y-3 text-slate-600 dark:text-slate-400 mb-6">
+                            <ul class="space-y-3 text-neutral-600 dark:text-neutral-400 mb-6">
                                 <li class="flex items-start gap-3">
                                     <i data-lucide="git-commit" class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"></i>
                                     <span>Improved Semi-NCA & optimization pipeline (LLVM 9.0), speedups up to 1980x</span>
@@ -507,93 +590,93 @@
                                     <span>Unified dominator-tree update APIs (LLVM 7.0)</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="award" class="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                    <i data-lucide="award" class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"></i>
                                     <span>Google Summer of Code 2018 (LLVM)</span>
                                 </li>
                             </ul>
-                            <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-700">
-                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium text-xs">C++</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium text-xs">Compilers</span>
+                            <div class="flex flex-wrap gap-2 pt-4 border-t border-neutral-100 dark:border-neutral-700">
+                                <span class="px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium text-xs">C++</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium text-xs">Compilers</span>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ===== Ekko Explained ===== -->
-        <section id="ekko" class="py-24 lg:py-32 bg-white dark:bg-slate-900 relative overflow-hidden">
-            <div class="absolute inset-0 mesh-gradient opacity-70"></div>
+        <section id="ekko" class="py-24 lg:py-32 bg-white dark:bg-neutral-900 relative overflow-hidden" aria-labelledby="ekko-heading">
+            <div class="absolute inset-0 mesh-gradient opacity-70" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
                     <div class="text-center mb-16">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-medium mb-4 badge-pulse">
+                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-sm font-medium mb-4 badge-pulse">
                             <i data-lucide="activity" class="w-4 h-4"></i>
                             Ekko
                         </span>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">Ekko, explained</h2>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-4xl mx-auto">
-                            Ekko is a production system for <span class="font-semibold text-slate-800 dark:text-slate-200">low-latency model updates</span> in large-scale deep learning recommender systems. It's motivated by a common scaling failure: bigger models can improve offline metrics yet degrade online outcomes when update pipelines can't keep up.
+                        <h2 id="ekko-heading" class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-balance">Ekko, explained</h2>
+                        <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-4xl mx-auto">
+                            Ekko is a production system for <span class="font-semibold text-neutral-800 dark:text-neutral-200">low-latency model updates</span> in large-scale deep learning recommender systems. It's motivated by a common scaling failure: bigger models can improve offline metrics yet degrade online outcomes when update pipelines can't keep up.
                         </p>
                     </div>
 
                     <div class="grid lg:grid-cols-2 gap-6 stagger mb-8">
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700">
                             <h3 class="text-xl font-display font-bold mb-4 flex items-center gap-2">
                                 <i data-lucide="help-circle" class="w-6 h-6 text-primary-500"></i>
                                 Problem - research question
                             </h3>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                                When we scaled DLRMs, offline accuracy improved, but online engagement regressed. The root cause was <span class="font-semibold text-slate-800 dark:text-slate-200">stale models</span>: pre-scaling infrastructure couldn't propagate updates quickly enough.
+                            <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+                                When we scaled DLRMs, offline accuracy improved, but online engagement regressed. The root cause was <span class="font-semibold text-neutral-800 dark:text-neutral-200">stale models</span>: pre-scaling infrastructure couldn't propagate updates quickly enough.
                             </p>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                The question became: <span class="font-semibold text-slate-800 dark:text-slate-200">how can we keep update latency low as models scale to extreme size?</span>
+                            <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                The question became: <span class="font-semibold text-neutral-800 dark:text-neutral-200">how can we keep update latency low as models scale to extreme size?</span>
                             </p>
-                        </div>
+                        </article>
 
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700">
                             <h3 class="text-xl font-display font-bold mb-4 flex items-center gap-2">
-                                <i data-lucide="lightbulb" class="w-6 h-6 text-amber-500"></i>
+                                <i data-lucide="lightbulb" class="w-6 h-6 text-primary-500"></i>
                                 Design highlights
                             </h3>
-                            <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                            <ul class="space-y-4 text-neutral-600 dark:text-neutral-400">
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"></i>
-                                    <span><span class="font-semibold text-slate-800 dark:text-slate-200">Update dissemination + scheduling:</span> compress updates and prioritize synchronization using model/gradient signals (WAN bandwidth -92%).</span>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
+                                    <span><span class="font-semibold text-neutral-800 dark:text-neutral-200">Update dissemination + scheduling:</span> compress updates and prioritize synchronization using model/gradient signals (WAN bandwidth -92%).</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"></i>
-                                    <span><span class="font-semibold text-slate-800 dark:text-slate-200">SLO-aware placement:</span> optimization-based shard management to co-locate models without overloading inference engines (machine cost -49%).</span>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
+                                    <span><span class="font-semibold text-neutral-800 dark:text-neutral-200">SLO-aware placement:</span> optimization-based shard management to co-locate models without overloading inference engines (machine cost -49%).</span>
                                 </li>
                                 <li class="flex items-start gap-3">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"></i>
-                                    <span><span class="font-semibold text-slate-800 dark:text-slate-200">Safe rollout:</span> model-state management to roll back harmful updates in seconds.</span>
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
+                                    <span><span class="font-semibold text-neutral-800 dark:text-neutral-200">Safe rollout:</span> model-state management to roll back harmful updates in seconds.</span>
                                 </li>
                             </ul>
-                        </div>
+                        </article>
                     </div>
 
-                    <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 mb-8">
+                    <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 mb-8">
                         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                             <div>
                                 <h3 class="text-xl font-display font-bold mb-3 flex items-center gap-2">
-                                    <i data-lucide="trending-up" class="w-6 h-6 text-green-500"></i>
+                                    <i data-lucide="trending-up" class="w-6 h-6 text-secondary-500"></i>
                                     Production outcomes (selected)
                                 </h3>
-                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                    In production iterations, Ekko-style mechanisms supported very large-scale deployment while maintaining <span class="font-semibold text-slate-800 dark:text-slate-200">second-level freshness</span> (reported 2.4s model-update latency) and serving over a billion users daily.
+                                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                    In production iterations, Ekko-style mechanisms supported very large-scale deployment while maintaining <span class="font-semibold text-neutral-800 dark:text-neutral-200">second-level freshness</span> (reported 2.4s model-update latency) and serving over a billion users daily.
                                 </p>
                             </div>
                             <div class="flex flex-wrap gap-2 text-sm">
-                                <span class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium">2.4s update latency</span>
-                                <span class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium">10,000x model-size scaling</span>
-                                <span class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium">WAN -92%</span>
-                                <span class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium">cost -49%</span>
+                                <span class="px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium">2.4s update latency</span>
+                                <span class="px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium">10,000x model-size scaling</span>
+                                <span class="px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium">WAN -92%</span>
+                                <span class="px-4 py-2 rounded-full bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium">cost -49%</span>
                             </div>
                         </div>
 
-                        <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-700 flex flex-wrap items-center gap-3 text-sm">
-                            <span class="px-3 py-1.5 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 font-medium">OSDI '22 (co-first)</span>
+                        <div class="mt-6 pt-6 border-t border-neutral-100 dark:border-neutral-700 flex flex-wrap items-center gap-3 text-sm">
+                            <span class="px-3 py-1.5 rounded-lg bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 font-medium">OSDI '22 (co-first)</span>
                             <a href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-primary-600 dark:text-primary-400 hover:underline font-medium group/link">
                                 Paper <i data-lucide="external-link" class="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
                             </a>
@@ -604,59 +687,59 @@
                                 Tencent engineering write-up <i data-lucide="external-link" class="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
                             </a>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
+                    <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700">
                         <details class="group">
                             <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center shadow-lg">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-lg">
                                         <i data-lucide="quote" class="w-6 h-6 text-white"></i>
                                     </div>
                                     <span class="font-display font-semibold text-lg">Industry impact</span>
                                 </div>
-                                <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center group-hover:bg-primary-100 dark:group-hover:bg-primary-900/30 transition-colors">
-                                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform"></i>
+                                <div class="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-700 flex items-center justify-center group-hover:bg-primary-100 dark:group-hover:bg-primary-900/30 transition-colors">
+                                    <i data-lucide="chevron-down" class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform"></i>
                                 </div>
                             </summary>
-                            <div class="mt-6 text-slate-600 dark:text-slate-400 leading-relaxed space-y-4 pl-[60px]">
+                            <div class="mt-6 text-neutral-600 dark:text-neutral-400 leading-relaxed space-y-4 pl-[60px]">
                                 <p>
                                     After rollout of Ekko-based recommendation infrastructure, a public WeChat engineering blog reports growth metrics (e.g., "+40% DAU" and "+87% total VV" over six months) alongside product iteration and operations.
                                 </p>
                                 <p>
-                                    What I consider the core research contribution is showing that <span class="font-semibold text-slate-800 dark:text-slate-200">model-aware mechanisms</span> can make second-level freshness feasible even at multi-terabyte scale.
+                                    What I consider the core research contribution is showing that <span class="font-semibold text-neutral-800 dark:text-neutral-200">model-aware mechanisms</span> can make second-level freshness feasible even at multi-terabyte scale.
                                 </p>
                             </div>
                         </details>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- ===== Publications ===== -->
-        <section id="publications" class="py-24 lg:py-32 bg-slate-50 dark:bg-slate-800/30 relative overflow-hidden">
-            <div class="absolute inset-0 grid-pattern"></div>
+        <section id="publications" class="py-24 lg:py-32 bg-neutral-50 dark:bg-neutral-800/30 relative overflow-hidden" aria-labelledby="publications-heading">
+            <div class="absolute inset-0 grid-pattern" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
                     <div class="text-center mb-16">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-medium mb-4 badge-pulse">
+                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-sm font-medium mb-4 badge-pulse">
                             <i data-lucide="book-open" class="w-4 h-4"></i>
                             Publications
                         </span>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">Selected Publications</h2>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">If you prefer a full list, see my Google Scholar.</p>
+                        <h2 id="publications-heading" class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-balance">Selected Publications</h2>
+                        <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">If you prefer a full list, see my Google Scholar.</p>
                     </div>
 
                     <div class="space-y-6 max-w-4xl mx-auto stagger" id="publications-list">
                         <!-- OSDI Paper -->
-                        <div class="card-glow group bg-gradient-to-r from-red-50 via-orange-50 to-amber-50 dark:from-red-900/10 dark:via-orange-900/10 dark:to-amber-900/10 rounded-3xl p-8 border border-red-100/50 dark:border-red-800/30 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-red-500/10 to-transparent rounded-bl-full"></div>
+                        <article class="card-glow group bg-gradient-to-r from-primary-50 via-secondary-50 to-accent-50 dark:from-primary-900/10 dark:via-secondary-900/10 dark:to-accent-900/10 rounded-3xl p-8 border border-primary-100/50 dark:border-primary-800/30 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-primary-500/10 to-transparent rounded-bl-full" aria-hidden="true"></div>
 
                             <div class="flex flex-wrap items-start gap-3 mb-6">
-                                <span class="px-4 py-2 rounded-xl bg-gradient-to-r from-red-500 to-orange-500 text-white text-sm font-bold shadow-lg shadow-red-500/25">
+                                <span class="px-4 py-2 rounded-xl bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-sm font-bold shadow-lg shadow-primary-500/25">
                                     OSDI '22
                                 </span>
-                                <span class="px-4 py-2 rounded-xl bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-sm font-medium border border-amber-200/50 dark:border-amber-700/30 flex items-center gap-1">
+                                <span class="px-4 py-2 rounded-xl bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-sm font-medium border border-accent-200/50 dark:border-accent-700/30 flex items-center gap-1">
                                     <i data-lucide="star" class="w-4 h-4"></i> Co-first Author
                                 </span>
                             </div>
@@ -668,12 +751,12 @@
                                 </a>
                             </h3>
 
-                            <p class="text-slate-600 dark:text-slate-400 mb-4">
-                                <strong class="text-slate-800 dark:text-slate-200">Chijun Sima*</strong>, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai
+                            <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+                                <strong class="text-neutral-800 dark:text-neutral-200">Chijun Sima*</strong>, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai
                             </p>
 
                             <div class="flex flex-wrap items-center gap-4">
-                                <p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                <p class="text-sm text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
                                     <i data-lucide="user" class="w-4 h-4"></i>
                                     Supervised by <a href="https://luomai.github.io/" target="_blank" rel="noopener noreferrer" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">Luo Mai</a>
                                 </p>
@@ -683,15 +766,15 @@
                                     <i data-lucide="arrow-up-right" class="w-3 h-3 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"></i>
                                 </a>
                             </div>
-                        </div>
+                        </article>
 
                         <!-- IEEE Paper -->
-                        <div class="card-glow group bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10 rounded-3xl p-8 border border-blue-100/50 dark:border-blue-800/30">
+                        <article class="card-glow group bg-gradient-to-r from-secondary-50 to-primary-50 dark:from-secondary-900/10 dark:to-primary-900/10 rounded-3xl p-8 border border-secondary-100/50 dark:border-secondary-800/30">
                             <div class="flex flex-wrap items-start gap-3 mb-6">
-                                <span class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-bold shadow-lg shadow-blue-500/25">
+                                <span class="px-4 py-2 rounded-xl bg-gradient-to-r from-secondary-500 to-primary-500 text-white text-sm font-bold shadow-lg shadow-secondary-500/25">
                                     IEEE Access
                                 </span>
-                                <span class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium">
+                                <span class="px-4 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 text-sm font-medium">
                                     2019
                                 </span>
                             </div>
@@ -700,107 +783,107 @@
                                 Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification
                             </h3>
 
-                            <p class="text-slate-600 dark:text-slate-400">
-                                Kejian Shi, Hongyang Qin, <strong class="text-slate-800 dark:text-slate-200">Chijun Sima</strong>, Sen Li, Lifeng Shen, Qianli Ma
+                            <p class="text-neutral-600 dark:text-neutral-400">
+                                Kejian Shi, Hongyang Qin, <strong class="text-neutral-800 dark:text-neutral-200">Chijun Sima</strong>, Sen Li, Lifeng Shen, Qianli Ma
                             </p>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ===== Service ===== -->
-        <section id="service" class="py-20 lg:py-28 bg-white dark:bg-slate-900 relative overflow-hidden">
-            <div class="absolute inset-0 dot-pattern opacity-50"></div>
+        <section id="service" class="py-20 lg:py-28 bg-white dark:bg-neutral-900 relative overflow-hidden" aria-labelledby="service-heading">
+            <div class="absolute inset-0 dot-pattern opacity-50" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
                     <div class="text-center mb-16">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-sm font-medium mb-4 badge-pulse">
+                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4 badge-pulse">
                             <i data-lucide="users" class="w-4 h-4"></i>
                             Service
                         </span>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">Service & recognition</h2>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">Selected service, talks, and recognition.</p>
+                        <h2 id="service-heading" class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 text-balance">Service & recognition</h2>
+                        <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">Selected service, talks, and recognition.</p>
                     </div>
 
                     <div class="grid lg:grid-cols-3 gap-6 stagger" id="service-cards">
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 group">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 group">
                             <div class="flex items-start gap-4 mb-6">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/25 group-hover:scale-110 transition-transform duration-300">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary-500 to-primary-500 flex items-center justify-center shadow-lg shadow-secondary-500/25 group-hover:scale-110 transition-transform duration-300">
                                     <i data-lucide="eye" class="w-7 h-7 text-white"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-display font-bold">Reviewer</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Conference & workshop peer review</p>
+                                    <p class="text-sm text-neutral-500 dark:text-neutral-400">Conference & workshop peer review</p>
                                 </div>
                             </div>
-                            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+                            <ul class="space-y-3 text-neutral-600 dark:text-neutral-400">
                                 <li class="flex items-center gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                                    <i data-lucide="check" class="w-4 h-4 text-secondary-500"></i>
                                     CVPR 2025
                                 </li>
                                 <li class="flex items-center gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                                    <i data-lucide="check" class="w-4 h-4 text-secondary-500"></i>
                                     ICLR 2025 Workshop (FM-Wild)
                                 </li>
                                 <li class="flex items-center gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                                    <i data-lucide="check" class="w-4 h-4 text-secondary-500"></i>
                                     NeurIPS 2025 Workshop (Efficient Reasoning)
                                 </li>
                             </ul>
-                        </div>
+                        </article>
 
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 group">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 group">
                             <div class="flex items-start gap-4 mb-6">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-lg shadow-pink-500/25 group-hover:scale-110 transition-transform duration-300">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent-500 to-primary-500 flex items-center justify-center shadow-lg shadow-accent-500/25 group-hover:scale-110 transition-transform duration-300">
                                     <i data-lucide="mic" class="w-7 h-7 text-white"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-display font-bold">Talks</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Invited presentations (Ekko)</p>
+                                    <p class="text-sm text-neutral-500 dark:text-neutral-400">Invited presentations (Ekko)</p>
                                 </div>
                             </div>
-                            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+                            <ul class="space-y-3 text-neutral-600 dark:text-neutral-400">
                                 <li class="flex items-center gap-2">
-                                    <i data-lucide="map-pin" class="w-4 h-4 text-slate-400"></i>
+                                    <i data-lucide="map-pin" class="w-4 h-4 text-neutral-400"></i>
                                     Tencent WeChat AI (Shenzhen, Jun 2022)
                                 </li>
                                 <li class="flex items-center gap-2">
-                                    <i data-lucide="video" class="w-4 h-4 text-slate-400"></i>
+                                    <i data-lucide="video" class="w-4 h-4 text-neutral-400"></i>
                                     DataFun (Virtual, Aug 2022)
                                 </li>
                                 <li class="flex items-center gap-2">
-                                    <i data-lucide="video" class="w-4 h-4 text-slate-400"></i>
+                                    <i data-lucide="video" class="w-4 h-4 text-neutral-400"></i>
                                     TechBeat (Virtual, Sep 2022)
                                 </li>
                             </ul>
-                        </div>
+                        </article>
 
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700 group">
+                        <article class="card-glow bg-white dark:bg-neutral-800 rounded-3xl p-8 shadow-xl border border-neutral-100 dark:border-neutral-700 group">
                             <div class="flex items-start gap-4 mb-6">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/25 group-hover:scale-110 transition-transform duration-300">
+                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center shadow-lg shadow-primary-500/25 group-hover:scale-110 transition-transform duration-300">
                                     <i data-lucide="trophy" class="w-7 h-7 text-white"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-display font-bold">Awards</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Selected recognition</p>
+                                    <p class="text-sm text-neutral-500 dark:text-neutral-400">Selected recognition</p>
                                 </div>
                             </div>
-                            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+                            <ul class="space-y-3 text-neutral-600 dark:text-neutral-400">
                                 <li class="flex items-start gap-2">
-                                    <i data-lucide="medal" class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0"></i>
-                                    <span><span class="font-medium text-slate-800 dark:text-slate-200">Tencent Technology Breakthrough Award (Gold)</span>, 2022H2 — Project Lead (Ekko)</span>
+                                    <i data-lucide="medal" class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0"></i>
+                                    <span><span class="font-medium text-neutral-800 dark:text-neutral-200">Tencent Technology Breakthrough Award (Gold)</span>, 2022H2 — Project Lead (Ekko)</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <i data-lucide="award" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                    <i data-lucide="award" class="w-4 h-4 text-neutral-400 mt-0.5 flex-shrink-0"></i>
                                     <span>ACM-ICPC Asia Xi'an Regional — Bronze (2017)</span>
                                 </li>
                                 <li class="flex items-start gap-2">
-                                    <i data-lucide="award" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                    <i data-lucide="award" class="w-4 h-4 text-neutral-400 mt-0.5 flex-shrink-0"></i>
                                     <span>CCPC Guangdong Division — Second Prize (out of 177 teams)</span>
                                 </li>
                             </ul>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -808,52 +891,52 @@
     </main>
 
     <!-- ===== Footer ===== -->
-    <footer class="bg-slate-900 text-white py-16 lg:py-20 no-print relative overflow-hidden">
-        <div class="absolute inset-0 mesh-gradient opacity-30"></div>
+    <footer class="bg-neutral-900 text-white py-16 lg:py-20 no-print relative overflow-hidden" role="contentinfo">
+        <div class="absolute inset-0 mesh-gradient opacity-30" aria-hidden="true"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <!-- Brand -->
                 <div>
                     <div class="flex items-center gap-3 mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold shadow-lg shimmer">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 via-secondary-500 to-accent-500 flex items-center justify-center text-white font-bold shadow-lg shimmer">
                             CS
                         </div>
                         <div>
                             <span class="font-display font-semibold text-lg block">Chijun Sima</span>
-                            <span class="text-slate-400 text-sm">Efficient ML Systems</span>
+                            <span class="text-neutral-400 text-sm">Efficient ML Systems</span>
                         </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                    <p class="text-neutral-400 text-sm leading-relaxed max-w-xs">
                         Building efficient ML systems at scale (freshness, cost, reliability) and contributing to LLVM.
                     </p>
                 </div>
 
                 <!-- Quick Links -->
-                <div>
+                <nav aria-label="Footer navigation">
                     <h4 class="font-display font-semibold mb-5 text-lg">Quick Links</h4>
                     <div class="flex flex-wrap gap-2">
-                        <a href="#about" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-purple-600">Overview</a>
-                        <a href="#work" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-purple-600">Work</a>
-                        <a href="#publications" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-purple-600">Publications</a>
-                        <a href="#service" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-purple-600">Service</a>
-                        <a href="/cv.pdf" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-purple-600">CV</a>
+                        <a href="#about" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">Overview</a>
+                        <a href="#work" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">Work</a>
+                        <a href="#publications" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">Publications</a>
+                        <a href="#service" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">Service</a>
+                        <a href="/cv.pdf" class="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-sm transition-all hover:scale-105 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600">CV</a>
                     </div>
-                </div>
+                </nav>
 
                 <!-- Connect -->
                 <div>
                     <h4 class="font-display font-semibold mb-5 text-lg">Connect</h4>
                     <div class="flex gap-3">
-                        <a href="mailto:simachijun@gmail.com" class="group p-3 rounded-xl bg-slate-800 hover:bg-gradient-to-br hover:from-primary-600 hover:to-purple-600 transition-all hover:scale-110" aria-label="Email">
+                        <a href="mailto:simachijun@gmail.com" class="group p-3 rounded-xl bg-neutral-800 hover:bg-gradient-to-br hover:from-primary-600 hover:to-secondary-600 transition-all hover:scale-110" aria-label="Email">
                             <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-slate-800 hover:bg-[#0077b5] transition-all hover:scale-110" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-neutral-800 hover:bg-[#0077b5] transition-all hover:scale-110" aria-label="LinkedIn">
                             <i data-lucide="linkedin" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                         </a>
-                        <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition-all hover:scale-110" aria-label="GitHub">
+                        <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-neutral-800 hover:bg-neutral-700 transition-all hover:scale-110" aria-label="GitHub">
                             <i data-lucide="github" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                         </a>
-                        <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-slate-800 hover:bg-[#4285f4] transition-all hover:scale-110" aria-label="Google Scholar">
+                        <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-neutral-800 hover:bg-[#4285f4] transition-all hover:scale-110" aria-label="Google Scholar">
                             <i data-lucide="graduation-cap" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                         </a>
                     </div>
@@ -861,11 +944,11 @@
             </div>
 
             <!-- Bottom Bar -->
-            <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p class="text-slate-400 text-sm">
+            <div class="pt-8 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-neutral-400 text-sm">
                     © <span id="year"></span> Chijun Sima. All rights reserved.
                 </p>
-                <a href="#top" class="group inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-gradient-to-r hover:from-primary-600 hover:to-purple-600 text-sm transition-all hover:scale-105">
+                <a href="#top" class="group inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-neutral-800 hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600 text-sm transition-all hover:scale-105">
                     <i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-1 transition-transform"></i>
                     Back to top
                 </a>
