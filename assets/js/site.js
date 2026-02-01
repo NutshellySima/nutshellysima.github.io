@@ -404,7 +404,7 @@
     });
   };
 
-  // ===== Card Tilt Effect =====
+  // ===== Card Hover Glow Effect =====
   const initCardTilt = () => {
     if (features.reducedMotion || features.touch) return;
 
@@ -413,15 +413,16 @@
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / 25;
-        const rotateY = (centerX - x) / 25;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.01)`;
+        // Create a radial gradient glow that follows the cursor
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+        card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(245, 158, 11, 0.06), transparent 40%)`;
+        card.style.transform = 'translateY(-8px) scale(1.01)';
       });
 
       card.addEventListener('mouseleave', () => {
+        card.style.background = '';
         card.style.transform = '';
       });
     });
