@@ -9,6 +9,7 @@ import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
 import { initAnimations } from './utils/animations';
 import { initTheme } from './utils/theme';
+import { createIcons, icons } from 'lucide';
 
 export class App {
   private container: HTMLElement | null = null;
@@ -39,9 +40,7 @@ export class App {
 
   private init(): void {
     // Initialize Lucide icons
-    import('lucide').then(({ createIcons }) => {
-      createIcons();
-    });
+    createIcons({ icons });
 
     // Initialize theme
     initTheme();
