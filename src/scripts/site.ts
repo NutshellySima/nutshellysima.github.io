@@ -18,6 +18,26 @@ const initYear = () => {
   }
 };
 
+type ViewTransitionDoc = Document & {
+  startViewTransition?: (callback: () => void) => { finished: Promise<void> };
+};
+
+const runViewTransition = (callback: () => void, origin?: { x: number; y: number }) => {
+  const doc = document as ViewTransitionDoc;
+  if (!doc.startViewTransition || features.reducedMotion) {
+    callback();
+    return null;
+  }
+
+  if (origin) {
+    const root = document.documentElement;
+    root.style.setProperty('--vt-x', `${origin.x}px`);
+    root.style.setProperty('--vt-y', `${origin.y}px`);
+  }
+
+  return doc.startViewTransition(callback);
+};
+
 const initThemeToggle = () => {
   const themeToggle = document.querySelector<HTMLButtonElement>(CONFIG.selectors.themeToggle);
   const html = document.documentElement;
@@ -42,10 +62,26 @@ const initThemeToggle = () => {
   const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
   updateAria(isDark);
 
-  themeToggle.addEventListener('click', () => {
+  themeToggle.addEventListener('click', (event) => {
     const newIsDark = !html.classList.contains('dark');
-    applyTheme(newIsDark);
-    utils.storage.set('theme', newIsDark ? 'dark' : 'light');
+    const origin = (() => {
+      if (event instanceof MouseEvent) {
+        return { x: event.clientX, y: event.clientY };
+      }
+      const rect = themeToggle.getBoundingClientRect();
+      return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+    })();
+
+    const transition = runViewTransition(() => {
+      html.classList.add('theme-transition');
+      applyTheme(newIsDark);
+      utils.storage.set('theme', newIsDark ? 'dark' : 'light');
+    }, origin);
+
+    if (transition) {
+      transition.finished.finally(() => html.classList.remove('theme-transition'));
+      return;
+    }
 
     document.body.style.transition = 'opacity 0.15s ease';
     document.body.style.opacity = '0.9';
@@ -129,6 +165,11 @@ const initScrollProgress = () => {
   const scrollProgress = document.querySelector<HTMLElement>(CONFIG.selectors.scrollProgress);
   if (!scrollProgress) return;
 
+  if ('CSS' in window && CSS.supports('animation-timeline: scroll()')) {
+    scrollProgress.setAttribute('data-scroll-driven', 'true');
+    return;
+  }
+
   const updateProgress = utils.rafScroll(() => {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -138,6 +179,83 @@ const initScrollProgress = () => {
   });
 
   window.addEventListener('scroll', updateProgress, { passive: true });
+};
+
+type ToastController = {
+  show: (message: string, duration?: number) => void;
+};
+
+const initSiteToast = (): ToastController | null => {
+  const toast = document.querySelector<HTMLElement>(CONFIG.selectors.siteToast);
+  const message = document.querySelector<HTMLElement>(CONFIG.selectors.siteToastMessage);
+  if (!toast || !message) return null;
+
+  let hideTimeout: number | null = null;
+
+  const hide = () => {
+    toast.classList.remove('is-visible');
+    if (hideTimeout) window.clearTimeout(hideTimeout);
+    hideTimeout = window.setTimeout(() => {
+      toast.hidden = true;
+    }, 220);
+  };
+
+  const show = (text: string, duration = 2200) => {
+    if (hideTimeout) window.clearTimeout(hideTimeout);
+    message.textContent = text;
+    toast.hidden = false;
+    requestAnimationFrame(() => toast.classList.add('is-visible'));
+    hideTimeout = window.setTimeout(hide, duration);
+  };
+
+  return { show };
+};
+
+const initShare = (toast: ToastController | null) => {
+  const shareButton = document.querySelector<HTMLButtonElement>(CONFIG.selectors.shareButton);
+  if (!shareButton) return;
+
+  const copyText = async (text: string) => {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+    const fallback = document.createElement('textarea');
+    fallback.value = text;
+    fallback.setAttribute('readonly', 'true');
+    fallback.style.position = 'absolute';
+    fallback.style.left = '-9999px';
+    document.body.appendChild(fallback);
+    fallback.select();
+    document.execCommand('copy');
+    fallback.remove();
+  };
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = document.title;
+    const text = 'Chijun Sima — Efficient ML Systems';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+        return;
+      } catch {
+        // Fall back to copy if share was dismissed or failed.
+      }
+    }
+
+    try {
+      await copyText(url);
+      toast?.show('Link copied to clipboard.');
+    } catch {
+      toast?.show('Unable to copy link.');
+    }
+  };
+
+  shareButton.addEventListener('click', () => {
+    void handleShare();
+  });
 };
 
 const initNavbarScroll = () => {
@@ -336,15 +454,16 @@ const initSmoothScroll = () => {
       if (href === '#' || !href) return;
 
       const target = document.querySelector<HTMLElement>(href);
-      if (target) {
-        event.preventDefault();
+      if (!target) return;
+      event.preventDefault();
+
+      runViewTransition(() => {
         target.scrollIntoView({
           behavior: features.reducedMotion ? 'auto' : 'smooth',
           block: 'start',
         });
-
         history.pushState(null, '', href);
-      }
+      });
     });
   });
 };
@@ -399,6 +518,7 @@ const addMobileMenuStyles = () => {
 
 onReady(() => {
   const pwaToast = initPwaToast();
+  const siteToast = initSiteToast();
   initIcons();
   initYear();
   initThemeToggle();
@@ -413,6 +533,7 @@ onReady(() => {
   initSmoothScroll();
   addMobileMenuStyles();
   initPreload();
+  initShare(siteToast);
   utils.requestIdle(initConsoleEasterEgg);
   utils.requestIdle(() => initServiceWorker(pwaToast));
   initInstallPrompt(pwaToast);
