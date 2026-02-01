@@ -3,6 +3,11 @@
  * A sophisticated warm amber + deep teal color palette
  * Built with Tailwind CSS v4 + custom styles
  */
+@config "../../tailwind.config.js";
+@source "../../index.html";
+@source "../../offline.html";
+@source "../../404.html";
+@source "../js/site.js";
 @import "tailwindcss";
 
 /* ===== CSS Custom Properties (Design Tokens) ===== */
