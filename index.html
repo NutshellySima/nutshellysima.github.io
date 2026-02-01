@@ -34,6 +34,11 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="format-detection" content="telephone=no">
     <meta name="color-scheme" content="light dark">
+    <meta name="application-name" content="Chijun Sima">
+    <meta name="apple-mobile-web-app-title" content="Chijun Sima">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#f59e0b" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)">
 
@@ -458,7 +463,7 @@
         </section>
 
         <!-- ===== Research Focus ===== -->
-        <section id="research" class="py-20 lg:py-28 bg-white dark:bg-neutral-900 relative overflow-hidden" aria-labelledby="research-heading">
+        <section id="research" class="cv-auto py-20 lg:py-28 bg-white dark:bg-neutral-900 relative overflow-hidden" aria-labelledby="research-heading">
             <div class="absolute inset-0 grid-pattern" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
@@ -509,7 +514,7 @@
         </section>
 
         <!-- ===== Selected Work ===== -->
-        <section id="work" class="py-20 lg:py-28 bg-neutral-50 dark:bg-neutral-800/30 relative overflow-hidden" aria-labelledby="work-heading">
+        <section id="work" class="cv-auto py-20 lg:py-28 bg-neutral-50 dark:bg-neutral-800/30 relative overflow-hidden" aria-labelledby="work-heading">
             <div class="absolute inset-0 dot-pattern" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
@@ -628,7 +633,7 @@
         </section>
 
         <!-- ===== Ekko Explained ===== -->
-        <section id="ekko" class="py-24 lg:py-32 bg-white dark:bg-neutral-900 relative overflow-hidden" aria-labelledby="ekko-heading">
+        <section id="ekko" class="cv-auto py-24 lg:py-32 bg-white dark:bg-neutral-900 relative overflow-hidden" aria-labelledby="ekko-heading">
             <div class="absolute inset-0 mesh-gradient opacity-70" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
@@ -740,7 +745,7 @@
         </section>
 
         <!-- ===== Publications ===== -->
-        <section id="publications" class="py-24 lg:py-32 bg-neutral-50 dark:bg-neutral-800/30 relative overflow-hidden" aria-labelledby="publications-heading">
+        <section id="publications" class="cv-auto py-24 lg:py-32 bg-neutral-50 dark:bg-neutral-800/30 relative overflow-hidden" aria-labelledby="publications-heading">
             <div class="absolute inset-0 grid-pattern" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
@@ -816,7 +821,7 @@
         </section>
 
         <!-- ===== Service ===== -->
-        <section id="service" class="py-20 lg:py-28 bg-white dark:bg-neutral-900 relative overflow-hidden" aria-labelledby="service-heading">
+        <section id="service" class="cv-auto py-20 lg:py-28 bg-white dark:bg-neutral-900 relative overflow-hidden" aria-labelledby="service-heading">
             <div class="absolute inset-0 dot-pattern opacity-50" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div class="reveal">
@@ -979,8 +984,20 @@
         </div>
     </footer>
 
+    <!-- PWA Toasts (install/update) -->
+    <div id="pwa-toast" class="pwa-toast" role="status" aria-live="polite" hidden>
+        <div class="pwa-toast__content">
+            <p id="pwa-toast-title" class="pwa-toast__title">Install this app</p>
+            <p id="pwa-toast-desc" class="pwa-toast__desc">Get offline access and a faster, app-like experience.</p>
+        </div>
+        <div class="pwa-toast__actions">
+            <button id="pwa-toast-action" class="pwa-toast__btn pwa-toast__btn--primary" type="button">Install</button>
+            <button id="pwa-toast-dismiss" class="pwa-toast__btn" type="button">Not now</button>
+        </div>
+    </div>
+
     <!-- Icons + custom JS -->
-    <script src="https://unpkg.com/lucide@0.563.0"></script>
+    <script src="https://unpkg.com/lucide@0.563.0" defer></script>
     <script data-asset-src="assets/js/site.js" defer></script>
     <script>
         (function () {

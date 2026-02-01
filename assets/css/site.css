@@ -910,3 +910,81 @@ details[open] {
     box-shadow: var(--shadow-md);
   }
 }
+
+/* ===== Content-Visibility Performance ===== */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
+/* ===== PWA Toast ===== */
+.pwa-toast {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 100;
+  max-width: 360px;
+  width: calc(100% - 2.5rem);
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 18px 35px rgba(2, 6, 23, 0.35);
+  backdrop-filter: blur(12px);
+  transform: translateY(18px);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.pwa-toast.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.pwa-toast__title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.pwa-toast__desc {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+  margin: 0;
+}
+
+.pwa-toast__actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.pwa-toast__btn {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: transparent;
+  color: inherit;
+  padding: 0.45rem 0.85rem;
+  border-radius: 0.65rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pwa-toast__btn:hover {
+  border-color: rgba(148, 163, 184, 0.6);
+  transform: translateY(-1px);
+}
+
+.pwa-toast__btn--primary {
+  background: linear-gradient(135deg, #f59e0b, #14b8a6);
+  border-color: transparent;
+  color: #0f172a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pwa-toast {
+    transition: none;
+  }
+}
