@@ -128,6 +128,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -140,6 +141,13 @@ body {
 /* Section anchors with navbar offset */
 section[id] {
   scroll-margin-top: 100px;
+}
+
+@supports (content-visibility: auto) {
+  section[id] {
+    content-visibility: auto;
+    contain-intrinsic-size: 900px;
+  }
 }
 
 /* Target highlight for hash navigation */
@@ -792,6 +800,22 @@ details[open] {
 
   .particle {
     display: none !important;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  .gradient-bg,
+  .mesh-gradient::before {
+    animation: none !important;
+  }
+
+  .particle {
+    display: none !important;
+  }
+
+  .card-glow::before,
+  .avatar-glow::before {
+    opacity: 0.4;
   }
 }
 

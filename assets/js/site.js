@@ -11,6 +11,7 @@
   const CONFIG = {
     animation: {
       reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      reducedData: window.matchMedia('(prefers-reduced-data: reduce)').matches,
       touchDevice: window.matchMedia('(pointer: coarse)').matches,
       staggerDelay: 50,
       revealThreshold: 0.15,
@@ -87,6 +88,17 @@
         }
       };
     },
+
+    /**
+     * requestIdleCallback with a safe fallback
+     */
+    requestIdle: (callback, timeout = 1500) => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(callback, { timeout });
+      } else {
+        setTimeout(callback, Math.min(200, timeout));
+      }
+    },
   };
 
   // ===== Feature Detection =====
@@ -94,6 +106,7 @@
     intersectionObserver: 'IntersectionObserver' in window,
     touch: CONFIG.animation.touchDevice,
     reducedMotion: CONFIG.animation.reducedMotion,
+    reducedData: CONFIG.animation.reducedData || (navigator.connection && navigator.connection.saveData),
   };
 
   // ===== DOM Ready Handler =====
@@ -388,7 +401,7 @@
 
   // ===== Magnetic Button Effect =====
   const initMagneticButtons = () => {
-    if (features.reducedMotion || features.touch) return;
+    if (features.reducedMotion || features.reducedData || features.touch) return;
 
     document.querySelectorAll(CONFIG.selectors.magneticBtn).forEach((btn) => {
       btn.addEventListener('mousemove', (e) => {
@@ -406,7 +419,7 @@
 
   // ===== Card Hover Glow Effect =====
   const initCardTilt = () => {
-    if (features.reducedMotion || features.touch) return;
+    if (features.reducedMotion || features.reducedData || features.touch) return;
 
     document.querySelectorAll(CONFIG.selectors.cardGlow).forEach((card) => {
       card.addEventListener('mousemove', (e) => {
@@ -430,7 +443,7 @@
 
   // ===== Floating Particles =====
   const initParticles = () => {
-    if (features.reducedMotion || features.touch) return;
+    if (features.reducedMotion || features.reducedData || features.touch) return;
 
     const container = document.createElement('div');
     container.className = 'particles-container';
@@ -510,6 +523,22 @@
     console.log('%c https://www.chijunsima.com ', styles[2]);
   };
 
+  // ===== Service Worker (PWA-lite) =====
+  const initServiceWorker = () => {
+    if (!('serviceWorker' in navigator)) return;
+    if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') return;
+
+    const meta = document.querySelector('meta[name="asset-version"]');
+    const version = meta ? meta.content : '';
+    const swUrl = version ? `/sw.js?v=${encodeURIComponent(version)}` : '/sw.js';
+
+    navigator.serviceWorker
+      .register(swUrl, { scope: '/' })
+      .catch(() => {
+        // Ignore registration errors (offline, unsupported)
+      });
+  };
+
   // ===== Add Mobile Menu Animations =====
   const addMobileMenuStyles = () => {
     const style = document.createElement('style');
@@ -536,13 +565,14 @@
     initNavbarScroll();
     initRevealAnimations();
     initActiveNavLinks();
-    initMagneticButtons();
-    initCardTilt();
-    initParticles();
+    utils.requestIdle(initMagneticButtons);
+    utils.requestIdle(initCardTilt);
+    utils.requestIdle(initParticles);
     initSmoothScroll();
     addMobileMenuStyles();
     initPreload();
-    initConsoleEasterEgg();
+    utils.requestIdle(initConsoleEasterEgg);
+    utils.requestIdle(initServiceWorker);
   });
 
 })();
