@@ -1,8 +1,12 @@
 /*
  * Chijun Sima Portfolio - Enhanced Stylesheet
  * A sophisticated warm amber + deep teal color palette
- * No build required - pure CSS with modern features
+ * Built with Tailwind CSS + custom styles
  */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ===== CSS Custom Properties (Design Tokens) ===== */
 :root {
