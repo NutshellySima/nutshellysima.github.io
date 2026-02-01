@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs/promises');
+const { execFile } = require('child_process');
 const esbuild = require('esbuild');
 
 const rootDir = path.resolve(__dirname, '..');
@@ -24,19 +25,39 @@ const rootFiles = [
 ];
 
 const buildAssets = async () => {
+  const tailwindBin = path.join(
+    rootDir,
+    'node_modules',
+    '.bin',
+    process.platform === 'win32' ? 'tailwindcss.cmd' : 'tailwindcss'
+  );
+
+  await new Promise((resolve, reject) => {
+    execFile(
+      tailwindBin,
+      [
+        '-i',
+        path.join(rootDir, 'assets/css/site.css'),
+        '-o',
+        path.join(distDir, 'assets/css/site.css'),
+        '--minify',
+      ],
+      (error) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve();
+      }
+    );
+  });
+
   await esbuild.build({
     entryPoints: [path.join(rootDir, 'assets/js/site.js')],
     outfile: path.join(distDir, 'assets/js/site.js'),
     bundle: false,
     minify: true,
     target: ['es2018'],
-  });
-
-  await esbuild.build({
-    entryPoints: [path.join(rootDir, 'assets/css/site.css')],
-    outfile: path.join(distDir, 'assets/css/site.css'),
-    bundle: false,
-    minify: true,
   });
 };
 
