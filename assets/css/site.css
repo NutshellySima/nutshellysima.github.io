@@ -265,6 +265,17 @@ body {
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* ===== Details / Summary ===== */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details > summary::marker {
+  content: "";
+}
+
 /* ===== Focus Styles ===== */
 .focus-ring:focus-visible {
   outline: 2px solid #6366f1;
