@@ -4,18 +4,30 @@
   "description": "This repository is a **static GitHub Pages** site for `www.chijunsima.com`.",
   "private": true,
   "scripts": {
-    "dev": "node scripts/build.js",
-    "build": "node scripts/build.js",
-    "preview": "node scripts/build.js"
+    "dev": "astro dev",
+    "build": "astro build",
+    "postbuild": "node scripts/copy-static.js",
+    "preview": "astro preview",
+    "lint": "eslint . --ext .js,.cjs,.mjs,.ts,.astro",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "astro": "^5.2.5",
     "autoprefixer": "^10.4.19",
-    "esbuild": "^0.27.2",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-astro": "^0.32.0",
     "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.17"
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
   }
 }

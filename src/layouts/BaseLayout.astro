@@ -1,0 +1,260 @@
+---
+import siteStyles from '../styles/site.css?url';
+import siteScript from '../scripts/site.ts?url';
+
+const assetVersion = '20260202';
+const baseStyleHref = '/assets/site.css';
+const baseScriptSrc = '/assets/site.mjs';
+const baseAvatar = '/avatar.jpg';
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin />
+    <link rel="preconnect" href="https://www.clarity.ms" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+
+    <!-- DNS prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+
+    <!-- Preload critical resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      as="style"
+    />
+    <link rel="preload" href={baseAvatar} data-asset-href={baseAvatar} as="image" type="image/jpeg" fetchpriority="high" data-vite-ignore />
+    <link rel="preload" href={siteStyles} data-asset-href={baseStyleHref} as="style" data-vite-ignore />
+
+    <title>Chijun Sima | Efficient ML Systems</title>
+    <meta
+      name="description"
+      content="Chijun Sima — ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko)."
+    />
+    <meta
+      name="keywords"
+      content="Chijun Sima, MLSys, Machine Learning Systems, Model Freshness, Recommender Systems, Deep Learning, Systems for ML, Efficient AI, Tencent, WeChat, OSDI, Ekko, LLM Serving, LLVM"
+    />
+    <meta name="author" content="Chijun Sima" />
+    <meta name="asset-version" content={assetVersion} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="application-name" content="Chijun Sima" />
+    <meta name="apple-mobile-web-app-title" content="Chijun Sima" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#f59e0b" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.chijunsima.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://www.chijunsima.com/" />
+    <meta property="og:title" content="Chijun Sima | Efficient ML Systems" />
+    <meta
+      property="og:description"
+      content="ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko)."
+    />
+    <meta property="og:image" content="https://www.chijunsima.com/avatar.jpg" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:alt" content="Portrait of Chijun Sima" />
+    <meta property="og:site_name" content="Chijun Sima" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Chijun" />
+    <meta property="profile:last_name" content="Sima" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.chijunsima.com/" />
+    <meta name="twitter:title" content="Chijun Sima | Efficient ML Systems" />
+    <meta
+      name="twitter:description"
+      content="ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko)."
+    />
+    <meta name="twitter:image" content="https://www.chijunsima.com/avatar.jpg" />
+    <meta name="twitter:image:alt" content="Portrait of Chijun Sima" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="mask-icon" href="/favicon.svg" color="#f59e0b" />
+    <link rel="apple-touch-icon" href="/icon-192.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Google Fonts - Inter + JetBrains Mono + Space Grotesk -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Prevent theme flash (sets .dark before first paint) -->
+    <script is:inline>
+      (function () {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {
+          // Ignore storage access errors
+        }
+      })();
+    </script>
+
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://www.chijunsima.com/#person",
+        "name": "Chijun Sima",
+        "url": "https://www.chijunsima.com",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://www.chijunsima.com/avatar.jpg",
+          "width": 400,
+          "height": 400
+        },
+        "jobTitle": "Senior Software Development Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Tencent (WeChat)",
+          "url": "https://www.tencent.com"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "South China University of Technology"
+        },
+        "knowsAbout": [
+          "Machine Learning Systems",
+          "MLSys",
+          "Efficient AI",
+          "Model Freshness",
+          "Recommender Systems",
+          "Deep Learning",
+          "LLM Serving",
+          "LLVM",
+          "Compilers"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/chijun-sima/",
+          "https://github.com/NutshellySima",
+          "https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en"
+        ],
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://www.chijunsima.com/"
+        }
+      }
+    </script>
+
+    <!-- Website structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://www.chijunsima.com/",
+        "name": "Chijun Sima - Efficient ML Systems",
+        "description": "Personal website of Chijun Sima, ML systems engineer at Tencent WeChat",
+        "author": {
+          "@type": "Person",
+          "@id": "https://www.chijunsima.com/#person"
+        }
+      }
+    </script>
+
+    <!-- Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'
+    ></script>
+    <script is:inline>
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, 'clarity', 'script', 'cr8ptqxm1m');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDCCF82CG7"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-RDCCF82CG7');
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href={siteStyles} data-asset-href={baseStyleHref} data-vite-ignore />
+
+    <script is:inline>
+      (function () {
+        const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+        if (isLocalhost) return;
+        const meta = document.querySelector('meta[name="asset-version"]');
+        const version = meta ? meta.content : '';
+        const withVersion = (url) => {
+          if (!version) return url;
+          return url.includes('?') ? `${url}&v=${encodeURIComponent(version)}` : `${url}?v=${encodeURIComponent(version)}`;
+        };
+        window.__ASSET_VERSION__ = version;
+        window.__withAssetVersion__ = withVersion;
+        document.querySelectorAll('[data-asset-href]').forEach((el) => {
+          const base = el.getAttribute('data-asset-href');
+          if (base) el.setAttribute('href', withVersion(base));
+        });
+      })();
+    </script>
+  </head>
+  <body
+    id="top"
+    class="font-sans antialiased text-neutral-800 dark:text-neutral-200 bg-neutral-50 dark:bg-neutral-950 transition-colors duration-500"
+  >
+    <slot />
+
+    <!-- Icons + custom JS -->
+    <script src="https://unpkg.com/lucide@0.563.0" defer></script>
+    <script type="module" src={siteScript} data-asset-src={baseScriptSrc} defer></script>
+    <script is:inline>
+      (function () {
+        const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+        if (isLocalhost) return;
+        const withVersion = window.__withAssetVersion__;
+        if (!withVersion) return;
+        document.querySelectorAll('[data-asset-src]').forEach((el) => {
+          const base = el.getAttribute('data-asset-src');
+          const current = el.getAttribute('src') || '';
+          if (!base) return;
+          if (current && current.includes('v=')) return;
+          el.setAttribute('src', withVersion(base));
+        });
+      })();
+    </script>
+  </body>
+</html>

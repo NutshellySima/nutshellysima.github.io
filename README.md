@@ -1,32 +1,31 @@
 ## Overview
 
-This repository is a **static GitHub Pages** site for `www.chijunsima.com`.
-
-It is intentionally **no-build** (no bundler, no npm) to keep deployment simple and reliable.
+This repository is a **static GitHub Pages** site for `www.chijunsima.com`, built with Astro + Tailwind for modern tooling and performance.
 
 ## Structure
 
-- `index.html`: Main single-page site content.
-- `assets/css/site.css`: Custom CSS extracted from `index.html`.
-- `assets/js/site.js`: Custom JavaScript extracted from `index.html`.
+- `src/pages/index.astro`: Main single-page site content.
+- `src/styles/site.css`: Custom CSS extracted from `index.html`.
+- `src/scripts/site.ts`: Custom JavaScript extracted from `index.html`.
 - `avatar.jpg`: Profile image used by the page and social previews.
 - `cv.pdf`: Downloadable CV linked from the page.
 - `CNAME`, `robots.txt`, `sitemap.xml`: GitHub Pages / SEO config.
 
 ## Editing guidelines
 
-- **Content/layout**: edit `index.html`.
-- **Custom CSS**: edit `assets/css/site.css`.
-- **Custom JS**: edit `assets/js/site.js`.
+- **Content/layout**: edit `src/pages/index.astro`.
+- **Custom CSS**: edit `src/styles/site.css`.
+- **Custom JS**: edit `src/scripts/site.ts`.
 - Keep existing file paths stable (e.g. `avatar.jpg`, `/cv.pdf`) to avoid breaking inbound links.
 
 ## Local preview
 
-Any static file server works. Examples:
+Use Astro's dev server for local preview:
 
 ```bash
-python -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8000/`.
+Then open `http://localhost:4321/`.
 
