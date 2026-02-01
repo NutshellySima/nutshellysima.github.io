@@ -16,6 +16,18 @@ body {
   overflow-x: hidden;
 }
 
+/* Fixed navbar offset for hash navigation */
+section[id] {
+  scroll-margin-top: 120px;
+}
+
+/* Optional: make hash targets easier to spot when navigating via keyboard/history */
+:target {
+  outline: 2px solid rgba(99, 102, 241, 0.35);
+  outline-offset: 6px;
+  border-radius: 16px;
+}
+
 /* ===== Custom Scrollbar ===== */
 ::-webkit-scrollbar {
   width: 8px;
@@ -297,6 +309,9 @@ details > summary::marker {
 
 /* ===== Reduced Motion ===== */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
   *,
   *::before,
   *::after {
@@ -312,9 +327,4 @@ details > summary::marker {
   }
 }
 
-/* ===== Mobile Optimizations ===== */
-@media (max-width: 768px) {
-  .scroll-smooth {
-    scroll-behavior: smooth;
-  }
-}
+/* (No extra mobile scroll hacks needed) */
