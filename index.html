@@ -10,6 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+    <link rel="preconnect" href="https://www.clarity.ms" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
 
     <!-- DNS prefetch -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -18,13 +22,14 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="avatar.jpg" as="image" type="image/jpeg" fetchpriority="high">
-    <link rel="preload" href="assets/css/site.css" as="style">
+    <link rel="preload" href="avatar.jpg" data-asset-href="avatar.jpg" as="image" type="image/jpeg" fetchpriority="high">
+    <link rel="preload" href="assets/css/site.css" data-asset-href="assets/css/site.css" as="style">
 
     <title>Chijun Sima | Efficient ML Systems</title>
     <meta name="description" content="Chijun Sima — ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko).">
     <meta name="keywords" content="Chijun Sima, MLSys, Machine Learning Systems, Model Freshness, Recommender Systems, Deep Learning, Systems for ML, Efficient AI, Tencent, WeChat, OSDI, Ekko, LLM Serving, LLVM">
     <meta name="author" content="Chijun Sima">
+    <meta name="asset-version" content="20260202">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="format-detection" content="telephone=no">
@@ -60,7 +65,8 @@
     <!-- Favicon -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="mask-icon" href="/favicon.svg" color="#f59e0b">
-    <link rel="apple-touch-icon" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/icon-192.svg">
+    <link rel="manifest" href="/manifest.webmanifest">
 
     <!-- Google Fonts - Inter + JetBrains Mono + Space Grotesk -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -255,7 +261,24 @@
     </script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/site.css" data-asset-href="assets/css/site.css">
+
+    <script>
+        (function () {
+            const meta = document.querySelector('meta[name="asset-version"]');
+            const version = meta ? meta.content : '';
+            const withVersion = (url) => {
+                if (!version) return url;
+                return url.includes('?') ? `${url}&v=${encodeURIComponent(version)}` : `${url}?v=${encodeURIComponent(version)}`;
+            };
+            window.__ASSET_VERSION__ = version;
+            window.__withAssetVersion__ = withVersion;
+            document.querySelectorAll('[data-asset-href]').forEach((el) => {
+                const base = el.getAttribute('data-asset-href');
+                if (base) el.setAttribute('href', withVersion(base));
+            });
+        })();
+    </script>
 </head>
 
 <body id="top" class="font-sans antialiased text-neutral-800 dark:text-neutral-200 bg-neutral-50 dark:bg-neutral-950 transition-colors duration-500">
@@ -413,7 +436,7 @@
                         <div class="order-1 sm:order-2 flex-shrink-0">
                             <div class="relative">
                                 <div class="avatar-glow">
-                                    <img src="avatar.jpg" alt="Chijun Sima" width="208" height="208" decoding="async" fetchpriority="high" class="w-44 h-44 sm:w-56 sm:h-56 object-cover rounded-3xl shadow-2xl ring-4 ring-white dark:ring-neutral-800 mx-auto sm:mx-0" loading="eager">
+                                    <img src="avatar.jpg" data-asset-src="avatar.jpg" alt="Chijun Sima" width="208" height="208" decoding="async" fetchpriority="high" class="w-44 h-44 sm:w-56 sm:h-56 object-cover rounded-3xl shadow-2xl ring-4 ring-white dark:ring-neutral-800 mx-auto sm:mx-0" loading="eager">
                                 </div>
                                 <div class="mt-4 flex justify-center sm:justify-start">
                                     <div class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/70 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-700/60 text-sm glass">
@@ -958,7 +981,20 @@
 
     <!-- Icons + custom JS -->
     <script src="https://unpkg.com/lucide@0.563.0"></script>
-    <script src="assets/js/site.js"></script>
+    <script data-asset-src="assets/js/site.js" defer></script>
+    <script>
+        (function () {
+            const withVersion = window.__withAssetVersion__;
+            if (!withVersion) return;
+            document.querySelectorAll('[data-asset-src]').forEach((el) => {
+                const base = el.getAttribute('data-asset-src');
+                const current = el.getAttribute('src') || '';
+                if (!base) return;
+                if (current && current.includes('v=')) return;
+                el.setAttribute('src', withVersion(base));
+            });
+        })();
+    </script>
 </body>
 
 </html>
