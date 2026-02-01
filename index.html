@@ -22,8 +22,8 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="avatar.jpg" data-asset-href="avatar.jpg" as="image" type="image/jpeg" fetchpriority="high">
-    <link rel="preload" href="assets/css/site.css" data-asset-href="assets/css/site.css" as="style">
+    <link rel="preload" href="/avatar.jpg" data-asset-href="/avatar.jpg" as="image" type="image/jpeg" fetchpriority="high" data-vite-ignore>
+    <link rel="preload" href="/assets/css/site.css" data-asset-href="/assets/css/site.css" as="style" data-vite-ignore>
 
     <title>Chijun Sima | Efficient ML Systems</title>
     <meta name="description" content="Chijun Sima — ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko).">
@@ -266,7 +266,7 @@
     </script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/site.css" data-asset-href="assets/css/site.css">
+    <link rel="stylesheet" href="/assets/css/site.css" data-asset-href="/assets/css/site.css" data-vite-ignore>
 
     <script>
         (function () {
@@ -998,7 +998,7 @@
 
     <!-- Icons + custom JS -->
     <script src="https://unpkg.com/lucide@0.563.0" defer></script>
-    <script data-asset-src="assets/js/site.js" defer></script>
+    <script data-asset-src="/assets/js/site.js" defer></script>
     <script>
         (function () {
             const withVersion = window.__withAssetVersion__;

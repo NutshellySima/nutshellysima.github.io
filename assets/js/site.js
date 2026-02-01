@@ -1,7 +1,7 @@
 /**
  * Chijun Sima Portfolio - Enhanced JavaScript
  * Performance-optimized, accessible, and feature-rich interactions
- * No build required - vanilla JavaScript
+ * Built with a lightweight esbuild pipeline
  */
 
 (function() {
