@@ -363,12 +363,12 @@ section[id] {
 }
 
 .card-glow:hover::before {
-  opacity: 0.6;
+  opacity: 0;
 }
 
 .card-glow:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: var(--shadow-glow);
+  transform: none;
+  box-shadow: var(--shadow-md);
 }
 
 /* ===== Floating Particles ===== */
@@ -856,6 +856,25 @@ details[open] {
   .paint-worklet {
     background: paint(circle);
   }
+}
+
+/* ===== Skip Link (Accessibility) ===== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--amber-600);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s;
+  border-radius: 0 0 8px 0;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
 }
 
 /* ===== Hover Media Query (for touch devices) ===== */
