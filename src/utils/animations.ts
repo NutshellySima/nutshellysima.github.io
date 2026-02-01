@@ -31,11 +31,16 @@ export function initAnimations(): void {
       },
       {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
+        rootMargin: '0px 0px 200px 0px', // Trigger animations 200px before element enters viewport
       }
     );
 
     revealElements.forEach((el) => revealObserver.observe(el));
+  } else {
+    // Fallback: show all elements if IntersectionObserver is not supported
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger').forEach((el) => {
+      el.classList.add('active');
+    });
   }
 
   // Initialize magnetic button effect
