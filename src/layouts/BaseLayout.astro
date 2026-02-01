@@ -1,6 +1,5 @@
 ---
 import siteStyles from '../styles/site.css?url';
-import siteScript from '../scripts/site.ts?url';
 
 const assetVersion = '20260202';
 const baseStyleHref = '/assets/site.css';
@@ -240,7 +239,7 @@ const baseAvatar = '/avatar.jpg';
 
     <!-- Icons + custom JS -->
     <script src="https://unpkg.com/lucide@0.563.0" defer></script>
-    <script type="module" src={siteScript} data-asset-src={baseScriptSrc} defer></script>
+    <script type="module" src={baseScriptSrc} data-asset-src={baseScriptSrc} defer></script>
     <script is:inline>
       (function () {
         const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
