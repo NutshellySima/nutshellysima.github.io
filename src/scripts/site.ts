@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js');
+
 import { CONFIG, features } from './config';
 import { initInstallPrompt, initPwaToast, initServiceWorker } from './pwa';
 import { onReady, utils } from './utils';

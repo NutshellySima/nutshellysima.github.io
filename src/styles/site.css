@@ -496,69 +496,69 @@ section[id] {
 }
 
 /* ===== Section Reveal Animations ===== */
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s var(--ease-out-expo);
   will-change: opacity, transform;
 }
 
-.reveal.active {
+.js .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-.reveal-left {
+.js .reveal-left {
   opacity: 0;
   transform: translateX(-40px);
   transition: all 0.8s var(--ease-out-expo);
   will-change: opacity, transform;
 }
 
-.reveal-left.active {
+.js .reveal-left.active {
   opacity: 1;
   transform: translateX(0);
 }
 
-.reveal-right {
+.js .reveal-right {
   opacity: 0;
   transform: translateX(40px);
   transition: all 0.8s var(--ease-out-expo);
   will-change: opacity, transform;
 }
 
-.reveal-right.active {
+.js .reveal-right.active {
   opacity: 1;
   transform: translateX(0);
 }
 
-.reveal-scale {
+.js .reveal-scale {
   opacity: 0;
   transform: scale(0.95);
   transition: all 0.6s var(--ease-out-expo);
   will-change: opacity, transform;
 }
 
-.reveal-scale.active {
+.js .reveal-scale.active {
   opacity: 1;
   transform: scale(1);
 }
 
 /* ===== Stagger Animation ===== */
-.stagger > * {
+.js .stagger > * {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.5s var(--ease-out-expo);
 }
 
-.stagger.active > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
-.stagger.active > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-.stagger.active > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
-.stagger.active > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-.stagger.active > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
-.stagger.active > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-.stagger.active > *:nth-child(7) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
-.stagger.active > *:nth-child(8) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.js .stagger.active > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+.js .stagger.active > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.js .stagger.active > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+.js .stagger.active > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.js .stagger.active > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+.js .stagger.active > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.js .stagger.active > *:nth-child(7) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
+.js .stagger.active > *:nth-child(8) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
 
 /* ===== Magnetic Button Effect ===== */
 .magnetic-btn {
@@ -754,10 +754,10 @@ details[open] {
     display: none !important;
   }
 
-  .reveal,
-  .reveal-left,
-  .reveal-right,
-  .reveal-scale {
+  .js .reveal,
+  .js .reveal-left,
+  .js .reveal-right,
+  .js .reveal-scale {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -788,11 +788,11 @@ details[open] {
     transition-duration: 0.01ms !important;
   }
 
-  .reveal,
-  .reveal-left,
-  .reveal-right,
-  .reveal-scale,
-  .stagger > * {
+  .js .reveal,
+  .js .reveal-left,
+  .js .reveal-right,
+  .js .reveal-scale,
+  .js .stagger > * {
     opacity: 1 !important;
     transform: none !important;
   }
