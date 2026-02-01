@@ -12,23 +12,6 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// ===== Copy Email =====
-const copyEmailBtn = document.getElementById('copy-email');
-const copyFeedback = document.getElementById('copy-feedback');
-if (copyEmailBtn && copyFeedback) {
-  copyEmailBtn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText('simachijun@gmail.com');
-      copyFeedback.textContent = 'Email copied to clipboard.';
-    } catch (err) {
-      copyFeedback.textContent = 'Copy failed. Please select and copy manually.';
-    }
-    setTimeout(() => {
-      copyFeedback.textContent = '';
-    }, 2500);
-  });
-}
-
 // ===== Theme Toggle =====
 const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
