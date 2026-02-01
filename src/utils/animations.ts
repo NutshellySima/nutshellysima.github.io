@@ -31,7 +31,9 @@ export function initAnimations(): void {
       },
       {
         threshold: 0.1,
-        rootMargin: '0px 0px 200px 0px', // Trigger animations 200px before element enters viewport
+        // Positive bottom margin extends the root's bounding box downward by 200px,
+        // causing elements to intersect (and trigger) 200px before they would normally enter the viewport
+        rootMargin: '0px 0px 200px 0px',
       }
     );
 
