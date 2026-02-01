@@ -256,50 +256,70 @@ section[id] {
 
 /* ===== Section Reveal ===== */
 .reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.active {
+.reveal.animate {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.reveal.animate.active {
   opacity: 1;
   transform: translateY(0);
 }
 
 .reveal-left {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-left.active {
+.reveal-left.animate {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.reveal-left.animate.active {
   opacity: 1;
   transform: translateX(0);
 }
 
 .reveal-right {
-  opacity: 0;
-  transform: translateX(50px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-right.active {
+.reveal-right.animate {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.reveal-right.animate.active {
   opacity: 1;
   transform: translateX(0);
 }
 
 /* ===== Stagger Animation ===== */
 .stagger > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger.animate > * {
   opacity: 0;
   transform: translateY(30px);
 }
 
-.stagger.active > *:nth-child(1) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; }
-.stagger.active > *:nth-child(2) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
-.stagger.active > *:nth-child(3) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
-.stagger.active > *:nth-child(4) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
-.stagger.active > *:nth-child(5) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
-.stagger.active > *:nth-child(6) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
+.stagger.animate.active > *:nth-child(1) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; }
+.stagger.animate.active > *:nth-child(2) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
+.stagger.animate.active > *:nth-child(3) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
+.stagger.animate.active > *:nth-child(4) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
+.stagger.animate.active > *:nth-child(5) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+.stagger.animate.active > *:nth-child(6) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
 
 @keyframes slideUp {
   from {
@@ -343,9 +363,12 @@ details > summary::marker {
   }
   .reveal,
   .reveal-left,
-  .reveal-right {
+  .reveal-right,
+  .stagger,
+  .stagger > * {
     opacity: 1 !important;
     transform: none !important;
+    animation: none !important;
   }
 }
 
@@ -363,9 +386,12 @@ details > summary::marker {
   }
   .reveal,
   .reveal-left,
-  .reveal-right {
+  .reveal-right,
+  .stagger,
+  .stagger > * {
     opacity: 1 !important;
     transform: none !important;
+    animation: none !important;
   }
 }
 

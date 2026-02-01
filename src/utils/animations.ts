@@ -3,6 +3,11 @@
 export function initAnimations(): void {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Add animate class to reveal elements for JS-enabled animation
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger').forEach((el) => {
+    el.classList.add('animate');
+  });
+
   if (prefersReducedMotion) {
     // Show all elements immediately if user prefers reduced motion
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger').forEach((el) => {
