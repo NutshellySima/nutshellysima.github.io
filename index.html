@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chijun Sima | Efficient ML Systems</title>
-    <meta name="description" content="Chijun Sima — ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI ’22 (Ekko).">
+    <meta name="description" content="Chijun Sima — ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko).">
     <meta name="keywords" content="Chijun Sima, MLSys, Machine Learning Systems, Model Freshness, Recommender Systems, Deep Learning, Systems for ML, Efficient AI, Tencent, WeChat, OSDI, Ekko, LLM Serving, LLVM">
     <meta name="author" content="Chijun Sima">
     <meta name="robots" content="index, follow">
@@ -13,108 +12,50 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="color-scheme" content="light dark">
     <link rel="canonical" href="https://www.chijunsima.com/">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.chijunsima.com/">
     <meta property="og:title" content="Chijun Sima | Efficient ML Systems">
-    <meta property="og:description" content="ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI ’22 (Ekko).">
+    <meta property="og:description" content="ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko).">
     <meta property="og:image" content="https://www.chijunsima.com/avatar.jpg">
     <meta property="og:image:alt" content="Portrait of Chijun Sima">
     <meta property="og:site_name" content="Chijun Sima">
     <meta property="og:locale" content="en_US">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://www.chijunsima.com/">
     <meta name="twitter:title" content="Chijun Sima | Efficient ML Systems">
-    <meta name="twitter:description" content="ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI ’22 (Ekko).">
+    <meta name="twitter:description" content="ML systems engineer. I build efficient production ML systems (model freshness, recommender systems, serving) and contribute to LLVM. Co-first author, OSDI '22 (Ekko).">
     <meta name="twitter:image" content="https://www.chijunsima.com/avatar.jpg">
     <meta name="twitter:image:alt" content="Portrait of Chijun Sima">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon.svg" sizes="any">
-    
+
     <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Google Fonts - Inter + JetBrains Mono + Space Grotesk -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+
+    <!-- Theme colors -->
     <meta name="theme-color" content="#6366f1" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
 
-    <!-- Prevent theme flash (sets .dark before first paint) -->
+    <!-- Prevent theme flash -->
     <script>
-        (function () {
+        (function() {
             try {
                 const savedTheme = localStorage.getItem('theme');
                 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                     document.documentElement.classList.add('dark');
                 }
-            } catch (e) {
-                // Ignore storage access errors
-            }
+            } catch (e) {}
         })();
     </script>
-    
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f0f4ff',
-                            100: '#e0e9ff',
-                            200: '#c7d6fe',
-                            300: '#a4b8fc',
-                            400: '#8093f8',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            800: '#3730a3',
-                            900: '#312e81',
-                            950: '#1e1b4b',
-                        },
-                        accent: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            200: '#a7f3d0',
-                            300: '#6ee7b7',
-                            400: '#34d399',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                            800: '#065f46',
-                            900: '#064e3b',
-                        },
-                        cyber: {
-                            blue: '#00d4ff',
-                            purple: '#a855f7',
-                            pink: '#ec4899',
-                            green: '#22c55e',
-                        }
-                    },
-                },
-            },
-        }
-    </script>
-    
-    <!-- Structured Data / JSON-LD -->
+
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -139,12 +80,12 @@
         ]
     }
     </script>
-    
+
     <!-- Analytics -->
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script>
     <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        (function(c, l, a, r, i, t, y) {
+            c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments) };
             t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
             y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "cr8ptqxm1m");
@@ -156,613 +97,10 @@
         gtag('js', new Date());
         gtag('config', 'G-RDCCF82CG7');
     </script>
-
-    <!-- Custom CSS (extracted from inline <style> for maintainability) -->
-    <link rel="stylesheet" href="assets/css/site.css">
 </head>
 
-<body id="top" class="font-sans antialiased text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
-    <!-- Skip Link -->
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg">
-        Skip to main content
-    </a>
-    
-    <!-- Scroll Progress -->
-    <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-purple-500 to-pink-500 z-[60] no-print"></div>
-    
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 no-print transition-all duration-300" aria-label="Primary">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div id="nav-container" class="glass rounded-2xl mt-4 px-4 sm:px-6 py-3 shadow-lg transition-all duration-300 relative">
-                <div class="flex items-center justify-between">
-                    <!-- Logo -->
-                    <a href="#top" class="flex items-center gap-3 group">
-                        <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm shadow-lg group-hover:scale-110 transition-transform overflow-hidden">
-                            <span class="relative z-10">CS</span>
-                            <div class="absolute inset-0 bg-gradient-to-br from-primary-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        </div>
-                        <div class="hidden sm:block">
-                            <span class="font-display font-semibold text-lg block leading-tight">Chijun Sima</span>
-                            <span class="text-xs text-slate-500 dark:text-slate-400">Efficient ML Systems</span>
-                        </div>
-                    </a>
-                    
-                    <!-- Desktop Nav -->
-                    <div class="hidden lg:flex items-center gap-1">
-                        <a href="#about" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Overview</a>
-                        <a href="#research" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Research</a>
-                        <a href="#ekko" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Ekko</a>
-                        <a href="#work" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Work</a>
-                        <a href="#publications" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Publications</a>
-                        <a href="#service" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all">Service</a>
-                    </div>
-                    
-                    <!-- Actions -->
-                    <div class="flex items-center gap-2">
-                        <!-- Theme Toggle -->
-                        <button id="theme-toggle" class="relative p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-ring overflow-hidden" aria-label="Toggle theme">
-                            <i data-lucide="sun" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0"></i>
-                            <i data-lucide="moon" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100"></i>
-                            <span class="w-5 h-5 block opacity-0">.</span>
-                        </button>
-                        
-                        <!-- Mobile Menu Button -->
-                        <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-ring" aria-label="Toggle menu" aria-controls="mobile-menu" aria-expanded="false">
-                            <i data-lucide="menu" class="w-5 h-5 menu-icon"></i>
-                            <i data-lucide="x" class="w-5 h-5 close-icon hidden"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Mobile Nav -->
-                <div id="mobile-menu" class="hidden lg:hidden absolute left-0 right-0 top-full mt-3 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/60 shadow-2xl p-4" hidden>
-                    <div class="grid grid-cols-2 gap-2">
-                        <a href="#about" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="user" class="w-4 h-4 text-primary-500"></i> Overview
-                        </a>
-                        <a href="#research" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="flask-conical" class="w-4 h-4 text-purple-500"></i> Research
-                        </a>
-                        <a href="#ekko" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="activity" class="w-4 h-4 text-rose-500"></i> Ekko
-                        </a>
-                        <a href="#work" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="briefcase" class="w-4 h-4 text-amber-500"></i> Work
-                        </a>
-                        <a href="#publications" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="book-open" class="w-4 h-4 text-red-500"></i> Publications
-                        </a>
-                        <a href="#service" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all flex items-center gap-2">
-                            <i data-lucide="users" class="w-4 h-4 text-green-500"></i> Service
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    <main id="main" tabindex="-1">
-        <!-- ===== Hero / About ===== -->
-        <section id="about" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 gradient-bg mesh-gradient noise overflow-hidden">
-            <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-                <div class="reveal">
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8">
-                        <div>
-                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.05]">
-                                Chijun Sima
-                            </h1>
-                            <p class="mt-4 text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
-                                I build <span class="font-semibold text-slate-800 dark:text-slate-200">efficient ML systems</span> for large-scale production: keeping models fresh under tight latency/cost constraints, and turning research ideas into deployable systems.
-                            </p>
-                            <div class="mt-6 flex flex-wrap gap-2 text-sm">
-                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-300">Senior SDE · Tencent (WeChat)</span>
-                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-300">OSDI ’22 (co-first author)</span>
-                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-300">LLVM developer (commit access)</span>
-                                <span class="px-3 py-1.5 rounded-full bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-300">B.Eng. CS · SCUT (Rank 1/28)</span>
-                            </div>
-
-                            <div class="mt-8 flex flex-wrap gap-3">
-                                <a href="#research" class="magnetic-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-primary-600 via-purple-600 to-pink-600 text-white font-medium shadow-lg hover:shadow-xl transition-all focus-ring">
-                                    <i data-lucide="flask-conical" class="w-5 h-5"></i>
-                                    Research focus
-                                </a>
-                                <a href="#ekko" class="magnetic-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900/70 text-slate-800 dark:text-slate-200 font-medium shadow-lg hover:shadow-xl transition-all border border-slate-200/70 dark:border-slate-700/60 focus-ring">
-                                    <i data-lucide="activity" class="w-5 h-5"></i>
-                                    Ekko explained
-                                </a>
-                                <a href="/cv.pdf" class="magnetic-btn inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-slate-900/70 text-slate-800 dark:text-slate-200 font-medium shadow-lg hover:shadow-xl transition-all border border-slate-200/70 dark:border-slate-700/60 focus-ring">
-                                    <i data-lucide="file-text" class="w-5 h-5"></i>
-                                    CV (PDF)
-                                </a>
-                            </div>
-
-                            <div class="mt-6 flex flex-wrap items-center gap-3 text-sm">
-                                <a href="mailto:simachijun@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 hover:bg-white dark:hover:bg-slate-900 transition-colors focus-ring">
-                                    <i data-lucide="mail" class="w-4 h-4 text-primary-600"></i>
-                                    Email
-                                </a>
-                                <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 hover:bg-white dark:hover:bg-slate-900 transition-colors focus-ring">
-                                    <i data-lucide="github" class="w-4 h-4"></i>
-                                    GitHub
-                                </a>
-                                <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 hover:bg-white dark:hover:bg-slate-900 transition-colors focus-ring">
-                                    <i data-lucide="linkedin" class="w-4 h-4 text-[#0077b5]"></i>
-                                    LinkedIn
-                                </a>
-                                <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 hover:bg-white dark:hover:bg-slate-900 transition-colors focus-ring">
-                                    <i data-lucide="graduation-cap" class="w-4 h-4 text-[#4285f4]"></i>
-                                    Scholar
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="flex-shrink-0 w-full sm:w-auto">
-                            <div class="relative">
-                                <img src="avatar.jpg" alt="Chijun Sima" width="208" height="208" decoding="async" fetchpriority="high" class="w-44 h-44 sm:w-52 sm:h-52 object-cover rounded-3xl shadow-2xl ring-4 ring-white dark:ring-slate-800 mx-auto sm:mx-0" loading="eager">
-                                <div class="mt-4 flex justify-center sm:justify-start">
-                                    <div class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60 text-sm">
-                                        <i data-lucide="map-pin" class="w-4 h-4 text-primary-600"></i>
-                                        Guangzhou, China
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Research Focus ===== -->
-        <section id="research" class="py-20 lg:py-28 bg-white dark:bg-slate-900 relative overflow-hidden">
-            <div class="absolute inset-0 grid-pattern"></div>
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="reveal">
-                    <div class="text-center mb-12">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-medium mb-4">
-                            <i data-lucide="flask-conical" class="w-4 h-4"></i>
-                            Research
-                        </span>
-                        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-3">Research focus</h2>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-4xl mx-auto">
-                            I’m interested in system–algorithm co-design that makes large-scale learning <span class="font-semibold text-slate-800 dark:text-slate-200">technically and economically feasible</span> in production.
-                        </p>
-                    </div>
-
-                    <div class="grid lg:grid-cols-3 gap-6 stagger">
-                        <div class="bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <h3 class="text-lg font-display font-bold mb-2">Model freshness at scale</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                                When scaling improves offline accuracy but harms online metrics, I look for “systems bottlenecks that become ML failure modes” (e.g., stale models from slow update pipelines).
-                            </p>
-                        </div>
-                        <div class="bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <h3 class="text-lg font-display font-bold mb-2">Low-cost data / feature pipelines</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Safe and scalable data engineering for training: isolation without heavyweight process boundaries, and locality-aware execution near data to reduce data movement. Modern feature pipelines are long and increasingly multimodal. The shift toward <span class="font-semibold text-slate-800 dark:text-slate-200">multimodal</span> inputs pushes pipeline design toward safe, expressive composition.
-                            </p>
-                        </div>
-                        <div class="bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <h3 class="text-lg font-display font-bold mb-2">Efficient serving</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Cost-effective serving mechanisms (including LLM serving), where latency SLOs, memory bandwidth, and infrastructure costs interact with model behavior.
-                            </p>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Selected Work ===== -->
-        <section id="work" class="py-20 lg:py-28 bg-white dark:bg-slate-900 relative overflow-hidden">
-            <div class="absolute inset-0 grid-pattern"></div>
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="reveal">
-                    <div class="text-center mb-12">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
-                            <i data-lucide="briefcase" class="w-4 h-4"></i>
-                            Selected work
-                        </span>
-                        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-3">Selected work</h2>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-                            Systems I’ve built to make large models practical in production: freshness, cost, reliability, and performance.
-                        </p>
-                    </div>
-
-                    <div class="grid lg:grid-cols-3 gap-6 stagger" id="work-cards">
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center shadow-lg shadow-primary-500/25">
-                                    <i data-lucide="activity" class="w-6 h-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-display font-bold">Ekko (WeChat recsys)</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Low-latency model updates at extreme scale</p>
-                                </div>
-                            </div>
-                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i>Compressed dissemination + model-aware scheduling (WAN −92%)</li>
-                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i>SLO-aware placement (machine cost −49%) + safe rollback</li>
-                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i>Second-level freshness (2.4s) for multi-terabyte models</li>
-                            </ul>
-                            <div class="mt-5 flex flex-wrap items-center gap-3 text-sm">
-                                <span class="px-3 py-1 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 font-medium">OSDI ’22</span>
-                                <a href="#ekko" class="inline-flex items-center gap-1.5 text-primary-600 dark:text-primary-400 hover:underline font-medium">
-                                    Explainer <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                </a>
-                                <a href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-primary-600 dark:text-primary-400 hover:underline font-medium">
-                                    Paper <i data-lucide="external-link" class="w-4 h-4"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-lg shadow-emerald-500/25">
-                                    <i data-lucide="shield" class="w-6 h-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-display font-bold">Data / feature platform</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Safe, scalable pipelines for training data</p>
-                                </div>
-                            </div>
-                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i>WebAssembly runtime for in-process isolation</li>
-                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i>Locality-aware operator placement near data sources</li>
-                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i>Reduced data movement up to 1,200× on representative workloads</li>
-                            </ul>
-                            <div class="mt-5 flex flex-wrap gap-2 text-xs">
-                                <span class="px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-medium">WASM</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium">Data systems</span>
-                            </div>
-                        </div>
-
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center shadow-lg">
-                                    <i data-lucide="code-2" class="w-6 h-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-display font-bold">LLVM</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Compiler infrastructure contributions</p>
-                                </div>
-                            </div>
-                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                                <li class="flex items-start gap-2"><i data-lucide="git-commit" class="w-4 h-4 text-primary-500 mt-0.5"></i>Improved Semi-NCA & optimization pipeline (LLVM 9.0), speedups up to 1980×</li>
-                                <li class="flex items-start gap-2"><i data-lucide="git-commit" class="w-4 h-4 text-primary-500 mt-0.5"></i>Unified dominator-tree update APIs (LLVM 7.0)</li>
-                                <li class="flex items-start gap-2"><i data-lucide="award" class="w-4 h-4 text-amber-500 mt-0.5"></i>Google Summer of Code 2018 (LLVM)</li>
-                            </ul>
-                            <div class="mt-5 flex flex-wrap gap-2 text-xs">
-                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium">C++</span>
-                                <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium">Compilers</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Ekko Explained ===== -->
-        <section id="ekko" class="py-24 lg:py-32 bg-slate-50 dark:bg-slate-800/30 relative overflow-hidden">
-            <div class="absolute inset-0 dot-pattern opacity-50"></div>
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="reveal">
-                    <div class="text-center mb-12">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-medium mb-4">
-                            <i data-lucide="activity" class="w-4 h-4"></i>
-                            Ekko
-                        </span>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">Ekko, explained</h2>
-                        <p class="text-slate-600 dark:text-slate-400 max-w-4xl mx-auto">
-                            Ekko is a production system for <span class="font-semibold text-slate-800 dark:text-slate-200">low-latency model updates</span> in large-scale deep learning recommender systems. It’s motivated by a common scaling failure: bigger models can improve offline metrics yet degrade online outcomes when update pipelines can’t keep up.
-                        </p>
-                    </div>
-
-                    <div class="grid lg:grid-cols-2 gap-6 stagger">
-                        <div class="bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <h3 class="text-lg font-display font-bold mb-3">Problem → research question</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-                                When we scaled DLRMs, offline accuracy improved, but online engagement regressed. The root cause was <span class="font-semibold text-slate-800 dark:text-slate-200">stale models</span>: pre-scaling infrastructure couldn’t propagate updates quickly enough.
-                            </p>
-                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                                The question became: <span class="font-semibold text-slate-800 dark:text-slate-200">how can we keep update latency low as models scale to extreme size?</span>
-                            </p>
-                        </div>
-
-                        <div class="bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <h3 class="text-lg font-display font-bold mb-3">Design highlights</h3>
-                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i>
-                                    <span><span class="font-semibold text-slate-800 dark:text-slate-200">Update dissemination + scheduling:</span> compress updates and prioritize synchronization using model/gradient signals (WAN bandwidth −92%).</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i>
-                                    <span><span class="font-semibold text-slate-800 dark:text-slate-200">SLO-aware placement:</span> optimization-based shard management to co-locate models without overloading inference engines (machine cost −49%).</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5"></i>
-                                    <span><span class="font-semibold text-slate-800 dark:text-slate-200">Safe rollout:</span> model-state management to roll back harmful updates in seconds.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                            <div>
-                                <h3 class="text-lg font-display font-bold mb-2">Production outcomes (selected)</h3>
-                                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                                    In production iterations, Ekko-style mechanisms supported very large-scale deployment while maintaining <span class="font-semibold text-slate-800 dark:text-slate-200">second-level freshness</span> (reported 2.4s model-update latency) and serving over a billion users daily.
-                                </p>
-                            </div>
-                            <div class="flex flex-wrap gap-2 text-sm">
-                                <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium">2.4s update latency</span>
-                                <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium">10,000× model-size scaling</span>
-                                <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium">WAN −92%</span>
-                                <span class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-medium">cost −49%</span>
-                            </div>
-                        </div>
-
-                        <div class="mt-5 flex flex-wrap items-center gap-3 text-sm">
-                            <span class="px-3 py-1 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 font-medium">OSDI ’22 (co-first)</span>
-                            <a href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-primary-600 dark:text-primary-400 hover:underline font-medium">
-                                Paper <i data-lucide="external-link" class="w-4 h-4"></i>
-                            </a>
-                            <a href="https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-primary-600 dark:text-primary-400 hover:underline font-medium">
-                                WeChat engineering write-up <i data-lucide="external-link" class="w-4 h-4"></i>
-                            </a>
-                            <a href="https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-primary-600 dark:text-primary-400 hover:underline font-medium">
-                                Tencent engineering write-up <i data-lucide="external-link" class="w-4 h-4"></i>
-                            </a>
-                        </div>
-
-                        <div class="mt-6">
-                            <details class="group rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/30 p-6">
-                                <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-                                    <div class="flex items-center gap-3">
-                                        <i data-lucide="quote" class="w-5 h-5 text-primary-600"></i>
-                                        <span class="font-display font-semibold">Industry impact</span>
-                                    </div>
-                                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 group-open:rotate-180 transition-transform"></i>
-                                </summary>
-                                <div class="mt-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed space-y-3">
-                                    <p>
-                                        After rollout of Ekko-based recommendation infrastructure, a public WeChat engineering blog reports growth metrics (e.g., “+40% DAU” and “+87% total VV” over six months) alongside product iteration and operations.
-                                    </p>
-                                    <p>
-                                        What I consider the core research contribution is showing that <span class="font-semibold text-slate-800 dark:text-slate-200">model-aware mechanisms</span> can make second-level freshness feasible even at multi-terabyte scale.
-                                    </p>
-                                </div>
-                            </details>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- ===== Publications ===== -->
-        <section id="publications" class="py-24 lg:py-32 bg-white dark:bg-slate-900 relative overflow-hidden">
-            <div class="absolute inset-0 mesh-gradient opacity-50"></div>
-            
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="reveal">
-                    <!-- Section Header -->
-                    <div class="text-center mb-16">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-medium mb-4">
-                            <i data-lucide="book-open" class="w-4 h-4"></i>
-                            Publications
-                        </span>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">Selected Publications</h2>
-                        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">If you prefer a full list, see my Google Scholar.</p>
-                    </div>
-                    
-                    <!-- Publications List -->
-                    <div class="space-y-6 max-w-4xl mx-auto stagger" id="publications-list">
-                        <!-- OSDI Paper -->
-                        <div class="card-glow group bg-gradient-to-r from-red-50 via-orange-50 to-amber-50 dark:from-red-900/10 dark:via-orange-900/10 dark:to-amber-900/10 rounded-2xl p-6 lg:p-8 border border-red-100/50 dark:border-red-800/30 relative overflow-hidden">
-                            <!-- Highlight Badge -->
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-500/10 to-transparent rounded-bl-full"></div>
-                            
-                            <div class="flex flex-wrap items-start gap-3 mb-4">
-                                <span class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-red-500 to-orange-500 text-white text-sm font-bold shadow-lg shadow-red-500/25">
-                                    OSDI '22
-                                </span>
-                                <span class="px-3 py-1.5 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-sm font-medium border border-amber-200/50 dark:border-amber-700/30">
-                                    ⭐ Co-first Author
-                                </span>
-                            </div>
-                            
-                            <h3 class="text-xl font-display font-bold mb-3">
-                                <a href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors inline-flex items-center gap-2 group/link">
-                                    Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update
-                                    <i data-lucide="external-link" class="w-5 h-5 opacity-0 group-hover/link:opacity-100 transition-opacity"></i>
-                                </a>
-                            </h3>
-                            
-                            <p class="text-slate-600 dark:text-slate-400 mb-4">
-                                <strong class="text-slate-800 dark:text-slate-200">Chijun Sima*</strong>, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai
-                            </p>
-                            
-                            <div class="flex flex-wrap items-center gap-4">
-                                <p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
-                                    <i data-lucide="user" class="w-4 h-4"></i>
-                                    Supervised by <a href="https://luomai.github.io/" target="_blank" rel="noopener noreferrer" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">Luo Mai</a>
-                                </p>
-                                <a href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm text-primary-600 dark:text-primary-400 hover:underline font-medium">
-                                    <i data-lucide="file-text" class="w-4 h-4"></i>
-                                    Read Paper
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- IEEE Paper -->
-                        <div class="card-glow group bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10 rounded-2xl p-6 lg:p-8 border border-blue-100/50 dark:border-blue-800/30">
-                            <div class="flex flex-wrap items-start gap-3 mb-4">
-                                <span class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-bold shadow-lg shadow-blue-500/25">
-                                    IEEE Access
-                                </span>
-                                <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium">
-                                    2019
-                                </span>
-                            </div>
-                            
-                            <h3 class="text-xl font-display font-bold mb-3">
-                                Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification
-                            </h3>
-                            
-                            <p class="text-slate-600 dark:text-slate-400">
-                                Kejian Shi, Hongyang Qin, <strong class="text-slate-800 dark:text-slate-200">Chijun Sima</strong>, Sen Li, Lifeng Shen, Qianli Ma
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Service ===== -->
-        <section id="service" class="py-20 lg:py-28 bg-slate-50 dark:bg-slate-800/30 relative overflow-hidden">
-            <div class="absolute inset-0 dot-pattern opacity-50"></div>
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="reveal">
-                    <div class="text-center mb-12">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 text-sm font-medium mb-4">
-                            <i data-lucide="users" class="w-4 h-4"></i>
-                            Service
-                        </span>
-                        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-3">Service & recognition</h2>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">Selected service, talks, and recognition.</p>
-                    </div>
-
-                    <div class="grid lg:grid-cols-3 gap-6 stagger" id="service-cards">
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/25">
-                                    <i data-lucide="eye" class="w-6 h-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-display font-bold">Reviewer</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Conference & workshop peer review</p>
-                                </div>
-                            </div>
-                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                                <li>CVPR 2025</li>
-                                <li>ICLR 2025 Workshop (FM-Wild)</li>
-                                <li>NeurIPS 2025 Workshop (Efficient Reasoning)</li>
-                            </ul>
-                        </div>
-
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-lg shadow-pink-500/25">
-                                    <i data-lucide="mic" class="w-6 h-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-display font-bold">Talks</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Invited presentations (Ekko)</p>
-                                </div>
-                            </div>
-                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                                <li>Tencent WeChat AI (Shenzhen, Jun 2022)</li>
-                                <li>DataFun (Virtual, Aug 2022)</li>
-                                <li>TechBeat (Virtual, Sep 2022)</li>
-                            </ul>
-                        </div>
-
-                        <div class="card-glow bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-xl border border-slate-100 dark:border-slate-700">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/25">
-                                    <i data-lucide="trophy" class="w-6 h-6 text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-display font-bold">Awards</h3>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400">Selected recognition</p>
-                                </div>
-                            </div>
-                            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                                <li><span class="font-medium text-slate-800 dark:text-slate-200">Tencent Technology Breakthrough Award (Gold)</span>, 2022H2 — Project Lead (Ekko)</li>
-                                <li>ACM-ICPC Asia Xi’an Regional — Bronze (2017)</li>
-                                <li>CCPC Guangdong Division — Second Prize (out of 177 teams)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-        <!-- ===== Footer ===== -->
-    <footer class="bg-slate-900 text-white py-16 lg:py-20 no-print relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
-                <!-- Brand -->
-                <div>
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold shadow-lg">
-                            CS
-                        </div>
-                        <div>
-                            <span class="font-display font-semibold text-lg block">Chijun Sima</span>
-                            <span class="text-slate-400 text-sm">Efficient ML Systems</span>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
-                        Building efficient ML systems at scale (freshness, cost, reliability) and contributing to LLVM.
-                    </p>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="font-display font-semibold mb-5">Quick Links</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <a href="#about" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-colors hover:scale-105">Overview</a>
-                        <a href="#work" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-colors hover:scale-105">Work</a>
-                        <a href="#publications" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-colors hover:scale-105">Publications</a>
-                        <a href="#service" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-colors hover:scale-105">Service</a>
-                        <a href="/cv.pdf" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm transition-colors hover:scale-105">CV</a>
-                    </div>
-                </div>
-                
-                <!-- Connect -->
-                <div>
-                    <h4 class="font-display font-semibold mb-5">Connect</h4>
-                    <div class="flex gap-3">
-                        <a href="mailto:simachijun@gmail.com" class="group p-3 rounded-xl bg-slate-800 hover:bg-gradient-to-br hover:from-primary-600 hover:to-purple-600 transition-all hover:scale-110" aria-label="Email">
-                            <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-slate-800 hover:bg-[#0077b5] transition-all hover:scale-110" aria-label="LinkedIn">
-                            <i data-lucide="linkedin" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                        </a>
-                        <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition-all hover:scale-110" aria-label="GitHub">
-                            <i data-lucide="github" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="group p-3 rounded-xl bg-slate-800 hover:bg-[#4285f4] transition-all hover:scale-110" aria-label="Google Scholar">
-                            <i data-lucide="graduation-cap" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Bottom Bar -->
-            <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p class="text-slate-400 text-sm">
-                    © <span id="year"></span> Chijun Sima.
-                </p>
-                <a href="#top" class="group inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-gradient-to-r hover:from-primary-600 hover:to-purple-600 text-sm transition-all hover:scale-105">
-                    <i data-lucide="arrow-up" class="w-4 h-4 group-hover:-translate-y-1 transition-transform"></i>
-                    Back to top
-                </a>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- Icons + custom JS -->
-    <script src="https://unpkg.com/lucide@0.563.0"></script>
-    <script src="assets/js/site.js"></script>
+<body class="font-sans antialiased text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
 </body>
-
 </html>

@@ -1,5 +1,43 @@
-/* Custom site CSS extracted from index.html.
-   Keep this file in sync with the HTML structure and Tailwind usage. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Font families */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Primary colors - Indigo */
+  --color-primary-50: #f0f4ff;
+  --color-primary-100: #e0e9ff;
+  --color-primary-200: #c7d6fe;
+  --color-primary-300: #a4b8fc;
+  --color-primary-400: #8093f8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+  --color-primary-950: #1e1b4b;
+
+  /* Accent colors - Emerald */
+  --color-accent-50: #ecfdf5;
+  --color-accent-100: #d1fae5;
+  --color-accent-200: #a7f3d0;
+  --color-accent-300: #6ee7b7;
+  --color-accent-400: #34d399;
+  --color-accent-500: #10b981;
+  --color-accent-600: #059669;
+  --color-accent-700: #047857;
+  --color-accent-800: #065f46;
+  --color-accent-900: #064e3b;
+
+  /* Cyber colors */
+  --color-cyber-blue: #00d4ff;
+  --color-cyber-purple: #a855f7;
+  --color-cyber-pink: #ec4899;
+  --color-cyber-green: #22c55e;
+}
 
 /* ===== Base Styles ===== */
 * {
@@ -21,7 +59,6 @@ section[id] {
   scroll-margin-top: 120px;
 }
 
-/* Optional: make hash targets easier to spot when navigating via keyboard/history */
 :target {
   outline: 2px solid rgba(99, 102, 241, 0.35);
   outline-offset: 6px;
@@ -32,16 +69,20 @@ section[id] {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #6366f1, #a855f7);
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #4f46e5, #9333ea);
 }
+
 .dark ::-webkit-scrollbar-track {
   background: #0f172a;
 }
@@ -80,9 +121,16 @@ section[id] {
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
+
 .dark .gradient-bg {
   background: linear-gradient(-45deg, #0f172a, #1e1b4b, #0c1929, #1a0f29, #0f172a);
   background-size: 400% 400%;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* ===== Mesh Gradient ===== */
@@ -94,6 +142,7 @@ section[id] {
     radial-gradient(at 80% 50%, rgba(16, 185, 129, 0.1) 0px, transparent 50%),
     radial-gradient(at 0% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
 }
+
 .dark .mesh-gradient {
   background:
     radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.2) 0px, transparent 50%),
@@ -110,6 +159,7 @@ section[id] {
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
+
 .dark .glass {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -121,6 +171,7 @@ section[id] {
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
 .dark .glass-card {
   background: rgba(30, 41, 59, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -131,6 +182,7 @@ section[id] {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
 }
+
 .card-3d:hover {
   transform: translateY(-12px) rotateX(5deg) rotateY(-5deg);
 }
@@ -139,6 +191,7 @@ section[id] {
   position: relative;
   transition: all 0.3s ease;
 }
+
 .card-glow::before {
   content: '';
   position: absolute;
@@ -150,24 +203,18 @@ section[id] {
   transition: opacity 0.3s ease;
   filter: blur(15px);
 }
+
 .card-glow:hover::before {
   opacity: 0.6;
 }
+
 .card-glow:hover {
   transform: translateY(-8px);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
+
 .dark .card-glow:hover {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-
-/* ===== Floating Orbs ===== */
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.5;
-  pointer-events: none;
 }
 
 /* ===== Grid Pattern ===== */
@@ -177,6 +224,7 @@ section[id] {
     linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
+
 .dark .grid-pattern {
   background-image:
     linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
@@ -212,6 +260,7 @@ section[id] {
   transform: translateY(50px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
@@ -222,6 +271,7 @@ section[id] {
   transform: translateX(-50px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .reveal-left.active {
   opacity: 1;
   transform: translateX(0);
@@ -232,6 +282,7 @@ section[id] {
   transform: translateX(50px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .reveal-right.active {
   opacity: 1;
   transform: translateX(0);
@@ -242,24 +293,13 @@ section[id] {
   opacity: 0;
   transform: translateY(30px);
 }
-.stagger.active > *:nth-child(1) {
-  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-}
-.stagger.active > *:nth-child(2) {
-  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-}
-.stagger.active > *:nth-child(3) {
-  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-}
-.stagger.active > *:nth-child(4) {
-  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-}
-.stagger.active > *:nth-child(5) {
-  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-}
-.stagger.active > *:nth-child(6) {
-  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
-}
+
+.stagger.active > *:nth-child(1) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; }
+.stagger.active > *:nth-child(2) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
+.stagger.active > *:nth-child(3) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
+.stagger.active > *:nth-child(4) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
+.stagger.active > *:nth-child(5) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+.stagger.active > *:nth-child(6) { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
 
 @keyframes slideUp {
   from {
@@ -281,9 +321,11 @@ section[id] {
 details > summary {
   list-style: none;
 }
+
 details > summary::-webkit-details-marker {
   display: none;
 }
+
 details > summary::marker {
   content: "";
 }
@@ -327,4 +369,23 @@ details > summary::marker {
   }
 }
 
-/* (No extra mobile scroll hacks needed) */
+/* ===== View Transitions ===== */
+@supports (view-transition-name: none) {
+  ::view-transition-old(root) {
+    animation: fade-out 0.2s ease-out;
+  }
+
+  ::view-transition-new(root) {
+    animation: fade-in 0.2s ease-out;
+  }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
