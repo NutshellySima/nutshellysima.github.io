@@ -10,11 +10,6 @@ export type PwaToast = {
   hide: () => void;
 };
 
-type BeforeInstallPromptEvent = Event & {
-  prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
-};
-
 export const initPwaToast = (): PwaToast | null => {
   const toast = document.getElementById('pwa-toast');
   const title = document.getElementById('pwa-toast-title');
@@ -126,40 +121,4 @@ export const initServiceWorker = (toast: PwaToast | null) => {
     .catch(() => {
       // Ignore registration errors (offline, unsupported)
     });
-};
-
-export const initInstallPrompt = (toast: PwaToast | null) => {
-  if (!toast) return;
-  let deferredPrompt: BeforeInstallPromptEvent | null = null;
-
-  window.addEventListener('beforeinstallprompt', (event) => {
-    event.preventDefault();
-    deferredPrompt = event as BeforeInstallPromptEvent;
-    toast.show({
-      titleText: 'Install this app',
-      descText: 'Get offline access and an app-like experience.',
-      actionText: 'Install',
-      onAction: async () => {
-        if (!deferredPrompt) return;
-        deferredPrompt.prompt();
-        try {
-          await deferredPrompt.userChoice;
-        } catch {
-          // Ignore prompt errors
-        }
-        deferredPrompt = null;
-        toast.hide();
-      },
-    });
-  });
-
-  window.addEventListener('appinstalled', () => {
-    deferredPrompt = null;
-    toast.show({
-      titleText: 'App installed',
-      descText: 'Thanks for installing! You can launch it from your home screen.',
-      actionText: 'Done',
-      onAction: () => toast.hide(),
-    });
-  });
 };

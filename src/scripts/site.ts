@@ -1,7 +1,7 @@
 document.documentElement.classList.add('js');
 
 import { CONFIG, features } from './config';
-import { initInstallPrompt, initPwaToast, initServiceWorker } from './pwa';
+import { initPwaToast, initServiceWorker } from './pwa';
 import { onReady, utils } from './utils';
 
 const initIcons = () => {
@@ -536,5 +536,4 @@ onReady(() => {
   initShare(siteToast);
   utils.requestIdle(initConsoleEasterEgg);
   utils.requestIdle(() => initServiceWorker(pwaToast));
-  initInstallPrompt(pwaToast);
 });
