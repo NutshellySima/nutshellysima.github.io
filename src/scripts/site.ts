@@ -410,8 +410,8 @@ const initCardTilt = () => {
 
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
-      card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(245, 158, 11, 0.06), transparent 40%)`;
-      card.style.transform = 'translateY(-8px) scale(1.01)';
+      card.style.background = `radial-gradient(560px circle at ${x}px ${y}px, rgba(245, 158, 11, 0.045), transparent 42%)`;
+      card.style.transform = 'translateY(-4px) scale(1.005)';
     });
 
     card.addEventListener('mouseleave', () => {
@@ -517,6 +517,9 @@ const addMobileMenuStyles = () => {
 };
 
 onReady(() => {
+  const pageMode = document.body?.dataset?.page || 'home';
+  const isTldr = pageMode === 'tldr';
+
   const pwaToast = initPwaToast();
   const siteToast = initSiteToast();
   initIcons();
@@ -527,9 +530,11 @@ onReady(() => {
   initNavbarScroll();
   initRevealAnimations();
   initActiveNavLinks();
-  utils.requestIdle(initMagneticButtons);
-  utils.requestIdle(initCardTilt);
-  utils.requestIdle(initParticles);
+  if (!isTldr) {
+    utils.requestIdle(initMagneticButtons);
+    utils.requestIdle(initCardTilt);
+    utils.requestIdle(initParticles);
+  }
   initSmoothScroll();
   addMobileMenuStyles();
   initPreload();

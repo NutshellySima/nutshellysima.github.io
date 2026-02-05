@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="TL;DR | Chijun Sima"
+  description="A quick scan of Chijun Sima’s research focus, selected publications, and links — optimized for academic readers."
+  canonicalUrl="/tldr.html"
+  page="tldr"
+>
+  <main class="tldr-page">
+    <header class="tldr-header">
+      <div class="tldr-header__inner">
+        <div>
+          <p class="tldr-kicker">Quick scan</p>
+          <h1 class="tldr-title">Chijun Sima</h1>
+          <p class="tldr-subtitle">Efficient ML Systems</p>
+        </div>
+
+        <div class="tldr-actions no-print">
+          <a class="tldr-btn tldr-btn--primary" href="/cv.pdf" data-prefetch>CV (PDF)</a>
+          <a class="tldr-btn" href="/#research">Deep dive</a>
+        </div>
+      </div>
+
+      <div class="tldr-links">
+        <a href="mailto:simachijun@gmail.com">Email</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer"
+          >Google Scholar</a
+        >
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </header>
+
+    <section class="tldr-section" aria-labelledby="at-a-glance">
+      <h2 id="at-a-glance" class="tldr-h2">At a glance</h2>
+      <ul class="tldr-list">
+        <li>ML systems engineer focused on production constraints: freshness, latency, and cost.</li>
+        <li>Co-first author of Ekko (OSDI ’22): second-level model freshness at extreme scale.</li>
+        <li>Industry: Senior SDE at Tencent (WeChat); open-source: LLVM contributor.</li>
+      </ul>
+    </section>
+
+    <section class="tldr-section" aria-labelledby="research-interests">
+      <h2 id="research-interests" class="tldr-h2">Research interests</h2>
+      <ul class="tldr-list">
+        <li><strong>Model freshness at scale</strong> (update pipelines as a first-class systems problem).</li>
+        <li><strong>Efficient serving</strong> (latency SLOs, memory bandwidth, infra cost).</li>
+        <li><strong>Low-cost data/feature pipelines</strong> (safe execution + locality-aware design).</li>
+      </ul>
+    </section>
+
+    <section class="tldr-section" aria-labelledby="selected-pubs">
+      <h2 id="selected-pubs" class="tldr-h2">Selected publications</h2>
+      <div class="tldr-pubs">
+        <article class="tldr-pub">
+          <div class="tldr-pub__meta">
+            <span class="tldr-venue">OSDI ’22</span>
+            <span class="tldr-tag">co-first author</span>
+          </div>
+          <h3 class="tldr-h3">
+            <a href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer">
+              Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update
+            </a>
+          </h3>
+          <p class="tldr-one">
+            Contribution: model-aware dissemination + scheduling + SLO-aware placement to keep update latency in seconds at extreme scale.
+          </p>
+          <div class="tldr-pub__links">
+            <a href="https://www.usenix.org/conference/osdi22/presentation/sima" target="_blank" rel="noopener noreferrer">Paper</a>
+            <span aria-hidden="true">·</span>
+            <a href="/#ekko">Deep-dive explainer</a>
+          </div>
+        </article>
+
+        <article class="tldr-pub">
+          <div class="tldr-pub__meta">
+            <span class="tldr-venue">IEEE Access (2019)</span>
+          </div>
+          <h3 class="tldr-h3">Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification</h3>
+          <p class="tldr-one">Contribution: kernel design for time-series classification in RBF networks (early research work).</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="tldr-section" aria-labelledby="experience">
+      <h2 id="experience" class="tldr-h2">Experience snapshot</h2>
+      <ul class="tldr-list">
+        <li><strong>Tencent (WeChat)</strong> — Senior SDE, ML systems for large-scale production.</li>
+        <li><strong>LLVM</strong> — contributor (commit access), performance/infra improvements.</li>
+      </ul>
+    </section>
+
+    <section class="tldr-section" aria-labelledby="service">
+      <h2 id="service" class="tldr-h2">Service</h2>
+      <ul class="tldr-list">
+        <li>Reviewer: CVPR 2025; ICLR 2025 Workshop; NeurIPS 2025 Workshop.</li>
+      </ul>
+    </section>
+
+    <footer class="tldr-footer no-print">
+      <a class="tldr-btn" href="/#about">Back to deep-dive homepage</a>
+    </footer>
+  </main>
+</BaseLayout>
+

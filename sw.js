@@ -7,6 +7,7 @@ const FONT_CACHE = `fonts-${ASSET_VERSION}`;
 const PRECACHE_URLS = [
   '/',
   '/index.html',
+  '/tldr.html',
   '/offline.html',
   '/assets/site.css',
   '/assets/site.mjs',
