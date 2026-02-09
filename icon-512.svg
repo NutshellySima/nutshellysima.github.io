@@ -1,15 +1,17 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chijun Sima">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f59e0b"/>
-      <stop offset="1" stop-color="#14b8a6"/>
-    </linearGradient>
-    <filter id="shadow" x="-40" y="-40" width="592" height="592" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#0c0a09" flood-opacity="0.25"/>
-    </filter>
-  </defs>
-  <rect width="512" height="512" rx="76" fill="url(#bg)"/>
-  <g filter="url(#shadow)">
-    <text x="50%" y="56%" text-anchor="middle" fill="#ffffff" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="240" font-weight="700" letter-spacing="2">CS</text>
-  </g>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chijun Sima logo">
+  <rect width="512" height="512" rx="76" fill="#0f172a"/>
+  <rect x="16" y="16" width="480" height="480" rx="68" fill="none" stroke="#334155" stroke-width="10"/>
+  <text
+    x="256"
+    y="312"
+    text-anchor="middle"
+    fill="#f8fafc"
+    font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+    font-size="220"
+    font-weight="700"
+    letter-spacing="2"
+  >
+    CS
+  </text>
+  <circle cx="394" cy="118" r="32" fill="#14b8a6"/>
 </svg>
