@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const navItems = [
-  { href: '/', label: 'Skim page', icon: 'home' },
+  { href: '/', label: 'Overview page', icon: 'home' },
   { href: '#ekko', label: 'Ekko', icon: 'activity' },
   { href: '#timeline', label: 'Timeline', icon: 'history' },
   { href: '#service', label: 'Service', icon: 'users' },
@@ -103,7 +103,7 @@ const evidenceLinks = [
               CS
             </div>
             <div class="hidden sm:block">
-              <span class="font-display font-semibold text-base block leading-tight">Deep Dive</span>
+              <span class="font-display font-semibold text-base block leading-tight">Technical notes</span>
               <span class="text-xs text-neutral-500 dark:text-neutral-400">Technical context</span>
             </div>
           </a>
@@ -187,18 +187,18 @@ const evidenceLinks = [
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="reveal">
           <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-sm text-neutral-600 dark:text-neutral-400 mb-5">
-            Full context page
+            Technical notes
           </p>
           <h1 id="deep-heading" class="text-4xl sm:text-5xl font-display font-bold leading-tight mb-3">
-            Deep dive: systems and outcomes
+            Systems notes and outcomes
           </h1>
           <p class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-4xl mb-7">
-            This page expands the concise homepage with technical details behind Ekko, timeline context, service, talks, and evidence links.
+            Architecture details for Ekko, plus timeline context, service, talks, awards, and supporting references.
           </p>
           <div class="flex flex-wrap gap-3">
             <a href="/" class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
               <i data-lucide="arrow-left" class="w-5 h-5"></i>
-              Back to skim page
+              Overview page
             </a>
             <a href="/cv.pdf" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-medium shadow-sm hover:opacity-90 transition-all focus-ring">
               <i data-lucide="file-text" class="w-5 h-5"></i>
@@ -339,10 +339,10 @@ const evidenceLinks = [
       <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
         <div>
           <p class="font-display font-semibold text-lg">Chijun Sima</p>
-          <p class="text-neutral-400 text-sm">Deep-dive technical page.</p>
+          <p class="text-neutral-400 text-sm">Technical notes and references.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-          <a href="/" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Skim page</a>
+          <a href="/" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Overview page</a>
           <a href="#ekko" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Ekko</a>
           <a href="#timeline" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Timeline</a>
           <a href="#evidence" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Evidence</a>

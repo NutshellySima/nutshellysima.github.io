@@ -6,7 +6,7 @@ const navItems = [
   { href: '#snapshot', label: 'At a glance', icon: 'zap' },
   { href: '#highlights', label: 'Work', icon: 'briefcase' },
   { href: '#publications', label: 'Publications', icon: 'book-open' },
-  { href: '/deep-dive', label: 'Deep dive', icon: 'activity' },
+  { href: '/deep-dive', label: 'Technical notes', icon: 'activity' },
 ];
 
 const quickFacts = [
@@ -164,7 +164,7 @@ const publicationHighlights = [
           <div>
             <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-sm text-neutral-600 dark:text-neutral-400 mb-5">
               <span class="w-2 h-2 rounded-full bg-secondary-500" aria-hidden="true"></span>
-              Skim-first homepage
+              Overview
             </p>
             <h1 id="about-heading" class="text-4xl sm:text-5xl font-display font-bold leading-tight mb-3">
               Chijun Sima
@@ -173,13 +173,13 @@ const publicationHighlights = [
               Efficient AI systems: scalable and cost-effective training and serving through system-algorithm co-design.
             </p>
             <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl mb-7">
-              This page is for a quick academic skim. For architecture details and fuller project context, use the deep-dive page.
+              A concise profile of research direction, systems work, and representative publications.
             </p>
 
             <div class="flex flex-wrap gap-3 mb-7">
               <a href="/deep-dive" class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-medium shadow-sm hover:opacity-90 transition-all focus-ring">
                 <i data-lucide="activity" class="w-5 h-5"></i>
-                Open deep dive
+                Technical notes
               </a>
               <a href="/cv.pdf" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
                 <i data-lucide="file-text" class="w-5 h-5"></i>
@@ -233,7 +233,7 @@ const publicationHighlights = [
         <div class="reveal">
           <h2 id="snapshot-heading" class="text-3xl sm:text-4xl font-display font-bold mb-3">At a glance</h2>
           <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-10 max-w-3xl">
-            High-signal facts from my CV for hiring committees, collaborators, and readers short on time.
+            Key facts and outcomes from my CV.
           </p>
 
           <div class="grid lg:grid-cols-2 gap-6 stagger">
@@ -274,7 +274,7 @@ const publicationHighlights = [
         <div class="reveal">
           <h2 id="highlights-heading" class="text-3xl sm:text-4xl font-display font-bold mb-3">Selected work</h2>
           <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-10 max-w-3xl">
-            Condensed outcomes and project scopes. Technical context is on the deep-dive page.
+            Condensed outcomes and project scopes across recommendation, data, and compiler systems.
           </p>
           <div class="grid lg:grid-cols-3 gap-5 stagger">
             {
@@ -332,14 +332,14 @@ const publicationHighlights = [
     <section class="py-16 lg:py-20 bg-neutral-50 dark:bg-neutral-950" aria-labelledby="next-heading">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="reveal rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-8 sm:p-10 text-center">
-          <h2 id="next-heading" class="text-2xl sm:text-3xl font-display font-bold mb-3">Need the full technical story?</h2>
+          <h2 id="next-heading" class="text-2xl sm:text-3xl font-display font-bold mb-3">Further reading</h2>
           <p class="text-neutral-600 dark:text-neutral-400 mb-6 max-w-2xl mx-auto">
-            The deep-dive page keeps the detailed Ekko narrative, timeline, service, talks, awards, and evidence links.
+            Ekko architecture, deployment narrative, and supporting references are collected in a separate technical page.
           </p>
           <div class="flex flex-wrap justify-center gap-3">
             <a href="/deep-dive" class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-medium shadow-sm hover:opacity-90 transition-all focus-ring">
               <i data-lucide="activity" class="w-5 h-5"></i>
-              Go to deep dive
+              Explore technical page
             </a>
             <a href="/cv.pdf" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
               <i data-lucide="file-text" class="w-5 h-5"></i>
@@ -361,7 +361,7 @@ const publicationHighlights = [
         <div class="flex flex-wrap gap-2">
           <a href="#about" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Overview</a>
           <a href="#snapshot" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">At a glance</a>
-          <a href="/deep-dive" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Deep dive</a>
+          <a href="/deep-dive" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Technical notes</a>
           <a href="/cv.pdf" data-prefetch class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">CV PDF</a>
         </div>
       </div>
