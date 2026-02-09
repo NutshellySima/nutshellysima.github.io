@@ -1,0 +1,372 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const navItems = [
+  { href: '/', label: 'Skim page', icon: 'home' },
+  { href: '#ekko', label: 'Ekko', icon: 'activity' },
+  { href: '#timeline', label: 'Timeline', icon: 'history' },
+  { href: '#service', label: 'Service', icon: 'users' },
+  { href: '#evidence', label: 'Evidence', icon: 'link' },
+];
+
+const ekkoDesign = [
+  {
+    title: 'Update dissemination and scheduling',
+    detail:
+      'Compressed update dissemination plus accuracy-aware scheduling using model and gradient signals.',
+    outcome: 'WAN bandwidth reduced by 92%.',
+  },
+  {
+    title: 'SLO-aware model placement',
+    detail:
+      'Optimization-based shard management to co-locate models while protecting inference engine SLOs.',
+    outcome: 'Machine cost reduced by 49%.',
+  },
+  {
+    title: 'Safe rollout and rollback',
+    detail: 'Model-state manager to detect harmful updates and roll back in seconds.',
+    outcome: 'Production safety with second-level recovery.',
+  },
+];
+
+const ekkoOutcomes = [
+  '2.4s model-update latency',
+  '10,000x model-size scaling (GB to tens of TB)',
+  'Deployed in WeChat recommendation stacks',
+  'Serves over one billion users daily',
+  '+40% DAU and +87% total VV over six months (official WeChat write-up, alongside product iteration and operations)',
+];
+
+const timeline = [
+  {
+    period: 'Jul 2020 - Present',
+    title: 'Tencent (WeChat), Senior Software Development Engineer',
+    bullets: [
+      "Led and delivered Ekko-related systems; part published at OSDI 2022 (co-first author).",
+      'Designed data and feature infrastructure with WebAssembly-based in-process isolation and locality-aware placement.',
+      'Developing LLM serving mechanisms around remote KV-cache storage and compression for better cost-performance.',
+    ],
+  },
+  {
+    period: '2018 - Present',
+    title: 'LLVM, Developer (commit access)',
+    bullets: [
+      'Improved Semi-NCA performance and optimization pipeline (LLVM 9.0).',
+      'Unified APIs on dominator trees (LLVM 7.0).',
+      'Reported speedups up to 1980x on real-world samples.',
+    ],
+  },
+  {
+    period: 'Sep 2016 - Jun 2020',
+    title: 'South China University of Technology, B.Eng. Computer Science',
+    bullets: ['Innovation Class, GPA 3.85/4.00, Rank 1/28.'],
+  },
+];
+
+const serviceData = {
+  reviewers: ['CVPR 2025', 'ICLR 2025 Workshop on FM-Wild', 'NeurIPS 2025 Workshop on Efficient Reasoning'],
+  talks: ['Tencent WeChat AI Department (Shenzhen, Jun 2022)', 'DataFun (Virtual, Aug 2022)', 'TechBeat (Virtual, Sep 2022)'],
+  awards: [
+    'Tencent Technology Breakthrough Award (Gold Prize), 2022H2 - Project Lead, Ekko',
+    "ACM-ICPC Asia Xi'an Regional Contest - Bronze (2017)",
+    'CCPC Guangdong Division - Second Prize (out of 177 teams)',
+  ],
+};
+
+const evidenceLinks = [
+  { label: 'OSDI 2022 paper', href: 'https://www.usenix.org/conference/osdi22/presentation/sima' },
+  { label: 'WeChat official write-up', href: 'https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA' },
+  { label: 'Tencent official write-up', href: 'https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg' },
+  { label: 'Synced Review / JIQIZHIXIN coverage', href: 'https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA' },
+  { label: 'Google Scholar profile', href: 'https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en' },
+];
+---
+<BaseLayout>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <div
+    id="scroll-progress"
+    class="fixed top-0 left-0 right-0 h-1 z-[60] no-print"
+    role="progressbar"
+    aria-label="Page scroll progress"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="0"
+  ></div>
+
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 no-print transition-transform duration-300" aria-label="Primary navigation">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div id="nav-container" class="glass rounded-2xl mt-4 px-4 sm:px-6 py-3 transition-all duration-300 relative">
+        <div class="flex items-center justify-between gap-4">
+          <a href="/" class="flex items-center gap-3 group" aria-label="Back to skim page">
+            <div class="w-10 h-10 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 flex items-center justify-center font-semibold text-sm shadow-sm">
+              CS
+            </div>
+            <div class="hidden sm:block">
+              <span class="font-display font-semibold text-base block leading-tight">Deep Dive</span>
+              <span class="text-xs text-neutral-500 dark:text-neutral-400">Technical context</span>
+            </div>
+          </a>
+
+          <div class="hidden lg:flex items-center gap-1">
+            {
+              navItems.map((item) => (
+                <a
+                  href={item.href}
+                  class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200"
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+            <a
+              href="/cv.pdf"
+              data-prefetch
+              class="px-3 py-2 rounded-lg text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200"
+            >
+              CV PDF
+            </a>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button
+              id="theme-toggle"
+              class="relative p-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus-ring"
+              aria-label="Toggle dark mode"
+              aria-pressed="false"
+            >
+              <i data-lucide="sun" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 text-primary-500"></i>
+              <i data-lucide="moon" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-secondary-400"></i>
+              <span class="w-5 h-5 block opacity-0" aria-hidden="true">.</span>
+            </button>
+
+            <button
+              id="share-button"
+              class="relative p-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus-ring"
+              aria-label="Share this page"
+              type="button"
+            >
+              <i data-lucide="share-2" class="w-5 h-5 text-neutral-600 dark:text-neutral-300"></i>
+            </button>
+
+            <button
+              id="mobile-menu-btn"
+              class="lg:hidden p-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus-ring"
+              aria-label="Toggle menu"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <i data-lucide="menu" class="w-5 h-5 menu-icon"></i>
+              <i data-lucide="x" class="w-5 h-5 close-icon hidden"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden absolute left-0 right-0 top-full mt-3 rounded-2xl glass shadow-xl p-4" hidden>
+          <div class="grid sm:grid-cols-2 gap-2">
+            {
+              navItems.map((item) => (
+                <a href={item.href} class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all flex items-center gap-2">
+                  <i data-lucide={item.icon} class="w-4 h-4 text-primary-600"></i>
+                  {item.label}
+                </a>
+              ))
+            }
+            <a href="/cv.pdf" data-prefetch class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4 text-primary-600"></i>
+              CV PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main" tabindex="-1">
+    <section class="pt-32 pb-16 lg:pt-36 lg:pb-20 bg-neutral-50 dark:bg-neutral-950" aria-labelledby="deep-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal">
+          <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-sm text-neutral-600 dark:text-neutral-400 mb-5">
+            Full context page
+          </p>
+          <h1 id="deep-heading" class="text-4xl sm:text-5xl font-display font-bold leading-tight mb-3">
+            Deep dive: systems and outcomes
+          </h1>
+          <p class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-4xl mb-7">
+            This page expands the concise homepage with technical details behind Ekko, timeline context, service, talks, and evidence links.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="/" class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
+              <i data-lucide="arrow-left" class="w-5 h-5"></i>
+              Back to skim page
+            </a>
+            <a href="/cv.pdf" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-medium shadow-sm hover:opacity-90 transition-all focus-ring">
+              <i data-lucide="file-text" class="w-5 h-5"></i>
+              CV PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ekko" class="cv-auto py-16 lg:py-20 bg-white dark:bg-neutral-900" aria-labelledby="ekko-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal">
+          <h2 id="ekko-heading" class="text-3xl sm:text-4xl font-display font-bold mb-4">Ekko in detail</h2>
+          <p class="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-4xl mb-8">
+            Scaling DLRMs improved offline quality but hurt online performance when model updates became stale. Ekko addresses this with model-aware update dissemination, optimization-based placement, and safe rollback mechanisms.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-5 mb-8 stagger">
+            {
+              ekkoDesign.map((item) => (
+                <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 p-6">
+                  <h3 class="text-lg font-display font-semibold mb-2">{item.title}</h3>
+                  <p class="text-neutral-600 dark:text-neutral-400 mb-3">{item.detail}</p>
+                  <p class="text-sm font-medium text-primary-700 dark:text-primary-300">{item.outcome}</p>
+                </article>
+              ))
+            }
+          </div>
+
+          <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 p-6">
+            <h3 class="text-xl font-display font-semibold mb-4">Selected outcomes</h3>
+            <ul class="space-y-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              {
+                ekkoOutcomes.map((item) => (
+                  <li class="flex items-start gap-3">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="cv-auto py-16 lg:py-20 bg-neutral-50 dark:bg-neutral-950" aria-labelledby="timeline-heading">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal">
+          <h2 id="timeline-heading" class="text-3xl sm:text-4xl font-display font-bold mb-4">Timeline and context</h2>
+          <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
+            Experience context from CV, including ongoing systems work in recommendation, data pipelines, and LLM serving.
+          </p>
+
+          <div class="space-y-6 stagger">
+            {
+              timeline.map((entry) => (
+                <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-6">
+                  <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-1">{entry.period}</p>
+                  <h3 class="text-xl font-display font-semibold mb-3">{entry.title}</h3>
+                  <ul class="space-y-2.5 text-neutral-700 dark:text-neutral-300">
+                    {entry.bullets.map((point) => (
+                      <li class="flex items-start gap-2.5">
+                        <i data-lucide="minus" class="w-4 h-4 text-neutral-400 mt-1 flex-shrink-0"></i>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="service" class="cv-auto py-16 lg:py-20 bg-white dark:bg-neutral-900" aria-labelledby="service-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal">
+          <h2 id="service-heading" class="text-3xl sm:text-4xl font-display font-bold mb-8">Service, talks, and awards</h2>
+
+          <div class="grid lg:grid-cols-3 gap-5 stagger">
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 p-6">
+              <h3 class="text-xl font-display font-semibold mb-3">Academic service</h3>
+              <ul class="space-y-2 text-neutral-700 dark:text-neutral-300">
+                {serviceData.reviewers.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 p-6">
+              <h3 class="text-xl font-display font-semibold mb-3">Talks</h3>
+              <ul class="space-y-2 text-neutral-700 dark:text-neutral-300">
+                {serviceData.talks.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 p-6">
+              <h3 class="text-xl font-display font-semibold mb-3">Awards</h3>
+              <ul class="space-y-2 text-neutral-700 dark:text-neutral-300">
+                {serviceData.awards.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence" class="cv-auto py-16 lg:py-20 bg-neutral-50 dark:bg-neutral-950" aria-labelledby="evidence-heading">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="reveal rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-8">
+          <h2 id="evidence-heading" class="text-3xl sm:text-4xl font-display font-bold mb-4">Evidence and references</h2>
+          <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+            External references related to Ekko and publication records.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            {
+              evidenceLinks.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 hover:border-neutral-300 dark:hover:border-neutral-500 transition-colors text-sm font-medium"
+                >
+                  {link.label}
+                  <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-neutral-900 text-white py-12 no-print" role="contentinfo">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+        <div>
+          <p class="font-display font-semibold text-lg">Chijun Sima</p>
+          <p class="text-neutral-400 text-sm">Deep-dive technical page.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a href="/" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Skim page</a>
+          <a href="#ekko" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Ekko</a>
+          <a href="#timeline" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Timeline</a>
+          <a href="#evidence" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Evidence</a>
+          <a href="/cv.pdf" data-prefetch class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">CV PDF</a>
+        </div>
+      </div>
+      <div class="pt-6 mt-6 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <p class="text-neutral-400 text-sm">© <span id="year"></span> Chijun Sima. All rights reserved.</p>
+        <a href="#top" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-sm transition-colors">
+          <i data-lucide="arrow-up" class="w-4 h-4"></i>
+          Back to top
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="pwa-toast" class="pwa-toast" role="status" aria-live="polite" hidden>
+    <div class="pwa-toast__content">
+      <p id="pwa-toast-title" class="pwa-toast__title">Update available</p>
+      <p id="pwa-toast-desc" class="pwa-toast__desc">Refresh to load the latest version.</p>
+    </div>
+    <div class="pwa-toast__actions">
+      <button id="pwa-toast-action" class="pwa-toast__btn pwa-toast__btn--primary" type="button">Update</button>
+      <button id="pwa-toast-dismiss" class="pwa-toast__btn" type="button">Not now</button>
+    </div>
+  </div>
+</BaseLayout>

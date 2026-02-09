@@ -318,27 +318,65 @@ const initRevealAnimations = () => {
 };
 
 const initActiveNavLinks = () => {
-  const sections = document.querySelectorAll<HTMLElement>('section[id]');
   const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+  const sectionLinks = Array.from(navLinks).filter((link) => (link.getAttribute('href') || '').startsWith('#'));
+  const sectionIds = new Set(
+    sectionLinks
+      .map((link) => (link.getAttribute('href') || '').replace('#', '').trim())
+      .filter(Boolean)
+  );
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]')).filter((section) =>
+    sectionIds.has(section.id)
+  );
 
-  if (sections.length === 0 || navLinks.length === 0) return;
+  if (navLinks.length === 0) return;
 
-  const setActiveNav = (id: string) => {
+  const normalizePath = (path: string) => {
+    const normalized = path.replace(/\/+$/, '');
+    return normalized || '/';
+  };
+
+  const currentPath = normalizePath(window.location.pathname);
+
+  const setLinkState = (link: HTMLAnchorElement, isActive: boolean) => {
+    link.classList.toggle('text-primary-600', isActive);
+    link.classList.toggle('dark:text-primary-400', isActive);
+    link.classList.toggle('bg-primary-50', isActive);
+    link.classList.toggle('dark:bg-primary-900/20', isActive);
+    if (isActive) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  };
+
+  const setPathActive = () => {
     navLinks.forEach((link) => {
-      const isActive = link.getAttribute('href') === `#${id}`;
-      link.classList.toggle('text-primary-600', isActive);
-      link.classList.toggle('dark:text-primary-400', isActive);
-      link.classList.toggle('bg-primary-50', isActive);
-      link.classList.toggle('dark:bg-primary-900/20', isActive);
-      if (isActive) {
-        link.setAttribute('aria-current', 'page');
-      } else {
-        link.removeAttribute('aria-current');
+      const href = link.getAttribute('href') || '';
+      if (!href || href.startsWith('#')) return;
+
+      let isActive = false;
+      try {
+        const url = new URL(href, window.location.origin);
+        const samePath = normalizePath(url.pathname) === currentPath;
+        isActive = url.hash ? samePath && url.hash === window.location.hash : samePath;
+      } catch {
+        isActive = false;
       }
+
+      setLinkState(link, isActive);
     });
   };
 
-  if (!features.intersectionObserver) return;
+  const setActiveNav = (id: string) => {
+    sectionLinks.forEach((link) => {
+      const isActive = link.getAttribute('href') === `#${id}`;
+      setLinkState(link, isActive);
+    });
+  };
+
+  setPathActive();
+  if (sectionLinks.length === 0 || sections.length === 0 || !features.intersectionObserver) return;
 
   const visibility = new Map<string, number>();
   const sectionObserver = new IntersectionObserver(
@@ -369,7 +407,7 @@ const initActiveNavLinks = () => {
   sections.forEach((section) => sectionObserver.observe(section));
 
   const initialHash = (window.location.hash || '').replace('#', '');
-  if (initialHash) {
+  if (initialHash && sectionIds.has(initialHash)) {
     setActiveNav(initialHash);
   } else {
     const firstId = sections[0]?.getAttribute('id');
@@ -378,7 +416,8 @@ const initActiveNavLinks = () => {
 
   window.addEventListener('hashchange', () => {
     const id = (window.location.hash || '').replace('#', '');
-    if (id) setActiveNav(id);
+    setPathActive();
+    if (id && sectionIds.has(id)) setActiveNav(id);
   });
 };
 
@@ -390,7 +429,7 @@ const initMagneticButtons = () => {
       const rect = btn.getBoundingClientRect();
       const x = event.clientX - rect.left - rect.width / 2;
       const y = event.clientY - rect.top - rect.height / 2;
-      btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+      btn.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
     });
 
     btn.addEventListener('mouseleave', () => {
@@ -410,8 +449,8 @@ const initCardTilt = () => {
 
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
-      card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(245, 158, 11, 0.06), transparent 40%)`;
-      card.style.transform = 'translateY(-8px) scale(1.01)';
+      card.style.background = `radial-gradient(520px circle at ${x}px ${y}px, rgba(245, 158, 11, 0.03), transparent 45%)`;
+      card.style.transform = 'translateY(-3px) scale(1.003)';
     });
 
     card.addEventListener('mouseleave', () => {
@@ -422,6 +461,8 @@ const initCardTilt = () => {
 };
 
 const initParticles = () => {
+  const allowParticles = document.body.getAttribute('data-particles') === 'on';
+  if (!allowParticles) return;
   if (features.reducedMotion || features.reducedData || features.touch) return;
 
   const container = document.createElement('div');

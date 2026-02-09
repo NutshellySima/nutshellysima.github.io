@@ -1103,3 +1103,59 @@ details[open] {
     transition: none;
   }
 }
+
+/* ===== Soft-Modern Readability Tuning ===== */
+.gradient-bg {
+  animation: none;
+  background: linear-gradient(180deg, #fafaf9 0%, #f8fafc 100%);
+}
+
+.dark .gradient-bg {
+  background: linear-gradient(180deg, #0c0a09 0%, #111827 100%);
+}
+
+.mesh-gradient::before {
+  animation: none;
+  opacity: 0.45;
+}
+
+.noise::after {
+  opacity: 0.008;
+}
+
+.dark .noise::after {
+  opacity: 0.015;
+}
+
+#scroll-progress {
+  animation: none;
+  background: linear-gradient(90deg, var(--amber-500), var(--teal-500));
+  box-shadow: none;
+}
+
+.glass {
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+}
+
+.card-glow::before {
+  display: none;
+}
+
+.card-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.magnetic-btn {
+  transition: transform 0.2s var(--ease-smooth);
+}
+
+.badge-pulse {
+  animation: none;
+}
+
+.avatar-glow::before {
+  animation: none;
+  opacity: 0.25;
+}
