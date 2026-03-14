@@ -1,6 +1,4 @@
-export type PwaToast = null;
-
-export const initServiceWorker = (_toast: PwaToast) => {
+export const initServiceWorker = () => {
   if (!('serviceWorker' in navigator)) return;
   if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') return;
 

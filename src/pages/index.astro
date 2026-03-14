@@ -14,6 +14,7 @@ const publications = [
     authors: 'Chijun Sima*, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai',
     link: 'https://www.usenix.org/conference/osdi22/presentation/sima',
     note: '(* = co-first author)',
+    year: '2022',
   },
   {
     venue: 'IEEE Access 2019',
@@ -21,14 +22,17 @@ const publications = [
     authors: 'Kejian Shi, Hongyang Qin, Chijun Sima, Sen Li, Lifeng Shen, Qianli Ma',
     link: '',
     note: '',
+    year: '2019',
   },
 ];
 
 const experience = [
   {
     period: 'Jul 2020 – Present',
+    startDate: '2020-07',
     role: 'Senior Software Development Engineer',
     org: 'Tencent (WeChat)',
+    orgUrl: 'https://www.tencent.com',
     bullets: [
       'Led Ekko: low-latency model update system for large-scale recommendation (published at OSDI 2022, co-first author).',
       'Designed data and feature platform with WebAssembly-based in-process isolation and locality-aware operator placement (data movement reduced up to 1,200x).',
@@ -37,8 +41,10 @@ const experience = [
   },
   {
     period: '2018 – Present',
+    startDate: '2018',
     role: 'Developer (commit access)',
     org: 'LLVM',
+    orgUrl: 'https://llvm.org',
     bullets: [
       'Improved Semi-NCA performance and optimization pipeline (LLVM 9.0).',
       'Unified dominator-tree update APIs (LLVM 7.0).',
@@ -49,32 +55,35 @@ const experience = [
 
 const education = {
   period: 'Sep 2016 – Jun 2020',
+  startDate: '2016-09',
+  endDate: '2020-06',
   degree: 'B.Eng. in Computer Science',
   school: 'South China University of Technology',
-  detail: 'Innovation Class · GPA 3.85/4.00 · Rank 1/28',
+  schoolUrl: 'https://www.scut.edu.cn',
+  detail: 'Innovation Class · GPA 3.85 / 4.00 · Rank 1 / 28',
 };
 
 const ekkoHighlights = [
-  'WAN bandwidth reduced by 92%',
-  'Machine cost reduced by 49%',
-  '2.4s model-update latency',
-  '10,000x model-size scaling (GB → tens of TB)',
-  'Deployed in WeChat recommendation; serves 1B+ users daily',
+  'WAN bandwidth reduced by 92 %',
+  'Machine cost reduced by 49 %',
+  '2.4 s model-update latency',
+  '10,000 × model-size scaling (GB → tens of TB)',
+  'Deployed in WeChat recommendation; serves 1 B+ users daily',
 ];
 
 const talks = [
-  'Tencent WeChat AI Department, Shenzhen (Jun 2022)',
-  'DataFun, Virtual (Aug 2022)',
-  'TechBeat, Virtual (Sep 2022)',
+  { text: 'Tencent WeChat AI Department, Shenzhen', date: 'Jun 2022' },
+  { text: 'DataFun, Virtual', date: 'Aug 2022' },
+  { text: 'TechBeat, Virtual', date: 'Sep 2022' },
 ];
 
 const awards = [
-  'Tencent Technology Breakthrough Award (Gold Prize), 2022 — Project Lead, Ekko',
-  "ACM-ICPC Asia Xi'an Regional — Bronze (2017)",
-  'CCPC Guangdong Division — Second Prize (out of 177 teams)',
+  { text: 'Tencent Technology Breakthrough Award (Gold Prize) — Project Lead, Ekko', year: '2022' },
+  { text: "ACM-ICPC Asia Xi'an Regional — Bronze", year: '2017' },
+  { text: 'CCPC Guangdong Division — Second Prize (out of 177 teams)', year: '' },
 ];
 
-const service = [
+const reviewing = [
   'CVPR 2025',
   'ICLR 2025 Workshop on FM-Wild',
   'NeurIPS 2025 Workshop on Efficient Reasoning',
@@ -91,173 +100,212 @@ const references = [
 <BaseLayout>
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <main id="main" tabindex="-1">
-    <!-- ===== Header ===== -->
-    <header class="academic-container pt-10 pb-8 sm:pt-14 sm:pb-10">
-      <div class="flex justify-end mb-4 no-print">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">☾</button>
-      </div>
+  <div class="page-wrapper">
+    <main id="main" tabindex="-1" itemscope itemtype="https://schema.org/Person">
+      <meta itemprop="name" content="Chijun Sima" />
+      <meta itemprop="url" content="https://www.chijunsima.com" />
 
-      <div class="flex flex-col sm:flex-row gap-6 items-start">
-        <img
-          src="/avatar.jpg"
-          data-asset-src="/avatar.jpg"
-          alt="Chijun Sima"
-          width="144"
-          height="144"
-          class="w-32 h-32 sm:w-36 sm:h-36 rounded-lg object-cover flex-shrink-0"
-          loading="eager"
-          decoding="async"
-        />
-        <div>
-          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50">Chijun Sima</h1>
-          <p class="text-lg text-gray-600 dark:text-gray-400 mt-1">
-            Senior Software Development Engineer, <a href="https://www.tencent.com" class="paper-link" target="_blank" rel="noopener noreferrer">Tencent (WeChat)</a>
-          </p>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Guangzhou, China</p>
+      <!-- ── Header ── -->
+      <header class="site-header">
+        <div class="header-top">
+          <nav class="header-nav no-print" aria-label="Page sections">
+            <a href="#publications">Publications</a>
+            <a href="#experience">Experience</a>
+            <a href="#service">Service</a>
+            <a href="/cv.pdf">CV</a>
+          </nav>
+          <button id="theme-toggle" class="theme-toggle no-print" aria-label="Toggle dark mode" aria-pressed="false">☾</button>
+        </div>
 
-          <div class="header-links flex flex-wrap gap-x-4 gap-y-1 mt-3 text-sm">
-            <a href="mailto:simachijun@gmail.com">Email</a>
-            <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-            <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="/cv.pdf">CV (PDF)</a>
+        <div class="header-card">
+          <img
+            src="/avatar.jpg"
+            data-asset-src="/avatar.jpg"
+            alt="Portrait of Chijun Sima"
+            width="144"
+            height="144"
+            itemprop="image"
+            class="avatar"
+            loading="eager"
+            decoding="async"
+          />
+          <div class="header-info">
+            <h1 class="header-name">Chijun Sima</h1>
+            <p class="header-title">
+              Senior Software Development Engineer,
+              <a href="https://www.tencent.com" itemprop="worksFor" itemscope itemtype="https://schema.org/Organization" target="_blank" rel="noopener noreferrer">
+                <span itemprop="name">Tencent (WeChat)</span>
+              </a>
+            </p>
+            <p class="header-location">
+              <span aria-hidden="true">&#x25CB;</span>
+              Guangzhou, China
+            </p>
+
+            <div class="header-links" role="list" aria-label="Contact and profiles">
+              <a role="listitem" href="mailto:simachijun@gmail.com" itemprop="email">Email</a>
+              <a role="listitem" href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" itemprop="sameAs" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+              <a role="listitem" href="https://github.com/NutshellySima" itemprop="sameAs" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a role="listitem" href="https://www.linkedin.com/in/chijun-sima/" itemprop="sameAs" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a role="listitem" href="/cv.pdf">CV <span class="muted-inline">(PDF)</span></a>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- ===== Research Interests ===== -->
-    <section id="research" class="academic-container pb-8">
-      <h2 class="section-heading">Research Interests</h2>
-      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-        I work on <strong>efficient AI systems</strong>: scalable and cost-effective training and serving through system–algorithm co-design.
-        My current focus is on recommender and LLM systems under strict latency and cost constraints, including model freshness, distributed model updates, and KV-cache management.
-      </p>
-    </section>
+      <!-- ── Research Interests ── -->
+      <section id="research" class="content-section" aria-labelledby="h-research">
+        <h2 id="h-research" class="section-heading">Research Interests</h2>
+        <p class="body-text">
+          I work on <strong>efficient AI systems</strong>&hairsp;: scalable and cost-effective training and serving through system–algorithm co-design.
+          My current focus is on recommender and LLM systems under strict latency and cost constraints, including <em>model freshness</em>, <em>distributed model updates</em>, and <em>KV-cache management</em>.
+        </p>
+      </section>
 
-    <!-- ===== News ===== -->
-    <section id="news" class="academic-container pb-8">
-      <h2 class="section-heading">News</h2>
-      <ul class="space-y-2">
-        {news.map((item) => (
-          <li class="flex gap-3 text-sm text-gray-700 dark:text-gray-300">
-            <span class="news-date">{item.date}</span>
-            <span>{item.text}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
+      <!-- ── News ── -->
+      <section id="news" class="content-section" aria-labelledby="h-news">
+        <h2 id="h-news" class="section-heading">News</h2>
+        <ul class="news-list" role="list">
+          {news.map((item) => (
+            <li class="news-item">
+              <time class="news-date" datetime={item.date}>{item.date}</time>
+              <span>{item.text}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-    <!-- ===== Selected Publications ===== -->
-    <section id="publications" class="academic-container pb-8">
-      <h2 class="section-heading">Selected Publications</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
-        Full list on <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" class="paper-link" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
-      </p>
-      <div>
-        {publications.map((pub) => (
-          <div class="pub-item">
-            <div class="flex flex-wrap items-baseline gap-x-2">
-              <span class="pub-venue">{pub.venue}</span>
-              {pub.link ? (
-                <a href={pub.link} class="pub-title paper-link" target="_blank" rel="noopener noreferrer">{pub.title}</a>
-              ) : (
-                <span class="pub-title">{pub.title}</span>
-              )}
-            </div>
-            <p class="pub-authors mt-1" set:html={pub.authors.replace(/Chijun Sima/g, '<span class="pub-self">Chijun Sima</span>')} />
-            {pub.note && <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{pub.note}</p>}
+      <!-- ── Selected Publications ── -->
+      <section id="publications" class="content-section" aria-labelledby="h-pub">
+        <h2 id="h-pub" class="section-heading">Selected Publications</h2>
+        <p class="section-note">
+          Full list on <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" class="text-link" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
+        </p>
+        <ol class="pub-list" reversed>
+          {publications.map((pub) => (
+            <li>
+              <article class="pub-item" itemscope itemtype="https://schema.org/ScholarlyArticle">
+                <div class="pub-heading">
+                  <span class="pub-venue">{pub.venue}</span>
+                  {pub.link ? (
+                    <a href={pub.link} class="pub-title text-link" itemprop="url" target="_blank" rel="noopener noreferrer">
+                      <span itemprop="name">{pub.title}</span>
+                    </a>
+                  ) : (
+                    <span class="pub-title" itemprop="name">{pub.title}</span>
+                  )}
+                </div>
+                <p class="pub-authors" set:html={pub.authors.replace(/Chijun Sima/g, '<strong class="pub-self" itemprop="author">Chijun Sima</strong>')} />
+                {pub.note && <p class="pub-note">{pub.note}</p>}
+              </article>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <!-- ── Ekko Highlights ── -->
+      <section id="ekko" class="content-section" aria-labelledby="h-ekko">
+        <h2 id="h-ekko" class="section-heading">Ekko&hairsp;: Key Results</h2>
+        <p class="section-desc">
+          Low-latency model update system for large-scale deep learning recommendation.
+          Addresses model staleness through compressed update dissemination, optimization-based placement, and safe rollback.
+        </p>
+        <ul class="highlight-list" aria-label="Key metrics">
+          {ekkoHighlights.map((h) => (
+            <li>{h}</li>
+          ))}
+        </ul>
+        <p class="ref-links">
+          {references.map((ref, i) => (
+            <Fragment>
+              {i > 0 && <span class="ref-sep" aria-hidden="true">·</span>}
+              <a href={ref.href} class="text-link" target="_blank" rel="noopener noreferrer">{ref.label}</a>
+            </Fragment>
+          ))}
+        </p>
+      </section>
+
+      <!-- ── Experience ── -->
+      <section id="experience" class="content-section" aria-labelledby="h-exp">
+        <h2 id="h-exp" class="section-heading">Experience</h2>
+        <div class="timeline">
+          {experience.map((entry) => (
+            <article class="timeline-entry" itemscope itemtype="https://schema.org/OrganizationRole">
+              <div class="timeline-head">
+                <time class="timeline-period" datetime={entry.startDate}>{entry.period}</time>
+                <p class="timeline-role">
+                  <strong itemprop="roleName">{entry.role}</strong>,{' '}
+                  <a href={entry.orgUrl} target="_blank" rel="noopener noreferrer" itemprop="memberOf" itemscope itemtype="https://schema.org/Organization">
+                    <span itemprop="name">{entry.org}</span>
+                  </a>
+                </p>
+              </div>
+              <ul class="timeline-bullets">
+                {entry.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ── Education ── -->
+      <section id="education" class="content-section" aria-labelledby="h-edu">
+        <h2 id="h-edu" class="section-heading">Education</h2>
+        <article class="timeline-entry" itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
+          <div class="timeline-head">
+            <time class="timeline-period" datetime={education.startDate}>{education.period}</time>
+            <p class="timeline-role">
+              <strong>{education.degree}</strong>,{' '}
+              <a href={education.schoolUrl} target="_blank" rel="noopener noreferrer">
+                <span itemprop="name">{education.school}</span>
+              </a>
+            </p>
           </div>
-        ))}
-      </div>
-    </section>
+          <p class="timeline-detail">{education.detail}</p>
+        </article>
+      </section>
 
-    <!-- ===== Ekko Highlights ===== -->
-    <section id="ekko" class="academic-container pb-8">
-      <h2 class="section-heading">Ekko: Key Results</h2>
-      <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
-        Ekko is a low-latency model update system for large-scale deep learning recommendation.
-        It addresses model staleness with compressed update dissemination, optimization-based placement, and safe rollback.
-      </p>
-      <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
-        {ekkoHighlights.map((h) => (
-          <li>{h}</li>
-        ))}
-      </ul>
-      <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
-        See also:
-        {references.map((ref, i) => (
-          <Fragment>
-            {i > 0 && ' · '}
-            <a href={ref.href} class="paper-link" target="_blank" rel="noopener noreferrer">{ref.label}</a>
-          </Fragment>
-        ))}
-      </p>
-    </section>
+      <!-- ── Talks ── -->
+      <section id="talks" class="content-section" aria-labelledby="h-talks">
+        <h2 id="h-talks" class="section-heading">Invited Talks</h2>
+        <ul class="compact-list">
+          {talks.map((t) => (
+            <li>
+              {t.text}
+              <span class="muted-inline">({t.date})</span>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-    <!-- ===== Experience ===== -->
-    <section id="experience" class="academic-container pb-8">
-      <h2 class="section-heading">Experience</h2>
-      <div>
-        {experience.map((entry) => (
-          <div class="timeline-entry">
-            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
-              <span class="timeline-period whitespace-nowrap">{entry.period}</span>
-              <p class="font-semibold text-gray-900 dark:text-gray-100">{entry.role}, {entry.org}</p>
-            </div>
-            <ul class="list-disc list-inside mt-1.5 space-y-1 text-sm text-gray-700 dark:text-gray-300 ml-0 sm:ml-[calc(5.5rem+0.75rem)]">
-              {entry.bullets.map((b) => <li>{b}</li>)}
+      <!-- ── Service & Awards ── -->
+      <section id="service" class="content-section" aria-labelledby="h-service">
+        <h2 id="h-service" class="section-heading">Service &amp; Awards</h2>
+        <div class="two-col">
+          <div>
+            <h3 class="subsection-heading">Reviewing</h3>
+            <ul class="compact-list">
+              {reviewing.map((s) => <li>{s}</li>)}
             </ul>
           </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- ===== Education ===== -->
-    <section id="education" class="academic-container pb-8">
-      <h2 class="section-heading">Education</h2>
-      <div class="timeline-entry">
-        <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
-          <span class="timeline-period whitespace-nowrap">{education.period}</span>
-          <p class="font-semibold text-gray-900 dark:text-gray-100">{education.degree}, {education.school}</p>
+          <div>
+            <h3 class="subsection-heading">Awards</h3>
+            <ul class="compact-list">
+              {awards.map((a) => (
+                <li>
+                  {a.text}
+                  {a.year && <span class="muted-inline">({a.year})</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 sm:ml-[calc(5.5rem+0.75rem)]">{education.detail}</p>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- ===== Talks ===== -->
-    <section id="talks" class="academic-container pb-8">
-      <h2 class="section-heading">Invited Talks</h2>
-      <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
-        {talks.map((t) => <li>{t}</li>)}
-      </ul>
-    </section>
-
-    <!-- ===== Service & Awards ===== -->
-    <section id="service" class="academic-container pb-8">
-      <h2 class="section-heading">Service & Awards</h2>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div>
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Reviewing</h3>
-          <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
-            {service.map((s) => <li>{s}</li>)}
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Awards</h3>
-          <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
-            {awards.map((a) => <li>{a}</li>)}
-          </ul>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== Footer ===== -->
-  <footer class="academic-container py-8 border-t border-gray-200 dark:border-gray-700 no-print">
-    <p class="text-sm text-gray-400 dark:text-gray-500">
-      &copy; <span id="year"></span> Chijun Sima
-    </p>
-  </footer>
+    <!-- ── Footer ── -->
+    <footer class="site-footer no-print" role="contentinfo">
+      <p>&copy; <span id="year"></span> Chijun Sima</p>
+    </footer>
+  </div>
 </BaseLayout>

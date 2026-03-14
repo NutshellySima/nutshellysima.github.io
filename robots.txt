@@ -1,11 +1,11 @@
 # Robots.txt for chijunsima.com
-# Allow all search engines to crawl the site
 
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
-# Sitemap location
 Sitemap: https://www.chijunsima.com/sitemap.xml
 
-# Crawl-delay for polite crawling
-Crawl-delay: 1
+# LLM agent context (llms.txt protocol)
+# See https://llmstxt.org
+# Agents can fetch /llms.txt for a structured plain-text summary of this site.

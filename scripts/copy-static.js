@@ -20,6 +20,7 @@ const staticFiles = [
   'icon-192-maskable.svg',
   'icon-512.svg',
   'icon-512-maskable.svg',
+  'llms.txt',
 ];
 
 const copyStaticFiles = async () => {

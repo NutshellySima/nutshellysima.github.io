@@ -37,5 +37,5 @@ const initThemeToggle = () => {
 onReady(() => {
   initYear();
   initThemeToggle();
-  initServiceWorker(null);
+  initServiceWorker();
 });

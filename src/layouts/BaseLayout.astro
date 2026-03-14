@@ -5,12 +5,17 @@ const assetVersion = '20260315';
 const baseStyleHref = '/assets/site.css';
 const baseScriptSrc = '/assets/site.mjs';
 const baseAvatar = '/avatar.jpg';
+
+const siteUrl = 'https://www.chijunsima.com';
+const siteName = 'Chijun Sima';
+const siteTitle = 'Chijun Sima — ML Systems Researcher';
+const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeChat). Research on efficient AI systems, model freshness, recommender systems, and LLM serving. Co-first author, OSDI 2022 (Ekko). LLVM developer with commit access.';
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,68 +24,157 @@ const baseAvatar = '/avatar.jpg';
     <link rel="preload" href={siteStyles} data-asset-href={baseStyleHref} as="style" data-vite-ignore />
     <link rel="modulepreload" href={baseScriptSrc} data-asset-href={baseScriptSrc} data-vite-ignore />
 
-    <title>Chijun Sima — ML Systems Researcher</title>
-    <meta
-      name="description"
-      content="Chijun Sima — ML systems researcher at Tencent (WeChat). Research on efficient AI systems, model freshness, and recommender systems. Co-first author, OSDI 2022 (Ekko). LLVM developer."
-    />
-    <meta name="author" content="Chijun Sima" />
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <meta name="author" content={siteName} />
     <meta name="asset-version" content={assetVersion} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)" />
+    <meta name="keywords" content="Chijun Sima, MLSys, Machine Learning Systems, Efficient AI, Model Freshness, Recommender Systems, LLM Serving, OSDI, Ekko, LLVM, Tencent, WeChat, Systems Research" />
 
-    <link rel="canonical" href="https://www.chijunsima.com/" />
+    <link rel="canonical" href={`${siteUrl}/`} />
 
+    <!-- Open Graph -->
     <meta property="og:type" content="profile" />
-    <meta property="og:url" content="https://www.chijunsima.com/" />
-    <meta property="og:title" content="Chijun Sima — ML Systems Researcher" />
-    <meta property="og:description" content="ML systems researcher at Tencent (WeChat). Co-first author, OSDI 2022 (Ekko). LLVM developer." />
-    <meta property="og:image" content="https://www.chijunsima.com/avatar.jpg" />
+    <meta property="og:url" content={`${siteUrl}/`} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:image" content={`${siteUrl}/avatar.jpg`} />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:alt" content="Portrait of Chijun Sima" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Chijun" />
+    <meta property="profile:last_name" content="Sima" />
 
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image" content={`${siteUrl}/avatar.jpg`} />
+    <meta name="twitter:image:alt" content="Portrait of Chijun Sima" />
+
+    <!-- Favicons & PWA -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon-192.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
+    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
+    <!-- Dark-mode flash prevention -->
     <script is:inline>
       (function () {
         try {
           var s = localStorage.getItem('theme');
           var d = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
           if (s === 'dark' || (!s && d)) document.documentElement.classList.add('dark');
-        } catch (e) {}
+        } catch (_) { /* storage unavailable */ }
       })();
     </script>
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Chijun Sima",
-        "url": "https://www.chijunsima.com",
-        "image": "https://www.chijunsima.com/avatar.jpg",
-        "jobTitle": "Senior Software Development Engineer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Tencent (WeChat)"
-        },
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "South China University of Technology"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/chijun-sima/",
-          "https://github.com/NutshellySima",
-          "https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en"
-        ]
+    <!-- JSON-LD: Person (rich structured data for search engines and LLM agents) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      "name": "Chijun Sima",
+      "givenName": "Chijun",
+      "familyName": "Sima",
+      "url": siteUrl,
+      "image": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/avatar.jpg`,
+        "width": 400,
+        "height": 400
+      },
+      "jobTitle": "Senior Software Development Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Tencent",
+        "department": "WeChat",
+        "url": "https://www.tencent.com"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "South China University of Technology",
+        "url": "https://www.scut.edu.cn"
+      },
+      "knowsAbout": [
+        "Machine Learning Systems",
+        "MLSys",
+        "Efficient AI",
+        "Model Freshness",
+        "Recommender Systems",
+        "Deep Learning",
+        "LLM Serving",
+        "KV-Cache Management",
+        "LLVM",
+        "Compilers",
+        "Distributed Systems"
+      ],
+      "email": "mailto:simachijun@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guangzhou",
+        "addressCountry": "CN"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/chijun-sima/",
+        "https://github.com/NutshellySima",
+        "https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/`
       }
-    </script>
+    })} />
+
+    <!-- JSON-LD: WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": `${siteUrl}/`,
+      "name": `${siteName} — ML Systems Researcher`,
+      "description": siteDescription,
+      "author": { "@type": "Person", "@id": `${siteUrl}/#person` },
+      "inLanguage": "en"
+    })} />
+
+    <!-- JSON-LD: ScholarlyArticle for flagship paper -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "name": "Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update",
+      "url": "https://www.usenix.org/conference/osdi22/presentation/sima",
+      "datePublished": "2022",
+      "isPartOf": {
+        "@type": "PublicationEvent",
+        "name": "OSDI 2022",
+        "organizer": { "@type": "Organization", "name": "USENIX" }
+      },
+      "author": [
+        { "@type": "Person", "name": "Chijun Sima", "@id": `${siteUrl}/#person` },
+        { "@type": "Person", "name": "Yao Fu" },
+        { "@type": "Person", "name": "Man-Kit Sit" },
+        { "@type": "Person", "name": "Liyi Guo" },
+        { "@type": "Person", "name": "Xuri Gong" },
+        { "@type": "Person", "name": "Feng Lin" },
+        { "@type": "Person", "name": "Junyu Wu" },
+        { "@type": "Person", "name": "Yongsheng Li" },
+        { "@type": "Person", "name": "Haidong Rong" },
+        { "@type": "Person", "name": "Pierre-Louis Aublin" },
+        { "@type": "Person", "name": "Luo Mai" }
+      ]
+    })} />
 
     <!-- Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script>
@@ -108,7 +202,7 @@ const baseAvatar = '/avatar.jpg';
       })();
     </script>
   </head>
-  <body class="font-sans antialiased text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-900">
+  <body class="font-sans antialiased text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-950 leading-relaxed">
     <slot />
 
     <script type="module" src={baseScriptSrc} data-asset-src={baseScriptSrc} defer></script>
