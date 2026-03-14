@@ -1,403 +1,263 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const navItems = [
-  { href: '#about', label: 'Overview', icon: 'user' },
-  { href: '#snapshot', label: 'At a glance', icon: 'zap' },
-  { href: '#highlights', label: 'Work', icon: 'briefcase' },
-  { href: '#publications', label: 'Publications', icon: 'book-open' },
-  { href: '/deep-dive', label: 'Technical notes', icon: 'activity' },
+const news = [
+  { date: '2025', text: 'Reviewing for CVPR 2025, ICLR 2025 Workshop (FM-Wild), NeurIPS 2025 Workshop (Efficient Reasoning)' },
+  { date: '2022', text: 'Ekko published at OSDI 2022; invited talks at Tencent WeChat AI, DataFun, TechBeat' },
+  { date: '2022', text: 'Tencent Technology Breakthrough Award (Gold Prize) — Project Lead, Ekko' },
 ];
 
-const quickFacts = [
-  'Senior Software Development Engineer, Tencent (WeChat), Jul 2020 - Present',
-  "OSDI 2022 co-first author for Ekko (low-latency model updates)",
-  'LLVM developer with commit access (Google Summer of Code 2018)',
-  'B.Eng. in Computer Science, SCUT, GPA 3.85/4.00, Rank 1/28',
-];
-
-const researchSummary = [
-  'Efficient AI (MLSys): scalable and cost-effective training and serving',
-  'System-algorithm co-design for production reliability and model freshness',
-  'Current focus: recommender and LLM systems under strict latency and cost constraints',
-];
-
-const selectedWork = [
-  {
-    title: 'Ekko',
-    subtitle: 'Low-latency model updates for large-scale recommendation',
-    points: ['WAN bandwidth -92%', 'Machine cost -49%', '2.4s model-update latency'],
-  },
-  {
-    title: 'Data and feature platform',
-    subtitle: 'Safe, scalable training-data pipelines',
-    points: ['WebAssembly in-process isolation', 'Locality-aware operator placement', 'Data movement reduced up to 1,200x'],
-  },
-  {
-    title: 'LLVM',
-    subtitle: 'Compiler infrastructure contributions',
-    points: ['Semi-NCA and optimization pipeline improvements', 'Unified dominator-tree update APIs', 'Reported speedups up to 1980x'],
-    link: '',
-    linkLabel: '',
-  },
-];
-
-const publicationHighlights = [
+const publications = [
   {
     venue: 'OSDI 2022',
     title: 'Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update',
-    authors:
-      'Chijun Sima*, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai',
+    authors: 'Chijun Sima*, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai',
     link: 'https://www.usenix.org/conference/osdi22/presentation/sima',
+    note: '(* = co-first author)',
   },
   {
     venue: 'IEEE Access 2019',
     title: 'Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification',
     authors: 'Kejian Shi, Hongyang Qin, Chijun Sima, Sen Li, Lifeng Shen, Qianli Ma',
     link: '',
+    note: '',
   },
+];
+
+const experience = [
+  {
+    period: 'Jul 2020 – Present',
+    role: 'Senior Software Development Engineer',
+    org: 'Tencent (WeChat)',
+    bullets: [
+      'Led Ekko: low-latency model update system for large-scale recommendation (published at OSDI 2022, co-first author).',
+      'Designed data and feature platform with WebAssembly-based in-process isolation and locality-aware operator placement (data movement reduced up to 1,200x).',
+      'Developing LLM serving mechanisms with remote KV-cache storage and compression.',
+    ],
+  },
+  {
+    period: '2018 – Present',
+    role: 'Developer (commit access)',
+    org: 'LLVM',
+    bullets: [
+      'Improved Semi-NCA performance and optimization pipeline (LLVM 9.0).',
+      'Unified dominator-tree update APIs (LLVM 7.0).',
+      'Reported speedups up to 1,980x on real-world inputs.',
+    ],
+  },
+];
+
+const education = {
+  period: 'Sep 2016 – Jun 2020',
+  degree: 'B.Eng. in Computer Science',
+  school: 'South China University of Technology',
+  detail: 'Innovation Class · GPA 3.85/4.00 · Rank 1/28',
+};
+
+const ekkoHighlights = [
+  'WAN bandwidth reduced by 92%',
+  'Machine cost reduced by 49%',
+  '2.4s model-update latency',
+  '10,000x model-size scaling (GB → tens of TB)',
+  'Deployed in WeChat recommendation; serves 1B+ users daily',
+];
+
+const talks = [
+  'Tencent WeChat AI Department, Shenzhen (Jun 2022)',
+  'DataFun, Virtual (Aug 2022)',
+  'TechBeat, Virtual (Sep 2022)',
+];
+
+const awards = [
+  'Tencent Technology Breakthrough Award (Gold Prize), 2022 — Project Lead, Ekko',
+  "ACM-ICPC Asia Xi'an Regional — Bronze (2017)",
+  'CCPC Guangdong Division — Second Prize (out of 177 teams)',
+];
+
+const service = [
+  'CVPR 2025',
+  'ICLR 2025 Workshop on FM-Wild',
+  'NeurIPS 2025 Workshop on Efficient Reasoning',
+];
+
+const references = [
+  { label: 'OSDI 2022 paper', href: 'https://www.usenix.org/conference/osdi22/presentation/sima' },
+  { label: 'WeChat official write-up', href: 'https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA' },
+  { label: 'Tencent official write-up', href: 'https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg' },
+  { label: 'Synced Review coverage', href: 'https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA' },
+  { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en' },
 ];
 ---
 <BaseLayout>
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <div
-    id="scroll-progress"
-    class="fixed top-0 left-0 right-0 h-1 z-[60] no-print"
-    role="progressbar"
-    aria-label="Page scroll progress"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    aria-valuenow="0"
-  ></div>
-
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 no-print transition-transform duration-300" aria-label="Primary navigation">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div id="nav-container" class="glass rounded-2xl mt-4 px-4 sm:px-6 py-3 transition-all duration-300 relative">
-        <div class="flex items-center justify-between gap-4">
-          <a href="#top" class="flex items-center gap-3 group" aria-label="Chijun Sima - Home">
-            <img
-              src="/favicon.svg"
-              data-asset-src="/favicon.svg"
-              alt=""
-              width="40"
-              height="40"
-              class="w-10 h-10 rounded-xl shadow-sm"
-              loading="eager"
-              decoding="async"
-            />
-            <div class="hidden sm:block">
-              <span class="font-display font-semibold text-base block leading-tight">Chijun Sima</span>
-              <span class="text-xs text-neutral-500 dark:text-neutral-400">Efficient ML systems</span>
-            </div>
-          </a>
-
-          <div class="hidden lg:flex items-center gap-1">
-            {
-              navItems.map((item) => (
-                <a
-                  href={item.href}
-                  class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200"
-                >
-                  {item.label}
-                </a>
-              ))
-            }
-            <a
-              href="/cv.pdf"
-              data-prefetch
-              class="px-3 py-2 rounded-lg text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200"
-            >
-              CV PDF
-            </a>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button
-              id="theme-toggle"
-              class="relative p-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus-ring"
-              aria-label="Toggle dark mode"
-              aria-pressed="false"
-            >
-              <i data-lucide="sun" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 text-primary-500"></i>
-              <i data-lucide="moon" class="w-5 h-5 absolute inset-0 m-auto transition-all duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100 text-secondary-400"></i>
-              <span class="w-5 h-5 block opacity-0" aria-hidden="true">.</span>
-            </button>
-
-            <button
-              id="share-button"
-              class="relative p-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-200 focus-ring"
-              aria-label="Share this page"
-              type="button"
-            >
-              <i data-lucide="share-2" class="w-5 h-5 text-neutral-600 dark:text-neutral-300"></i>
-            </button>
-
-            <button
-              id="mobile-menu-btn"
-              class="lg:hidden p-2.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus-ring"
-              aria-label="Toggle menu"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-            >
-              <i data-lucide="menu" class="w-5 h-5 menu-icon"></i>
-              <i data-lucide="x" class="w-5 h-5 close-icon hidden"></i>
-            </button>
-          </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden lg:hidden absolute left-0 right-0 top-full mt-3 rounded-2xl glass shadow-xl p-4" hidden>
-          <div class="grid sm:grid-cols-2 gap-2">
-            {
-              navItems.map((item) => (
-                <a href={item.href} class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all flex items-center gap-2">
-                  <i data-lucide={item.icon} class="w-4 h-4 text-primary-600"></i>
-                  {item.label}
-                </a>
-              ))
-            }
-            <a href="/cv.pdf" data-prefetch class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all flex items-center gap-2">
-              <i data-lucide="file-text" class="w-4 h-4 text-primary-600"></i>
-              CV PDF
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-
   <main id="main" tabindex="-1">
-    <section id="about" class="pt-32 pb-16 lg:pt-36 lg:pb-20 bg-neutral-50 dark:bg-neutral-950" aria-labelledby="about-heading">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="reveal grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-10 items-start">
-          <div>
-            <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-sm text-neutral-600 dark:text-neutral-400 mb-5">
-              <span class="w-2 h-2 rounded-full bg-secondary-500" aria-hidden="true"></span>
-              Overview
-            </p>
-            <h1 id="about-heading" class="text-4xl sm:text-5xl font-display font-bold leading-tight mb-3">
-              Chijun Sima
-            </h1>
-            <p class="text-xl sm:text-2xl text-neutral-700 dark:text-neutral-300 font-light mb-5 max-w-3xl">
-              Efficient AI systems: scalable and cost-effective training and serving through system-algorithm co-design.
-            </p>
-            <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl mb-7">
-              A concise profile of research direction, systems work, and representative publications.
-            </p>
+    <!-- ===== Header ===== -->
+    <header class="academic-container pt-10 pb-8 sm:pt-14 sm:pb-10">
+      <div class="flex justify-end mb-4 no-print">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">☾</button>
+      </div>
 
-            <div class="flex flex-wrap gap-3 mb-7">
-              <a href="/deep-dive" class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-medium shadow-sm hover:opacity-90 transition-all focus-ring">
-                <i data-lucide="activity" class="w-5 h-5"></i>
-                Technical notes
-              </a>
-              <a href="/cv.pdf" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
-                <i data-lucide="file-text" class="w-5 h-5"></i>
-                CV PDF
-              </a>
+      <div class="flex flex-col sm:flex-row gap-6 items-start">
+        <img
+          src="/avatar.jpg"
+          data-asset-src="/avatar.jpg"
+          alt="Chijun Sima"
+          width="144"
+          height="144"
+          class="w-32 h-32 sm:w-36 sm:h-36 rounded-lg object-cover flex-shrink-0"
+          loading="eager"
+          decoding="async"
+        />
+        <div>
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50">Chijun Sima</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-400 mt-1">
+            Senior Software Development Engineer, <a href="https://www.tencent.com" class="paper-link" target="_blank" rel="noopener noreferrer">Tencent (WeChat)</a>
+          </p>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Guangzhou, China</p>
+
+          <div class="header-links flex flex-wrap gap-x-4 gap-y-1 mt-3 text-sm">
+            <a href="mailto:simachijun@gmail.com">Email</a>
+            <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="/cv.pdf">CV (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Research Interests ===== -->
+    <section id="research" class="academic-container pb-8">
+      <h2 class="section-heading">Research Interests</h2>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        I work on <strong>efficient AI systems</strong>: scalable and cost-effective training and serving through system–algorithm co-design.
+        My current focus is on recommender and LLM systems under strict latency and cost constraints, including model freshness, distributed model updates, and KV-cache management.
+      </p>
+    </section>
+
+    <!-- ===== News ===== -->
+    <section id="news" class="academic-container pb-8">
+      <h2 class="section-heading">News</h2>
+      <ul class="space-y-2">
+        {news.map((item) => (
+          <li class="flex gap-3 text-sm text-gray-700 dark:text-gray-300">
+            <span class="news-date">{item.date}</span>
+            <span>{item.text}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- ===== Selected Publications ===== -->
+    <section id="publications" class="academic-container pb-8">
+      <h2 class="section-heading">Selected Publications</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+        Full list on <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" class="paper-link" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
+      </p>
+      <div>
+        {publications.map((pub) => (
+          <div class="pub-item">
+            <div class="flex flex-wrap items-baseline gap-x-2">
+              <span class="pub-venue">{pub.venue}</span>
+              {pub.link ? (
+                <a href={pub.link} class="pub-title paper-link" target="_blank" rel="noopener noreferrer">{pub.title}</a>
+              ) : (
+                <span class="pub-title">{pub.title}</span>
+              )}
             </div>
+            <p class="pub-authors mt-1" set:html={pub.authors.replace(/Chijun Sima/g, '<span class="pub-self">Chijun Sima</span>')} />
+            {pub.note && <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{pub.note}</p>}
+          </div>
+        ))}
+      </div>
+    </section>
 
-            <div class="flex flex-wrap items-center gap-3 text-sm">
-              <a href="mailto:simachijun@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
-                <i data-lucide="mail" class="w-4 h-4 text-primary-600"></i>
-                simachijun@gmail.com
-              </a>
-              <a href="https://www.linkedin.com/in/chijun-sima/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
-                <i data-lucide="linkedin" class="w-4 h-4 text-[#0077b5]"></i>
-                LinkedIn
-              </a>
-              <a href="https://github.com/NutshellySima" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
-                <i data-lucide="github" class="w-4 h-4"></i>
-                GitHub
-              </a>
-              <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
-                <i data-lucide="graduation-cap" class="w-4 h-4 text-[#4285f4]"></i>
-                Scholar
-              </a>
+    <!-- ===== Ekko Highlights ===== -->
+    <section id="ekko" class="academic-container pb-8">
+      <h2 class="section-heading">Ekko: Key Results</h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+        Ekko is a low-latency model update system for large-scale deep learning recommendation.
+        It addresses model staleness with compressed update dissemination, optimization-based placement, and safe rollback.
+      </p>
+      <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+        {ekkoHighlights.map((h) => (
+          <li>{h}</li>
+        ))}
+      </ul>
+      <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+        See also:
+        {references.map((ref, i) => (
+          <Fragment>
+            {i > 0 && ' · '}
+            <a href={ref.href} class="paper-link" target="_blank" rel="noopener noreferrer">{ref.label}</a>
+          </Fragment>
+        ))}
+      </p>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section id="experience" class="academic-container pb-8">
+      <h2 class="section-heading">Experience</h2>
+      <div>
+        {experience.map((entry) => (
+          <div class="timeline-entry">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+              <span class="timeline-period whitespace-nowrap">{entry.period}</span>
+              <p class="font-semibold text-gray-900 dark:text-gray-100">{entry.role}, {entry.org}</p>
             </div>
+            <ul class="list-disc list-inside mt-1.5 space-y-1 text-sm text-gray-700 dark:text-gray-300 ml-0 sm:ml-[calc(5.5rem+0.75rem)]">
+              {entry.bullets.map((b) => <li>{b}</li>)}
+            </ul>
           </div>
-
-          <div class="reveal-scale">
-            <img
-              src="/avatar.jpg"
-              data-asset-src="/avatar.jpg"
-              alt="Chijun Sima"
-              width="192"
-              height="192"
-              decoding="async"
-              fetchpriority="high"
-              class="w-36 h-36 sm:w-44 sm:h-44 object-cover rounded-3xl shadow-lg ring-2 ring-white dark:ring-neutral-800"
-              loading="eager"
-            />
-            <p class="mt-4 inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm">
-              <i data-lucide="map-pin" class="w-4 h-4 text-primary-600"></i>
-              Guangzhou, China
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
 
-    <section id="snapshot" class="cv-auto py-16 lg:py-20 bg-white dark:bg-neutral-900" aria-labelledby="snapshot-heading">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="reveal">
-          <h2 id="snapshot-heading" class="text-3xl sm:text-4xl font-display font-bold mb-3">At a glance</h2>
-          <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-10 max-w-3xl">
-            Key facts and outcomes from my CV.
-          </p>
-
-          <div class="grid lg:grid-cols-2 gap-6 stagger">
-            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 p-6">
-              <h3 class="text-xl font-display font-semibold mb-4">Quick facts</h3>
-              <ul class="space-y-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                {
-                  quickFacts.map((fact) => (
-                    <li class="flex items-start gap-3">
-                      <i data-lucide="check-circle-2" class="w-5 h-5 text-secondary-500 mt-0.5 flex-shrink-0"></i>
-                      <span>{fact}</span>
-                    </li>
-                  ))
-                }
-              </ul>
-            </article>
-
-            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 p-6">
-              <h3 class="text-xl font-display font-semibold mb-4">Research focus</h3>
-              <ul class="space-y-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                {
-                  researchSummary.map((line) => (
-                    <li class="flex items-start gap-3">
-                      <i data-lucide="minus" class="w-5 h-5 text-neutral-400 mt-0.5 flex-shrink-0"></i>
-                      <span>{line}</span>
-                    </li>
-                  ))
-                }
-              </ul>
-            </article>
-          </div>
+    <!-- ===== Education ===== -->
+    <section id="education" class="academic-container pb-8">
+      <h2 class="section-heading">Education</h2>
+      <div class="timeline-entry">
+        <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+          <span class="timeline-period whitespace-nowrap">{education.period}</span>
+          <p class="font-semibold text-gray-900 dark:text-gray-100">{education.degree}, {education.school}</p>
         </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 sm:ml-[calc(5.5rem+0.75rem)]">{education.detail}</p>
       </div>
     </section>
 
-    <section id="highlights" class="cv-auto py-16 lg:py-20 bg-neutral-50 dark:bg-neutral-950" aria-labelledby="highlights-heading">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="reveal">
-          <h2 id="highlights-heading" class="text-3xl sm:text-4xl font-display font-bold mb-3">Selected work</h2>
-          <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-10 max-w-3xl">
-            Condensed outcomes and project scopes across recommendation, data, and compiler systems.
-          </p>
-          <div class="grid lg:grid-cols-3 gap-5 stagger">
-            {
-              selectedWork.map((item) => (
-                <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-6">
-                  <h3 class="text-xl font-display font-semibold mb-1">{item.title}</h3>
-                  <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-4">{item.subtitle}</p>
-                  <ul class="space-y-2 text-neutral-700 dark:text-neutral-300">
-                    {item.points.map((point) => (
-                      <li class="flex items-start gap-2.5">
-                        <i data-lucide="dot" class="w-4 h-4 text-neutral-400 mt-1 flex-shrink-0"></i>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  {item.link && (
-                    <a href={item.link} data-prefetch class="inline-flex items-center gap-2 mt-4 text-sm font-medium text-primary-700 dark:text-primary-300 hover:underline">
-                      {item.linkLabel}
-                      <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                  )}
-                </article>
-              ))
-            }
-          </div>
-        </div>
-      </div>
+    <!-- ===== Talks ===== -->
+    <section id="talks" class="academic-container pb-8">
+      <h2 class="section-heading">Invited Talks</h2>
+      <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+        {talks.map((t) => <li>{t}</li>)}
+      </ul>
     </section>
 
-    <section id="publications" class="cv-auto py-16 lg:py-20 bg-white dark:bg-neutral-900" aria-labelledby="publications-heading">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="reveal">
-          <h2 id="publications-heading" class="text-3xl sm:text-4xl font-display font-bold mb-3">Selected publications</h2>
-          <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-10">
-            Two representative papers. Full list available on Google Scholar.
-          </p>
-
-          <div class="space-y-4 stagger">
-            {
-              publicationHighlights.map((item) => (
-                <article class="rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/40 p-6">
-                  <p class="text-sm font-medium text-primary-700 dark:text-primary-300 mb-2">{item.venue}</p>
-                  {item.link ? (
-                    <h3 class="text-xl font-display font-semibold mb-2">
-                      <a href={item.link} target="_blank" rel="noopener noreferrer" class="hover:underline">
-                        {item.title}
-                      </a>
-                    </h3>
-                  ) : (
-                    <h3 class="text-xl font-display font-semibold mb-2">{item.title}</h3>
-                  )}
-                  <p class="text-neutral-600 dark:text-neutral-400 text-sm">{item.authors}</p>
-                </article>
-              ))
-            }
-          </div>
+    <!-- ===== Service & Awards ===== -->
+    <section id="service" class="academic-container pb-8">
+      <h2 class="section-heading">Service & Awards</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Reviewing</h3>
+          <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+            {service.map((s) => <li>{s}</li>)}
+          </ul>
         </div>
-      </div>
-    </section>
-
-    <section class="py-16 lg:py-20 bg-neutral-50 dark:bg-neutral-950" aria-labelledby="next-heading">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="reveal rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-8 sm:p-10 text-center">
-          <h2 id="next-heading" class="text-2xl sm:text-3xl font-display font-bold mb-3">Further reading</h2>
-          <p class="text-neutral-600 dark:text-neutral-400 mb-6 max-w-2xl mx-auto">
-            Technical notes cover system architecture, timeline, and supporting references.
-          </p>
-          <div class="flex flex-wrap justify-center gap-3">
-            <a href="/deep-dive" class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-medium shadow-sm hover:opacity-90 transition-all focus-ring">
-              <i data-lucide="activity" class="w-5 h-5"></i>
-              Technical notes
-            </a>
-            <a href="/cv.pdf" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
-              <i data-lucide="file-text" class="w-5 h-5"></i>
-              Download CV
-            </a>
-          </div>
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">Awards</h3>
+          <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+            {awards.map((a) => <li>{a}</li>)}
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-neutral-900 text-white py-12 no-print" role="contentinfo">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-        <div>
-          <p class="font-display font-semibold text-lg">Chijun Sima</p>
-          <p class="text-neutral-400 text-sm">Efficient ML systems for production scale.</p>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <a href="#about" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Overview</a>
-          <a href="#snapshot" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">At a glance</a>
-          <a href="/deep-dive" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Technical notes</a>
-          <a href="/cv.pdf" data-prefetch class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">CV PDF</a>
-        </div>
-      </div>
-      <div class="pt-6 mt-6 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-center gap-3">
-        <p class="text-neutral-400 text-sm">© <span id="year"></span> Chijun Sima. All rights reserved.</p>
-        <a href="#top" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-sm transition-colors">
-          <i data-lucide="arrow-up" class="w-4 h-4"></i>
-          Back to top
-        </a>
-      </div>
-    </div>
+  <!-- ===== Footer ===== -->
+  <footer class="academic-container py-8 border-t border-gray-200 dark:border-gray-700 no-print">
+    <p class="text-sm text-gray-400 dark:text-gray-500">
+      &copy; <span id="year"></span> Chijun Sima
+    </p>
   </footer>
-
-  <div id="pwa-toast" class="pwa-toast" role="status" aria-live="polite" hidden>
-    <div class="pwa-toast__content">
-      <p id="pwa-toast-title" class="pwa-toast__title">Update available</p>
-      <p id="pwa-toast-desc" class="pwa-toast__desc">Refresh to load the latest version.</p>
-    </div>
-    <div class="pwa-toast__actions">
-      <button id="pwa-toast-action" class="pwa-toast__btn pwa-toast__btn--primary" type="button">Update</button>
-      <button id="pwa-toast-dismiss" class="pwa-toast__btn" type="button">Not now</button>
-    </div>
-  </div>
 </BaseLayout>
