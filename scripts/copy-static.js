@@ -1,7 +1,9 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path');
-const fs = require('fs/promises');
-const esbuild = require('esbuild');
+import path from 'node:path';
+import fs from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import esbuild from 'esbuild';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.join(rootDir, 'dist');
@@ -24,9 +26,7 @@ const staticFiles = [
   'llms-full.txt',
 ];
 
-const staticDirs = [
-  { src: '.well-known', files: ['ai-plugin.json'] },
-];
+const staticDirs = [{ src: '.well-known', files: ['ai-plugin.json'] }];
 
 const copyStaticFiles = async () => {
   await fs.mkdir(assetsDir, { recursive: true });

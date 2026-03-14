@@ -1,13 +1,22 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import { defineConfig, fontProviders } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://www.chijunsima.com',
-  integrations: [tailwind()],
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: 'Inter',
+      cssVariable: '--font-inter',
+      weights: [400, 500, 600, 700],
+      display: 'swap',
+    },
+  ],
   build: {
     format: 'file',
   },
   vite: {
+    plugins: [tailwindcss()],
     build: {
       assetsDir: 'assets',
       rollupOptions: {

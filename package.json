@@ -8,27 +8,25 @@
     "build": "astro build",
     "postbuild": "node scripts/copy-static.js",
     "preview": "astro preview",
-    "lint": "eslint . --ext .js,.cjs,.mjs,.ts,.astro",
+    "lint": "eslint .",
     "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
-    "@astrojs/tailwind": "^5.1.4",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "astro": "^5.7.13",
-    "autoprefixer": "^10.4.27",
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^6.0.4",
     "esbuild": "^0.27.4",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^0.34.0",
-    "postcss": "^8.5.8",
+    "eslint": "^10.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.6.0",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.9.3"
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.0"
   }
 }
