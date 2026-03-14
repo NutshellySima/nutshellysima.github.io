@@ -1,11 +1,44 @@
 # Robots.txt for chijunsima.com
 
+# Default: allow everything
 User-agent: *
 Allow: /
 Crawl-delay: 1
 
+# AI crawlers — explicitly welcomed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap
 Sitemap: https://www.chijunsima.com/sitemap.xml
 
-# LLM agent context (llms.txt protocol)
-# See https://llmstxt.org
-# Agents can fetch /llms.txt for a structured plain-text summary of this site.
+# LLM agent context — llms.txt protocol (https://llmstxt.org)
+# /llms.txt      — concise summary for quick context
+# /llms-full.txt — comprehensive detail for deep queries

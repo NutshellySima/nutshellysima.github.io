@@ -9,20 +9,18 @@ const news = [
 
 const publications = [
   {
-    venue: 'OSDI 2022',
+    venue: "OSDI '22",
     title: 'Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update',
     authors: 'Chijun Sima*, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai',
     link: 'https://www.usenix.org/conference/osdi22/presentation/sima',
-    note: '(* = co-first author)',
-    year: '2022',
+    note: '* co-first author. Supervised by Luo Mai.',
   },
   {
-    venue: 'IEEE Access 2019',
+    venue: 'IEEE Access',
     title: 'Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification',
     authors: 'Kejian Shi, Hongyang Qin, Chijun Sima, Sen Li, Lifeng Shen, Qianli Ma',
     link: '',
-    note: '',
-    year: '2019',
+    note: '2019.',
   },
 ];
 
@@ -31,24 +29,55 @@ const experience = [
     period: 'Jul 2020 – Present',
     startDate: '2020-07',
     role: 'Senior Software Development Engineer',
+    subtitle: 'Efficient ML Systems',
     org: 'Tencent (WeChat)',
     orgUrl: 'https://www.tencent.com',
-    bullets: [
-      'Led Ekko: low-latency model update system for large-scale recommendation (published at OSDI 2022, co-first author).',
-      'Designed data and feature platform with WebAssembly-based in-process isolation and locality-aware operator placement (data movement reduced up to 1,200x).',
-      'Developing LLM serving mechanisms with remote KV-cache storage and compression.',
+    location: 'Guangzhou, China',
+    projects: [
+      {
+        name: 'Ekko: low-latency model update for multi-terabyte DLRMs',
+        note: 'published in part as OSDI \'22',
+        bullets: [
+          'Scaling DLRMs improved offline accuracy but degraded online engagement; root cause: stale models from increased model-update latency.',
+          'Co-designed deployment mechanisms with model-aware policies (compressed update dissemination, accuracy-aware scheduling, SLO-aware placement, safe rollback).',
+          'WAN bandwidth −92 %, machine cost −49 %, 2.4 s model-update latency; 10,000× model-size scaling (GB → tens of TB).',
+          'Deployed in WeChat recommendation stacks, serves 1 B+ users daily. Official WeChat blog reports +40 % DAU and +87 % total VV over six months after full adoption (alongside product iteration and operations).',
+        ],
+      },
+      {
+        name: 'Data and feature platform: safe, scalable pipelines',
+        note: '',
+        bullets: [
+          'WebAssembly-based in-process isolation for safety and resource constraints; locality-aware operator placement near data sources.',
+          'Data movement reduced up to 1,200× on representative workloads.',
+        ],
+      },
+      {
+        name: 'LLM serving systems',
+        note: '',
+        bullets: [
+          'Building cost-effective serving mechanisms around remote KV-cache storage and compression.',
+        ],
+      },
     ],
   },
   {
     period: '2018 – Present',
     startDate: '2018',
     role: 'Developer (commit access)',
+    subtitle: 'Google Summer of Code 2018',
     org: 'LLVM',
     orgUrl: 'https://llvm.org',
-    bullets: [
-      'Improved Semi-NCA performance and optimization pipeline (LLVM 9.0).',
-      'Unified dominator-tree update APIs (LLVM 7.0).',
-      'Reported speedups up to 1,980x on real-world inputs.',
+    location: '',
+    projects: [
+      {
+        name: '',
+        note: '',
+        bullets: [
+          'Improved Semi-NCA performance and optimization pipeline; shipped in LLVM 9.0 (reported speedups up to 1,980× on real-world samples).',
+          'Unified APIs on dominator trees; shipped in LLVM 7.0.',
+        ],
+      },
     ],
   },
 ];
@@ -56,20 +85,11 @@ const experience = [
 const education = {
   period: 'Sep 2016 – Jun 2020',
   startDate: '2016-09',
-  endDate: '2020-06',
-  degree: 'B.Eng. in Computer Science',
+  degree: 'B.Eng. in Computer Science and Technology (Innovation Class)',
   school: 'South China University of Technology',
   schoolUrl: 'https://www.scut.edu.cn',
-  detail: 'Innovation Class · GPA 3.85 / 4.00 · Rank 1 / 28',
+  detail: 'GPA 3.85 / 4.00 · Rank 1 / 28',
 };
-
-const ekkoHighlights = [
-  'WAN bandwidth reduced by 92 %',
-  'Machine cost reduced by 49 %',
-  '2.4 s model-update latency',
-  '10,000 × model-size scaling (GB → tens of TB)',
-  'Deployed in WeChat recommendation; serves 1 B+ users daily',
-];
 
 const talks = [
   { text: 'Tencent WeChat AI Department, Shenzhen', date: 'Jun 2022' },
@@ -78,9 +98,9 @@ const talks = [
 ];
 
 const awards = [
-  { text: 'Tencent Technology Breakthrough Award (Gold Prize) — Project Lead, Ekko', year: '2022' },
-  { text: "ACM-ICPC Asia Xi'an Regional — Bronze", year: '2017' },
-  { text: 'CCPC Guangdong Division — Second Prize (out of 177 teams)', year: '' },
+  { text: 'Tencent Technology Breakthrough Award (Gold Prize) — Project Lead, Ekko (internal highest technical honor)', year: '2022' },
+  { text: "Bronze Medal, ACM-ICPC Asia Xi'an Regional Contest", year: '2017' },
+  { text: 'Second Prize, 15th China Collegiate Programming Contest (Guangdong Division, out of 177 teams)', year: '' },
 ];
 
 const reviewing = [
@@ -89,11 +109,11 @@ const reviewing = [
   'NeurIPS 2025 Workshop on Efficient Reasoning',
 ];
 
-const references = [
+const writeups = [
   { label: 'OSDI 2022 paper', href: 'https://www.usenix.org/conference/osdi22/presentation/sima' },
   { label: 'WeChat official write-up', href: 'https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA' },
   { label: 'Tencent official write-up', href: 'https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg' },
-  { label: 'Synced Review coverage', href: 'https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA' },
+  { label: 'Synced Review / JIQIZHIXIN', href: 'https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA' },
   { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en' },
 ];
 ---
@@ -137,33 +157,30 @@ const references = [
                 <span itemprop="name">Tencent (WeChat)</span>
               </a>
             </p>
-            <p class="header-location">
-              <span aria-hidden="true">&#x25CB;</span>
-              Guangzhou, China
-            </p>
+            <p class="header-location">Guangzhou, China</p>
 
             <div class="header-links" role="list" aria-label="Contact and profiles">
               <a role="listitem" href="mailto:simachijun@gmail.com" itemprop="email">Email</a>
               <a role="listitem" href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" itemprop="sameAs" target="_blank" rel="noopener noreferrer">Google Scholar</a>
               <a role="listitem" href="https://github.com/NutshellySima" itemprop="sameAs" target="_blank" rel="noopener noreferrer">GitHub</a>
               <a role="listitem" href="https://www.linkedin.com/in/chijun-sima/" itemprop="sameAs" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a role="listitem" href="/cv.pdf">CV <span class="muted-inline">(PDF)</span></a>
+              <a role="listitem" href="/cv.pdf">CV <span class="muted">(PDF)</span></a>
             </div>
           </div>
         </div>
       </header>
 
       <!-- ── Research Interests ── -->
-      <section id="research" class="content-section" aria-labelledby="h-research">
+      <section id="research" class="section" aria-labelledby="h-research">
         <h2 id="h-research" class="section-heading">Research Interests</h2>
-        <p class="body-text">
-          I work on <strong>efficient AI systems</strong>&hairsp;: scalable and cost-effective training and serving through system–algorithm co-design.
-          My current focus is on recommender and LLM systems under strict latency and cost constraints, including <em>model freshness</em>, <em>distributed model updates</em>, and <em>KV-cache management</em>.
+        <p class="prose-body">
+          Efficient AI (MLSys): scalable and cost-effective training and serving; system–algorithm co-design.
+          Current focus on recommender and LLM systems under strict latency and cost constraints, including model freshness, distributed model updates, and KV-cache management.
         </p>
       </section>
 
       <!-- ── News ── -->
-      <section id="news" class="content-section" aria-labelledby="h-news">
+      <section id="news" class="section" aria-labelledby="h-news">
         <h2 id="h-news" class="section-heading">News</h2>
         <ul class="news-list" role="list">
           {news.map((item) => (
@@ -176,7 +193,7 @@ const references = [
       </section>
 
       <!-- ── Selected Publications ── -->
-      <section id="publications" class="content-section" aria-labelledby="h-pub">
+      <section id="publications" class="section" aria-labelledby="h-pub">
         <h2 id="h-pub" class="section-heading">Selected Publications</h2>
         <p class="section-note">
           Full list on <a href="https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en" class="text-link" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
@@ -203,107 +220,119 @@ const references = [
         </ol>
       </section>
 
-      <!-- ── Ekko Highlights ── -->
-      <section id="ekko" class="content-section" aria-labelledby="h-ekko">
-        <h2 id="h-ekko" class="section-heading">Ekko&hairsp;: Key Results</h2>
-        <p class="section-desc">
-          Low-latency model update system for large-scale deep learning recommendation.
-          Addresses model staleness through compressed update dissemination, optimization-based placement, and safe rollback.
-        </p>
-        <ul class="highlight-list" aria-label="Key metrics">
-          {ekkoHighlights.map((h) => (
-            <li>{h}</li>
-          ))}
-        </ul>
-        <p class="ref-links">
-          {references.map((ref, i) => (
-            <Fragment>
-              {i > 0 && <span class="ref-sep" aria-hidden="true">·</span>}
-              <a href={ref.href} class="text-link" target="_blank" rel="noopener noreferrer">{ref.label}</a>
-            </Fragment>
-          ))}
-        </p>
-      </section>
-
       <!-- ── Experience ── -->
-      <section id="experience" class="content-section" aria-labelledby="h-exp">
-        <h2 id="h-exp" class="section-heading">Experience</h2>
+      <section id="experience" class="section" aria-labelledby="h-exp">
+        <h2 id="h-exp" class="section-heading">Research &amp; Industry Experience</h2>
         <div class="timeline">
           {experience.map((entry) => (
             <article class="timeline-entry" itemscope itemtype="https://schema.org/OrganizationRole">
               <div class="timeline-head">
+                <div class="timeline-left">
+                  <p class="timeline-org">
+                    <a href={entry.orgUrl} target="_blank" rel="noopener noreferrer" itemprop="memberOf" itemscope itemtype="https://schema.org/Organization">
+                      <strong itemprop="name">{entry.org}</strong>
+                    </a>
+                    {entry.location && <span class="muted"> · {entry.location}</span>}
+                  </p>
+                  <p class="timeline-role">
+                    <span itemprop="roleName">{entry.role}</span>
+                    {entry.subtitle && <span class="muted"> — {entry.subtitle}</span>}
+                  </p>
+                </div>
                 <time class="timeline-period" datetime={entry.startDate}>{entry.period}</time>
-                <p class="timeline-role">
-                  <strong itemprop="roleName">{entry.role}</strong>,{' '}
-                  <a href={entry.orgUrl} target="_blank" rel="noopener noreferrer" itemprop="memberOf" itemscope itemtype="https://schema.org/Organization">
-                    <span itemprop="name">{entry.org}</span>
-                  </a>
-                </p>
               </div>
-              <ul class="timeline-bullets">
-                {entry.bullets.map((b) => <li>{b}</li>)}
-              </ul>
+
+              {entry.projects.map((proj) => (
+                <div class="project-block">
+                  {proj.name && (
+                    <p class="project-name">
+                      {proj.name}
+                      {proj.note && <span class="muted"> ({proj.note})</span>}
+                    </p>
+                  )}
+                  <ul class="project-bullets">
+                    {proj.bullets.map((b) => <li>{b}</li>)}
+                  </ul>
+                </div>
+              ))}
             </article>
           ))}
         </div>
       </section>
 
       <!-- ── Education ── -->
-      <section id="education" class="content-section" aria-labelledby="h-edu">
+      <section id="education" class="section" aria-labelledby="h-edu">
         <h2 id="h-edu" class="section-heading">Education</h2>
         <article class="timeline-entry" itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
           <div class="timeline-head">
+            <div class="timeline-left">
+              <p class="timeline-org">
+                <a href={education.schoolUrl} target="_blank" rel="noopener noreferrer">
+                  <strong itemprop="name">{education.school}</strong>
+                </a>
+              </p>
+              <p class="timeline-role">{education.degree}</p>
+            </div>
             <time class="timeline-period" datetime={education.startDate}>{education.period}</time>
-            <p class="timeline-role">
-              <strong>{education.degree}</strong>,{' '}
-              <a href={education.schoolUrl} target="_blank" rel="noopener noreferrer">
-                <span itemprop="name">{education.school}</span>
-              </a>
-            </p>
           </div>
-          <p class="timeline-detail">{education.detail}</p>
+          <p class="project-detail">{education.detail}</p>
         </article>
       </section>
 
       <!-- ── Talks ── -->
-      <section id="talks" class="content-section" aria-labelledby="h-talks">
-        <h2 id="h-talks" class="section-heading">Invited Talks</h2>
-        <ul class="compact-list">
-          {talks.map((t) => (
-            <li>
-              {t.text}
-              <span class="muted-inline">({t.date})</span>
-            </li>
+      <section id="talks" class="section" aria-labelledby="h-talks">
+        <h2 id="h-talks" class="section-heading">Talks</h2>
+        <p class="prose-body" style="margin-bottom:0.25rem;">
+          <em>Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update.</em>
+        </p>
+        <p class="section-note" style="margin-bottom:0;">
+          {talks.map((t, i) => (
+            <Fragment>
+              {i > 0 && '; '}
+              {t.text} ({t.date})
+            </Fragment>
           ))}
-        </ul>
+        </p>
       </section>
 
       <!-- ── Service & Awards ── -->
-      <section id="service" class="content-section" aria-labelledby="h-service">
-        <h2 id="h-service" class="section-heading">Service &amp; Awards</h2>
+      <section id="service" class="section" aria-labelledby="h-service">
+        <h2 id="h-service" class="section-heading">Academic Service &amp; Selected Awards</h2>
         <div class="two-col">
           <div>
-            <h3 class="subsection-heading">Reviewing</h3>
-            <ul class="compact-list">
+            <h3 class="subsection-label">Reviewer</h3>
+            <ul class="clean-list">
               {reviewing.map((s) => <li>{s}</li>)}
             </ul>
           </div>
           <div>
-            <h3 class="subsection-heading">Awards</h3>
-            <ul class="compact-list">
+            <h3 class="subsection-label">Awards</h3>
+            <ul class="clean-list">
               {awards.map((a) => (
                 <li>
                   {a.text}
-                  {a.year && <span class="muted-inline">({a.year})</span>}
+                  {a.year && <span class="muted"> ({a.year})</span>}
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </section>
+
+      <!-- ── Write-ups ── -->
+      <section id="writeups" class="section" aria-labelledby="h-writeups">
+        <h2 id="h-writeups" class="section-heading">Selected Write-ups &amp; Links</h2>
+        <div class="writeup-links">
+          {writeups.map((ref, i) => (
+            <Fragment>
+              {i > 0 && <span class="link-sep" aria-hidden="true">·</span>}
+              <a href={ref.href} class="text-link" target="_blank" rel="noopener noreferrer">{ref.label}</a>
+            </Fragment>
+          ))}
+        </div>
+      </section>
     </main>
 
-    <!-- ── Footer ── -->
     <footer class="site-footer no-print" role="contentinfo">
       <p>&copy; <span id="year"></span> Chijun Sima</p>
     </footer>

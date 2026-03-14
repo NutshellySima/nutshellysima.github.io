@@ -1,43 +1,21 @@
-# Chijun Sima — Personal Academic Homepage
+# Chijun Sima
 
-> ML systems researcher at Tencent (WeChat). Research on efficient AI systems, model freshness, recommender systems, and LLM serving. Co-first author, OSDI 2022 (Ekko). LLVM developer with commit access.
+> Senior Software Development Engineer at Tencent (WeChat). ML systems researcher focused on efficient AI: scalable training/serving, system–algorithm co-design, model freshness, recommender systems, LLM serving. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.
 
-## Quick facts
-
-- Name: Chijun Sima
-- Affiliation: Tencent (WeChat), Senior Software Development Engineer
-- Location: Guangzhou, China
-- Research areas: Efficient AI systems (MLSys), system–algorithm co-design, model freshness, recommender systems, LLM serving, KV-cache management
-- Education: B.Eng. Computer Science, South China University of Technology (GPA 3.85/4.00, Rank 1/28)
-- LLVM developer with commit access (since 2018)
-
-## Selected publications
-
-1. **[OSDI 2022]** Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update
-   Chijun Sima*, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai
-   (* = co-first author)
-   URL: https://www.usenix.org/conference/osdi22/presentation/sima
-
-2. **[IEEE Access 2019]** Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification
-   Kejian Shi, Hongyang Qin, Chijun Sima, Sen Li, Lifeng Shen, Qianli Ma
-
-## Ekko key results
-
-- WAN bandwidth reduced by 92%
-- Machine cost reduced by 49%
-- 2.4s model-update latency
-- 10,000x model-size scaling
-- Deployed in WeChat recommendation, serves 1B+ users daily
-
-## Academic service
-
-- Reviewer: CVPR 2025, ICLR 2025 Workshop (FM-Wild), NeurIPS 2025 Workshop (Efficient Reasoning)
-
-## Contact
-
-- Email: simachijun@gmail.com
 - Website: https://www.chijunsima.com
+- Email: simachijun@gmail.com
 - Google Scholar: https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en
 - GitHub: https://github.com/NutshellySima
 - LinkedIn: https://www.linkedin.com/in/chijun-sima/
-- CV: https://www.chijunsima.com/cv.pdf
+- CV (PDF): https://www.chijunsima.com/cv.pdf
+- Full LLM context: https://www.chijunsima.com/llms-full.txt
+
+## Flagship work
+
+**Ekko** (OSDI '22): low-latency model update system for multi-terabyte deep learning recommendation models. WAN bandwidth −92%, machine cost −49%, 2.4s update latency, 10,000× model-size scaling. Deployed in WeChat recommendation serving 1B+ users daily.
+
+Paper: https://www.usenix.org/conference/osdi22/presentation/sima
+
+## Research areas
+
+Efficient AI (MLSys), model freshness, recommender systems, LLM serving, KV-cache management, distributed systems, compilers (LLVM)

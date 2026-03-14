@@ -33,7 +33,7 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#101820" media="(prefers-color-scheme: dark)" />
     <meta name="keywords" content="Chijun Sima, MLSys, Machine Learning Systems, Efficient AI, Model Freshness, Recommender Systems, LLM Serving, OSDI, Ekko, LLVM, Tencent, WeChat, Systems Research" />
 
     <link rel="canonical" href={`${siteUrl}/`} />
@@ -63,6 +63,10 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon-192.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- LLM/AI agent discovery -->
+    <link rel="alternate" type="text/plain" title="LLM context (concise)" href="/llms.txt" />
+    <link rel="alternate" type="text/plain" title="LLM context (full)" href="/llms-full.txt" />
 
     <!-- Fonts -->
     <link
@@ -97,6 +101,7 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
         "height": 400
       },
       "jobTitle": "Senior Software Development Engineer",
+      "description": "ML systems researcher focused on efficient AI: scalable training/serving, system–algorithm co-design, model freshness, recommender systems, LLM serving. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.",
       "worksFor": {
         "@type": "Organization",
         "name": "Tencent",
@@ -108,6 +113,20 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
         "name": "South China University of Technology",
         "url": "https://www.scut.edu.cn"
       },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "degree",
+        "name": "B.Eng. in Computer Science and Technology (Innovation Class)",
+        "recognizedBy": {
+          "@type": "CollegeOrUniversity",
+          "name": "South China University of Technology"
+        }
+      },
+      "award": [
+        "Tencent Technology Breakthrough Award (Gold Prize), 2022 — Project Lead, Ekko",
+        "Bronze Medal, ACM-ICPC Asia Xi'an Regional Contest (2017)",
+        "Second Prize, 15th China Collegiate Programming Contest (Guangdong Division)"
+      ],
       "knowsAbout": [
         "Machine Learning Systems",
         "MLSys",
@@ -115,8 +134,10 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
         "Model Freshness",
         "Recommender Systems",
         "Deep Learning",
+        "Deep Learning Recommendation Models",
         "LLM Serving",
         "KV-Cache Management",
+        "WebAssembly",
         "LLVM",
         "Compilers",
         "Distributed Systems"
@@ -176,6 +197,26 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
       ]
     })} />
 
+    <!-- JSON-LD: ScholarlyArticle for second paper -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "name": "Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification",
+      "datePublished": "2019",
+      "isPartOf": {
+        "@type": "PublicationVolume",
+        "name": "IEEE Access"
+      },
+      "author": [
+        { "@type": "Person", "name": "Kejian Shi" },
+        { "@type": "Person", "name": "Hongyang Qin" },
+        { "@type": "Person", "name": "Chijun Sima", "@id": `${siteUrl}/#person` },
+        { "@type": "Person", "name": "Sen Li" },
+        { "@type": "Person", "name": "Lifeng Shen" },
+        { "@type": "Person", "name": "Qianli Ma" }
+      ]
+    })} />
+
     <!-- Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script>
     <script is:inline>
@@ -202,7 +243,7 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
       })();
     </script>
   </head>
-  <body class="font-sans antialiased text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-950 leading-relaxed">
+  <body class="font-sans antialiased">
     <slot />
 
     <script type="module" src={baseScriptSrc} data-asset-src={baseScriptSrc} defer></script>
