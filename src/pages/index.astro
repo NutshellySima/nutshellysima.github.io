@@ -7,7 +7,6 @@ const navItems = [
   { href: '#highlights', label: 'Work', icon: 'briefcase' },
   { href: '#publications', label: 'Publications', icon: 'book-open' },
   { href: '/deep-dive', label: 'Technical notes', icon: 'activity' },
-  { href: '/ekko-deep-dive', label: 'Ekko deep dive', icon: 'network' },
 ];
 
 const quickFacts = [
@@ -28,8 +27,6 @@ const selectedWork = [
     title: 'Ekko',
     subtitle: 'Low-latency model updates for large-scale recommendation',
     points: ['WAN bandwidth -92%', 'Machine cost -49%', '2.4s model-update latency'],
-    link: '/ekko-deep-dive',
-    linkLabel: 'Read extended deep dive',
   },
   {
     title: 'Data and feature platform',
@@ -193,10 +190,6 @@ const publicationHighlights = [
                 <i data-lucide="activity" class="w-5 h-5"></i>
                 Technical notes
               </a>
-              <a href="/ekko-deep-dive" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
-                <i data-lucide="network" class="w-5 h-5"></i>
-                Ekko extended deep dive
-              </a>
               <a href="/cv.pdf" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
                 <i data-lucide="file-text" class="w-5 h-5"></i>
                 CV PDF
@@ -356,16 +349,12 @@ const publicationHighlights = [
         <div class="reveal rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-8 sm:p-10 text-center">
           <h2 id="next-heading" class="text-2xl sm:text-3xl font-display font-bold mb-3">Further reading</h2>
           <p class="text-neutral-600 dark:text-neutral-400 mb-6 max-w-2xl mx-auto">
-            Ekko architecture, deployment narrative, and supporting references are collected in separate pages, including an academic-style extended deep dive.
+            Technical notes cover system architecture, timeline, and supporting references.
           </p>
           <div class="flex flex-wrap justify-center gap-3">
             <a href="/deep-dive" class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-medium shadow-sm hover:opacity-90 transition-all focus-ring">
               <i data-lucide="activity" class="w-5 h-5"></i>
-              Explore technical page
-            </a>
-            <a href="/ekko-deep-dive" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
-              <i data-lucide="network" class="w-5 h-5"></i>
-              Ekko extended deep dive
+              Technical notes
             </a>
             <a href="/cv.pdf" data-prefetch class="magnetic-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 font-medium shadow-sm border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-500 transition-all focus-ring">
               <i data-lucide="file-text" class="w-5 h-5"></i>
@@ -388,7 +377,6 @@ const publicationHighlights = [
           <a href="#about" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Overview</a>
           <a href="#snapshot" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">At a glance</a>
           <a href="/deep-dive" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Technical notes</a>
-          <a href="/ekko-deep-dive" class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">Ekko deep dive</a>
           <a href="/cv.pdf" data-prefetch class="px-3 py-1.5 rounded-lg bg-neutral-800 text-sm hover:bg-neutral-700 transition-colors">CV PDF</a>
         </div>
       </div>
