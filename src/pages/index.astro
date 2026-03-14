@@ -38,18 +38,19 @@ const experience = [
         name: 'Ekko: low-latency model update for multi-terabyte DLRMs',
         note: 'published in part as OSDI \'22',
         bullets: [
-          'Scaling DLRMs improved offline accuracy but degraded online engagement; root cause: stale models from increased model-update latency.',
-          'Co-designed deployment mechanisms with model-aware policies (compressed update dissemination, accuracy-aware scheduling, SLO-aware placement, safe rollback).',
-          'WAN bandwidth −92 %, machine cost −49 %, 2.4 s model-update latency; 10,000× model-size scaling (GB → tens of TB).',
-          'Deployed in WeChat recommendation stacks, serves 1 B+ users daily. Official WeChat blog reports +40 % DAU and +87 % total VV over six months after full adoption (alongside product iteration and operations).',
+          '<strong>Problem.</strong> Scaling DLRMs improved offline accuracy but degraded online engagement; root cause: <strong>stale models</strong> from increased <strong>model-update latency</strong>.',
+          '<strong>Key idea.</strong> Co-designed deployment mechanisms with <strong>model-aware</strong> policies (compressed update dissemination, accuracy-aware scheduling, SLO-aware placement, safe rollback).',
+          '<strong>Technical contributions.</strong> WAN bandwidth <strong>−92 %</strong>, machine cost <strong>−49 %</strong>, 2.4 s model-update latency; <strong>10,000×</strong> model-size scaling (GB → tens of TB).',
+          '<strong>Outcomes.</strong> Core techniques published as <strong>OSDI \'22 (co-first author)</strong>. Deployed in WeChat recommendation stacks, serves <strong>1 B+ users daily</strong>. Official WeChat blog reports <strong>+40 % DAU</strong> and <strong>+87 % total VV</strong> over six months after full adoption (alongside product iteration and operations).',
         ],
       },
       {
         name: 'Data and feature platform: safe, scalable pipelines',
         note: '',
         bullets: [
-          'WebAssembly-based in-process isolation for safety and resource constraints; locality-aware operator placement near data sources.',
-          'Data movement reduced up to 1,200× on representative workloads.',
+          '<strong>Problem.</strong> Modern feature pipelines are long and increasingly multimodal; cross-process operator composition creates high overhead and expensive data movement.',
+          '<strong>Approach.</strong> WebAssembly-based runtime for <strong>in-process isolation</strong> (safety + resource constraints) and locality-aware operator placement near data sources.',
+          '<strong>Outcome.</strong> Data movement reduced up to <strong>1,200×</strong> on representative workloads; widely used within WeChat for data preparation.',
         ],
       },
       {
@@ -251,7 +252,7 @@ const writeups = [
                     </p>
                   )}
                   <ul class="project-bullets">
-                    {proj.bullets.map((b) => <li>{b}</li>)}
+                    {proj.bullets.map((b) => <li set:html={b} />)}
                   </ul>
                 </div>
               ))}
