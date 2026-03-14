@@ -69,10 +69,12 @@ import {
       <!-- ── Research Interests ── -->
       <section id="research" class="section" aria-labelledby="h-research">
         <h2 id="h-research" class="section-heading">Research Interests</h2>
-        <p class="prose-body">
-          Efficient AI (MLSys): scalable and cost-effective training and serving; system–algorithm co-design.
-          Current focus on recommender and LLM systems under strict latency and cost constraints, including model freshness, distributed model updates, and KV-cache management.
-        </p>
+        <div class="research-card">
+          <p class="prose-body">
+            Efficient AI (MLSys): scalable and cost-effective training and serving; system–algorithm co-design.
+            Current focus on recommender and LLM systems under strict latency and cost constraints, including model freshness, distributed model updates, and KV-cache management.
+          </p>
+        </div>
       </section>
 
       <!-- ── News ── -->
@@ -159,7 +161,7 @@ import {
       <!-- ── Education ── -->
       <section id="education" class="section" aria-labelledby="h-edu">
         <h2 id="h-edu" class="section-heading">Education</h2>
-        <article class="timeline-entry" itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
+        <article class="edu-entry" itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
           <div class="timeline-head">
             <div class="timeline-left">
               <p class="timeline-org">
@@ -178,30 +180,32 @@ import {
       <!-- ── Talks ── -->
       <section id="talks" class="section" aria-labelledby="h-talks">
         <h2 id="h-talks" class="section-heading">Talks</h2>
-        <p class="prose-body" style="margin-bottom:0.25rem;">
-          <em>Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update.</em>
-        </p>
-        <p class="section-note" style="margin-bottom:0;">
-          {talks.map((t, i) => (
-            <Fragment>
-              {i > 0 && '; '}
-              {t.text} ({t.date})
-            </Fragment>
-          ))}
-        </p>
+        <div class="talks-card">
+          <p class="prose-body" style="margin-bottom:0.25rem;">
+            <em>Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update.</em>
+          </p>
+          <p class="section-note" style="margin-bottom:0;">
+            {talks.map((t, i) => (
+              <Fragment>
+                {i > 0 && '; '}
+                {t.text} ({t.date})
+              </Fragment>
+            ))}
+          </p>
+        </div>
       </section>
 
       <!-- ── Service & Awards ── -->
       <section id="service" class="section" aria-labelledby="h-service">
         <h2 id="h-service" class="section-heading">Academic Service &amp; Selected Awards</h2>
         <div class="two-col">
-          <div>
+          <div class="service-card">
             <h3 class="subsection-label">Reviewer</h3>
             <ul class="clean-list">
               {reviewing.map((s) => <li>{s}</li>)}
             </ul>
           </div>
-          <div>
+          <div class="service-card">
             <h3 class="subsection-label">Awards</h3>
             <ul class="clean-list">
               {awards.map((a) => (
