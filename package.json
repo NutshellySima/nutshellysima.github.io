@@ -16,19 +16,19 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@astrojs/tailwind": "^5.1.0",
-    "@typescript-eslint/eslint-plugin": "^7.16.0",
-    "@typescript-eslint/parser": "^7.16.0",
-    "astro": "^5.2.5",
-    "autoprefixer": "^10.4.19",
-    "esbuild": "^0.27.2",
+    "@astrojs/tailwind": "^5.1.4",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "astro": "^5.7.13",
+    "autoprefixer": "^10.4.27",
+    "esbuild": "^0.27.4",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^0.32.0",
-    "postcss": "^8.4.38",
-    "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.0",
+    "eslint-plugin-astro": "^0.34.0",
+    "postcss": "^8.5.8",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.3"
+    "typescript": "^5.9.3"
   }
 }
