@@ -1,122 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const news = [
-  { date: '2025', text: 'Reviewing for CVPR 2025, ICLR 2025 Workshop (FM-Wild), NeurIPS 2025 Workshop (Efficient Reasoning)' },
-  { date: '2022', text: 'Ekko published at OSDI 2022; invited talks at Tencent WeChat AI, DataFun, TechBeat' },
-  { date: '2022', text: 'Tencent Technology Breakthrough Award (Gold Prize) — Project Lead, Ekko' },
-];
-
-const publications = [
-  {
-    venue: "OSDI '22",
-    title: 'Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update',
-    authors: 'Chijun Sima*, Yao Fu*, Man-Kit Sit, Liyi Guo, Xuri Gong, Feng Lin, Junyu Wu, Yongsheng Li, Haidong Rong, Pierre-Louis Aublin, Luo Mai',
-    link: 'https://www.usenix.org/conference/osdi22/presentation/sima',
-    note: '* co-first author. Supervised by Luo Mai.',
-  },
-  {
-    venue: 'IEEE Access',
-    title: 'Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification',
-    authors: 'Kejian Shi, Hongyang Qin, Chijun Sima, Sen Li, Lifeng Shen, Qianli Ma',
-    link: '',
-    note: '2019.',
-  },
-];
-
-const experience = [
-  {
-    period: 'Jul 2020 – Present',
-    startDate: '2020-07',
-    role: 'Senior Software Development Engineer',
-    subtitle: 'Efficient ML Systems',
-    org: 'Tencent (WeChat)',
-    orgUrl: 'https://www.tencent.com',
-    location: 'Guangzhou, China',
-    projects: [
-      {
-        name: 'Ekko: low-latency model update for multi-terabyte DLRMs',
-        note: 'published in part as OSDI \'22',
-        bullets: [
-          '<strong>Problem.</strong> Scaling DLRMs improved offline accuracy but degraded online engagement; root cause: <strong>stale models</strong> from increased <strong>model-update latency</strong>.',
-          '<strong>Key idea.</strong> Co-designed deployment mechanisms with <strong>model-aware</strong> policies (compressed update dissemination, accuracy-aware scheduling, SLO-aware placement, safe rollback).',
-          '<strong>Technical contributions.</strong> WAN bandwidth <strong>−92 %</strong>, machine cost <strong>−49 %</strong>, 2.4 s model-update latency; <strong>10,000×</strong> model-size scaling (GB → tens of TB).',
-          '<strong>Outcomes.</strong> Core techniques published as <strong>OSDI \'22 (co-first author)</strong>. Deployed in WeChat recommendation stacks, serves <strong>1 B+ users daily</strong>. Official WeChat blog reports <strong>+40 % DAU</strong> and <strong>+87 % total VV</strong> over six months after full adoption (alongside product iteration and operations).',
-        ],
-      },
-      {
-        name: 'Data and feature platform: safe, scalable pipelines',
-        note: '',
-        bullets: [
-          '<strong>Problem.</strong> Modern feature pipelines are long and increasingly multimodal; cross-process operator composition creates high overhead and expensive data movement.',
-          '<strong>Approach.</strong> WebAssembly-based runtime for <strong>in-process isolation</strong> (safety + resource constraints) and locality-aware operator placement near data sources.',
-          '<strong>Outcome.</strong> Data movement reduced up to <strong>1,200×</strong> on representative workloads; widely used within WeChat for data preparation.',
-        ],
-      },
-      {
-        name: 'LLM serving systems',
-        note: '',
-        bullets: [
-          'Building cost-effective serving mechanisms around remote KV-cache storage and compression.',
-        ],
-      },
-    ],
-  },
-  {
-    period: '2018 – Present',
-    startDate: '2018',
-    role: 'Developer (commit access)',
-    subtitle: 'Google Summer of Code 2018',
-    org: 'LLVM',
-    orgUrl: 'https://llvm.org',
-    location: '',
-    projects: [
-      {
-        name: '',
-        note: '',
-        bullets: [
-          'Improved Semi-NCA performance and optimization pipeline; shipped in LLVM 9.0 (reported speedups up to 1,980× on real-world samples).',
-          'Unified APIs on dominator trees; shipped in LLVM 7.0.',
-        ],
-      },
-    ],
-  },
-];
-
-const education = {
-  period: 'Sep 2016 – Jun 2020',
-  startDate: '2016-09',
-  degree: 'B.Eng. in Computer Science and Technology (Innovation Class)',
-  school: 'South China University of Technology',
-  schoolUrl: 'https://www.scut.edu.cn',
-  detail: 'GPA 3.85 / 4.00 · Rank 1 / 28',
-};
-
-const talks = [
-  { text: 'Tencent WeChat AI Department, Shenzhen', date: 'Jun 2022' },
-  { text: 'DataFun, Virtual', date: 'Aug 2022' },
-  { text: 'TechBeat, Virtual', date: 'Sep 2022' },
-];
-
-const awards = [
-  { text: 'Tencent Technology Breakthrough Award (Gold Prize) — Project Lead, Ekko (internal highest technical honor)', year: '2022' },
-  { text: "Bronze Medal, ACM-ICPC Asia Xi'an Regional Contest", year: '2017' },
-  { text: 'Second Prize, 15th China Collegiate Programming Contest (Guangdong Division, out of 177 teams)', year: '' },
-];
-
-const reviewing = [
-  'CVPR 2025',
-  'ICLR 2025 Workshop on FM-Wild',
-  'NeurIPS 2025 Workshop on Efficient Reasoning',
-];
-
-const writeups = [
-  { label: 'OSDI 2022 paper', href: 'https://www.usenix.org/conference/osdi22/presentation/sima' },
-  { label: 'WeChat official write-up', href: 'https://mp.weixin.qq.com/s/gBD3mdoRRlGI8bmXp2OBMA' },
-  { label: 'Tencent official write-up', href: 'https://mp.weixin.qq.com/s/hS5ZebOC7oQz_Itud0A_Rg' },
-  { label: 'Synced Review / JIQIZHIXIN', href: 'https://mp.weixin.qq.com/s/Vriupgqusj1zJmSuYU9WjA' },
-  { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en' },
-];
+import {
+  awards,
+  education,
+  experience,
+  lastUpdated,
+  machineReadableResources,
+  news,
+  publications,
+  reviewing,
+  talks,
+  writeups,
+} from '../data/profile';
 ---
 <BaseLayout>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -184,9 +79,9 @@ const writeups = [
       <section id="news" class="section" aria-labelledby="h-news">
         <h2 id="h-news" class="section-heading">News</h2>
         <ul class="news-list" role="list">
-          {news.map((item) => (
-            <li class="news-item">
-              <time class="news-date" datetime={item.date}>{item.date}</time>
+          {news.map((item, index) => (
+            <li class="news-item" id={`news-${index + 1}`}>
+              <time class="news-date" datetime={item.dateISO}>{item.dateLabel}</time>
               <span>{item.text}</span>
             </li>
           ))}
@@ -202,7 +97,7 @@ const writeups = [
         <ol class="pub-list" reversed>
           {publications.map((pub) => (
             <li>
-              <article class="pub-item" itemscope itemtype="https://schema.org/ScholarlyArticle">
+              <article class="pub-item" id={pub.id} itemscope itemtype="https://schema.org/ScholarlyArticle">
                 <div class="pub-heading">
                   <span class="pub-venue">{pub.venue}</span>
                   {pub.link ? (
@@ -335,6 +230,19 @@ const writeups = [
     </main>
 
     <footer class="site-footer no-print" role="contentinfo">
+      <p>
+        Last updated <time datetime={lastUpdated}>{lastUpdated}</time>.
+      </p>
+      <p>
+        Machine-readable:
+        {' '}
+        {machineReadableResources.map((resource, index) => (
+          <Fragment>
+            {index > 0 && <span class="link-sep" aria-hidden="true">·</span>}
+            <a href={resource.href}>{resource.label}</a>
+          </Fragment>
+        ))}
+      </p>
       <p>&copy; <span id="year"></span> Chijun Sima</p>
     </footer>
   </div>

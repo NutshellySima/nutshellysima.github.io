@@ -1,0 +1,55 @@
+import type { APIRoute } from 'astro';
+import { absoluteUrl } from '../data/profile';
+
+const body = [
+  '# Robots.txt for chijunsima.com',
+  '',
+  '# Default: allow everything',
+  'User-agent: *',
+  'Allow: /',
+  'Crawl-delay: 1',
+  '',
+  '# AI crawlers and agent fetchers',
+  'User-agent: GPTBot',
+  'Allow: /',
+  '',
+  'User-agent: ChatGPT-User',
+  'Allow: /',
+  '',
+  'User-agent: Google-Extended',
+  'Allow: /',
+  '',
+  'User-agent: Googlebot',
+  'Allow: /',
+  '',
+  'User-agent: Bingbot',
+  'Allow: /',
+  '',
+  'User-agent: anthropic-ai',
+  'Allow: /',
+  '',
+  'User-agent: ClaudeBot',
+  'Allow: /',
+  '',
+  'User-agent: PerplexityBot',
+  'Allow: /',
+  '',
+  'User-agent: Bytespider',
+  'Allow: /',
+  '',
+  'User-agent: cohere-ai',
+  'Allow: /',
+  '',
+  '# Discovery',
+  `Sitemap: ${absoluteUrl('/sitemap.xml')}`,
+  '# LLM context: /llms.txt and /llms-full.txt',
+  '# Machine-readable JSON: /profile.json and /publications.json',
+].join('\n');
+
+export const GET: APIRoute = () =>
+  new Response(body, {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
+    },
+  });

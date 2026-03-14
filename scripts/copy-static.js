@@ -12,8 +12,6 @@ const assetsDir = path.join(distDir, 'assets');
 const staticFiles = [
   'sw.js',
   'manifest.webmanifest',
-  'robots.txt',
-  'sitemap.xml',
   'CNAME',
   'favicon.svg',
   'avatar.jpg',
@@ -22,8 +20,6 @@ const staticFiles = [
   'icon-192-maskable.svg',
   'icon-512.svg',
   'icon-512-maskable.svg',
-  'llms.txt',
-  'llms-full.txt',
 ];
 
 const staticDirs = [{ src: '.well-known', files: ['ai-plugin.json'] }];

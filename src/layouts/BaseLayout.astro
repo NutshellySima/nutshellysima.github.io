@@ -1,15 +1,18 @@
 ---
 import siteStyles from '../styles/site.css?url';
+import {
+  absoluteUrl,
+  assetVersion,
+  lastUpdated,
+  lastUpdatedISO,
+  profile,
+  publications,
+  siteMetadata,
+} from '../data/profile';
 
-const assetVersion = '20260315';
 const baseStyleHref = '/assets/site.css';
 const baseScriptSrc = '/assets/site.mjs';
 const baseAvatar = '/avatar.jpg';
-
-const siteUrl = 'https://www.chijunsima.com';
-const siteName = 'Chijun Sima';
-const siteTitle = 'Chijun Sima — ML Systems Researcher';
-const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeChat). Research on efficient AI systems, model freshness, recommender systems, and LLM serving. Co-first author, OSDI 2022 (Ekko). LLVM developer with commit access.';
 ---
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -21,9 +24,9 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
     <link rel="preload" href={siteStyles} data-asset-href={baseStyleHref} as="style" data-vite-ignore />
     <link rel="modulepreload" href={baseScriptSrc} data-asset-href={baseScriptSrc} data-vite-ignore />
 
-    <title>{siteTitle}</title>
-    <meta name="description" content={siteDescription} />
-    <meta name="author" content={siteName} />
+    <title>{siteMetadata.title}</title>
+    <meta name="description" content={siteMetadata.description} />
+    <meta name="author" content={siteMetadata.name} />
     <meta name="asset-version" content={assetVersion} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
@@ -33,27 +36,28 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
     <meta name="theme-color" content="#101820" media="(prefers-color-scheme: dark)" />
     <meta name="keywords" content="Chijun Sima, MLSys, Machine Learning Systems, Efficient AI, Model Freshness, Recommender Systems, LLM Serving, OSDI, Ekko, LLVM, Tencent, WeChat, Systems Research" />
 
-    <link rel="canonical" href={`${siteUrl}/`} />
+    <link rel="canonical" href={absoluteUrl('/')} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="profile" />
-    <meta property="og:url" content={`${siteUrl}/`} />
-    <meta property="og:title" content={siteTitle} />
-    <meta property="og:description" content={siteDescription} />
-    <meta property="og:image" content={`${siteUrl}/avatar.jpg`} />
+    <meta property="og:url" content={absoluteUrl('/')} />
+    <meta property="og:title" content={siteMetadata.title} />
+    <meta property="og:description" content={siteMetadata.description} />
+    <meta property="og:image" content={absoluteUrl('/avatar.jpg')} />
     <meta property="og:image:width" content="400" />
     <meta property="og:image:height" content="400" />
     <meta property="og:image:alt" content="Portrait of Chijun Sima" />
-    <meta property="og:site_name" content={siteName} />
-    <meta property="og:locale" content="en_US" />
-    <meta property="profile:first_name" content="Chijun" />
-    <meta property="profile:last_name" content="Sima" />
+    <meta property="og:site_name" content={siteMetadata.name} />
+    <meta property="og:locale" content={siteMetadata.locale} />
+    <meta property="og:updated_time" content={lastUpdatedISO} />
+    <meta property="profile:first_name" content={profile.givenName} />
+    <meta property="profile:last_name" content={profile.familyName} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={siteTitle} />
-    <meta name="twitter:description" content={siteDescription} />
-    <meta name="twitter:image" content={`${siteUrl}/avatar.jpg`} />
+    <meta name="twitter:title" content={siteMetadata.title} />
+    <meta name="twitter:description" content={siteMetadata.description} />
+    <meta name="twitter:image" content={absoluteUrl('/avatar.jpg')} />
     <meta name="twitter:image:alt" content="Portrait of Chijun Sima" />
 
     <!-- Favicons & PWA -->
@@ -64,6 +68,9 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
     <!-- LLM/AI agent discovery -->
     <link rel="alternate" type="text/plain" title="LLM context (concise)" href="/llms.txt" />
     <link rel="alternate" type="text/plain" title="LLM context (full)" href="/llms-full.txt" />
+    <link rel="alternate" type="application/json" title="Machine-readable profile" href="/profile.json" />
+    <link rel="alternate" type="application/json" title="Selected publications" href="/publications.json" />
+    <link rel="alternate" type="application/feed+json" title="Updates feed" href="/feed.json" />
 
     <!-- Dark-mode flash prevention -->
     <script is:inline>
@@ -80,37 +87,37 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
-      "@id": `${siteUrl}/#person`,
-      "name": "Chijun Sima",
-      "givenName": "Chijun",
-      "familyName": "Sima",
-      "url": siteUrl,
+      "@id": `${siteMetadata.url}/#person`,
+      "name": profile.fullName,
+      "givenName": profile.givenName,
+      "familyName": profile.familyName,
+      "url": siteMetadata.url,
       "image": {
         "@type": "ImageObject",
-        "url": `${siteUrl}/avatar.jpg`,
+        "url": absoluteUrl('/avatar.jpg'),
         "width": 400,
         "height": 400
       },
-      "jobTitle": "Senior Software Development Engineer",
-      "description": "ML systems researcher focused on efficient AI: scalable training/serving, system–algorithm co-design, model freshness, recommender systems, LLM serving. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.",
+      "jobTitle": profile.jobTitle,
+      "description": profile.description,
       "worksFor": {
         "@type": "Organization",
-        "name": "Tencent",
-        "department": "WeChat",
-        "url": "https://www.tencent.com"
+        "name": profile.employer,
+        "department": profile.department,
+        "url": profile.employerUrl
       },
       "alumniOf": {
         "@type": "CollegeOrUniversity",
-        "name": "South China University of Technology",
-        "url": "https://www.scut.edu.cn"
+        "name": profile.education.school,
+        "url": profile.education.schoolUrl
       },
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",
         "credentialCategory": "degree",
-        "name": "B.Eng. in Computer Science and Technology (Innovation Class)",
+        "name": profile.education.degree,
         "recognizedBy": {
           "@type": "CollegeOrUniversity",
-          "name": "South China University of Technology"
+          "name": profile.education.school
         }
       },
       "award": [
@@ -118,35 +125,17 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
         "Bronze Medal, ACM-ICPC Asia Xi'an Regional Contest (2017)",
         "Second Prize, 15th China Collegiate Programming Contest (Guangdong Division)"
       ],
-      "knowsAbout": [
-        "Machine Learning Systems",
-        "MLSys",
-        "Efficient AI",
-        "Model Freshness",
-        "Recommender Systems",
-        "Deep Learning",
-        "Deep Learning Recommendation Models",
-        "LLM Serving",
-        "KV-Cache Management",
-        "WebAssembly",
-        "LLVM",
-        "Compilers",
-        "Distributed Systems"
-      ],
-      "email": "mailto:simachijun@gmail.com",
+      "knowsAbout": profile.knowsAbout,
+      "email": `mailto:${profile.email}`,
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Guangzhou",
-        "addressCountry": "CN"
+        "addressLocality": profile.locality,
+        "addressCountry": profile.countryCode
       },
-      "sameAs": [
-        "https://www.linkedin.com/in/chijun-sima/",
-        "https://github.com/NutshellySima",
-        "https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en"
-      ],
+      "sameAs": profile.sameAs,
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `${siteUrl}/`
+        "@id": absoluteUrl('/')
       }
     })} />
 
@@ -154,27 +143,44 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "url": `${siteUrl}/`,
-      "name": `${siteName} — ML Systems Researcher`,
-      "description": siteDescription,
-      "author": { "@type": "Person", "@id": `${siteUrl}/#person` },
-      "inLanguage": "en"
+      "@id": `${siteMetadata.url}/#website`,
+      "url": absoluteUrl('/'),
+      "name": siteMetadata.title,
+      "description": siteMetadata.description,
+      "author": { "@type": "Person", "@id": `${siteMetadata.url}/#person` },
+      "dateModified": lastUpdated,
+      "inLanguage": siteMetadata.language
+    })} />
+
+    <!-- JSON-LD: ProfilePage -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": `${siteMetadata.url}/#profile-page`,
+      "url": absoluteUrl('/'),
+      "name": siteMetadata.title,
+      "description": siteMetadata.description,
+      "dateModified": lastUpdated,
+      "isPartOf": { "@id": `${siteMetadata.url}/#website` },
+      "mainEntity": { "@id": `${siteMetadata.url}/#person` },
+      "about": { "@id": `${siteMetadata.url}/#person` },
+      "inLanguage": siteMetadata.language
     })} />
 
     <!-- JSON-LD: ScholarlyArticle for flagship paper -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ScholarlyArticle",
-      "name": "Ekko: A Large-Scale Deep Learning Recommender System with Low-Latency Model Update",
-      "url": "https://www.usenix.org/conference/osdi22/presentation/sima",
-      "datePublished": "2022",
+      "name": publications[0].title,
+      "url": publications[0].link,
+      "datePublished": publications[0].datePublished,
       "isPartOf": {
         "@type": "PublicationEvent",
-        "name": "OSDI 2022",
+        "name": publications[0].venueFull,
         "organizer": { "@type": "Organization", "name": "USENIX" }
       },
       "author": [
-        { "@type": "Person", "name": "Chijun Sima", "@id": `${siteUrl}/#person` },
+        { "@type": "Person", "name": "Chijun Sima", "@id": `${siteMetadata.url}/#person` },
         { "@type": "Person", "name": "Yao Fu" },
         { "@type": "Person", "name": "Man-Kit Sit" },
         { "@type": "Person", "name": "Liyi Guo" },
@@ -192,16 +198,16 @@ const siteDescription = 'Chijun Sima — ML systems researcher at Tencent (WeCha
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ScholarlyArticle",
-      "name": "Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification",
-      "datePublished": "2019",
+      "name": publications[1].title,
+      "datePublished": publications[1].datePublished,
       "isPartOf": {
         "@type": "PublicationVolume",
-        "name": "IEEE Access"
+        "name": publications[1].venueFull
       },
       "author": [
         { "@type": "Person", "name": "Kejian Shi" },
         { "@type": "Person", "name": "Hongyang Qin" },
-        { "@type": "Person", "name": "Chijun Sima", "@id": `${siteUrl}/#person` },
+        { "@type": "Person", "name": "Chijun Sima", "@id": `${siteMetadata.url}/#person` },
         { "@type": "Person", "name": "Sen Li" },
         { "@type": "Person", "name": "Lifeng Shen" },
         { "@type": "Person", "name": "Qianli Ma" }

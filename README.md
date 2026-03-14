@@ -5,15 +5,20 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 ## Structure
 
 - `src/pages/index.astro`: Main single-page site content.
+- `src/data/profile.ts`: Shared source of truth for homepage content and AI-facing exports.
 - `src/styles/site.css`: Custom CSS extracted from `index.html`.
 - `src/scripts/site.ts`: Custom JavaScript extracted from `index.html`.
+- `src/pages/llms.txt.ts`, `src/pages/llms-full.txt.ts`: Generated LLM-friendly text endpoints.
+- `src/pages/profile.json.ts`, `src/pages/publications.json.ts`, `src/pages/feed.json.ts`: Machine-readable JSON endpoints.
+- `src/pages/robots.txt.ts`, `src/pages/sitemap.xml.ts`: Generated crawler discovery endpoints.
 - `avatar.jpg`: Profile image used by the page and social previews.
 - `cv.pdf`: Downloadable CV linked from the page.
-- `CNAME`, `robots.txt`, `sitemap.xml`: GitHub Pages / SEO config.
+- `CNAME`, `.well-known/ai-plugin.json`: GitHub Pages / AI discovery config.
 
 ## Editing guidelines
 
 - **Content/layout**: edit `src/pages/index.astro`.
+- **Shared profile data**: edit `src/data/profile.ts`.
 - **Custom CSS**: edit `src/styles/site.css`.
 - **Custom JS**: edit `src/scripts/site.ts`.
 - Keep existing file paths stable (e.g. `avatar.jpg`, `/cv.pdf`) to avoid breaking inbound links.
