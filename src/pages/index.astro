@@ -223,11 +223,8 @@ import {
       <section id="writeups" class="section" aria-labelledby="h-writeups">
         <h2 id="h-writeups" class="section-heading">Selected Write-ups &amp; Links</h2>
         <div class="writeup-links">
-          {writeups.map((ref, i) => (
-            <Fragment>
-              {i > 0 && <span class="link-sep" aria-hidden="true">·</span>}
-              <a href={ref.href} class="text-link" target="_blank" rel="noopener noreferrer">{ref.label}</a>
-            </Fragment>
+          {writeups.map((ref) => (
+            <a href={ref.href} target="_blank" rel="noopener noreferrer">{ref.label}</a>
           ))}
         </div>
       </section>
