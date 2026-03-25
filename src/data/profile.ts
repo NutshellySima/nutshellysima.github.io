@@ -31,15 +31,6 @@ export const profile = {
   },
   description:
     'ML systems researcher focused on efficient AI: scalable training and serving, system-algorithm co-design, model freshness, recommender systems, and LLM serving. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.',
-  researchFocus:
-    'Efficient AI (MLSys): scalable and cost-effective training and serving; system-algorithm co-design.',
-  currentTopics: [
-    'recommender systems',
-    'LLM serving',
-    'model freshness',
-    'distributed model updates',
-    'KV-cache management',
-  ],
   email: 'simachijun@gmail.com',
   sameAs: [
     'https://www.linkedin.com/in/chijun-sima/',
@@ -100,7 +91,7 @@ export const news = [
   {
     dateLabel: '2025',
     dateISO: '2025-01-01T00:00:00+08:00',
-    text: 'Reviewing for CVPR 2025, ICLR 2025 Workshop (FM-Wild), NeurIPS 2025 Workshop (Efficient Reasoning)',
+    text: 'Reviewing for CVPR 2025',
   },
   {
     dateLabel: '2022',
@@ -226,8 +217,6 @@ export const awards = [
 
 export const reviewing = [
   'CVPR 2025',
-  'ICLR 2025 Workshop on FM-Wild',
-  'NeurIPS 2025 Workshop on Efficient Reasoning',
 ] as const;
 
 export const writeups = [

@@ -11,7 +11,6 @@ const entries = [
       title: 'Chijun Sima — ML Systems Researcher',
     },
   },
-  { loc: absoluteUrl('/cv.pdf'), changefreq: 'monthly', priority: '0.6' },
   { loc: absoluteUrl('/llms.txt'), changefreq: 'monthly', priority: '0.5' },
   { loc: absoluteUrl('/llms-full.txt'), changefreq: 'monthly', priority: '0.5' },
   { loc: absoluteUrl('/profile.json'), changefreq: 'monthly', priority: '0.5' },

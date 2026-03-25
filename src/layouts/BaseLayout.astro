@@ -148,7 +148,7 @@ const baseAvatar = '/avatar.jpg';
       "name": siteMetadata.title,
       "description": siteMetadata.description,
       "author": { "@type": "Person", "@id": `${siteMetadata.url}/#person` },
-      "dateModified": lastUpdated,
+      "dateModified": lastUpdatedISO,
       "inLanguage": siteMetadata.language
     })} />
 
@@ -160,7 +160,7 @@ const baseAvatar = '/avatar.jpg';
       "url": absoluteUrl('/'),
       "name": siteMetadata.title,
       "description": siteMetadata.description,
-      "dateModified": lastUpdated,
+      "dateModified": lastUpdatedISO,
       "isPartOf": { "@id": `${siteMetadata.url}/#website` },
       "mainEntity": { "@id": `${siteMetadata.url}/#person` },
       "about": { "@id": `${siteMetadata.url}/#person` },

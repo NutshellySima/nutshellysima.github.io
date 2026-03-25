@@ -12,7 +12,6 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - `src/pages/profile.json.ts`, `src/pages/publications.json.ts`, `src/pages/feed.json.ts`: Machine-readable JSON endpoints.
 - `src/pages/robots.txt.ts`, `src/pages/sitemap.xml.ts`: Generated crawler discovery endpoints.
 - `avatar.jpg`: Profile image used by the page and social previews.
-- `cv.pdf`: Downloadable CV linked from the page.
 - `CNAME`, `.well-known/ai-plugin.json`: GitHub Pages / AI discovery config.
 
 ## Editing guidelines
@@ -21,7 +20,7 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - **Shared profile data**: edit `src/data/profile.ts`.
 - **Custom CSS**: edit `src/styles/site.css`.
 - **Custom JS**: edit `src/scripts/site.ts`.
-- Keep existing file paths stable (e.g. `avatar.jpg`, `/cv.pdf`) to avoid breaking inbound links.
+- Keep existing file paths stable (e.g. `avatar.jpg`) to avoid breaking inbound links.
 
 ## Local preview
 
