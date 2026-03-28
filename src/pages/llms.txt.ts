@@ -11,7 +11,6 @@ const body = [
   '- Website: ' + absoluteUrl('/'),
   `- Email: ${profile.email}`,
   '- Google Scholar: https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en',
-  '- GitHub: https://github.com/NutshellySima',
   '- LinkedIn: https://www.linkedin.com/in/chijun-sima/',
   '',
   '## Flagship work',

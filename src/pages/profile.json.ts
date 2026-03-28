@@ -46,7 +46,6 @@ const document = {
     summary: profile.description,
     email: profile.email,
     profiles: {
-      github: 'https://github.com/NutshellySima',
       googleScholar: 'https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en',
       linkedin: 'https://www.linkedin.com/in/chijun-sima/',
     },

@@ -34,12 +34,9 @@ export const profile = {
   email: 'simachijun@gmail.com',
   sameAs: [
     'https://www.linkedin.com/in/chijun-sima/',
-    'https://github.com/NutshellySima',
     'https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en',
   ],
   knowsAbout: [
-    'Deep Learning',
-    'Deep Learning Recommendation Models',
     'WebAssembly',
     'LLVM',
     'Compilers',
