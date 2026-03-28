@@ -1,6 +1,6 @@
-export const assetVersion = '20260315';
-export const lastUpdated = '2026-03-15';
-export const lastUpdatedISO = '2026-03-15T00:00:00+08:00';
+export const assetVersion = '20260329';
+export const lastUpdated = '2026-03-29';
+export const lastUpdatedISO = '2026-03-29T00:00:00+08:00';
 
 export const siteMetadata = {
   url: 'https://www.chijunsima.com',

@@ -37,6 +37,12 @@ const baseAvatar = '/avatar.jpg';
 
     <link rel="canonical" href={absoluteUrl('/')} />
 
+    <!-- Preconnect to third-party analytics origins (improves Core Web Vitals) -->
+    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+    <link rel="dns-prefetch" href="https://www.clarity.ms" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="profile" />
     <meta property="og:url" content={absoluteUrl('/')} />
@@ -147,6 +153,7 @@ const baseAvatar = '/avatar.jpg';
       "name": siteMetadata.title,
       "description": siteMetadata.description,
       "author": { "@type": "Person", "@id": `${siteMetadata.url}/#person` },
+      "datePublished": "2022-07-10T00:00:00+08:00",
       "dateModified": lastUpdatedISO,
       "inLanguage": siteMetadata.language
     })} />
@@ -159,6 +166,7 @@ const baseAvatar = '/avatar.jpg';
       "url": absoluteUrl('/'),
       "name": siteMetadata.title,
       "description": siteMetadata.description,
+      "datePublished": "2022-07-10T00:00:00+08:00",
       "dateModified": lastUpdatedISO,
       "isPartOf": { "@id": `${siteMetadata.url}/#website` },
       "mainEntity": { "@id": `${siteMetadata.url}/#person` },
