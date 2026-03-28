@@ -4,7 +4,7 @@ import { absoluteUrl, lastUpdated, machineReadableResources, profile, publicatio
 const body = [
   `# ${profile.fullName}`,
   '',
-  `> ${profile.jobTitle} at ${profile.employer} (${profile.department}). ML systems researcher focused on efficient AI, model freshness, recommender systems, and LLM serving. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
+  `> ${profile.jobTitle} at ${profile.employer} (${profile.department}). Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
   '',
   `Last updated: ${lastUpdated}`,
   '',

@@ -36,7 +36,7 @@ const lines: string[] = [
   '## Identity',
   '',
   `- Full name: ${profile.fullName}`,
-  `- Current role: ${profile.jobTitle} — ${profile.subtitle}`,
+  `- Current role: ${profile.jobTitle}`,
   `- Employer: ${profile.employer} (${profile.department}), ${profile.location}`,
   '',
   '## Contact',

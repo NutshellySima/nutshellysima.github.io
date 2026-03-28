@@ -5,9 +5,9 @@ export const lastUpdatedISO = '2026-03-15T00:00:00+08:00';
 export const siteMetadata = {
   url: 'https://www.chijunsima.com',
   name: 'Chijun Sima',
-  title: 'Chijun Sima — ML Systems Researcher',
+  title: 'Chijun Sima',
   description:
-    'Chijun Sima — ML systems researcher at Tencent (WeChat). Research on efficient AI systems, model freshness, recommender systems, and LLM serving. Co-first author, OSDI 2022 (Ekko). LLVM developer with commit access.',
+    'Chijun Sima — Senior Software Development Engineer at Tencent (WeChat). Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.',
   locale: 'en_US',
   language: 'en',
 } as const;
@@ -17,7 +17,7 @@ export const profile = {
   givenName: 'Chijun',
   familyName: 'Sima',
   jobTitle: 'Senior Software Development Engineer',
-  subtitle: 'Efficient ML Systems',
+  subtitle: '',
   employer: 'Tencent',
   department: 'WeChat',
   employerUrl: 'https://www.tencent.com',
@@ -30,7 +30,7 @@ export const profile = {
     degree: 'B.Eng. in Computer Science and Technology (Innovation Class)',
   },
   description:
-    'ML systems researcher focused on efficient AI: scalable training and serving, system-algorithm co-design, model freshness, recommender systems, and LLM serving. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.',
+    'Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.',
   email: 'simachijun@gmail.com',
   sameAs: [
     'https://www.linkedin.com/in/chijun-sima/',
@@ -38,15 +38,8 @@ export const profile = {
     'https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en',
   ],
   knowsAbout: [
-    'Machine Learning Systems',
-    'MLSys',
-    'Efficient AI',
-    'Model Freshness',
-    'Recommender Systems',
     'Deep Learning',
     'Deep Learning Recommendation Models',
-    'LLM Serving',
-    'KV-Cache Management',
     'WebAssembly',
     'LLVM',
     'Compilers',
@@ -139,7 +132,7 @@ export const experience = [
     period: 'Jul 2020 – Present',
     startDate: '2020-07',
     role: 'Senior Software Development Engineer',
-    subtitle: 'Efficient ML Systems',
+    subtitle: '',
     org: 'Tencent (WeChat)',
     orgUrl: 'https://www.tencent.com',
     location: 'Guangzhou, China',
@@ -162,11 +155,6 @@ export const experience = [
           '<strong>Approach.</strong> WebAssembly-based runtime for <strong>in-process isolation</strong> (safety + resource constraints) and locality-aware operator placement near data sources.',
           '<strong>Outcome.</strong> Data movement reduced up to <strong>1,200×</strong> on representative workloads; widely used within WeChat for data preparation.',
         ],
-      },
-      {
-        name: 'LLM serving systems',
-        note: '',
-        bullets: ['Building cost-effective serving mechanisms around remote KV-cache storage and compression.'],
       },
     ],
   },

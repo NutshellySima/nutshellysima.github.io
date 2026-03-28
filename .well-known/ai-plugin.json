@@ -2,7 +2,7 @@
   "schema_version": "v1",
   "name_for_human": "Chijun Sima — Academic Homepage",
   "name_for_model": "chijun_sima_homepage",
-  "description_for_human": "Personal academic homepage of Chijun Sima, ML systems researcher at Tencent (WeChat). Co-first author of Ekko (OSDI 2022). LLVM developer.",
+  "description_for_human": "Personal academic homepage of Chijun Sima. Co-first author of Ekko (OSDI 2022). LLVM developer.",
   "description_for_model": "This site is the personal academic homepage of Chijun Sima. Use /llms.txt for a concise summary, /llms-full.txt for comprehensive context, /profile.json for a structured profile, /publications.json for selected papers, and /feed.json for updates. The main page at / contains the same information rendered as HTML with structured data (JSON-LD, microdata).",
   "auth": {
     "type": "none"

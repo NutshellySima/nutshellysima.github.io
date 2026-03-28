@@ -8,7 +8,7 @@ const entries = [
     priority: '1.0',
     image: {
       loc: absoluteUrl('/avatar.jpg'),
-      title: 'Chijun Sima — ML Systems Researcher',
+      title: 'Chijun Sima',
     },
   },
   { loc: absoluteUrl('/llms.txt'), changefreq: 'monthly', priority: '0.5' },
