@@ -1,13 +1,13 @@
-export const assetVersion = '20260329';
-export const lastUpdated = '2026-03-29';
-export const lastUpdatedISO = '2026-03-29T00:00:00+08:00';
+export const assetVersion = '20260402';
+export const lastUpdated = '2026-04-02';
+export const lastUpdatedISO = '2026-04-02T00:00:00+08:00';
 
 export const siteMetadata = {
   url: 'https://www.chijunsima.com',
   name: 'Chijun Sima',
   title: 'Chijun Sima',
   description:
-    'Chijun Sima — Senior Software Development Engineer at Tencent (WeChat). Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.',
+    "Chijun Sima — Senior Software Development Engineer at Tencent's WeChat division. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.",
   locale: 'en_US',
   language: 'en',
 } as const;
@@ -19,7 +19,7 @@ export const profile = {
   jobTitle: 'Senior Software Development Engineer',
   subtitle: '',
   employer: 'Tencent',
-  department: 'WeChat',
+  department: 'WeChat division',
   employerUrl: 'https://www.tencent.com',
   location: 'Guangzhou, China',
   locality: 'Guangzhou',
@@ -86,7 +86,7 @@ export const news = [
   {
     dateLabel: '2022',
     dateISO: '2022-09-01T00:00:00+08:00',
-    text: 'Ekko published at OSDI 2022; invited talks at Tencent WeChat AI, DataFun, TechBeat',
+    text: "Ekko published at OSDI 2022; invited talks at Tencent's WeChat division, DataFun, TechBeat",
   },
   {
     dateLabel: '2022',
@@ -130,7 +130,7 @@ export const experience = [
     startDate: '2020-07',
     role: 'Senior Software Development Engineer',
     subtitle: '',
-    org: 'Tencent (WeChat)',
+    org: "Tencent's WeChat division",
     orgUrl: 'https://www.tencent.com',
     location: 'Guangzhou, China',
     projects: [
@@ -186,7 +186,7 @@ export const education = {
 } as const;
 
 export const talks = [
-  { text: 'Tencent WeChat AI Department, Shenzhen', date: 'Jun 2022' },
+  { text: "Tencent's WeChat division, Shenzhen", date: 'Jun 2022' },
   { text: 'DataFun, Virtual', date: 'Aug 2022' },
   { text: 'TechBeat, Virtual', date: 'Sep 2022' },
 ] as const;
