@@ -59,6 +59,7 @@ self.addEventListener('fetch', (event) => {
 
   const requestUrl = new URL(request.url);
   const isSameOrigin = requestUrl.origin === self.location.origin;
+  const isAllowedFontHost = ['fonts.googleapis.com', 'fonts.gstatic.com'].includes(requestUrl.hostname);
 
   const isNavigation = request.mode === 'navigate';
   const isAsset = ['style', 'script', 'image', 'font'].includes(request.destination);
@@ -129,8 +130,7 @@ self.addEventListener('fetch', (event) => {
             ? cacheFirst(RUNTIME_NAME, '/avatar.jpg')
             : staleWhileRevalidate(RUNTIME_NAME))
           : staleWhileRevalidate(RUNTIME_NAME))
-        : (requestUrl.hostname.includes('fonts.googleapis.com') ||
-            requestUrl.hostname.includes('fonts.gstatic.com')
+        : (isAllowedFontHost
           ? staleWhileRevalidate(FONT_CACHE)
           : fetch(request))
   );

@@ -226,4 +226,25 @@ export const writeups = [
 
 export const absoluteUrl = (pathname = '/') => new URL(pathname, `${siteMetadata.url}/`).toString();
 
-export const stripHtml = (value: string) => value.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+export const stripHtml = (value: string) => {
+  let text = '';
+  let insideTag = false;
+
+  for (const char of value) {
+    if (char === '<') {
+      insideTag = true;
+      continue;
+    }
+
+    if (char === '>' && insideTag) {
+      insideTag = false;
+      continue;
+    }
+
+    if (!insideTag) {
+      text += char;
+    }
+  }
+
+  return text.split(/\s+/).filter(Boolean).join(' ');
+};
