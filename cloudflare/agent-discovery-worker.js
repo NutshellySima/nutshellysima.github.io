@@ -9,6 +9,16 @@ const linkHeaders = [
   '</.well-known/agent-skills/index.json>; rel="describedby"; type="application/json"',
 ];
 
+const securityHeaders = {
+  'Strict-Transport-Security': 'max-age=15552000',
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'X-Frame-Options': 'DENY',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), xr-spatial-tracking=()',
+};
+
+const corsPaths = new Set(['/llms.txt', '/llms-full.txt', '/profile.json', '/publications.json', '/feed.json', '/openapi.json']);
+
 const skillMarkdown = [
   '# Chijun Sima Profile Lookup',
   '',
@@ -31,6 +41,45 @@ const skillMarkdown = [
 ].join('\n');
 
 const estimateMarkdownTokens = (text) => String(Math.ceil(text.trim().split(/\s+/).filter(Boolean).length * 1.3));
+
+const isCorsPath = (pathname) => pathname.startsWith('/.well-known/') || corsPaths.has(pathname);
+
+const appendVary = (headers, value) => {
+  const current = headers.get('Vary');
+  if (!current) {
+    headers.set('Vary', value);
+    return;
+  }
+
+  const values = current.split(',').map((item) => item.trim().toLowerCase());
+  if (!values.includes(value.toLowerCase())) {
+    headers.set('Vary', `${current}, ${value}`);
+  }
+};
+
+const withResponseHeaders = (response, url, options = {}) => {
+  const headers = new Headers(response.headers);
+
+  for (const [name, value] of Object.entries(securityHeaders)) {
+    headers.set(name, value);
+  }
+
+  if (isCorsPath(url.pathname)) {
+    headers.set('Access-Control-Allow-Origin', '*');
+    headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+    headers.set('Access-Control-Allow-Headers', 'Accept, Content-Type');
+  }
+
+  if (options.varyAccept) {
+    appendVary(headers, 'Accept');
+  }
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+};
 
 const sha256 = async (text) => {
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
@@ -123,49 +172,66 @@ const serveMarkdownHomepage = async (url) => {
   });
 };
 
-const withHomepageLinkHeaders = (response) => {
+const withHomepageLinkHeaders = (response, url) => {
   const headers = new Headers(response.headers);
 
   for (const header of linkHeaders) {
     headers.append('Link', header);
   }
 
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers,
-  });
+  return withResponseHeaders(
+    new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    }),
+    url
+  );
 };
+
+const serveCorsPreflight = (url) =>
+  withResponseHeaders(
+    new Response(null, {
+      status: 204,
+    }),
+    url
+  );
+
+const secure = (response, url, options) => withResponseHeaders(response, url, options);
 
 export default {
   async fetch(request) {
     const url = new URL(request.url);
 
+    if (request.method === 'OPTIONS' && isCorsPath(url.pathname)) {
+      return serveCorsPreflight(url);
+    }
+
     if (url.pathname === '/.well-known/api-catalog') {
-      return serveApiCatalog();
+      return secure(serveApiCatalog(), url);
     }
 
     if (url.pathname === '/.well-known/agent-skills/index.json' || url.pathname === '/.well-known/skills/index.json') {
-      return serveAgentSkillsIndex();
+      return secure(await serveAgentSkillsIndex(), url);
     }
 
     if (
       url.pathname === '/.well-known/agent-skills/chijun-sima-profile/SKILL.md' ||
       url.pathname === '/.well-known/skills/chijun-sima-profile/SKILL.md'
     ) {
-      return serveSkillMarkdown();
+      return secure(serveSkillMarkdown(), url);
     }
 
     if (url.pathname === '/' && request.headers.get('Accept')?.includes('text/markdown')) {
-      return serveMarkdownHomepage(url);
+      return secure(await serveMarkdownHomepage(url), url, { varyAccept: true });
     }
 
     const response = await fetch(request);
 
     if (url.pathname !== '/') {
-      return response;
+      return secure(response, url);
     }
 
-    return withHomepageLinkHeaders(response);
+    return withHomepageLinkHeaders(response, url);
   },
 };
