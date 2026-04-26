@@ -16,7 +16,14 @@ const entries = [
   { loc: absoluteUrl('/profile.json'), changefreq: 'monthly', priority: '0.5' },
   { loc: absoluteUrl('/publications.json'), changefreq: 'monthly', priority: '0.4' },
   { loc: absoluteUrl('/feed.json'), changefreq: 'weekly', priority: '0.3' },
+  { loc: absoluteUrl('/openapi.json'), changefreq: 'monthly', priority: '0.3' },
   { loc: absoluteUrl('/.well-known/ai-plugin.json'), changefreq: 'yearly', priority: '0.2' },
+  { loc: absoluteUrl('/.well-known/agent-skills/index.json'), changefreq: 'monthly', priority: '0.2' },
+  {
+    loc: absoluteUrl('/.well-known/agent-skills/chijun-sima-profile/SKILL.md'),
+    changefreq: 'monthly',
+    priority: '0.2',
+  },
 ] as const;
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

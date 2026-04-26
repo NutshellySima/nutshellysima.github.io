@@ -10,7 +10,9 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - `src/scripts/site.ts`: Custom JavaScript extracted from `index.html`.
 - `src/pages/llms.txt.ts`, `src/pages/llms-full.txt.ts`: Generated LLM-friendly text endpoints.
 - `src/pages/profile.json.ts`, `src/pages/publications.json.ts`, `src/pages/feed.json.ts`: Machine-readable JSON endpoints.
+- `src/pages/openapi.json.ts`: OpenAPI description for public read-only machine-readable endpoints.
 - `src/pages/robots.txt.ts`, `src/pages/sitemap.xml.ts`: Generated crawler discovery endpoints.
+- `.well-known/agent-skills/chijun-sima-profile/SKILL.md`: Agent Skills artifact copied into the static build.
 - `avatar.jpg`: Profile image used by the page and social previews.
 - `CNAME`, `.well-known/ai-plugin.json`: GitHub Pages / AI discovery config.
 

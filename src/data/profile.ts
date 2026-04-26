@@ -75,6 +75,18 @@ export const machineReadableResources = [
     type: 'application/feed+json',
     description: 'JSON Feed for site news and notable updates.',
   },
+  {
+    label: 'openapi.json',
+    href: '/openapi.json',
+    type: 'application/json',
+    description: 'OpenAPI description for the public read-only profile endpoints.',
+  },
+  {
+    label: 'agent skills',
+    href: '/.well-known/agent-skills/index.json',
+    type: 'application/json',
+    description: 'Agent Skills discovery index for using the site profile endpoints.',
+  },
 ] as const;
 
 export const news = [

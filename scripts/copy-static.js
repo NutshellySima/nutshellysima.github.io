@@ -21,7 +21,10 @@ const staticFiles = [
   'icon-512-maskable.svg',
 ];
 
-const staticDirs = [{ src: '.well-known', files: ['ai-plugin.json'] }];
+const staticDirs = [
+  { src: '.well-known', files: ['ai-plugin.json'] },
+  { src: '.well-known/agent-skills/chijun-sima-profile', files: ['SKILL.md'] },
+];
 
 const copyStaticFiles = async () => {
   await fs.mkdir(assetsDir, { recursive: true });
