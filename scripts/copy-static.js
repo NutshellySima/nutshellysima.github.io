@@ -10,6 +10,7 @@ const distDir = path.join(rootDir, 'dist');
 const assetsDir = path.join(distDir, 'assets');
 
 const staticFiles = [
+  '.nojekyll',
   'sw.js',
   'manifest.webmanifest',
   'CNAME',
