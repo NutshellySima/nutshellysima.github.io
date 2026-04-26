@@ -42,6 +42,17 @@ export default tseslint.config(
     },
   },
   {
+    files: ['cloudflare/**/*.js'],
+    languageOptions: {
+      globals: {
+        URL: 'readonly',
+        Response: 'readonly',
+        Headers: 'readonly',
+        fetch: 'readonly',
+      },
+    },
+  },
+  {
     files: ['**/*.astro'],
     rules: {
       '@typescript-eslint/no-unused-vars': ['error', { caughtErrors: 'none', argsIgnorePattern: '^_' }],

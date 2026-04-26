@@ -13,6 +13,7 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - `src/pages/openapi.json.ts`: OpenAPI description for public read-only machine-readable endpoints.
 - `src/pages/robots.txt.ts`, `src/pages/sitemap.xml.ts`: Generated crawler discovery endpoints.
 - `.well-known/agent-skills/chijun-sima-profile/SKILL.md`: Agent Skills artifact copied into the static build.
+- `cloudflare/agent-discovery-worker.js`, `wrangler.toml`: Cloudflare Worker config for homepage `Link` headers, markdown negotiation, and the API catalog.
 - `avatar.jpg`: Profile image used by the page and social previews.
 - `CNAME`, `.well-known/ai-plugin.json`: GitHub Pages / AI discovery config.
 
@@ -34,4 +35,18 @@ npm run dev
 ```
 
 Then open `http://localhost:4321/`.
+
+## Cloudflare Worker
+
+GitHub Pages remains the static origin. The Cloudflare Worker in `cloudflare/agent-discovery-worker.js` adds edge-only agent discovery behavior:
+
+- Homepage `Link` response headers.
+- `Accept: text/markdown` negotiation for `/`.
+- `/.well-known/api-catalog` with `application/linkset+json`.
+
+Deploy with Wrangler after authenticating Cloudflare locally:
+
+```bash
+npx wrangler deploy
+```
 

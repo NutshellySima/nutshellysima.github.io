@@ -1,0 +1,23 @@
+name = "chijunsima-agent-discovery"
+main = "cloudflare/agent-discovery-worker.js"
+compatibility_date = "2025-04-01"
+
+routes = [
+  { pattern = "www.chijunsima.com/*", zone_name = "chijunsima.com" },
+  { pattern = "chijunsima.com/*", zone_name = "chijunsima.com" },
+]
+
+[observability]
+enabled = false
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
+
+[observability.traces]
+enabled = true
+persist = true
+head_sampling_rate = 1
