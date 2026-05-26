@@ -1,7 +1,7 @@
 {
   "name": "Chijun Sima",
   "short_name": "Chijun Sima",
-  "description": "Personal academic homepage of Chijun Sima.",
+  "description": "Official website of Chijun Sima.",
   "id": "/",
   "start_url": "/?source=pwa",
   "scope": "/",
@@ -12,36 +12,8 @@
   "dir": "ltr",
   "background_color": "#ffffff",
   "theme_color": "#1f4e79",
-  "categories": ["education", "research", "technology"],
+  "categories": ["personal"],
   "prefer_related_applications": false,
-  "shortcuts": [
-    {
-      "name": "Publications",
-      "short_name": "Pubs",
-      "url": "/#publications",
-      "icons": [
-        {
-          "src": "/icon-192.svg",
-          "sizes": "192x192",
-          "type": "image/svg+xml",
-          "purpose": "any"
-        }
-      ]
-    },
-    {
-      "name": "Experience",
-      "short_name": "Exp",
-      "url": "/#experience",
-      "icons": [
-        {
-          "src": "/icon-192.svg",
-          "sizes": "192x192",
-          "type": "image/svg+xml",
-          "purpose": "any"
-        }
-      ]
-    }
-  ],
   "icons": [
     {
       "src": "/favicon.svg",

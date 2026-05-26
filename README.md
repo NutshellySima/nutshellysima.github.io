@@ -5,18 +5,13 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 ## Structure
 
 - `src/pages/index.astro`: Main single-page site content.
-- `src/data/profile.ts`: Shared source of truth for homepage content and AI-facing exports.
+- `src/data/profile.ts`: Shared source of truth for homepage identity and SEO metadata.
 - `src/styles/site.css`: Custom CSS extracted from `index.html`.
 - `src/scripts/site.ts`: Custom JavaScript extracted from `index.html`.
-- `src/pages/llms.txt.ts`, `src/pages/llms-full.txt.ts`: Generated LLM-friendly text endpoints.
-- `src/pages/profile.json.ts`, `src/pages/publications.json.ts`, `src/pages/feed.json.ts`: Machine-readable JSON endpoints.
-- `src/pages/openapi.json.ts`: OpenAPI description for public read-only machine-readable endpoints.
 - `src/pages/robots.txt.ts`, `src/pages/sitemap.xml.ts`: Generated crawler discovery endpoints.
-- `.well-known/agent-skills/chijun-sima-profile/SKILL.md`: Agent Skills artifact copied into the static build.
 - `.nojekyll`: Ensures GitHub Pages publishes `.well-known` discovery files.
-- `cloudflare/agent-discovery-worker.js`, `wrangler.toml`: Cloudflare Worker config for homepage `Link` headers, markdown negotiation, and the API catalog.
-- `avatar.jpg`: Profile image used by the page and social previews.
-- `CNAME`, `.well-known/ai-plugin.json`: GitHub Pages / AI discovery config.
+- `cloudflare/agent-discovery-worker.js`, `wrangler.toml`: Cloudflare Worker config for response security headers.
+- `CNAME`: GitHub Pages custom domain config.
 
 ## Editing guidelines
 
@@ -24,7 +19,7 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - **Shared profile data**: edit `src/data/profile.ts`.
 - **Custom CSS**: edit `src/styles/site.css`.
 - **Custom JS**: edit `src/scripts/site.ts`.
-- Keep existing file paths stable (e.g. `avatar.jpg`) to avoid breaking inbound links.
+- Keep existing public file paths stable unless a privacy or content-removal request requires deleting them.
 
 ## Local preview
 
@@ -39,11 +34,7 @@ Then open `http://localhost:4321/`.
 
 ## Cloudflare Worker
 
-GitHub Pages remains the static origin. The Cloudflare Worker in `cloudflare/agent-discovery-worker.js` adds edge-only agent discovery behavior:
-
-- Homepage `Link` response headers.
-- `Accept: text/markdown` negotiation for `/`.
-- `/.well-known/api-catalog` with `application/linkset+json`.
+GitHub Pages remains the static origin. The Cloudflare Worker in `cloudflare/agent-discovery-worker.js` adds response security headers.
 
 Deploy with Wrangler after authenticating Cloudflare locally:
 

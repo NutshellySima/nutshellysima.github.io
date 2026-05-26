@@ -5,13 +5,11 @@ import {
   assetVersion,
   lastUpdatedISO,
   profile,
-  publications,
   siteMetadata,
 } from '../data/profile';
 
 const baseStyleHref = '/assets/site.css';
 const baseScriptSrc = '/assets/site.mjs';
-const baseAvatar = '/avatar.jpg';
 ---
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -19,7 +17,6 @@ const baseAvatar = '/avatar.jpg';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <link rel="preload" href={baseAvatar} data-asset-href={baseAvatar} as="image" type="image/jpeg" fetchpriority="high" data-vite-ignore />
     <link rel="preload" href={siteStyles} data-asset-href={baseStyleHref} as="style" data-vite-ignore />
     <link rel="modulepreload" href={baseScriptSrc} data-asset-href={baseScriptSrc} data-vite-ignore />
 
@@ -33,7 +30,7 @@ const baseAvatar = '/avatar.jpg';
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#faf6ed" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#14181a" media="(prefers-color-scheme: dark)" />
-    <meta name="keywords" content="Chijun Sima, OSDI, Ekko, LLVM, Tencent, WeChat" />
+    <meta name="keywords" content="Chijun Sima, Google Scholar, email" />
 
     <link rel="canonical" href={absoluteUrl('/')} />
 
@@ -48,36 +45,19 @@ const baseAvatar = '/avatar.jpg';
     <meta property="og:url" content={absoluteUrl('/')} />
     <meta property="og:title" content={siteMetadata.title} />
     <meta property="og:description" content={siteMetadata.description} />
-    <meta property="og:image" content={absoluteUrl('/avatar.jpg')} />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="400" />
-    <meta property="og:image:alt" content="Portrait of Chijun Sima" />
     <meta property="og:site_name" content={siteMetadata.name} />
     <meta property="og:locale" content={siteMetadata.locale} />
     <meta property="og:updated_time" content={lastUpdatedISO} />
-    <meta property="profile:first_name" content={profile.givenName} />
-    <meta property="profile:last_name" content={profile.familyName} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={siteMetadata.title} />
     <meta name="twitter:description" content={siteMetadata.description} />
-    <meta name="twitter:image" content={absoluteUrl('/avatar.jpg')} />
-    <meta name="twitter:image:alt" content="Portrait of Chijun Sima" />
 
     <!-- Favicons & PWA -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon-192.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
-
-    <!-- LLM/AI agent discovery -->
-    <link rel="alternate" type="text/plain" title="LLM context (concise)" href="/llms.txt" />
-    <link rel="alternate" type="text/plain" title="LLM context (full)" href="/llms-full.txt" />
-    <link rel="alternate" type="application/json" title="Machine-readable profile" href="/profile.json" />
-    <link rel="alternate" type="application/json" title="Selected publications" href="/publications.json" />
-    <link rel="alternate" type="application/feed+json" title="Updates feed" href="/feed.json" />
-    <link rel="service-desc" type="application/oas+json" title="OpenAPI description" href="/openapi.json" />
-    <link rel="alternate" type="application/json" title="Agent Skills discovery index" href="/.well-known/agent-skills/index.json" />
 
     <!-- Dark-mode flash prevention -->
     <script is:inline>
@@ -90,56 +70,15 @@ const baseAvatar = '/avatar.jpg';
       })();
     </script>
 
-    <!-- JSON-LD: Person (rich structured data for search engines and LLM agents) -->
+    <!-- JSON-LD: minimal SEO structured data -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
       "@id": `${siteMetadata.url}/#person`,
       "name": profile.fullName,
-      "givenName": profile.givenName,
-      "familyName": profile.familyName,
       "url": siteMetadata.url,
-      "image": {
-        "@type": "ImageObject",
-        "url": absoluteUrl('/avatar.jpg'),
-        "width": 400,
-        "height": 400
-      },
-      "jobTitle": profile.jobTitle,
-      "description": profile.description,
-      "worksFor": {
-        "@type": "Organization",
-        "name": profile.employer,
-        "department": profile.department,
-        "url": profile.employerUrl
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": profile.education.school,
-        "url": profile.education.schoolUrl
-      },
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "degree",
-        "name": profile.education.degree,
-        "recognizedBy": {
-          "@type": "CollegeOrUniversity",
-          "name": profile.education.school
-        }
-      },
-      "award": [
-        "Tencent Technology Breakthrough Award (Gold Prize), 2022 — Project Lead, Ekko",
-        "Bronze Medal, ACM-ICPC Asia Xi'an Regional Contest (2017)",
-        "Second Prize, 15th China Collegiate Programming Contest (Guangdong Division)"
-      ],
-      "knowsAbout": profile.knowsAbout,
       "email": `mailto:${profile.email}`,
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": profile.locality,
-        "addressCountry": profile.countryCode
-      },
-      "sameAs": profile.sameAs,
+      "sameAs": [profile.scholarUrl],
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": absoluteUrl('/')
@@ -160,7 +99,6 @@ const baseAvatar = '/avatar.jpg';
       "inLanguage": siteMetadata.language
     })} />
 
-    <!-- JSON-LD: ProfilePage -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ProfilePage",
@@ -174,53 +112,6 @@ const baseAvatar = '/avatar.jpg';
       "mainEntity": { "@id": `${siteMetadata.url}/#person` },
       "about": { "@id": `${siteMetadata.url}/#person` },
       "inLanguage": siteMetadata.language
-    })} />
-
-    <!-- JSON-LD: ScholarlyArticle for flagship paper -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ScholarlyArticle",
-      "name": publications[0].title,
-      "url": publications[0].link,
-      "datePublished": publications[0].datePublished,
-      "isPartOf": {
-        "@type": "PublicationEvent",
-        "name": publications[0].venueFull,
-        "organizer": { "@type": "Organization", "name": "USENIX" }
-      },
-      "author": [
-        { "@type": "Person", "name": "Chijun Sima", "@id": `${siteMetadata.url}/#person` },
-        { "@type": "Person", "name": "Yao Fu" },
-        { "@type": "Person", "name": "Man-Kit Sit" },
-        { "@type": "Person", "name": "Liyi Guo" },
-        { "@type": "Person", "name": "Xuri Gong" },
-        { "@type": "Person", "name": "Feng Lin" },
-        { "@type": "Person", "name": "Junyu Wu" },
-        { "@type": "Person", "name": "Yongsheng Li" },
-        { "@type": "Person", "name": "Haidong Rong" },
-        { "@type": "Person", "name": "Pierre-Louis Aublin" },
-        { "@type": "Person", "name": "Luo Mai" }
-      ]
-    })} />
-
-    <!-- JSON-LD: ScholarlyArticle for second paper -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ScholarlyArticle",
-      "name": publications[1].title,
-      "datePublished": publications[1].datePublished,
-      "isPartOf": {
-        "@type": "PublicationVolume",
-        "name": publications[1].venueFull
-      },
-      "author": [
-        { "@type": "Person", "name": "Kejian Shi" },
-        { "@type": "Person", "name": "Hongyang Qin" },
-        { "@type": "Person", "name": "Chijun Sima", "@id": `${siteMetadata.url}/#person` },
-        { "@type": "Person", "name": "Sen Li" },
-        { "@type": "Person", "name": "Lifeng Shen" },
-        { "@type": "Person", "name": "Qianli Ma" }
-      ]
     })} />
 
     <!-- Analytics -->

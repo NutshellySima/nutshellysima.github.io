@@ -10,7 +10,6 @@ const PRECACHE_URLS = [
   '/offline.html',
   '/assets/site.css',
   '/assets/site.mjs',
-  '/avatar.jpg',
   '/favicon.svg',
   '/icon-192.svg',
   '/icon-192-maskable.svg',
@@ -127,7 +126,7 @@ self.addEventListener('fetch', (event) => {
       : isSameOrigin
         ? (isAsset
           ? (request.destination === 'image'
-            ? cacheFirst(RUNTIME_NAME, '/avatar.jpg')
+            ? cacheFirst(RUNTIME_NAME, '/icon-192.svg')
             : staleWhileRevalidate(RUNTIME_NAME))
           : staleWhileRevalidate(RUNTIME_NAME))
         : (isAllowedFontHost

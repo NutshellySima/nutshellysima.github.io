@@ -69,9 +69,6 @@ const body = [
   '',
   '# Discovery',
   `Sitemap: ${absoluteUrl('/sitemap.xml')}`,
-  '# LLM context: /llms.txt and /llms-full.txt',
-  '# Machine-readable JSON: /profile.json, /publications.json, and /openapi.json',
-  '# Agent Skills: /.well-known/agent-skills/index.json',
 ].join('\n');
 
 export const GET: APIRoute = () =>
