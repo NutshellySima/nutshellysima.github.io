@@ -39,10 +39,16 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Package Pages artifact
+        run: tar -C dist -cf "$RUNNER_TEMP/artifact.tar" .
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          path: dist
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          if-no-files-found: error
+          retention-days: 1
 
       - name: Deploy to GitHub Pages
         id: deployment
