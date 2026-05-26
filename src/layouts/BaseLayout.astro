@@ -1,162 +1,36 @@
 ---
 import siteStyles from '../styles/site.css?url';
-import {
-  absoluteUrl,
-  assetVersion,
-  lastUpdatedISO,
-  profile,
-  siteMetadata,
-} from '../data/profile';
-
-const baseStyleHref = '/assets/site.css';
-const baseScriptSrc = '/assets/site.mjs';
+import { absoluteUrl, profile, siteMetadata } from '../data/profile';
 ---
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
-    <link rel="preload" href={siteStyles} data-asset-href={baseStyleHref} as="style" data-vite-ignore />
-    <link rel="modulepreload" href={baseScriptSrc} data-asset-href={baseScriptSrc} data-vite-ignore />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{siteMetadata.title}</title>
     <meta name="description" content={siteMetadata.description} />
     <meta name="author" content={siteMetadata.name} />
-    <meta name="asset-version" content={assetVersion} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="index, follow" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#faf6ed" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#14181a" media="(prefers-color-scheme: dark)" />
-    <meta name="keywords" content="Chijun Sima, Google Scholar, email" />
-
     <link rel="canonical" href={absoluteUrl('/')} />
 
-    <!-- Preconnect to third-party analytics origins (improves Core Web Vitals) -->
-    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
-    <link rel="dns-prefetch" href="https://www.clarity.ms" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="profile" />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content={absoluteUrl('/')} />
     <meta property="og:title" content={siteMetadata.title} />
     <meta property="og:description" content={siteMetadata.description} />
-    <meta property="og:site_name" content={siteMetadata.name} />
-    <meta property="og:locale" content={siteMetadata.locale} />
-    <meta property="og:updated_time" content={lastUpdatedISO} />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={siteMetadata.title} />
-    <meta name="twitter:description" content={siteMetadata.description} />
-
-    <!-- Favicons & PWA -->
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/icon-192.svg" />
-    <link rel="manifest" href="/manifest.webmanifest" />
-
-    <!-- Dark-mode flash prevention -->
-    <script is:inline>
-      (function () {
-        try {
-          var s = localStorage.getItem('theme');
-          var d = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (s === 'dark' || (!s && d)) document.documentElement.classList.add('dark');
-        } catch (_) { /* storage unavailable */ }
-      })();
-    </script>
-
-    <!-- JSON-LD: minimal SEO structured data -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
-      "@id": `${siteMetadata.url}/#person`,
       "name": profile.fullName,
       "url": siteMetadata.url,
       "email": `mailto:${profile.email}`,
       "sameAs": [profile.scholarUrl],
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": absoluteUrl('/')
-      }
     })} />
 
-    <!-- JSON-LD: WebSite -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": `${siteMetadata.url}/#website`,
-      "url": absoluteUrl('/'),
-      "name": siteMetadata.title,
-      "description": siteMetadata.description,
-      "author": { "@type": "Person", "@id": `${siteMetadata.url}/#person` },
-      "datePublished": "2022-07-10T00:00:00+08:00",
-      "dateModified": lastUpdatedISO,
-      "inLanguage": siteMetadata.language
-    })} />
-
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "@id": `${siteMetadata.url}/#profile-page`,
-      "url": absoluteUrl('/'),
-      "name": siteMetadata.title,
-      "description": siteMetadata.description,
-      "datePublished": "2022-07-10T00:00:00+08:00",
-      "dateModified": lastUpdatedISO,
-      "isPartOf": { "@id": `${siteMetadata.url}/#website` },
-      "mainEntity": { "@id": `${siteMetadata.url}/#person` },
-      "about": { "@id": `${siteMetadata.url}/#person` },
-      "inLanguage": siteMetadata.language
-    })} />
-
-    <!-- Analytics -->
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script>
-    <script is:inline>
-      (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script','cr8ptqxm1m');
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDCCF82CG7"></script>
-    <script is:inline>
-      window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RDCCF82CG7');
-    </script>
-
-    <link rel="stylesheet" href={siteStyles} data-asset-href={baseStyleHref} data-vite-ignore />
-
-    <script is:inline>
-      (function () {
-        var loc = ['localhost','127.0.0.1'];
-        if (loc.includes(window.location.hostname)) return;
-        var meta = document.querySelector('meta[name="asset-version"]');
-        var v = meta ? meta.content : '';
-        var wv = function(u){return v?(u.includes('?')?u+'&v='+v:u+'?v='+v):u};
-        window.__withAssetVersion__ = wv;
-        document.querySelectorAll('[data-asset-href]').forEach(function(el){
-          var b=el.getAttribute('data-asset-href');if(b)el.setAttribute('href',wv(b));
-        });
-      })();
-    </script>
+    <link rel="stylesheet" href={siteStyles} />
   </head>
-  <body class="font-sans antialiased">
+  <body>
     <slot />
-
-    <script type="module" src={baseScriptSrc} data-asset-src={baseScriptSrc} defer></script>
-    <script is:inline>
-      (function () {
-        var loc = ['localhost','127.0.0.1'];
-        if (loc.includes(window.location.hostname)) return;
-        var wv = window.__withAssetVersion__;
-        if (!wv) return;
-        document.querySelectorAll('[data-asset-src]').forEach(function(el){
-          var b=el.getAttribute('data-asset-src');
-          var c=el.getAttribute('src')||'';
-          if(!b)return;if(c&&c.includes('v='))return;
-          el.setAttribute('src',wv(b));
-        });
-      })();
-    </script>
   </body>
 </html>

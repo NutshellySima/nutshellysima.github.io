@@ -1,9 +1,6 @@
 const securityHeaders = {
   'Strict-Transport-Security': 'max-age=15552000',
   'X-Content-Type-Options': 'nosniff',
-  'Referrer-Policy': 'strict-origin-when-cross-origin',
-  'X-Frame-Options': 'DENY',
-  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), xr-spatial-tracking=()',
 };
 
 const withSecurityHeaders = (response) => {

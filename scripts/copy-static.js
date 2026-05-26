@@ -1,28 +1,18 @@
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import esbuild from 'esbuild';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.join(rootDir, 'dist');
-const assetsDir = path.join(distDir, 'assets');
 
 const staticFiles = [
   '.nojekyll',
-  'sw.js',
-  'manifest.webmanifest',
   'CNAME',
-  'favicon.svg',
-  'icon-192.svg',
-  'icon-192-maskable.svg',
-  'icon-512.svg',
-  'icon-512-maskable.svg',
 ];
 
 const copyStaticFiles = async () => {
-  await fs.mkdir(assetsDir, { recursive: true });
   await Promise.all(
     staticFiles.map(async (file) => {
       const source = path.join(rootDir, file);
@@ -30,15 +20,6 @@ const copyStaticFiles = async () => {
       await fs.copyFile(source, target);
     })
   );
-
-  await esbuild.build({
-    entryPoints: [path.join(rootDir, 'src/scripts/site.ts')],
-    outfile: path.join(assetsDir, 'site.mjs'),
-    bundle: true,
-    format: 'esm',
-    target: 'es2019',
-    sourcemap: false,
-  });
 };
 
 copyStaticFiles().catch((error) => {
