@@ -37,7 +37,7 @@ jobs:
         run: npm run build
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Package Pages artifact
         run: tar -C dist -cf "$RUNNER_TEMP/artifact.tar" .
