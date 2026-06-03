@@ -43,7 +43,7 @@ jobs:
         run: tar -C dist -cf "$RUNNER_TEMP/artifact.tar" .
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: github-pages
           path: ${{ runner.temp }}/artifact.tar
