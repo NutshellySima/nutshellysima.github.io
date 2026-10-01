@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import {
   absoluteUrl,
+  advisors,
   awards,
   education,
   experience,
@@ -43,6 +44,7 @@ const document = {
       url: profile.affiliationUrl,
     },
     location: profile.location,
+    advisors,
     summary: profile.description,
     email: profile.email,
     profiles: {

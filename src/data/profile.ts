@@ -1,4 +1,4 @@
-export const assetVersion = '20261001-2';
+export const assetVersion = '20261001-3';
 export const lastUpdated = '2026-10-01';
 export const lastUpdatedISO = '2026-10-01T00:00:00-05:00';
 
@@ -9,14 +9,31 @@ export const avatar = {
 } as const;
 
 const doctoralEducation = {
-  period: '2026 – Present',
-  startDate: '2026',
+  period: 'Aug 2026 – Present',
+  startDate: '2026-08',
   endDate: null,
   degree: 'PhD in Computer Science',
   school: 'The University of Texas at Austin',
   schoolUrl: 'https://www.cs.utexas.edu/',
-  detail: 'First-year PhD student.',
+  detail: 'First-year PhD student. Advised by Chenfeng Xu and Aditya Akella.',
 } as const;
+
+export const advisors = [
+  {
+    name: 'Chenfeng Xu',
+    url: 'https://www.chenfengx.com',
+    title: 'Assistant Professor',
+    affiliation: 'The University of Texas at Austin',
+    department: 'Department of Computer Science',
+  },
+  {
+    name: 'Aditya Akella',
+    url: 'https://www.cs.utexas.edu/~akella/',
+    title: 'Professor & Regents Chair',
+    affiliation: 'The University of Texas at Austin',
+    department: 'Department of Computer Science',
+  },
+] as const;
 
 export const profile = {
   fullName: 'Chijun Sima',
@@ -37,7 +54,7 @@ export const profile = {
     degree: 'B.Eng. in Computer Science and Technology (Innovation Class)',
   },
   description:
-    `First-year Computer Science PhD student at ${doctoralEducation.school}. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
+    `First-year Computer Science PhD student at ${doctoralEducation.school}, advised by Chenfeng Xu and Aditya Akella. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
   email: 'simachijun@gmail.com',
   sameAs: [
     'https://www.linkedin.com/in/chijun-sima/',
@@ -56,7 +73,7 @@ export const siteMetadata = {
   name: profile.fullName,
   title: profile.fullName,
   description: `${profile.fullName} — ${profile.description}`,
-  keywords: [profile.fullName, 'UT Austin', 'Computer Science', 'PhD', 'OSDI', 'Ekko', 'LLVM', 'Tencent', 'WeChat'],
+  keywords: [profile.fullName, 'UT Austin', 'Chenfeng Xu', 'Aditya Akella', 'Computer Science', 'PhD', 'OSDI', 'Ekko', 'LLVM', 'Tencent', 'WeChat'],
   locale: 'en_US',
   language: 'en',
 } as const;
@@ -108,6 +125,11 @@ export const machineReadableResources = [
 
 export const news = [
   {
+    dateLabel: 'Aug 2026',
+    dateISO: '2026-08-01T00:00:00-05:00',
+    text: 'Started the PhD in Computer Science at UT Austin, advised by Chenfeng Xu and Aditya Akella',
+  },
+  {
     dateLabel: '2025',
     dateISO: '2025-01-01T00:00:00+08:00',
     text: 'Reviewing for CVPR 2025',
@@ -154,6 +176,25 @@ export const publications = [
 ] as const;
 
 export const experience = [
+  {
+    period: 'Aug 2026 – Present',
+    startDate: '2026-08',
+    endDate: null,
+    role: 'PhD Student in Computer Science',
+    subtitle: 'Department of Computer Science',
+    org: 'The University of Texas at Austin',
+    orgUrl: 'https://www.cs.utexas.edu/',
+    location: 'Austin, Texas, USA',
+    projects: [
+      {
+        name: '',
+        note: '',
+        bullets: [
+          'Advised by <a href="https://www.chenfengx.com" target="_blank" rel="noopener noreferrer">Chenfeng Xu</a> and <a href="https://www.cs.utexas.edu/~akella/" target="_blank" rel="noopener noreferrer">Aditya Akella</a>.',
+        ],
+      },
+    ],
+  },
   {
     period: 'Jul 2020 – Aug 2026',
     startDate: '2020-07',

@@ -10,8 +10,8 @@
   "orientation": "portrait-primary",
   "lang": "en",
   "dir": "ltr",
-  "background_color": "#ffffff",
-  "theme_color": "#1f4e79",
+  "background_color": "#faf6ef",
+  "theme_color": "#bf5700",
   "categories": ["education", "research", "technology"],
   "prefer_related_applications": false,
   "shortcuts": [

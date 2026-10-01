@@ -1,11 +1,11 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chijun Sima logo">
-  <rect width="512" height="512" rx="76" fill="#0f172a"/>
-  <rect x="16" y="16" width="480" height="480" rx="68" fill="none" stroke="#334155" stroke-width="10"/>
+  <rect width="512" height="512" rx="76" fill="#1b1511"/>
+  <rect x="16" y="16" width="480" height="480" rx="68" fill="none" stroke="#4a3b2e" stroke-width="10"/>
   <text
     x="256"
     y="312"
     text-anchor="middle"
-    fill="#f8fafc"
+    fill="#faf5ec"
     font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
     font-size="220"
     font-weight="700"
@@ -13,5 +13,5 @@
   >
     CS
   </text>
-  <circle cx="394" cy="118" r="32" fill="#14b8a6"/>
+  <circle cx="394" cy="118" r="32" fill="#e0742a"/>
 </svg>

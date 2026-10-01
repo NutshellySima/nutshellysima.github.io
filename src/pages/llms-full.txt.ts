@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import {
   absoluteUrl,
+  advisors,
   awards,
   education,
   experience,
@@ -40,6 +41,12 @@ const lines: string[] = [
   `- Affiliation: ${profile.affiliation}`,
   `- Department: ${profile.department}`,
   `- Location: ${profile.location}`,
+  '',
+  '## Advisors',
+  '',
+  ...advisors.map(
+    (advisor) => `- ${advisor.name}, ${advisor.title}, ${advisor.department}, ${advisor.affiliation}: ${advisor.url}`
+  ),
   '',
   '## Contact',
   '',

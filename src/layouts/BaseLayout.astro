@@ -1,7 +1,9 @@
 ---
+import { Font } from 'astro:assets';
 import siteStyles from '../styles/site.css?url';
 import {
   absoluteUrl,
+  advisors,
   assetVersion,
   avatar,
   lastUpdatedISO,
@@ -24,6 +26,9 @@ const baseAvatar = avatar.path;
     <link rel="preload" href={siteStyles} data-asset-href={baseStyleHref} as="style" data-vite-ignore />
     <link rel="modulepreload" href={baseScriptSrc} data-asset-href={baseScriptSrc} data-vite-ignore />
 
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-newsreader" preload />
+
     <title>{siteMetadata.title}</title>
     <meta name="description" content={siteMetadata.description} />
     <meta name="author" content={siteMetadata.name} />
@@ -32,8 +37,8 @@ const baseAvatar = avatar.path;
     <meta name="googlebot" content="index, follow" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#faf6ed" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#14181a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15110d" media="(prefers-color-scheme: dark)" />
     <meta name="keywords" content={siteMetadata.keywords.join(', ')} />
 
     <link rel="canonical" href={absoluteUrl('/')} />
@@ -134,6 +139,13 @@ const baseAvatar = avatar.path;
         "Second Prize, 15th China Collegiate Programming Contest (Guangdong Division)"
       ],
       "knowsAbout": profile.knowsAbout,
+      "knows": advisors.map((advisor) => ({
+        "@type": "Person",
+        "name": advisor.name,
+        "url": advisor.url,
+        "jobTitle": advisor.title,
+        "affiliation": { "@type": "CollegeOrUniversity", "name": advisor.affiliation }
+      })),
       "email": `mailto:${profile.email}`,
       "address": {
         "@type": "PostalAddress",

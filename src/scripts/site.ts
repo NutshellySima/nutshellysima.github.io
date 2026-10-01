@@ -1,6 +1,6 @@
 import { onReady, utils } from './utils';
 import { initServiceWorker } from './pwa';
-import { absoluteUrl, machineReadableResources, profile, publications, siteMetadata, stripHtml } from '../data/profile';
+import { absoluteUrl, advisors, machineReadableResources, profile, publications, siteMetadata, stripHtml } from '../data/profile';
 
 type WebMcpTool = {
   name: string;
@@ -52,6 +52,28 @@ const initThemeToggle = () => {
   });
 };
 
+const initScrollSpy = () => {
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+
+  const byId = new Map(links.map((link) => [link.dataset.nav ?? '', link]));
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        links.forEach((link) => link.classList.remove('is-active'));
+        byId.get(entry.target.id)?.classList.add('is-active');
+      }
+    },
+    { rootMargin: '-20% 0px -65% 0px' }
+  );
+
+  byId.forEach((_, id) => {
+    const section = document.getElementById(id);
+    if (section) observer.observe(section);
+  });
+};
+
 const emptyInputSchema = {
   type: 'object',
   properties: {},
@@ -75,6 +97,7 @@ const initWebMcp = () => {
         affiliation: profile.affiliation,
         department: profile.department,
         location: profile.location,
+        advisors: advisors.map((advisor) => ({ name: advisor.name, title: advisor.title, url: advisor.url })),
         description: siteMetadata.description,
         website: absoluteUrl('/'),
         machineReadableResources: machineReadableResources.map((resource) => ({
@@ -127,6 +150,7 @@ const initWebMcp = () => {
 onReady(() => {
   initYear();
   initThemeToggle();
+  initScrollSpy();
   initWebMcp();
   initServiceWorker();
 });
