@@ -33,11 +33,20 @@ export default tseslint.config(
     },
   },
   {
-    files: ['scripts/**/*.js'],
+    files: ['scripts/**/*.{js,mjs}'],
     languageOptions: {
       globals: {
         console: 'readonly',
         process: 'readonly',
+      },
+    },
+  },
+  {
+    // `document` only appears inside callbacks that run in the browser page.
+    files: ['scripts/generate-og-image.mjs'],
+    languageOptions: {
+      globals: {
+        document: 'readonly',
       },
     },
   },
