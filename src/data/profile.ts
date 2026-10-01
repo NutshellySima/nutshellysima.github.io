@@ -1,4 +1,4 @@
-export const assetVersion = '20261001';
+export const assetVersion = '20261001-2';
 export const lastUpdated = '2026-10-01';
 export const lastUpdatedISO = '2026-10-01T00:00:00-05:00';
 

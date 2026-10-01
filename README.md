@@ -7,7 +7,7 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - `src/pages/index.astro`: Main single-page site content.
 - `src/data/profile.ts`: Shared source of truth for homepage content and AI-facing exports.
 - `src/styles/site.css`: Custom CSS extracted from `index.html`.
-- `src/scripts/site.ts`: Custom JavaScript extracted from `index.html`.
+- `src/scripts/site.ts`: Theme toggle, footer year, service worker setup, and browser-side WebMCP registration.
 - `src/pages/llms.txt.ts`, `src/pages/llms-full.txt.ts`: Generated LLM-friendly text endpoints.
 - `src/pages/profile.json.ts`, `src/pages/publications.json.ts`, `src/pages/feed.json.ts`: Machine-readable JSON endpoints.
 - `src/pages/openapi.json.ts`: OpenAPI description for public read-only machine-readable endpoints.
@@ -25,6 +25,7 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - **Custom CSS**: edit `src/styles/site.css`.
 - **Custom JS**: edit `src/scripts/site.ts`.
 - Keep existing file paths stable (e.g. `avatar.jpg`) to avoid breaking inbound links.
+- Broad machine-readable access to public profile content is intentional. Preserve the LLM text routes, JSON/feed/OpenAPI endpoints, Agent Skills discovery, AI plugin metadata, and browser-side WebMCP tools when editing content or profile data.
 
 ## Local preview
 
@@ -50,4 +51,3 @@ Deploy with Wrangler after authenticating Cloudflare locally:
 ```bash
 npx wrangler deploy
 ```
-

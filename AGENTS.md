@@ -1,5 +1,6 @@
 ## Learned User Preferences
 
+- Maximize machine-readable access to the site's public profile content. Preserve LLM text routes, JSON/feed/OpenAPI endpoints, Agent Skills discovery, AI plugin metadata, and browser-side WebMCP registration when updating the site. The user's request to restore the full version supersedes the previous minimal-exposure guidance.
 - When changing site copy or profile fields, keep machine-readable surfaces in sync (LLM text routes, JSON endpoints, meta and keywords, structured data) with the same source data.
 - Prefer straightforward professional titles and bios; do not frame LLM, ML systems, or researcher identity as the user's expertise unless explicitly asked.
 - Do not surface a personal GitHub profile link on the public site, in JSON-LD personal links, or in LLM-oriented text exports; repository and deployment metadata may still mention GitHub.
