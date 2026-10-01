@@ -33,6 +33,12 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Check agent discovery files are in sync
+        run: npm run check
+
       - name: Build site
         run: npm run build
 

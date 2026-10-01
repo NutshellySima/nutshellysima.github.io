@@ -30,7 +30,7 @@ const lines: string[] = [
   '## Machine-readable endpoints',
   '',
   ...machineReadableResources.map(
-    (resource) => `- ${resource.label}: ${absoluteUrl(resource.href)} (${resource.type})`
+    (resource) => `- [${resource.label}](${absoluteUrl(resource.href)}): ${resource.description} (${resource.type})`
   ),
   '',
   '## Identity',
