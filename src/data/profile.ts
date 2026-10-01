@@ -1,4 +1,4 @@
-export const assetVersion = '20261001-4';
+export const assetVersion = '20261001-5';
 export const lastUpdated = '2026-10-01';
 export const lastUpdatedISO = '2026-10-01T00:00:00-05:00';
 
@@ -160,18 +160,6 @@ export const publications = [
     note: '* co-first author. Supervised by Luo Mai.',
     summary:
       'Low-latency model update system for multi-terabyte deep learning recommendation models, achieving 2.4s update latency, 10,000x model-size scaling, and large production impact in WeChat.',
-  },
-  {
-    id: 'dba-kernel-ieee-access-2019',
-    venue: 'IEEE Access',
-    venueFull: 'IEEE Access',
-    year: 2019,
-    datePublished: '2019',
-    title: 'Dynamic Barycenter Averaging Kernel in RBF Networks for Time Series Classification',
-    authors: 'Kejian Shi, Hongyang Qin, Chijun Sima, Sen Li, Lifeng Shen, Qianli Ma',
-    link: '',
-    note: '2019.',
-    summary: 'Time-series classification work on dynamic barycenter averaging kernels in RBF networks.',
   },
 ] as const;
 

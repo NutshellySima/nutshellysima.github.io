@@ -226,26 +226,6 @@ const baseAvatar = avatar.path;
       ]
     })} />
 
-    <!-- JSON-LD: ScholarlyArticle for second paper -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ScholarlyArticle",
-      "name": publications[1].title,
-      "datePublished": publications[1].datePublished,
-      "isPartOf": {
-        "@type": "PublicationVolume",
-        "name": publications[1].venueFull
-      },
-      "author": [
-        { "@type": "Person", "name": "Kejian Shi" },
-        { "@type": "Person", "name": "Hongyang Qin" },
-        { "@type": "Person", "name": "Chijun Sima", "@id": `${siteMetadata.url}/#person` },
-        { "@type": "Person", "name": "Sen Li" },
-        { "@type": "Person", "name": "Lifeng Shen" },
-        { "@type": "Person", "name": "Qianli Ma" }
-      ]
-    })} />
-
     <!-- Analytics -->
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "74efc9100b074000b7c818e83d174ea4"}'></script>
     <script is:inline>
