@@ -4,6 +4,7 @@
 - When changing site copy or profile fields, keep machine-readable surfaces in sync (LLM text routes, JSON endpoints, meta and keywords, structured data) with the same source data.
 - Prefer straightforward professional titles and bios; do not frame LLM, ML systems, or researcher identity as the user's expertise unless explicitly asked.
 - Do not surface a personal GitHub profile link on the public site, in JSON-LD personal links, or in LLM-oriented text exports; repository and deployment metadata may still mention GitHub.
+- Keep advisors (Chenfeng Xu, Aditya Akella) low-key: no prominent sidebar cards, intro, news, or SEO description mentions. A single linked "Advised by" line in the UT Austin experience entry plus structured data is enough; the user has just started.
 - For `robots.txt` Content Signals, keep the explicit explanatory notice and allow `ai-train=yes, search=yes, ai-input=yes` unless the user changes the policy.
 
 ## Learned Workspace Facts

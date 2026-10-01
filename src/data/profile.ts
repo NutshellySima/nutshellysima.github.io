@@ -1,4 +1,4 @@
-export const assetVersion = '20261001-3';
+export const assetVersion = '20261001-4';
 export const lastUpdated = '2026-10-01';
 export const lastUpdatedISO = '2026-10-01T00:00:00-05:00';
 
@@ -15,7 +15,7 @@ const doctoralEducation = {
   degree: 'PhD in Computer Science',
   school: 'The University of Texas at Austin',
   schoolUrl: 'https://www.cs.utexas.edu/',
-  detail: 'First-year PhD student. Advised by Chenfeng Xu and Aditya Akella.',
+  detail: 'First-year PhD student.',
 } as const;
 
 export const advisors = [
@@ -54,7 +54,7 @@ export const profile = {
     degree: 'B.Eng. in Computer Science and Technology (Innovation Class)',
   },
   description:
-    `First-year Computer Science PhD student at ${doctoralEducation.school}, advised by Chenfeng Xu and Aditya Akella. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
+    `First-year Computer Science PhD student at ${doctoralEducation.school}. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
   email: 'simachijun@gmail.com',
   sameAs: [
     'https://www.linkedin.com/in/chijun-sima/',
@@ -73,7 +73,7 @@ export const siteMetadata = {
   name: profile.fullName,
   title: profile.fullName,
   description: `${profile.fullName} — ${profile.description}`,
-  keywords: [profile.fullName, 'UT Austin', 'Chenfeng Xu', 'Aditya Akella', 'Computer Science', 'PhD', 'OSDI', 'Ekko', 'LLVM', 'Tencent', 'WeChat'],
+  keywords: [profile.fullName, 'UT Austin', 'Computer Science', 'PhD', 'OSDI', 'Ekko', 'LLVM', 'Tencent', 'WeChat'],
   locale: 'en_US',
   language: 'en',
 } as const;
@@ -127,7 +127,7 @@ export const news = [
   {
     dateLabel: 'Aug 2026',
     dateISO: '2026-08-01T00:00:00-05:00',
-    text: 'Started the PhD in Computer Science at UT Austin, advised by Chenfeng Xu and Aditya Akella',
+    text: 'Started the PhD in Computer Science at UT Austin',
   },
   {
     dateLabel: '2025',
@@ -181,7 +181,7 @@ export const experience = [
     startDate: '2026-08',
     endDate: null,
     role: 'PhD Student in Computer Science',
-    subtitle: 'Department of Computer Science',
+    subtitle: '',
     org: 'The University of Texas at Austin',
     orgUrl: 'https://www.cs.utexas.edu/',
     location: 'Austin, Texas, USA',

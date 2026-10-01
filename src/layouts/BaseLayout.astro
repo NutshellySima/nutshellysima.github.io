@@ -12,8 +12,11 @@ import {
   siteMetadata,
 } from '../data/profile';
 
-const baseStyleHref = '/assets/site.css';
-const baseScriptSrc = '/assets/site.mjs';
+// Cache-busting is baked into the URLs at build time. Rewriting href/src after
+// parse makes Safari drop the loaded stylesheet and flash unstyled content.
+const withVersion = (url: string) => `${url}${url.includes('?') ? '&' : '?'}v=${assetVersion}`;
+const styleHref = withVersion(siteStyles);
+const scriptSrc = withVersion('/assets/site.mjs');
 const baseAvatar = avatar.path;
 ---
 <!DOCTYPE html>
@@ -22,9 +25,15 @@ const baseAvatar = avatar.path;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <link rel="preload" href={baseAvatar} data-asset-href={baseAvatar} as="image" type="image/jpeg" fetchpriority="high" data-vite-ignore />
-    <link rel="preload" href={siteStyles} data-asset-href={baseStyleHref} as="style" data-vite-ignore />
-    <link rel="modulepreload" href={baseScriptSrc} data-asset-href={baseScriptSrc} data-vite-ignore />
+    <link rel="preload" href={baseAvatar} as="image" type="image/jpeg" fetchpriority="high" data-vite-ignore />
+    <link rel="preload" href={styleHref} as="style" data-vite-ignore />
+    <link rel="modulepreload" href={scriptSrc} data-vite-ignore />
+
+    <!-- Critical: keep the avatar bounded even before the main stylesheet applies -->
+    <style is:inline>
+      .avatar{width:6.25rem;height:6.25rem;object-fit:cover;border-radius:50%}
+      @media (min-width:62rem){.avatar{width:8.5rem;height:8.5rem;border-radius:1.5rem}}
+    </style>
 
     <Font cssVariable="--font-inter" preload />
     <Font cssVariable="--font-newsreader" preload />
@@ -247,39 +256,11 @@ const baseAvatar = avatar.path;
       window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RDCCF82CG7');
     </script>
 
-    <link rel="stylesheet" href={siteStyles} data-asset-href={baseStyleHref} data-vite-ignore />
-
-    <script is:inline>
-      (function () {
-        var loc = ['localhost','127.0.0.1'];
-        if (loc.includes(window.location.hostname)) return;
-        var meta = document.querySelector('meta[name="asset-version"]');
-        var v = meta ? meta.content : '';
-        var wv = function(u){return v&&!/[?&]v=/.test(u)?(u.includes('?')?u+'&v='+v:u+'?v='+v):u};
-        window.__withAssetVersion__ = wv;
-        document.querySelectorAll('[data-asset-href]').forEach(function(el){
-          var b=el.getAttribute('data-asset-href');if(b)el.setAttribute('href',wv(b));
-        });
-      })();
-    </script>
+    <link rel="stylesheet" href={styleHref} data-vite-ignore />
   </head>
   <body class="font-sans antialiased">
     <slot />
 
-    <script type="module" src={baseScriptSrc} data-asset-src={baseScriptSrc} defer></script>
-    <script is:inline>
-      (function () {
-        var loc = ['localhost','127.0.0.1'];
-        if (loc.includes(window.location.hostname)) return;
-        var wv = window.__withAssetVersion__;
-        if (!wv) return;
-        document.querySelectorAll('[data-asset-src]').forEach(function(el){
-          var b=el.getAttribute('data-asset-src');
-          var c=el.getAttribute('src')||'';
-          if(!b)return;if(c&&c.includes('v='))return;
-          el.setAttribute('src',wv(b));
-        });
-      })();
-    </script>
+    <script type="module" src={scriptSrc} data-vite-ignore defer></script>
   </body>
 </html>
