@@ -10,6 +10,7 @@
 
 - The site is an Astro static project; profile content, freshness dates, and many SEO-related fields are centralized in `src/data/profile.ts` and propagate to pages, feeds, and machine-readable routes.
 - Generated or committed `dist/` output can lag `src/`; rebuild and deploy are needed for deployed artifacts to match source.
+- The GitHub Pages upload must set `include-hidden-files: true` for `dist/` so `.well-known` discovery files and `.nojekyll` are published.
 - ProfilePage and WebSite JSON-LD `dateModified` must use a full ISO 8601 datetime (consistent with `lastUpdatedISO`), not a date-only string, for valid Google Search rich results.
 - Major TypeScript upgrades can be constrained by `typescript-eslint` peer ranges (e.g. TypeScript 6 may be incompatible until the lint stack supports it).
 - Public traffic is now proxied through Cloudflare while GitHub Pages remains the static origin; use Cloudflare for custom response headers, content negotiation, and extensionless well-known routes that GitHub Pages cannot serve correctly.
