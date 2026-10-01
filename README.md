@@ -15,7 +15,9 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - `.well-known/agent-skills/chijun-sima-profile/SKILL.md`: Agent Skills artifact copied into the static build.
 - `.nojekyll`: Ensures GitHub Pages publishes `.well-known` discovery files.
 - `cloudflare/agent-discovery-worker.js`, `wrangler.toml`: Cloudflare Worker config for homepage `Link` headers, markdown negotiation, and the API catalog.
-- `avatar.jpg`: Profile image used by the page and social previews.
+- `avatar.jpg`: Profile image used by the page.
+- `og-image.png`: 1200×630 social preview card. Regenerate with `npm run build && npx -p playwright node scripts/generate-og-image.mjs` (template: `scripts/og-card.html`).
+- `scripts/check-agent-sync.js`: CI guard that keeps the SKILL.md copy embedded in the Cloudflare worker identical to the static file.
 - `CNAME`, `.well-known/ai-plugin.json`: GitHub Pages / AI discovery config.
 
 ## Editing guidelines

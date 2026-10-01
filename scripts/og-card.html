@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face { font-family: 'OG Serif'; src: url('{{SERIF_FONT}}') format('woff2'); font-weight: 400 600; }
+      @font-face { font-family: 'OG Sans'; src: url('{{SANS_FONT}}') format('woff2'); font-weight: 400 600; }
+      * { box-sizing: border-box; margin: 0; }
+      body {
+        width: 1200px;
+        height: 630px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 88px 0 96px;
+        background: #faf6ef;
+        color: #1d1813;
+        font-family: 'OG Sans', system-ui, sans-serif;
+        position: relative;
+        overflow: hidden;
+      }
+      body::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 14px;
+        background: #bf5700;
+      }
+      .text { max-width: 640px; }
+      .kicker {
+        color: #b54e00;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+      h1 {
+        font-family: 'OG Serif', Georgia, serif;
+        font-size: 112px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin-bottom: 32px;
+      }
+      .role { font-size: 34px; line-height: 1.35; color: #4d443a; }
+      .role strong { color: #1d1813; font-weight: 600; }
+      .url { margin-top: 48px; font-size: 26px; color: #7a6f62; }
+      img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 48px;
+        box-shadow: 0 0 0 2px #cfc1aa, 0 30px 60px -24px rgba(60, 40, 15, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text">
+      <p class="kicker">PhD student · Computer Science</p>
+      <h1>Chijun Sima</h1>
+      <p class="role"><strong>The University of Texas at Austin</strong><br />Ekko (OSDI '22) · LLVM</p>
+      <p class="url">www.chijunsima.com</p>
+    </div>
+    <img src="{{AVATAR}}" alt="" />
+  </body>
+</html>

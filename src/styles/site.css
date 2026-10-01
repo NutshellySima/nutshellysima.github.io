@@ -701,9 +701,14 @@ a.pub-title:hover {
 .site-footer a:hover {
   color: var(--c-accent);
 }
-.link-sep {
-  margin: 0 0.35rem;
-  opacity: 0.5;
+.site-footer a {
+  white-space: nowrap;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1rem;
 }
 
 /* ═══════════════════════════════════════

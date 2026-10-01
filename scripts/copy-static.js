@@ -16,6 +16,7 @@ const staticFiles = [
   'CNAME',
   'favicon.svg',
   'avatar.jpg',
+  'og-image.png',
   'icon-192.svg',
   'icon-192-maskable.svg',
   'icon-512.svg',

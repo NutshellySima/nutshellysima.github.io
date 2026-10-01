@@ -10,6 +10,7 @@ import {
   profile,
   publications,
   siteMetadata,
+  socialImage,
 } from '../data/profile';
 
 // Cache-busting is baked into the URLs at build time. Rewriting href/src after
@@ -63,10 +64,11 @@ const baseAvatar = avatar.path;
     <meta property="og:url" content={absoluteUrl('/')} />
     <meta property="og:title" content={siteMetadata.title} />
     <meta property="og:description" content={siteMetadata.description} />
-    <meta property="og:image" content={absoluteUrl(avatar.path)} />
-    <meta property="og:image:width" content={String(avatar.width)} />
-    <meta property="og:image:height" content={String(avatar.height)} />
-    <meta property="og:image:alt" content="Portrait of Chijun Sima" />
+    <meta property="og:image" content={absoluteUrl(socialImage.path)} />
+    <meta property="og:image:width" content={String(socialImage.width)} />
+    <meta property="og:image:height" content={String(socialImage.height)} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={socialImage.alt} />
     <meta property="og:site_name" content={siteMetadata.name} />
     <meta property="og:locale" content={siteMetadata.locale} />
     <meta property="og:updated_time" content={lastUpdatedISO} />
@@ -74,11 +76,11 @@ const baseAvatar = avatar.path;
     <meta property="profile:last_name" content={profile.familyName} />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={siteMetadata.title} />
     <meta name="twitter:description" content={siteMetadata.description} />
-    <meta name="twitter:image" content={absoluteUrl(avatar.path)} />
-    <meta name="twitter:image:alt" content="Portrait of Chijun Sima" />
+    <meta name="twitter:image" content={absoluteUrl(socialImage.path)} />
+    <meta name="twitter:image:alt" content={socialImage.alt} />
 
     <!-- Favicons & PWA -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

@@ -52,7 +52,7 @@ const navItems = [
           <div>
             <h1 class="name">Chijun Sima</h1>
             <p class="role">
-              {profile.jobTitle},
+              {profile.jobTitle},{' '}
               <a href={profile.affiliationUrl} itemprop="affiliation" itemscope itemtype="https://schema.org/CollegeOrUniversity" target="_blank" rel="noopener noreferrer">
                 <span itemprop="name">{profile.affiliation}</span>
               </a>
@@ -93,9 +93,9 @@ const navItems = [
     <main id="main" class="content" tabindex="-1">
       <section aria-label="About">
         <p class="lede">
-          First-year PhD student in Computer Science at
+          First-year PhD student in Computer Science at{' '}
           <a href={profile.affiliationUrl} target="_blank" rel="noopener noreferrer">UT Austin</a>.
-          Previously Senior Software Development Engineer at Tencent's WeChat, where I led
+          Previously Senior Software Development Engineer at Tencent's WeChat, where I led{' '}
           <em>Ekko</em> (OSDI '22). LLVM developer with commit access.
         </p>
       </section>
@@ -248,14 +248,10 @@ const navItems = [
 
       <footer class="site-footer no-print" role="contentinfo">
         <p>Last updated <time datetime={lastUpdated}>{lastUpdated}</time>.</p>
-        <p>
-          Machine-readable:
-          {' '}
-          {machineReadableResources.map((resource, index) => (
-            <Fragment>
-              {index > 0 && <span class="link-sep" aria-hidden="true">·</span>}
-              <a href={resource.href}>{resource.label}</a>
-            </Fragment>
+        <p class="footer-links">
+          <span>Machine-readable:</span>
+          {machineReadableResources.map((resource) => (
+            <a href={resource.href}>{resource.label}</a>
           ))}
         </p>
         <p>&copy; <span id="year"></span> Chijun Sima</p>

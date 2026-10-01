@@ -1,6 +1,13 @@
-export const assetVersion = '20261001-5';
+export const assetVersion = '20261001-6';
 export const lastUpdated = '2026-10-01';
 export const lastUpdatedISO = '2026-10-01T00:00:00-05:00';
+
+export const socialImage = {
+  path: `/og-image.png?v=${assetVersion}`,
+  width: 1200,
+  height: 630,
+  alt: 'Chijun Sima — PhD student in Computer Science at UT Austin',
+} as const;
 
 export const avatar = {
   path: `/avatar.jpg?v=${assetVersion}`,
