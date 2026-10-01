@@ -212,12 +212,48 @@ const redirectApexToWww = (url) =>
     },
   });
 
+// Pages that used to exist; keep inbound links working with a real redirect.
+const movedPaths = new Map([
+  ['/deep-dive', '/'],
+  ['/deep-dive.html', '/'],
+]);
+
+const redirectMoved = (target) =>
+  new Response(null, {
+    status: 301,
+    headers: {
+      Location: `${SITE}${target}`,
+      'Cache-Control': 'public, max-age=3600',
+    },
+  });
+
+// Browsers must always revalidate the service worker script; otherwise stale
+// copies at the edge delay the clean-up of the legacy service worker.
+const noCache = (response) => {
+  const headers = new Headers(response.headers);
+  headers.set('Cache-Control', 'no-cache, max-age=0');
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+};
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
 
     if (url.hostname === APEX_HOST) {
       return redirectApexToWww(url);
+    }
+
+    if (movedPaths.has(url.pathname)) {
+      return redirectMoved(movedPaths.get(url.pathname));
+    }
+
+    if (url.pathname === '/sw.js') {
+      return secure(noCache(await fetch(request)), url);
     }
 
     if (request.method === 'OPTIONS' && isCorsPath(url.pathname)) {

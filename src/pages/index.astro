@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 import {
   awards,
   avatar,
@@ -29,7 +30,17 @@ const navItems = [
 <BaseLayout>
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <button id="theme-toggle" class="theme-toggle no-print" aria-label="Toggle dark mode" aria-pressed="false">☾</button>
+  <!-- Compact section bar for small screens (the sidebar nav is desktop-only) -->
+  <div class="mobile-bar no-print">
+    <nav class="mobile-nav" aria-label="Page sections">
+      <ul>
+        {navItems.map((item) => (
+          <li><a href={`#${item.id}`} data-nav={item.id}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <ThemeToggle />
+  </div>
 
   <div class="shell" itemscope itemtype="https://schema.org/Person">
     <meta itemprop="name" content="Chijun Sima" />
@@ -39,16 +50,20 @@ const navItems = [
     <header class="sidebar">
       <div class="identity">
         <div class="identity-top">
-          <img
-            src={avatar.path}
-            alt="Portrait of Chijun Sima"
-            width="136"
-            height="136"
-            itemprop="image"
-            class="avatar"
-            loading="eager"
-            decoding="async"
-          />
+          <picture>
+            <source type="image/webp" srcset={avatar.webp.srcset} sizes={avatar.webp.sizes} />
+            <img
+              src={avatar.path}
+              alt="Portrait of Chijun Sima"
+              width="136"
+              height="136"
+              itemprop="image"
+              class="avatar"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
           <div>
             <h1 class="name">Chijun Sima</h1>
             <p class="role">
@@ -87,15 +102,21 @@ const navItems = [
           ))}
         </ul>
       </nav>
+
+      <div class="side-footer no-print">
+        <span>Appearance</span>
+        <ThemeToggle />
+      </div>
     </header>
 
     <!-- ── Content ── -->
     <main id="main" class="content" tabindex="-1">
       <section aria-label="About">
         <p class="lede">
-          First-year PhD student in Computer Science at{' '}
-          <a href={profile.affiliationUrl} target="_blank" rel="noopener noreferrer">UT Austin</a>.
-          Previously Senior Software Development Engineer at Tencent's WeChat, where I led{' '}
+          PhD student in Computer Science at{' '}
+          <a href={profile.affiliationUrl} target="_blank" rel="noopener noreferrer">UT Austin</a>, working on machine
+          learning for systems and systems for machine learning. Previously Senior Software Development Engineer at
+          Tencent's WeChat, where I led{' '}
           <em>Ekko</em> (OSDI '22). LLVM developer with commit access.
         </p>
       </section>
@@ -133,8 +154,8 @@ const navItems = [
       <section id="experience" aria-labelledby="h-exp">
         <h2 id="h-exp" class="section-heading">Experience</h2>
         <div class="timeline">
-          {experience.map((entry) => (
-            <article class:list={['entry', { 'is-current': !entry.endDate }]} itemscope itemtype="https://schema.org/OrganizationRole">
+          {experience.map((entry, index) => (
+            <article class:list={['entry', { 'is-current': !entry.endDate && index === 0, 'is-ongoing': !entry.endDate && index > 0 }]} itemscope itemtype="https://schema.org/OrganizationRole">
               <meta itemprop="startDate" content={entry.startDate} />
               {entry.endDate && <meta itemprop="endDate" content={entry.endDate} />}
               <div class="entry-head">
@@ -144,7 +165,7 @@ const navItems = [
                   </a>
                 </h3>
                 <p class="entry-period">
-                  {!entry.endDate && <span class="badge-current">Current</span>}
+                  {!entry.endDate && index === 0 && <span class="badge-current">Current</span>}
                   <time datetime={entry.startDate}>{entry.period}</time>
                 </p>
               </div>
@@ -154,19 +175,31 @@ const navItems = [
                 {entry.location && <span class="sub"> · {entry.location}</span>}
               </p>
 
-              {entry.projects.map((proj) => (
-                <div class="project">
-                  {proj.name && (
-                    <p class="project-name">
-                      {proj.name}
-                      {proj.note && <span class="muted" style="font-weight:400;"> ({proj.note})</span>}
-                    </p>
-                  )}
-                  <ul class="bullets">
-                    {proj.bullets.map((b) => <li set:html={b} />)}
-                  </ul>
-                </div>
-              ))}
+              {entry.projects.map((proj) =>
+                proj.name ? (
+                  <details class="project project-details">
+                    <summary>
+                      <span class="project-summary">
+                        <span class="project-name">
+                          {proj.name}
+                          {proj.note && <span class="muted" style="font-weight:400;"> ({proj.note})</span>}
+                        </span>
+                        {proj.headline && <span class="project-headline" set:html={proj.headline} />}
+                      </span>
+                      <span class="project-toggle" aria-hidden="true">Details</span>
+                    </summary>
+                    <ul class="bullets">
+                      {proj.bullets.map((b) => <li set:html={b} />)}
+                    </ul>
+                  </details>
+                ) : (
+                  <div class="project">
+                    <ul class="bullets">
+                      {proj.bullets.map((b) => <li set:html={b} />)}
+                    </ul>
+                  </div>
+                )
+              )}
             </article>
           ))}
         </div>
@@ -176,8 +209,8 @@ const navItems = [
       <section id="education" aria-labelledby="h-edu">
         <h2 id="h-edu" class="section-heading">Education</h2>
         <div class="timeline">
-          {education.map((entry) => (
-            <article class:list={['entry', { 'is-current': !entry.endDate }]} itemprop={entry.endDate ? 'alumniOf' : 'affiliation'} itemscope itemtype="https://schema.org/EducationalOrganization">
+          {education.map((entry, index) => (
+            <article class:list={['entry', { 'is-current': !entry.endDate && index === 0, 'is-ongoing': !entry.endDate && index > 0 }]} itemprop={entry.endDate ? 'alumniOf' : 'affiliation'} itemscope itemtype="https://schema.org/EducationalOrganization">
               <div class="entry-head">
                 <h3 class="entry-org">
                   <a href={entry.schoolUrl} target="_blank" rel="noopener noreferrer">
@@ -185,7 +218,7 @@ const navItems = [
                   </a>
                 </h3>
                 <p class="entry-period">
-                  {!entry.endDate && <span class="badge-current">Current</span>}
+                  {!entry.endDate && index === 0 && <span class="badge-current">Current</span>}
                   <time datetime={entry.startDate}>{entry.period}</time>
                 </p>
               </div>

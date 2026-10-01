@@ -1,10 +1,9 @@
 ---
-import { Font } from 'astro:assets';
-import siteStyles from '../styles/site.css?url';
+import AssetHead from './AssetHead.astro';
+import { withVersion } from '../data/assets';
 import {
   absoluteUrl,
   advisors,
-  assetVersion,
   avatar,
   lastUpdatedISO,
   profile,
@@ -13,12 +12,11 @@ import {
   socialImage,
 } from '../data/profile';
 
-// Cache-busting is baked into the URLs at build time. Rewriting href/src after
-// parse makes Safari drop the loaded stylesheet and flash unstyled content.
-const withVersion = (url: string) => `${url}${url.includes('?') ? '&' : '?'}v=${assetVersion}`;
-const styleHref = withVersion(siteStyles);
+if (siteMetadata.description.length > 160) {
+  throw new Error(`Meta description is ${siteMetadata.description.length} characters; keep it at 160 or fewer.`);
+}
+
 const scriptSrc = withVersion('/assets/site.mjs');
-const baseAvatar = avatar.path;
 ---
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -26,8 +24,7 @@ const baseAvatar = avatar.path;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-    <link rel="preload" href={baseAvatar} as="image" type="image/jpeg" fetchpriority="high" data-vite-ignore />
-    <link rel="preload" href={styleHref} as="style" data-vite-ignore />
+    <link rel="preload" as="image" type="image/webp" imagesrcset={avatar.webp.srcset} imagesizes={avatar.webp.sizes} fetchpriority="high" data-vite-ignore />
     <link rel="modulepreload" href={scriptSrc} data-vite-ignore />
 
     <!-- Critical: keep the avatar bounded even before the main stylesheet applies -->
@@ -36,19 +33,14 @@ const baseAvatar = avatar.path;
       @media (min-width:62rem){.avatar{width:8.5rem;height:8.5rem;border-radius:1.5rem}}
     </style>
 
-    <Font cssVariable="--font-inter" preload />
-    <Font cssVariable="--font-newsreader" preload />
+    <AssetHead />
 
-    <title>{siteMetadata.title}</title>
+    <title>{siteMetadata.pageTitle}</title>
     <meta name="description" content={siteMetadata.description} />
     <meta name="author" content={siteMetadata.name} />
-    <meta name="asset-version" content={assetVersion} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#15110d" media="(prefers-color-scheme: dark)" />
     <meta name="keywords" content={siteMetadata.keywords.join(', ')} />
 
     <link rel="canonical" href={absoluteUrl('/')} />
@@ -62,7 +54,7 @@ const baseAvatar = avatar.path;
     <!-- Open Graph -->
     <meta property="og:type" content="profile" />
     <meta property="og:url" content={absoluteUrl('/')} />
-    <meta property="og:title" content={siteMetadata.title} />
+    <meta property="og:title" content={siteMetadata.pageTitle} />
     <meta property="og:description" content={siteMetadata.description} />
     <meta property="og:image" content={absoluteUrl(socialImage.path)} />
     <meta property="og:image:width" content={String(socialImage.width)} />
@@ -77,15 +69,11 @@ const baseAvatar = avatar.path;
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={siteMetadata.title} />
+    <meta name="twitter:title" content={siteMetadata.pageTitle} />
     <meta name="twitter:description" content={siteMetadata.description} />
     <meta name="twitter:image" content={absoluteUrl(socialImage.path)} />
     <meta name="twitter:image:alt" content={socialImage.alt} />
 
-    <!-- Favicons & PWA -->
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/icon-192.svg" />
-    <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- LLM/AI agent discovery -->
     <link rel="alternate" type="text/plain" title="LLM context (concise)" href="/llms.txt" />
@@ -96,16 +84,6 @@ const baseAvatar = avatar.path;
     <link rel="service-desc" type="application/oas+json" title="OpenAPI description" href="/openapi.json" />
     <link rel="alternate" type="application/json" title="Agent Skills discovery index" href="/.well-known/agent-skills/index.json" />
 
-    <!-- Dark-mode flash prevention -->
-    <script is:inline>
-      (function () {
-        try {
-          var s = localStorage.getItem('theme');
-          var d = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (s === 'dark' || (!s && d)) document.documentElement.classList.add('dark');
-        } catch (_) { /* storage unavailable */ }
-      })();
-    </script>
 
     <!-- JSON-LD: Person (rich structured data for search engines and LLM agents) -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -238,7 +216,6 @@ const baseAvatar = avatar.path;
       window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RDCCF82CG7');
     </script>
 
-    <link rel="stylesheet" href={styleHref} data-vite-ignore />
   </head>
   <body class="font-sans antialiased">
     <slot />

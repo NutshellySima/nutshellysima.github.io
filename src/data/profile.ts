@@ -1,6 +1,10 @@
-export const assetVersion = '20261001-6';
-export const lastUpdated = '2026-10-01';
-export const lastUpdatedISO = '2026-10-01T00:00:00-05:00';
+// Injected at build time from git (see scripts/build-info.js).
+declare const __LAST_UPDATED_ISO__: string;
+declare const __ASSET_VERSION__: string;
+
+export const assetVersion = typeof __ASSET_VERSION__ === 'string' ? __ASSET_VERSION__ : 'dev';
+export const lastUpdatedISO = typeof __LAST_UPDATED_ISO__ === 'string' ? __LAST_UPDATED_ISO__ : new Date().toISOString();
+export const lastUpdated = lastUpdatedISO.slice(0, 10);
 
 export const socialImage = {
   path: `/og-image.png?v=${assetVersion}`,
@@ -13,6 +17,12 @@ export const avatar = {
   path: `/avatar.jpg?v=${assetVersion}`,
   width: 1024,
   height: 1024,
+  // Responsive WebP variants (see scripts/generate-avatar.mjs). The avatar is shown at 100px
+  // (mobile) and 136px (desktop), so the 1024px original is only a fallback and the social/JSON-LD image.
+  webp: {
+    srcset: `/avatar-160.webp?v=${assetVersion} 160w, /avatar-288.webp?v=${assetVersion} 288w`,
+    sizes: '(min-width: 62rem) 136px, 100px',
+  },
 } as const;
 
 const doctoralEducation = {
@@ -22,7 +32,7 @@ const doctoralEducation = {
   degree: 'PhD in Computer Science',
   school: 'The University of Texas at Austin',
   schoolUrl: 'https://www.cs.utexas.edu/',
-  detail: 'First-year PhD student.',
+  detail: 'Department of Computer Science.',
 } as const;
 
 export const advisors = [
@@ -46,7 +56,7 @@ export const profile = {
   fullName: 'Chijun Sima',
   givenName: 'Chijun',
   familyName: 'Sima',
-  jobTitle: 'First-year Computer Science PhD student',
+  jobTitle: 'Computer Science PhD student',
   subtitle: '',
   affiliation: doctoralEducation.school,
   department: 'Department of Computer Science',
@@ -61,13 +71,16 @@ export const profile = {
     degree: 'B.Eng. in Computer Science and Technology (Innovation Class)',
   },
   description:
-    `First-year Computer Science PhD student at ${doctoralEducation.school}. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
+    `Computer Science PhD student at ${doctoralEducation.school}, working on machine learning for systems and systems for machine learning. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
+  researchInterests: ['Machine learning for systems', 'Systems for machine learning'],
   email: 'simachijun@gmail.com',
   sameAs: [
     'https://www.linkedin.com/in/chijun-sima/',
     'https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en',
   ],
   knowsAbout: [
+    'Machine Learning for Systems',
+    'Systems for Machine Learning',
     'WebAssembly',
     'LLVM',
     'Compilers',
@@ -79,8 +92,10 @@ export const siteMetadata = {
   url: 'https://www.chijunsima.com',
   name: profile.fullName,
   title: profile.fullName,
-  description: `${profile.fullName} — ${profile.description}`,
-  keywords: [profile.fullName, 'UT Austin', 'Computer Science', 'PhD', 'OSDI', 'Ekko', 'LLVM', 'Tencent', 'WeChat'],
+  pageTitle: `${profile.fullName} — PhD Student, UT Austin`,
+  // Kept under ~155 characters so search results do not truncate it (enforced in BaseLayout).
+  description: `${profile.fullName} — CS PhD student at UT Austin (ML for systems, systems for ML). Co-first author of Ekko (OSDI '22). LLVM developer with commit access.`,
+  keywords: [profile.fullName, 'UT Austin', 'ML for Systems', 'Systems for ML', 'Computer Science', 'PhD', 'OSDI', 'Ekko', 'LLVM', 'Tencent', 'WeChat'],
   locale: 'en_US',
   language: 'en',
 } as const;
@@ -161,6 +176,7 @@ export const experience = [
       {
         name: '',
         note: '',
+        headline: '',
         bullets: [
           'Advised by <a href="https://www.chenfengx.com" target="_blank" rel="noopener noreferrer">Chenfeng Xu</a> and <a href="https://www.cs.utexas.edu/~akella/" target="_blank" rel="noopener noreferrer">Aditya Akella</a>.',
         ],
@@ -180,6 +196,8 @@ export const experience = [
       {
         name: 'Ekko: low-latency model update for multi-terabyte DLRMs',
         note: "published in part as OSDI '22",
+        headline:
+          '2.4 s model-update latency and <strong>10,000×</strong> model-size scaling for multi-terabyte recommendation models; serves <strong>1 B+ users daily</strong> in WeChat.',
         bullets: [
           '<strong>Problem.</strong> Scaling DLRMs improved offline accuracy but degraded online engagement; root cause: <strong>stale models</strong> from increased <strong>model-update latency</strong>.',
           '<strong>Key idea.</strong> Co-designed deployment mechanisms with <strong>model-aware</strong> policies (compressed update dissemination, accuracy-aware scheduling, SLO-aware placement, safe rollback).',
@@ -190,6 +208,8 @@ export const experience = [
       {
         name: 'Data and feature platform: safe, scalable pipelines',
         note: '',
+        headline:
+          'WebAssembly-based runtime with in-process isolation; data movement reduced up to <strong>1,200×</strong> on representative workloads.',
         bullets: [
           '<strong>Problem.</strong> Modern feature pipelines are long and increasingly multimodal; cross-process operator composition creates high overhead and expensive data movement.',
           '<strong>Approach.</strong> WebAssembly-based runtime for <strong>in-process isolation</strong> (safety + resource constraints) and locality-aware operator placement near data sources.',
@@ -211,6 +231,7 @@ export const experience = [
       {
         name: '',
         note: '',
+        headline: '',
         bullets: [
           'Improved Semi-NCA performance and optimization pipeline; shipped in LLVM 9.0 (reported speedups up to 1,980× on real-world samples).',
           'Unified APIs on dominator trees; shipped in LLVM 7.0.',
@@ -249,6 +270,8 @@ export const awards = [
 ] as const;
 
 export const reviewing = [
+  'NeurIPS 2026',
+  'BMVC 2026',
   'CVPR 2025',
 ] as const;
 

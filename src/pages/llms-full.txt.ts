@@ -40,6 +40,7 @@ const lines: string[] = [
   `- Affiliation: ${profile.affiliation}`,
   `- Department: ${profile.department}`,
   `- Location: ${profile.location}`,
+  `- Research interests: ${profile.researchInterests.join('; ')}`,
   '',
   '## Advisors',
   '',
@@ -95,6 +96,9 @@ for (const entry of experience) {
   for (const project of entry.projects) {
     if (project.name) {
       lines.push(`- Project: ${project.name}${project.note ? ` (${project.note})` : ''}`);
+    }
+    if (project.headline) {
+      lines.push(`  - Summary: ${stripHtml(project.headline)}`);
     }
     for (const bullet of project.bullets) {
       lines.push(`  - ${stripHtml(bullet)}`);

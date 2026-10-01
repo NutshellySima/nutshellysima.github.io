@@ -1,5 +1,6 @@
 import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import { buildDefines } from './scripts/build-info.js';
 
 export default defineConfig({
   site: 'https://www.chijunsima.com',
@@ -24,6 +25,7 @@ export default defineConfig({
     format: 'file',
   },
   vite: {
+    define: buildDefines(),
     plugins: [tailwindcss()],
     build: {
       assetsDir: 'assets',

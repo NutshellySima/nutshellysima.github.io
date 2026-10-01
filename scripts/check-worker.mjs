@@ -22,6 +22,18 @@ expect(
   `apex Location ${apex.headers.get('Location')}`
 );
 
+// Retired pages redirect with a real 301.
+const moved = await call('https://www.chijunsima.com/deep-dive.html');
+expect(moved.status === 301, `deep-dive status ${moved.status}, expected 301`);
+expect(moved.headers.get('Location') === 'https://www.chijunsima.com/', `deep-dive Location ${moved.headers.get('Location')}`);
+
+// The service worker script is never cached (checked against a stubbed origin).
+const realFetch = globalThis.fetch;
+globalThis.fetch = async () => new Response('// sw', { headers: { 'Cache-Control': 'max-age=14400' } });
+const sw = await call('https://www.chijunsima.com/sw.js');
+globalThis.fetch = realFetch;
+expect((sw.headers.get('Cache-Control') ?? '').includes('no-cache'), `sw.js Cache-Control ${sw.headers.get('Cache-Control')}`);
+
 // API catalog is served as a linkset.
 const catalog = await call('https://www.chijunsima.com/.well-known/api-catalog');
 expect(catalog.status === 200, `api-catalog status ${catalog.status}`);

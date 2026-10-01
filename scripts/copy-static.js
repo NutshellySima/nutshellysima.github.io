@@ -2,6 +2,7 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import esbuild from 'esbuild';
+import { buildDefines } from './build-info.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -12,15 +13,14 @@ const assetsDir = path.join(distDir, 'assets');
 const staticFiles = [
   '.nojekyll',
   'sw.js',
-  'manifest.webmanifest',
   'CNAME',
   'favicon.svg',
   'avatar.jpg',
+  'avatar-160.webp',
+  'avatar-288.webp',
   'og-image.png',
   'icon-192.svg',
-  'icon-192-maskable.svg',
   'icon-512.svg',
-  'icon-512-maskable.svg',
 ];
 
 const staticDirs = [
@@ -57,6 +57,7 @@ const copyStaticFiles = async () => {
     format: 'esm',
     target: 'es2019',
     sourcemap: false,
+    define: buildDefines(),
   });
 };
 

@@ -44,6 +44,7 @@ const document = {
     },
     location: profile.location,
     advisors,
+    researchInterests: profile.researchInterests,
     summary: profile.description,
     email: profile.email,
     profiles: {
@@ -77,6 +78,7 @@ const document = {
     projects: entry.projects.map((project) => ({
       name: project.name || null,
       note: project.note || null,
+      headline: stripHtml(project.headline) || null,
       bullets: project.bullets.map(stripHtml),
     })),
   })),

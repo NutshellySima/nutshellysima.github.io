@@ -6,8 +6,9 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 
 - `src/pages/index.astro`: Main single-page site content.
 - `src/data/profile.ts`: Shared source of truth for homepage content and AI-facing exports.
-- `src/styles/site.css`: Custom CSS extracted from `index.html`.
-- `src/scripts/site.ts`: Theme toggle, footer year, service worker setup, and browser-side WebMCP registration.
+- `src/styles/site.css`: All site styles (design tokens, light/dark themes, layout).
+- `src/layouts/BaseLayout.astro`, `AssetHead.astro`, `MinimalLayout.astro`: Page shells; `AssetHead` holds the fonts, theme init, and versioned stylesheet shared by every page (the 404 uses `MinimalLayout`).
+- `src/scripts/site.ts`: Theme toggle, section scroll-spy, print expansion, footer year, legacy service-worker cleanup, and browser-side WebMCP registration.
 - `src/pages/llms.txt.ts`, `src/pages/llms-full.txt.ts`: Generated LLM-friendly text endpoints.
 - `src/pages/profile.json.ts`, `src/pages/publications.json.ts`, `src/pages/feed.json.ts`: Machine-readable JSON endpoints.
 - `src/pages/openapi.json.ts`: OpenAPI description for public read-only machine-readable endpoints.
@@ -15,7 +16,10 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - `.well-known/agent-skills/chijun-sima-profile/SKILL.md`: Agent Skills artifact copied into the static build.
 - `.nojekyll`: Ensures GitHub Pages publishes `.well-known` discovery files.
 - `cloudflare/agent-discovery-worker.js`, `wrangler.toml`: Cloudflare Worker config for homepage `Link` headers, markdown negotiation, and the API catalog.
-- `avatar.jpg`: Profile image used by the page.
+- `avatar.jpg`: Full-size profile image (fallback, JSON-LD). The page serves `avatar-160.webp` / `avatar-288.webp`; regenerate them with `node scripts/generate-avatar.mjs`.
+- `sw.js`: A self-unregistering service worker. The site used to register a caching service worker; returning visitors still have it installed, so this file must stay published to clean it up.
+- `scripts/build-info.js`: Derives the asset version and the last-updated timestamp from git at build time (shared by Vite and the esbuild bundle).
+- `.github/dependabot.yml`: Weekly npm and monthly GitHub Actions update PRs.
 - `og-image.png`: 1200×630 social preview card. Regenerate with `npm run build && npx -p playwright node scripts/generate-og-image.mjs` (template: `scripts/og-card.html`).
 - `scripts/check-agent-sync.js`: CI guard that keeps the SKILL.md copy embedded in the Cloudflare worker identical to the static file.
 - `CNAME`, `.well-known/ai-plugin.json`: GitHub Pages / AI discovery config.
@@ -26,6 +30,8 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - **Shared profile data**: edit `src/data/profile.ts`.
 - **Custom CSS**: edit `src/styles/site.css`.
 - **Custom JS**: edit `src/scripts/site.ts`.
+- **Last updated / asset version**: automatic (git commit date and short SHA); do not edit by hand.
+- **Meta description**: `siteMetadata.description` in `profile.ts`; the build fails if it exceeds 160 characters.
 - Keep existing file paths stable (e.g. `avatar.jpg`) to avoid breaking inbound links.
 - Broad machine-readable access to public profile content is intentional. Preserve the LLM text routes, JSON/feed/OpenAPI endpoints, Agent Skills discovery, AI plugin metadata, and browser-side WebMCP tools when editing content or profile data.
 

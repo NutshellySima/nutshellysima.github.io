@@ -1,0 +1,31 @@
+---
+// Head elements shared by every page: fonts, theme, icons, stylesheet.
+import { Font } from 'astro:assets';
+import siteStyles from '../styles/site.css?url';
+import { withVersion } from '../data/assets';
+
+const styleHref = withVersion(siteStyles);
+---
+<Font cssVariable="--font-inter" preload />
+<Font cssVariable="--font-newsreader" preload />
+
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#15110d" media="(prefers-color-scheme: dark)" />
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/icon-192.svg" />
+
+<!-- Dark-mode flash prevention -->
+<script is:inline>
+  (function () {
+    try {
+      var s = localStorage.getItem('theme');
+      var d = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (s === 'dark' || (!s && d)) document.documentElement.classList.add('dark');
+    } catch (_) { /* storage unavailable */ }
+  })();
+</script>
+
+<link rel="preload" href={styleHref} as="style" data-vite-ignore />
+<link rel="stylesheet" href={styleHref} data-vite-ignore />

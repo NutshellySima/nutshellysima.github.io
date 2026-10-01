@@ -16,7 +16,7 @@ const body = [
   '',
   `> ${profile.description}`,
   '',
-  `${profile.jobTitle}, ${profile.affiliation}, ${profile.location}. Contact: ${profile.email}. Last updated ${lastUpdated}.`,
+  `${profile.jobTitle}, ${profile.affiliation}, ${profile.location}. Research interests: ${profile.researchInterests.join('; ').toLowerCase()}. Contact: ${profile.email}. Last updated ${lastUpdated}.`,
   '',
   '## Profile',
   '',

@@ -1,5 +1,4 @@
 import { onReady, utils } from './utils';
-import { initServiceWorker } from './pwa';
 import { absoluteUrl, advisors, machineReadableResources, profile, publications, siteMetadata, stripHtml } from '../data/profile';
 
 type WebMcpTool = {
@@ -25,21 +24,38 @@ declare global {
   }
 }
 
+// A caching service worker used to be registered on this site. Remove it (and its
+// caches) from returning visitors; sw.js is also a self-unregistering fallback.
+const removeLegacyServiceWorker = async () => {
+  try {
+    if ('serviceWorker' in navigator) {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(registrations.map((registration) => registration.unregister()));
+    }
+    // Only after the worker is gone, so it cannot write its caches back.
+    if ('caches' in window) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((key) => caches.delete(key)));
+    }
+  } catch {
+    /* storage unavailable */
+  }
+};
+
 const initYear = () => {
   const el = document.getElementById('year');
   if (el) el.textContent = new Date().getFullYear().toString();
 };
 
 const initThemeToggle = () => {
-  const btn = document.getElementById('theme-toggle') as HTMLButtonElement | null;
-  if (!btn) return;
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]'));
+  if (!buttons.length) return;
 
   const html = document.documentElement;
 
   const apply = (dark: boolean) => {
     html.classList.toggle('dark', dark);
-    btn.setAttribute('aria-pressed', String(dark));
-    btn.textContent = dark ? '☀' : '☾';
+    buttons.forEach((button) => button.setAttribute('aria-pressed', String(dark)));
   };
 
   const saved = utils.storage.get('theme');
@@ -47,11 +63,13 @@ const initThemeToggle = () => {
   const isDark = saved === 'dark' || (!saved && prefersDark);
   apply(isDark);
 
-  btn.addEventListener('click', () => {
-    const next = !html.classList.contains('dark');
-    apply(next);
-    utils.storage.set('theme', next ? 'dark' : 'light');
-  });
+  buttons.forEach((button) =>
+    button.addEventListener('click', () => {
+      const next = !html.classList.contains('dark');
+      apply(next);
+      utils.storage.set('theme', next ? 'dark' : 'light');
+    })
+  );
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!utils.storage.get('theme')) apply(e.matches);
@@ -62,13 +80,28 @@ const initScrollSpy = () => {
   const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav]'));
   if (!links.length || !('IntersectionObserver' in window)) return;
 
-  const byId = new Map(links.map((link) => [link.dataset.nav ?? '', link]));
+  // The section list appears twice (desktop sidebar, mobile bar); keep both in step.
+  const byId = new Map<string, HTMLAnchorElement[]>();
+  for (const link of links) {
+    const id = link.dataset.nav ?? '';
+    byId.set(id, [...(byId.get(id) ?? []), link]);
+  }
+
+  const reveal = (link: HTMLAnchorElement) => {
+    const bar = link.closest<HTMLElement>('.mobile-nav');
+    if (!bar || bar.offsetParent === null) return;
+    bar.scrollTo({ left: link.offsetLeft - bar.clientWidth / 2 + link.offsetWidth / 2, behavior: 'smooth' });
+  };
+
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         links.forEach((link) => link.classList.remove('is-active'));
-        byId.get(entry.target.id)?.classList.add('is-active');
+        byId.get(entry.target.id)?.forEach((link) => {
+          link.classList.add('is-active');
+          reveal(link);
+        });
       }
     },
     { rootMargin: '-20% 0px -65% 0px' }
@@ -77,6 +110,21 @@ const initScrollSpy = () => {
   byId.forEach((_, id) => {
     const section = document.getElementById(id);
     if (section) observer.observe(section);
+  });
+};
+
+// Collapsed project details would be missing from a printout; open them while printing.
+const initPrintExpansion = () => {
+  let reopened: HTMLDetailsElement[] = [];
+
+  window.addEventListener('beforeprint', () => {
+    reopened = Array.from(document.querySelectorAll<HTMLDetailsElement>('details:not([open])'));
+    reopened.forEach((details) => (details.open = true));
+  });
+
+  window.addEventListener('afterprint', () => {
+    reopened.forEach((details) => (details.open = false));
+    reopened = [];
   });
 };
 
@@ -108,6 +156,7 @@ const initWebMcp = () => {
           affiliation: profile.affiliation,
           department: profile.department,
           location: profile.location,
+          researchInterests: profile.researchInterests,
           advisors: advisors.map((advisor) => ({ name: advisor.name, title: advisor.title, url: advisor.url })),
           description: siteMetadata.description,
           website: absoluteUrl('/'),
@@ -174,6 +223,7 @@ onReady(() => {
   initYear();
   initThemeToggle();
   initScrollSpy();
+  initPrintExpansion();
   initWebMcp();
-  initServiceWorker();
+  void removeLegacyServiceWorker();
 });
