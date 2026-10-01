@@ -4,7 +4,7 @@ import { absoluteUrl, lastUpdated, machineReadableResources, profile, publicatio
 const body = [
   `# ${profile.fullName}`,
   '',
-  `> ${profile.jobTitle} in ${profile.employer}'s ${profile.department}. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
+  `> ${profile.description}`,
   '',
   `Last updated: ${lastUpdated}`,
   '',

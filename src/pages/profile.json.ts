@@ -37,10 +37,10 @@ const document = {
     familyName: profile.familyName,
     jobTitle: profile.jobTitle,
     subtitle: profile.subtitle,
-    employer: {
-      name: profile.employer,
+    affiliation: {
+      name: profile.affiliation,
       department: profile.department,
-      url: profile.employerUrl,
+      url: profile.affiliationUrl,
     },
     location: profile.location,
     summary: profile.description,
@@ -72,6 +72,7 @@ const document = {
   experience: experience.map((entry) => ({
     period: entry.period,
     startDate: entry.startDate,
+    endDate: entry.endDate,
     role: entry.role,
     subtitle: entry.subtitle,
     organization: entry.org,

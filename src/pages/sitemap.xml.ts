@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { absoluteUrl, lastUpdatedISO } from '../data/profile';
+import { absoluteUrl, avatar, lastUpdatedISO } from '../data/profile';
 
 const entries = [
   {
@@ -7,7 +7,7 @@ const entries = [
     changefreq: 'monthly',
     priority: '1.0',
     image: {
-      loc: absoluteUrl('/avatar.jpg'),
+      loc: absoluteUrl(avatar.path),
       title: 'Chijun Sima',
     },
   },

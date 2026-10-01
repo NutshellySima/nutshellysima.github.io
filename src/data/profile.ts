@@ -1,36 +1,43 @@
-export const assetVersion = '20260402';
-export const lastUpdated = '2026-04-02';
-export const lastUpdatedISO = '2026-04-02T00:00:00+08:00';
+export const assetVersion = '20261001';
+export const lastUpdated = '2026-10-01';
+export const lastUpdatedISO = '2026-10-01T00:00:00-05:00';
 
-export const siteMetadata = {
-  url: 'https://www.chijunsima.com',
-  name: 'Chijun Sima',
-  title: 'Chijun Sima',
-  description:
-    "Chijun Sima — Senior Software Development Engineer at Tencent's WeChat division. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.",
-  locale: 'en_US',
-  language: 'en',
+export const avatar = {
+  path: `/avatar.jpg?v=${assetVersion}`,
+  width: 1024,
+  height: 1024,
+} as const;
+
+const doctoralEducation = {
+  period: '2026 – Present',
+  startDate: '2026',
+  endDate: null,
+  degree: 'PhD in Computer Science',
+  school: 'The University of Texas at Austin',
+  schoolUrl: 'https://www.cs.utexas.edu/',
+  detail: 'First-year PhD student.',
 } as const;
 
 export const profile = {
   fullName: 'Chijun Sima',
   givenName: 'Chijun',
   familyName: 'Sima',
-  jobTitle: 'Senior Software Development Engineer',
+  jobTitle: 'First-year Computer Science PhD student',
   subtitle: '',
-  employer: 'Tencent',
-  department: 'WeChat division',
-  employerUrl: 'https://www.tencent.com',
-  location: 'Guangzhou, China',
-  locality: 'Guangzhou',
-  countryCode: 'CN',
+  affiliation: doctoralEducation.school,
+  department: 'Department of Computer Science',
+  affiliationUrl: doctoralEducation.schoolUrl,
+  location: 'Austin, Texas, USA',
+  locality: 'Austin',
+  region: 'Texas',
+  countryCode: 'US',
   education: {
     school: 'South China University of Technology',
     schoolUrl: 'https://www.scut.edu.cn',
     degree: 'B.Eng. in Computer Science and Technology (Innovation Class)',
   },
   description:
-    'Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.',
+    `First-year Computer Science PhD student at ${doctoralEducation.school}. Co-first author of Ekko (OSDI 2022). LLVM developer with commit access.`,
   email: 'simachijun@gmail.com',
   sameAs: [
     'https://www.linkedin.com/in/chijun-sima/',
@@ -42,6 +49,16 @@ export const profile = {
     'Compilers',
     'Distributed Systems',
   ],
+} as const;
+
+export const siteMetadata = {
+  url: 'https://www.chijunsima.com',
+  name: profile.fullName,
+  title: profile.fullName,
+  description: `${profile.fullName} — ${profile.description}`,
+  keywords: [profile.fullName, 'UT Austin', 'Computer Science', 'PhD', 'OSDI', 'Ekko', 'LLVM', 'Tencent', 'WeChat'],
+  locale: 'en_US',
+  language: 'en',
 } as const;
 
 export const machineReadableResources = [
@@ -138,8 +155,9 @@ export const publications = [
 
 export const experience = [
   {
-    period: 'Jul 2020 – Present',
+    period: 'Jul 2020 – Aug 2026',
     startDate: '2020-07',
+    endDate: '2026-08',
     role: 'Senior Software Development Engineer',
     subtitle: '',
     org: "Tencent's WeChat division",
@@ -170,6 +188,7 @@ export const experience = [
   {
     period: '2018 – Present',
     startDate: '2018',
+    endDate: null,
     role: 'Developer (commit access)',
     subtitle: 'Google Summer of Code 2018',
     org: 'LLVM',
@@ -188,14 +207,18 @@ export const experience = [
   },
 ] as const;
 
-export const education = {
-  period: 'Sep 2016 – Jun 2020',
-  startDate: '2016-09',
-  degree: 'B.Eng. in Computer Science and Technology (Innovation Class)',
-  school: 'South China University of Technology',
-  schoolUrl: 'https://www.scut.edu.cn',
-  detail: 'GPA 3.85 / 4.00 · Rank 1 / 28',
-} as const;
+export const education = [
+  doctoralEducation,
+  {
+    period: 'Sep 2016 – Jun 2020',
+    startDate: '2016-09',
+    endDate: '2020-06',
+    degree: profile.education.degree,
+    school: profile.education.school,
+    schoolUrl: profile.education.schoolUrl,
+    detail: 'GPA 3.85 / 4.00 · Rank 1 / 28',
+  },
+] as const;
 
 export const talks = [
   { text: "Tencent's WeChat division, Shenzhen", date: 'Jun 2022' },

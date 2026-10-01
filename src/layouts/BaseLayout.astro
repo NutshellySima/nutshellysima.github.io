@@ -3,6 +3,7 @@ import siteStyles from '../styles/site.css?url';
 import {
   absoluteUrl,
   assetVersion,
+  avatar,
   lastUpdatedISO,
   profile,
   publications,
@@ -11,7 +12,7 @@ import {
 
 const baseStyleHref = '/assets/site.css';
 const baseScriptSrc = '/assets/site.mjs';
-const baseAvatar = '/avatar.jpg';
+const baseAvatar = avatar.path;
 ---
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -33,7 +34,7 @@ const baseAvatar = '/avatar.jpg';
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#faf6ed" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#14181a" media="(prefers-color-scheme: dark)" />
-    <meta name="keywords" content="Chijun Sima, OSDI, Ekko, LLVM, Tencent, WeChat" />
+    <meta name="keywords" content={siteMetadata.keywords.join(', ')} />
 
     <link rel="canonical" href={absoluteUrl('/')} />
 
@@ -48,9 +49,9 @@ const baseAvatar = '/avatar.jpg';
     <meta property="og:url" content={absoluteUrl('/')} />
     <meta property="og:title" content={siteMetadata.title} />
     <meta property="og:description" content={siteMetadata.description} />
-    <meta property="og:image" content={absoluteUrl('/avatar.jpg')} />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="400" />
+    <meta property="og:image" content={absoluteUrl(avatar.path)} />
+    <meta property="og:image:width" content={String(avatar.width)} />
+    <meta property="og:image:height" content={String(avatar.height)} />
     <meta property="og:image:alt" content="Portrait of Chijun Sima" />
     <meta property="og:site_name" content={siteMetadata.name} />
     <meta property="og:locale" content={siteMetadata.locale} />
@@ -62,7 +63,7 @@ const baseAvatar = '/avatar.jpg';
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={siteMetadata.title} />
     <meta name="twitter:description" content={siteMetadata.description} />
-    <meta name="twitter:image" content={absoluteUrl('/avatar.jpg')} />
+    <meta name="twitter:image" content={absoluteUrl(avatar.path)} />
     <meta name="twitter:image:alt" content="Portrait of Chijun Sima" />
 
     <!-- Favicons & PWA -->
@@ -101,17 +102,17 @@ const baseAvatar = '/avatar.jpg';
       "url": siteMetadata.url,
       "image": {
         "@type": "ImageObject",
-        "url": absoluteUrl('/avatar.jpg'),
-        "width": 400,
-        "height": 400
+        "url": absoluteUrl(avatar.path),
+        "width": avatar.width,
+        "height": avatar.height
       },
       "jobTitle": profile.jobTitle,
       "description": profile.description,
-      "worksFor": {
-        "@type": "Organization",
-        "name": profile.employer,
-        "department": profile.department,
-        "url": profile.employerUrl
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": profile.affiliation,
+        "department": { "@type": "Organization", "name": profile.department },
+        "url": profile.affiliationUrl
       },
       "alumniOf": {
         "@type": "CollegeOrUniversity",
@@ -137,6 +138,7 @@ const baseAvatar = '/avatar.jpg';
       "address": {
         "@type": "PostalAddress",
         "addressLocality": profile.locality,
+        "addressRegion": profile.region,
         "addressCountry": profile.countryCode
       },
       "sameAs": profile.sameAs,
@@ -241,7 +243,7 @@ const baseAvatar = '/avatar.jpg';
         if (loc.includes(window.location.hostname)) return;
         var meta = document.querySelector('meta[name="asset-version"]');
         var v = meta ? meta.content : '';
-        var wv = function(u){return v?(u.includes('?')?u+'&v='+v:u+'?v='+v):u};
+        var wv = function(u){return v&&!/[?&]v=/.test(u)?(u.includes('?')?u+'&v='+v:u+'?v='+v):u};
         window.__withAssetVersion__ = wv;
         document.querySelectorAll('[data-asset-href]').forEach(function(el){
           var b=el.getAttribute('data-asset-href');if(b)el.setAttribute('href',wv(b));

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import {
   awards,
+  avatar,
   education,
   experience,
   lastUpdated,
@@ -34,26 +35,28 @@ import {
         </div>
 
         <div class="header-card">
-          <img
-            src="/avatar.jpg"
-            data-asset-src="/avatar.jpg"
-            alt="Portrait of Chijun Sima"
-            width="144"
-            height="144"
-            itemprop="image"
-            class="avatar"
-            loading="eager"
-            decoding="async"
-          />
+          <div class="avatar-frame">
+            <img
+              src={avatar.path}
+              data-asset-src={avatar.path}
+              alt="Portrait of Chijun Sima"
+              width="144"
+              height="144"
+              itemprop="image"
+              class="avatar"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
           <div class="header-info">
             <h1 class="header-name">Chijun Sima</h1>
             <p class="header-title">
-              Senior Software Development Engineer,
-              <a href="https://www.tencent.com" itemprop="worksFor" itemscope itemtype="https://schema.org/Organization" target="_blank" rel="noopener noreferrer">
-                <span itemprop="name">{profile.employer}'s {profile.department}</span>
+              {profile.jobTitle},
+              <a href={profile.affiliationUrl} itemprop="affiliation" itemscope itemtype="https://schema.org/CollegeOrUniversity" target="_blank" rel="noopener noreferrer">
+                <span itemprop="name">{profile.affiliation}</span>
               </a>
             </p>
-            <p class="header-location">Guangzhou, China</p>
+            <p class="header-location">{profile.location}</p>
 
             <div class="header-links" role="list" aria-label="Contact and profiles">
               <a role="listitem" href="mailto:simachijun@gmail.com" itemprop="email">Email</a>
@@ -112,6 +115,8 @@ import {
         <div class="timeline">
           {experience.map((entry) => (
             <article class="timeline-entry" itemscope itemtype="https://schema.org/OrganizationRole">
+              <meta itemprop="startDate" content={entry.startDate} />
+              {entry.endDate && <meta itemprop="endDate" content={entry.endDate} />}
               <div class="timeline-head">
                 <div class="timeline-left">
                   <p class="timeline-org">
@@ -149,20 +154,22 @@ import {
       <!-- ── Education ── -->
       <section id="education" class="section" aria-labelledby="h-edu">
         <h2 id="h-edu" class="section-heading">Education</h2>
-        <article class="edu-entry" itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
-          <div class="timeline-head">
-            <div class="timeline-left">
-              <p class="timeline-org">
-                <a href={education.schoolUrl} target="_blank" rel="noopener noreferrer">
-                  <strong itemprop="name">{education.school}</strong>
-                </a>
-              </p>
-              <p class="timeline-role">{education.degree}</p>
+        {education.map((entry) => (
+          <article class="edu-entry" itemprop={entry.endDate ? 'alumniOf' : 'affiliation'} itemscope itemtype="https://schema.org/EducationalOrganization">
+            <div class="timeline-head">
+              <div class="timeline-left">
+                <p class="timeline-org">
+                  <a href={entry.schoolUrl} target="_blank" rel="noopener noreferrer">
+                    <strong itemprop="name">{entry.school}</strong>
+                  </a>
+                </p>
+                <p class="timeline-role">{entry.degree}</p>
+              </div>
+              <time class="timeline-period" datetime={entry.startDate}>{entry.period}</time>
             </div>
-            <time class="timeline-period" datetime={education.startDate}>{education.period}</time>
-          </div>
-          <p class="project-detail">{education.detail}</p>
-        </article>
+            <p class="project-detail">{entry.detail}</p>
+          </article>
+        ))}
       </section>
 
       <!-- ── Talks ── -->
