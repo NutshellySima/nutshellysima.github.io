@@ -70,7 +70,7 @@ const openapi = {
         summary: 'Get public site updates as JSON Feed.',
         responses: {
           '200': {
-            description: 'JSON Feed document for site news and notable updates.',
+            description: 'JSON Feed document of publications and career milestones.',
             content: {
               'application/feed+json': {
                 schema: {

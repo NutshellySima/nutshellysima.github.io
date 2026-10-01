@@ -1,7 +1,14 @@
 import type { APIRoute } from 'astro';
 import { absoluteUrl, avatar, lastUpdatedISO } from '../data/profile';
 
-const entries = [
+type SitemapEntry = {
+  loc: string;
+  changefreq: string;
+  priority: string;
+  image?: { loc: string; title: string };
+};
+
+const entries: SitemapEntry[] = [
   {
     loc: absoluteUrl('/'),
     changefreq: 'monthly',
@@ -24,7 +31,7 @@ const entries = [
     changefreq: 'monthly',
     priority: '0.2',
   },
-] as const;
+];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset

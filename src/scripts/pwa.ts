@@ -2,7 +2,7 @@ export const initServiceWorker = () => {
   if (!('serviceWorker' in navigator)) return;
   if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') return;
 
-  const meta = document.querySelector('meta[name="asset-version"]');
+  const meta = document.querySelector<HTMLMetaElement>('meta[name="asset-version"]');
   const version = meta ? meta.content : '';
   const swUrl = version ? `/sw.js?v=${encodeURIComponent(version)}` : '/sw.js';
 

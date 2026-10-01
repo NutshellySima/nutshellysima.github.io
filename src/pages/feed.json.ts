@@ -1,16 +1,20 @@
 import type { APIRoute } from 'astro';
-import { absoluteUrl, lastUpdatedISO, news, profile, publications, siteMetadata } from '../data/profile';
+import { absoluteUrl, experience, lastUpdatedISO, profile, publications, siteMetadata } from '../data/profile';
 
 const toYearDate = (year: number) => `${year}-01-01T00:00:00+08:00`;
+const toMonthDate = (startDate: string) => {
+  const [year, month = '01'] = startDate.split('-');
+  return `${year}-${month}-01T00:00:00+08:00`;
+};
 
 const items = [
-  ...news.map((item, index) => ({
-    id: absoluteUrl(`/#news-${index + 1}`),
-    url: absoluteUrl('/#news'),
-    title: item.text,
-    content_text: item.text,
-    date_published: item.dateISO,
-    tags: ['news'],
+  ...experience.map((entry) => ({
+    id: absoluteUrl(`/#experience-${entry.startDate}`),
+    url: absoluteUrl('/#experience'),
+    title: `${entry.role}, ${entry.org}`,
+    content_text: `${entry.role} at ${entry.org} (${entry.period}).`,
+    date_published: toMonthDate(entry.startDate),
+    tags: ['experience'],
   })),
   ...publications.map((publication) => ({
     id: absoluteUrl(`/#${publication.id}`),
@@ -28,7 +32,7 @@ const feed = {
   title: `${siteMetadata.name} updates`,
   home_page_url: absoluteUrl('/'),
   feed_url: absoluteUrl('/feed.json'),
-  description: 'News and selected publications from the academic homepage of Chijun Sima.',
+  description: 'Publications and career milestones from the academic homepage of Chijun Sima.',
   language: siteMetadata.language,
   icon: absoluteUrl('/icon-512.svg'),
   favicon: absoluteUrl('/favicon.svg'),

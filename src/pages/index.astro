@@ -7,7 +7,6 @@ import {
   experience,
   lastUpdated,
   machineReadableResources,
-  news,
   profile,
   publications,
   reviewing,
@@ -19,7 +18,6 @@ const scholarUrl = 'https://scholar.google.com/citations?user=8-HD_IEAAAAJ&hl=en
 const linkedinUrl = 'https://www.linkedin.com/in/chijun-sima/';
 
 const navItems = [
-  { id: 'news', label: 'News' },
   { id: 'publications', label: 'Publications' },
   { id: 'experience', label: 'Experience' },
   { id: 'education', label: 'Education' },
@@ -102,22 +100,9 @@ const navItems = [
         </p>
       </section>
 
-      <!-- News -->
-      <section id="news" aria-labelledby="h-news">
-        <h2 id="h-news" class="section-heading">News</h2>
-        <ul class="news-list" role="list">
-          {news.map((item, index) => (
-            <li class="news-item" id={`news-${index + 1}`}>
-              <time class="news-date" datetime={item.dateISO}>{item.dateLabel}</time>
-              <span>{item.text}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       <!-- Publications -->
       <section id="publications" aria-labelledby="h-pub">
-        <h2 id="h-pub" class="section-heading">Selected Publications</h2>
+        <h2 id="h-pub" class="section-heading">Publications</h2>
         <ol class="pub-list" reversed>
           {publications.map((pub) => (
             <li>

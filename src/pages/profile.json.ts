@@ -8,7 +8,6 @@ import {
   lastUpdated,
   lastUpdatedISO,
   machineReadableResources,
-  news,
   profile,
   publications,
   reviewing,
@@ -53,11 +52,6 @@ const document = {
     },
   },
   education,
-  news: news.map((item) => ({
-    date: item.dateISO,
-    dateLabel: item.dateLabel,
-    text: item.text,
-  })),
   publications: publications.map((publication) => ({
     id: publication.id,
     title: publication.title,

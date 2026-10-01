@@ -107,7 +107,7 @@ export const machineReadableResources = [
     label: 'feed.json',
     href: '/feed.json',
     type: 'application/feed+json',
-    description: 'JSON Feed for site news and notable updates.',
+    description: 'JSON Feed of publications and career milestones.',
   },
   {
     label: 'openapi.json',
@@ -120,29 +120,6 @@ export const machineReadableResources = [
     href: '/.well-known/agent-skills/index.json',
     type: 'application/json',
     description: 'Agent Skills discovery index for using the site profile endpoints.',
-  },
-] as const;
-
-export const news = [
-  {
-    dateLabel: 'Aug 2026',
-    dateISO: '2026-08-01T00:00:00-05:00',
-    text: 'Started the PhD in Computer Science at UT Austin',
-  },
-  {
-    dateLabel: '2025',
-    dateISO: '2025-01-01T00:00:00+08:00',
-    text: 'Reviewing for CVPR 2025',
-  },
-  {
-    dateLabel: '2022',
-    dateISO: '2022-09-01T00:00:00+08:00',
-    text: "Ekko published at OSDI 2022; invited talks at Tencent's WeChat division, DataFun, TechBeat",
-  },
-  {
-    dateLabel: '2022',
-    dateISO: '2022-08-01T00:00:00+08:00',
-    text: 'Tencent Technology Breakthrough Award (Gold Prize) — Project Lead, Ekko',
   },
 ] as const;
 
