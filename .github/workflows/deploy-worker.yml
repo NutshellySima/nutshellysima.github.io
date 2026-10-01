@@ -1,0 +1,42 @@
+name: Deploy Cloudflare Worker
+
+# GitHub Pages stays the static origin; this worker adds edge-only agent
+# discovery (Link headers, markdown negotiation, /.well-known/api-catalog).
+on:
+  push:
+    branches: [main]
+    paths:
+      - cloudflare/**
+      - wrangler.toml
+      - .well-known/agent-skills/**
+      - scripts/check-agent-sync.js
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-worker
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      # The worker embeds a copy of SKILL.md; refuse to publish if it drifted.
+      - name: Check worker skill copy matches SKILL.md
+        run: node scripts/check-agent-sync.js
+
+      - name: Deploy worker
+        run: npx --yes wrangler@4 deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

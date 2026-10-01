@@ -1,0 +1,43 @@
+name: Cloudflare audit (read-only)
+
+# Lists Workers scripts, custom domains and zone routes so stale ones can be
+# reviewed before anything is deleted. Makes no changes. Run manually.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      ZONE_NAME: chijunsima.com
+    steps:
+      - name: List Workers resources
+        run: |
+          set -uo pipefail
+          api() {
+            local out
+            out=$(curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4$1")
+            if ! echo "$out" | jq -e '.success' >/dev/null 2>&1; then
+              echo "API error for $1: $(echo "$out" | jq -c '.errors' 2>/dev/null || echo "$out")" >&2
+              return 1
+            fi
+            echo "$out"
+          }
+
+          echo "== Worker scripts (name, last modified)"
+          api "/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts" | jq -r '.result[] | [.id, .modified_on] | @tsv'
+
+          echo
+          echo "== Custom domains (hostname, worker, environment)"
+          api "/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/domains" | jq -r '.result[] | [.hostname, .service, .environment] | @tsv'
+
+          echo
+          zone=$(api "/zones?name=$ZONE_NAME" | jq -r '.result[0].id // empty')
+          if [ -z "$zone" ]; then echo "Zone $ZONE_NAME not found or token lacks Zone:Read"; exit 1; fi
+          echo "== Routes on $ZONE_NAME (pattern, worker)"
+          api "/zones/$zone/workers/routes" | jq -r '.result[] | [.pattern, (.script // "(none)")] | @tsv'
