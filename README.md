@@ -42,14 +42,26 @@ Then open `http://localhost:4321/`.
 
 ## Cloudflare Worker
 
-GitHub Pages remains the static origin. The Cloudflare Worker in `cloudflare/agent-discovery-worker.js` adds edge-only agent discovery behavior:
+GitHub Pages remains the static origin. The Cloudflare Worker in `cloudflare/agent-discovery-worker.js` (config in `wrangler.toml`) adds edge-only behavior:
 
+- Redirects the bare domain `chijunsima.com` to `https://www.chijunsima.com` (301). GitHub Pages only has a certificate for `www`, so the apex would otherwise return Cloudflare 526.
 - Homepage `Link` response headers.
 - `Accept: text/markdown` negotiation for `/`.
 - `/.well-known/api-catalog` with `application/linkset+json`.
+- Security response headers on every path.
 
-Deploy with Wrangler after authenticating Cloudflare locally:
+### Deployment
 
-```bash
-npx wrangler deploy
-```
+The worker deploys automatically (`.github/workflows/deploy-worker.yml`) when `cloudflare/`, `wrangler.toml`, the Agent Skills files, or the worker check scripts change on `main`. It can also be run manually from the Actions tab.
+
+It needs two repository secrets: `CLOUDFLARE_API_TOKEN` (the "Edit Cloudflare Workers" template, limited to the `chijunsima.com` zone) and `CLOUDFLARE_ACCOUNT_ID`.
+
+Manual alternative: `npx wrangler login` then `npx wrangler deploy`.
+
+### Checks
+
+`npm run check` runs offline tests in CI before every deploy: the SKILL.md copy embedded in the worker must equal the static file (`scripts/check-agent-sync.js`), and the worker's own responses are smoke-tested (`scripts/check-worker.mjs`). If you edit `.well-known/agent-skills/chijun-sima-profile/SKILL.md`, update the copy in the worker too.
+
+### Auditing the account
+
+`.github/workflows/cloudflare-audit.yml` is a manual, read-only job that lists Workers scripts, custom domains, and zone routes. The repository is public, so its log is public too; it prints names and route patterns only, never secrets.

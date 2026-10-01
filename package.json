@@ -16,7 +16,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "check": "node scripts/check-agent-sync.js"
+    "check": "node scripts/check-agent-sync.js && node scripts/check-worker.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

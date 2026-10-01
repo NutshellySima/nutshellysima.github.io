@@ -10,6 +10,7 @@ on:
       - wrangler.toml
       - .well-known/agent-skills/**
       - scripts/check-agent-sync.js
+      - scripts/check-worker.mjs
   workflow_dispatch:
 
 permissions:
@@ -31,9 +32,10 @@ jobs:
         with:
           node-version: 22
 
-      # The worker embeds a copy of SKILL.md; refuse to publish if it drifted.
-      - name: Check worker skill copy matches SKILL.md
-        run: node scripts/check-agent-sync.js
+      # Refuse to publish if the embedded SKILL.md drifted or the worker's own
+      # responses (apex redirect, api-catalog, skills digest) regressed.
+      - name: Check worker
+        run: npm run check
 
       - name: Deploy worker
         run: npx --yes wrangler@4 deploy

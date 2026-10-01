@@ -199,9 +199,26 @@ const serveCorsPreflight = (url) =>
 
 const secure = (response, url, options) => withResponseHeaders(response, url, options);
 
+const APEX_HOST = 'chijunsima.com';
+
+// GitHub Pages only serves the custom domain on www, so the bare domain has no
+// valid origin certificate (Cloudflare 526). Send it to the canonical host.
+const redirectApexToWww = (url) =>
+  new Response(null, {
+    status: 301,
+    headers: {
+      Location: `${SITE}${url.pathname}${url.search}`,
+      'Cache-Control': 'public, max-age=3600',
+    },
+  });
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
+
+    if (url.hostname === APEX_HOST) {
+      return redirectApexToWww(url);
+    }
 
     if (request.method === 'OPTIONS' && isCorsPath(url.pathname)) {
       return serveCorsPreflight(url);
