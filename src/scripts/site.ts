@@ -80,7 +80,7 @@ const initScrollSpy = () => {
   const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav]'));
   if (!links.length || !('IntersectionObserver' in window)) return;
 
-  // Group by section id so every link pointing at the same section stays in step.
+  // The section list appears twice (desktop sidebar, mobile bar); keep both in step.
   const byId = new Map<string, HTMLAnchorElement[]>();
   for (const link of links) {
     const id = link.dataset.nav ?? '';
@@ -88,7 +88,7 @@ const initScrollSpy = () => {
   }
 
   const reveal = (link: HTMLAnchorElement) => {
-    const bar = link.closest<HTMLElement>('.topnav');
+    const bar = link.closest<HTMLElement>('.mobile-nav');
     if (!bar || bar.offsetParent === null) return;
     bar.scrollTo({ left: link.offsetLeft - bar.clientWidth / 2 + link.offsetWidth / 2, behavior: 'smooth' });
   };
@@ -107,8 +107,7 @@ const initScrollSpy = () => {
     { rootMargin: '-20% 0px -65% 0px' }
   );
 
-  // The hero has no nav link; observing it clears the highlight when scrolled back to the top.
-  [...byId.keys(), 'top'].forEach((id) => {
+  byId.forEach((_, id) => {
     const section = document.getElementById(id);
     if (section) observer.observe(section);
   });

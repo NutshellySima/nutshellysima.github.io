@@ -17,11 +17,11 @@ export const avatar = {
   path: `/avatar.jpg?v=${assetVersion}`,
   width: 1024,
   height: 1024,
-  // Responsive WebP variants (see scripts/generate-avatar.mjs). The avatar is shown at 104px
-  // (mobile) and 160px (tablet and up), so the 1024px original is only a fallback and the social/JSON-LD image.
+  // Responsive WebP variants (see scripts/generate-avatar.mjs). The avatar is shown at 100px
+  // (mobile) and 136px (desktop), so the 1024px original is only a fallback and the social/JSON-LD image.
   webp: {
     srcset: `/avatar-160.webp?v=${assetVersion} 160w, /avatar-288.webp?v=${assetVersion} 288w`,
-    sizes: '(min-width: 48rem) 160px, 104px',
+    sizes: '(min-width: 62rem) 136px, 100px',
   },
 } as const;
 
@@ -273,15 +273,6 @@ export const reviewing = [
   'NeurIPS 2026',
   'BMVC 2026',
   'CVPR 2025',
-] as const;
-
-// Headline figures shown in the homepage hero. Each one restates a fact from the
-// Ekko and data-platform entries in `experience`; keep them in step with that copy.
-export const highlights = [
-  { value: '2.4 s', label: 'model-update latency for multi-terabyte recommendation models' },
-  { value: '10,000×', label: 'model-size scaling, from GB to tens of TB' },
-  { value: '1 B+', label: 'users served daily in WeChat' },
-  { prefix: 'up to', value: '1,200×', label: 'less data movement in feature pipelines' },
 ] as const;
 
 export const writeups = [
