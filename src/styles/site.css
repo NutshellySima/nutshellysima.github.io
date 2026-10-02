@@ -874,6 +874,13 @@ a.pub-title:hover {
 /* ═══════════════════════════════════════
    Footer
    ═══════════════════════════════════════ */
+.section-note-after {
+  margin: 1rem 0 0;
+}
+.project-note {
+  font-weight: 400;
+}
+
 .site-footer {
   display: grid;
   gap: 0.4rem;

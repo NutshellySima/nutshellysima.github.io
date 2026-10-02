@@ -42,6 +42,14 @@ expect(
   `api-catalog type ${catalog.headers.get('Content-Type')}`
 );
 expect(catalog.headers.get('X-Frame-Options') === 'DENY', 'api-catalog is missing security headers');
+expect(
+  (catalog.headers.get('Content-Security-Policy') ?? '').includes("frame-ancestors 'none'"),
+  'api-catalog is missing Content-Security-Policy'
+);
+expect(
+  Number(/max-age=(\d+)/.exec(catalog.headers.get('Strict-Transport-Security') ?? '')?.[1]) >= 31536000,
+  'HSTS max-age is below one year'
+);
 
 // The digest the worker publishes matches the static SKILL.md.
 const index = await (await call('https://www.chijunsima.com/.well-known/agent-skills/index.json')).json();

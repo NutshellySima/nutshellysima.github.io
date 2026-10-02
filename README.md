@@ -19,6 +19,7 @@ This repository is a **static GitHub Pages** site for `www.chijunsima.com`, buil
 - `avatar.jpg`: Full-size profile image (fallback, JSON-LD). The page serves `avatar-160.webp` / `avatar-288.webp`; regenerate them with `node scripts/generate-avatar.mjs`.
 - `sw.js`: A self-unregistering service worker. The site used to register a caching service worker; returning visitors still have it installed, so this file must stay published to clean it up.
 - `scripts/build-info.js`: Derives the asset version and the last-updated timestamp from git at build time (shared by Vite and the esbuild bundle).
+- `.github/workflows/ci.yml`: Lint, typecheck, `npm run check`, and build on every pull request (deploy repeats them on `main`).
 - `.github/dependabot.yml`: Weekly npm and monthly GitHub Actions update PRs.
 - `og-image.png`: 1200×630 social preview card. Regenerate with `npm run build && npx -p playwright node scripts/generate-og-image.mjs` (template: `scripts/og-card.html`).
 - `scripts/check-agent-sync.js`: CI guard that keeps the SKILL.md copy embedded in the Cloudflare worker identical to the static file.
@@ -54,7 +55,7 @@ GitHub Pages remains the static origin. The Cloudflare Worker in `cloudflare/age
 - Homepage `Link` response headers.
 - `Accept: text/markdown` negotiation for `/`.
 - `/.well-known/api-catalog` with `application/linkset+json`.
-- Security response headers on every path.
+- Security response headers on every path (HSTS, nosniff, referrer/permissions policies, COOP, and a CSP limited to `base-uri`, `object-src`, `frame-ancestors`, `form-action`; a `script-src` policy would need per-build hashes for the inline theme/analytics scripts).
 
 ### Deployment
 

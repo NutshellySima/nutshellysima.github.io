@@ -10,10 +10,14 @@ const linkHeaders = [
 ];
 
 const securityHeaders = {
-  'Strict-Transport-Security': 'max-age=15552000',
+  'Strict-Transport-Security': 'max-age=31536000',
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'X-Frame-Options': 'DENY',
+  // Directives that cannot break the inline theme/analytics scripts; a script-src policy
+  // would need per-build hashes for them.
+  'Content-Security-Policy': "base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'",
+  'Cross-Origin-Opener-Policy': 'same-origin',
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), xr-spatial-tracking=()',
 };
 
