@@ -1,18 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Chijun Sima logo">
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#1b1511"/>
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="#4a3b2e" stroke-width="1.5"/>
-  <text
-    x="32"
-    y="40"
-    text-anchor="middle"
-    font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-    font-size="24"
-    font-weight="700"
-    letter-spacing="0.5"
-    fill="#faf5ec"
-  >
-    CS
-  </text>
-  <circle cx="49" cy="15" r="4" fill="#e0742a"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Chijun Sima logo">
+  <rect width="64" height="64" rx="15" fill="#1b1511"/>
+  <path d="M48.3 21.4A20 20 0 1 0 48.3 42.6" stroke="#faf5ec" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M38.5 24.6A6.3 6.3 0 1 0 32 32A6.3 6.3 0 1 1 25.5 39.4" stroke="#e0742a" stroke-width="5" stroke-linecap="round"/>
 </svg>
